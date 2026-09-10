@@ -7,6 +7,7 @@ import { gunzipSync } from 'node:zlib';
 import { isComparisonEligible } from '../lib/ferc/comparison.ts';
 import {
   formatComparisonValue,
+  isStructuredFercValue,
   supportedComparisonUnitFamilies,
 } from '../lib/ferc/format.ts';
 
@@ -181,6 +182,35 @@ const rawComparisonFamilies = new Set([
   'categorical',
   'date',
 ]);
+const reviewValidations = new Set([
+  'source_anomaly_review',
+  'blocked_ambiguity',
+  'scope_incompatible',
+  'unit_warning',
+  'rounding_warning',
+  'source_date_warning',
+]);
+const pointHasValue = (point) =>
+  (point.value.display_value !== null &&
+    point.value.display_value !== undefined) ||
+  Boolean(point.value.as_filed || point.value.normalized_iso);
+const safeDirectoryValue = (point) => {
+  const value =
+    point.value.display_value ??
+    (['date', '(date)', '(date range)'].includes(
+      (point.value.display_unit || point.value.unit || '').trim().toLowerCase(),
+    )
+      ? point.value.normalized_iso || point.value.as_filed
+      : point.value.as_filed || point.value.normalized_iso);
+  return (
+    (typeof value === 'number' && Number.isFinite(value)) ||
+    (typeof value === 'string' &&
+      value.trim().length > 0 &&
+      value.length <= 160 &&
+      !/[\r\n]/.test(value) &&
+      !isStructuredFercValue(value))
+  );
+};
 for (const asset of directory.assets) {
   assert.match(asset.id, /^[a-z0-9][a-z0-9-]*$/);
   assert.equal(asset.detailPath, `${publicRoot}/assets/${asset.id}.json.gz`);
@@ -192,6 +222,47 @@ for (const asset of directory.assets) {
   annotations += detail.annotations.length;
   if (!asset.comparisonEligible) comparisonBlocked += 1;
   assert.equal(asset.reviewCount, asset.dataSummary?.review ?? 0);
+  const currentPresent = detail.metrics
+    .flatMap((series) => series.points)
+    .filter(
+      (point) =>
+        point.quality.availability === 'present' &&
+        point.quality.version_status !== 'superseded',
+    );
+  assert.equal(
+    asset.qualityFlagCount,
+    currentPresent.filter((point) =>
+      reviewValidations.has(point.quality.validation),
+    ).length,
+  );
+  assert.equal(
+    asset.openReviewCount,
+    currentPresent.filter((point) => point.quality.review_status === 'open')
+      .length,
+  );
+  assert.equal(
+    asset.resolvedReviewCount,
+    currentPresent.filter((point) => point.quality.review_status === 'resolved')
+      .length,
+  );
+  const latestAvailablePeriod = currentPresent
+    .filter(
+      (point) => point.quality.validation === 'pass' && pointHasValue(point),
+    )
+    .map(
+      (point) =>
+        point.period.instant ||
+        point.period.end ||
+        point.dates.source_reporting_instant ||
+        point.dates.source_reporting_end ||
+        (/^\d{4}-\d{2}-\d{2}/.test(point.sortKey)
+          ? point.sortKey.slice(0, 10)
+          : null),
+    )
+    .filter(Boolean)
+    .sort()
+    .at(-1);
+  assert.equal(asset.latestPeriod, latestAvailablePeriod ?? null);
   assert.ok(Array.isArray(asset.comparisonGroups));
   for (const group of asset.comparisonGroups) {
     assert.match(group.groupId, /^comparison-group-v1-/);
@@ -225,9 +296,19 @@ for (const asset of directory.assets) {
       false,
     );
   }
+  const safeHeadlineExists = detail.metrics.some(
+    (series) =>
+      series.role === 'headline' &&
+      series.latest &&
+      safeDirectoryValue(series.latest),
+  );
   for (const series of detail.metrics) {
     if (asset.latestMetric?.metricId === series.id) {
-      assert.equal(series.role, 'headline');
+      assert.ok(
+        series.role === 'headline' ||
+          (series.id === 'i311_reporting_state' && !safeHeadlineExists),
+        `Unsafe directory fallback for ${asset.id}/${series.id}`,
+      );
     }
     for (const point of series.points) {
       assert.ok(point.quality);
@@ -324,6 +405,22 @@ assert.equal(
     ?.latestMetric?.value,
   'IS26-24: accepted AND SUSPENDED, subject to refund -- refund clock started',
 );
+for (const [assetId, usable] of [
+  ['kmi-banquete-hub', 44],
+  ['kmi-copano-upper-gulf-coast', 54],
+]) {
+  const asset = directory.assets.find((item) => item.id === assetId);
+  assert.ok(asset);
+  assert.equal(asset.latestPeriod, '2026-06-30');
+  assert.equal(asset.dataSummary.usable, usable);
+  assert.equal(asset.latestMetric?.metricId, 'i311_reporting_state');
+  assert.equal(asset.latestMetric?.value, 'activity_reported');
+}
+assert.equal(
+  directory.assets.find((asset) => asset.id === 'wmb-nortex-worsham-steed')
+    ?.latestPeriod,
+  '2026-03-31',
+);
 
 assert.equal(
   directory.assets.find((asset) => asset.id === 'oke-northern-border')?.company,
@@ -354,6 +451,31 @@ const instrumentDetail = verifiedJson('instruments/ferc-oil-index.json.gz');
 assert.equal(instrumentDetail.instrument.entityKey, 'FERC-OIL-INDEX');
 assert.equal(instrumentDetail.summary.observations, 60);
 assert.equal(instrumentDetail.summary.review, 8);
+const instrumentCurrentPresent = instrumentDetail.metrics
+  .flatMap((metric) => metric.points)
+  .filter(
+    (point) =>
+      point.quality.availability === 'present' &&
+      point.quality.version_status !== 'superseded',
+  );
+assert.equal(
+  instrument.qualityFlagCount,
+  instrumentCurrentPresent.filter((point) =>
+    reviewValidations.has(point.quality.validation),
+  ).length,
+);
+assert.equal(
+  instrument.openReviewCount,
+  instrumentCurrentPresent.filter(
+    (point) => point.quality.review_status === 'open',
+  ).length,
+);
+assert.equal(
+  instrument.resolvedReviewCount,
+  instrumentCurrentPresent.filter(
+    (point) => point.quality.review_status === 'resolved',
+  ).length,
+);
 assert.equal(
   instrumentDetail.metrics.flatMap((metric) => metric.points).length,
   60,

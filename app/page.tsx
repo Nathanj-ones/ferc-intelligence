@@ -79,8 +79,10 @@ import {
   formatCompact,
   formatDate,
   humanizeFercText,
+  isMetricPresentationBlocked,
   margin,
   percentChange,
+  presentationUnit,
 } from '@/lib/ferc/format';
 import type {
   AnnualPoint,
@@ -1360,6 +1362,9 @@ function AssetsDirectory({
       {visible.length ? (
         <div className="directory-list">
           {visible.map((asset) => {
+            const qualityFlagCount =
+              asset.qualityFlagCount ?? asset.reviewCount;
+            const openReviewCount = asset.openReviewCount ?? 0;
             return (
               <Link
                 className="asset-row"
@@ -1380,18 +1385,36 @@ function AssetsDirectory({
                 </div>
                 <dl>
                   <div>
-                    <dt>History through</dt>
+                    <dt>Latest available period</dt>
                     <dd>{formatDate(asset.latestPeriod ?? undefined)}</dd>
                   </div>
                   <div>
-                    <dt>{asset.latestMetric?.label || 'Latest metric'}</dt>
+                    <dt>{asset.latestMetric?.label || 'Usable records'}</dt>
                     <dd>
                       {asset.latestMetric
-                        ? formatBackendValue(
-                            asset.latestMetric.value,
+                        ? isMetricPresentationBlocked(
+                            asset.latestMetric.metricId,
                             asset.latestMetric.unit,
+                            asset.latestMetric.validation,
                           )
-                        : 'Unavailable'}
+                          ? 'Unit conflict — see evidence'
+                          : formatBackendValue(
+                              asset.latestMetric.value,
+                              presentationUnit(
+                                asset.latestMetric.metricId,
+                                asset.latestMetric.unit,
+                                {
+                                  configuredDisplayUnit:
+                                    asset.latestMetric.configuredDisplayUnit,
+                                  displayScale: asset.latestMetric.displayScale,
+                                  origin: asset.latestMetric.origin,
+                                  validation: asset.latestMetric.validation,
+                                },
+                              ),
+                            )
+                        : asset.dataSummary?.usable
+                          ? `${asset.dataSummary.usable.toLocaleString()} across ${asset.dataSummary.metrics.toLocaleString()} metrics`
+                          : 'None available'}
                     </dd>
                   </div>
                   <div>
@@ -1402,19 +1425,23 @@ function AssetsDirectory({
                           !asset.dataSummary ||
                           asset.dataSummary.observations === 0 ||
                           asset.dataSummary.usable === 0 ||
-                          asset.reviewCount > 0
+                          openReviewCount > 0
                             ? 'warn'
-                            : 'good'
+                            : qualityFlagCount > 0
+                              ? 'neutral'
+                              : 'good'
                         }
                       >
                         {!asset.dataSummary ||
                         asset.dataSummary.observations === 0
                           ? 'Identity only'
-                          : asset.reviewCount > 0
-                            ? `${asset.reviewCount} review records`
-                            : asset.dataSummary.usable > 0
-                              ? 'Validated records'
-                              : 'No usable records'}
+                          : openReviewCount > 0
+                            ? `${openReviewCount} need review`
+                            : qualityFlagCount > 0
+                              ? `${qualityFlagCount} quality flags`
+                              : asset.dataSummary.usable > 0
+                                ? 'Validated records'
+                                : 'No usable records'}
                       </Status>
                     </dd>
                   </div>
@@ -1548,35 +1575,45 @@ function ReferenceInstruments({
         </div>
       </div>
       <div className="reference-instrument-list">
-        {instruments.map((instrument) => (
-          <article key={instrument.id}>
-            <div>
-              <span className="status status-neutral">
-                Reference instrument
-              </span>
-              <h3>{instrument.name}</h3>
-              <p>{instrument.jurisdiction || instrument.note}</p>
-              <small>
-                {instrument.dataSummary.observations.toLocaleString()}{' '}
-                observations · {instrument.dataSummary.usable.toLocaleString()}{' '}
-                usable · {instrument.reviewCount.toLocaleString()} under review
-                · history through{' '}
-                {formatDate(instrument.latestPeriod ?? undefined)}
-              </small>
-            </div>
-            <button
-              className="secondary-button"
-              aria-expanded={selectedId === instrument.id}
-              onClick={() =>
-                setSelectedId((current) =>
-                  current === instrument.id ? null : instrument.id,
-                )
-              }
-            >
-              {selectedId === instrument.id ? 'Hide history' : 'Open history'}
-            </button>
-          </article>
-        ))}
+        {instruments.map((instrument) => {
+          const qualityFlagCount =
+            instrument.qualityFlagCount ?? instrument.reviewCount;
+          const openReviewCount = instrument.openReviewCount ?? 0;
+          return (
+            <article key={instrument.id}>
+              <div>
+                <span className="status status-neutral">
+                  Reference instrument
+                </span>
+                <h3>{instrument.name}</h3>
+                <p>{instrument.jurisdiction || instrument.note}</p>
+                <small>
+                  {instrument.dataSummary.observations.toLocaleString()}{' '}
+                  observations ·{' '}
+                  {instrument.dataSummary.usable.toLocaleString()} usable ·{' '}
+                  {openReviewCount > 0
+                    ? `${openReviewCount.toLocaleString()} need review`
+                    : qualityFlagCount > 0
+                      ? `${qualityFlagCount.toLocaleString()} quality flags`
+                      : 'no open reviews'}{' '}
+                  · available through{' '}
+                  {formatDate(instrument.latestPeriod ?? undefined)}
+                </small>
+              </div>
+              <button
+                className="secondary-button"
+                aria-expanded={selectedId === instrument.id}
+                onClick={() =>
+                  setSelectedId((current) =>
+                    current === instrument.id ? null : instrument.id,
+                  )
+                }
+              >
+                {selectedId === instrument.id ? 'Hide history' : 'Open history'}
+              </button>
+            </article>
+          );
+        })}
       </div>
       {selected && (
         <div className="reference-instrument-detail">
@@ -1608,7 +1645,11 @@ function ReferenceInstruments({
                       <strong>{metric.label}</strong>
                       <small>
                         {metric.presentCount.toLocaleString()} present ·{' '}
-                        {metric.reviewCount.toLocaleString()} under review
+                        {metric.openReviewCount > 0
+                          ? `${metric.openReviewCount.toLocaleString()} need review`
+                          : metric.reviewCount > 0
+                            ? `${metric.reviewCount.toLocaleString()} quality flags`
+                            : 'no open reviews'}
                       </small>
                     </span>
                     <ChevronDown />

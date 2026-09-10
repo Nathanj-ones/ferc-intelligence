@@ -43,6 +43,20 @@ The directory projection also carries compact, receipt-derived comparison
 metadata so the picker can reject ambiguous series and selections with no exact
 period in common before loading an asset comparison.
 
+Directory cards only promote a single-series, display-safe headline. Form 549D
+assets with no scalar headline may use the exact filed reporting-state metric;
+structured records are never promoted. “Latest available period” is derived
+from the latest present, validated occurrence rather than the expected-slot
+calendar, so an unfilled future slot cannot make the visible history look newer
+than its data.
+
+The backend's `summary.review` is retained for contract provenance but is not
+presented as a human-review queue. The browser projection separately counts
+must-propagate quality flags, explicitly open review tasks, and resolved review
+tasks. Unit and scope qualifications stay visible without being mislabeled as
+records awaiting a reviewer; only an explicit `review_status=open` is described
+as needing review.
+
 Presentation follows the backend's display value and scale without inferring a
 conversion. A small set of contract-1.1.0 metric-specific unit shims covers
 documented source-tag anomalies (counts, barrel-miles, migrated Page 313 Dth,

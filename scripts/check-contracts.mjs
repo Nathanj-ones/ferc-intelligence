@@ -138,6 +138,14 @@ assert.equal(
   'Structured record · 1 field',
 );
 assert.equal(
+  formatBackendValue('activity_reported', 'categorical'),
+  'Activity reported',
+);
+assert.equal(
+  formatBackendValue('no_reportable_activity_declared', 'categorical'),
+  'No reportable activity declared',
+);
+assert.equal(
   humanizeFercReason('availability:source_blank'),
   'Availability: source blank.',
 );

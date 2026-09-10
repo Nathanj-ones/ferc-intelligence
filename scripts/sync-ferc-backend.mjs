@@ -279,6 +279,9 @@ function metricSeries(observations, metricRegistry) {
       const present = projected.filter(
         (point) => point.quality?.availability === 'present',
       );
+      const currentPresent = present.filter(
+        (point) => point.quality?.version_status !== 'superseded',
+      );
       const usable = present.filter(
         (point) =>
           point.quality?.validation === 'pass' &&
@@ -308,8 +311,14 @@ function metricSeries(observations, metricRegistry) {
         configuredDisplayUnit: registry.display_unit || null,
         pointCount: projected.length,
         presentCount: present.length,
-        reviewCount: present.filter((point) =>
+        reviewCount: currentPresent.filter((point) =>
           reviewValidations.has(point.quality?.validation),
+        ).length,
+        openReviewCount: currentPresent.filter(
+          (point) => point.quality?.review_status === 'open',
+        ).length,
+        resolvedReviewCount: currentPresent.filter(
+          (point) => point.quality?.review_status === 'resolved',
         ).length,
         latest: usableSeries.size === 1 ? usable.at(-1) || null : null,
         points: projected,
@@ -409,6 +418,50 @@ function directoryPresentationValue(point) {
     return value.normalized_iso || value.as_filed || null;
   }
   return value.as_filed || value.normalized_iso || null;
+}
+
+function reviewSummary(metrics) {
+  const points = metrics
+    .flatMap((metric) => metric.points)
+    .filter(
+      (point) =>
+        point.quality?.availability === 'present' &&
+        point.quality?.version_status !== 'superseded',
+    );
+  return {
+    qualityFlags: points.filter((point) =>
+      reviewValidations.has(point.quality?.validation),
+    ).length,
+    open: points.filter((point) => point.quality?.review_status === 'open')
+      .length,
+    resolved: points.filter(
+      (point) => point.quality?.review_status === 'resolved',
+    ).length,
+  };
+}
+
+function latestAvailablePeriod(metrics) {
+  const candidates = metrics
+    .flatMap((metric) => metric.points)
+    .filter(
+      (point) =>
+        point.quality?.availability === 'present' &&
+        point.quality?.validation === 'pass' &&
+        point.quality?.version_status !== 'superseded' &&
+        directoryPresentationValue(point) !== null,
+    )
+    .sort((left, right) => left.sortKey.localeCompare(right.sortKey));
+  const latest = candidates.at(-1);
+  if (!latest) return null;
+  return (
+    latest.period?.instant ||
+    latest.period?.end ||
+    latest.dates?.source_reporting_instant ||
+    latest.dates?.source_reporting_end ||
+    (/^\d{4}-\d{2}-\d{2}/.test(latest.sortKey)
+      ? latest.sortKey.slice(0, 10)
+      : null)
+  );
 }
 
 function eventDate(event) {
@@ -769,13 +822,26 @@ for (const rawAsset of directorySource.assets) {
     ),
   ].sort((left, right) => left.localeCompare(right));
   const comparisonGroups = comparisonGroupSummaries(projectedMetrics);
-  const latestMetricSeries = projectedMetrics.find(
-    (series) =>
-      series.role === 'headline' &&
-      series.latest &&
-      isDirectorySummaryValue(series.latest),
-  );
+  const latestMetricSeries =
+    projectedMetrics.find(
+      (series) =>
+        series.role === 'headline' &&
+        series.latest &&
+        isDirectorySummaryValue(series.latest),
+    ) ||
+    // Form 549D can legitimately have no publishable scalar headline because
+    // zero-filled numeric fields cannot be distinguished from omitted values.
+    // Its filed reporting state is a safe categorical directory fallback; an
+    // arbitrary detail record (especially structured JSON) is not.
+    projectedMetrics.find(
+      (series) =>
+        series.id === 'i311_reporting_state' &&
+        series.latest &&
+        isDirectorySummaryValue(series.latest),
+    );
   const latestMetric = latestMetricSeries?.latest || null;
+  const reviewTriage = reviewSummary(projectedMetrics);
+  const latestUsablePeriod = latestAvailablePeriod(projectedMetrics);
   const frontendComparisonEligible = Boolean(
     rawAsset.comparisonEligible &&
     comparisonGroups.some(
@@ -828,8 +894,7 @@ for (const rawAsset of directorySource.assets) {
     dataSummary: rawAsset.dataSummary,
     reportsForms: rawAsset.reportsForms || [],
     snapshotDate: directorySource.as_of,
-    latestPeriod:
-      rawAsset.dataSummary?.history_to || rawAsset.lastFiled || null,
+    latestPeriod: latestUsablePeriod,
     lastFiled: rawAsset.lastFiled,
     latestMetric: latestMetric
       ? {
@@ -838,11 +903,18 @@ for (const rawAsset of directorySource.assets) {
           period: latestMetric.period?.label || latestMetric.sortKey,
           value: directoryPresentationValue(latestMetric),
           unit: latestMetric.value?.display_unit || latestMetric.value?.unit,
+          configuredDisplayUnit:
+            latestMetricSeries.configuredDisplayUnit || null,
+          displayScale: latestMetric.value?.display_scale ?? null,
+          origin: latestMetric.quality?.origin || null,
           availability: latestMetric.quality?.availability,
           validation: latestMetric.quality?.validation,
         }
       : null,
     reviewCount,
+    qualityFlagCount: reviewTriage.qualityFlags,
+    openReviewCount: reviewTriage.open,
+    resolvedReviewCount: reviewTriage.resolved,
     detailPath: `/data/ferc/generations/${EXPECTED_GENERATION}/assets/${rawAsset.id}.json.gz`,
     relatedAssetIds: rawAsset.relatedAssetIds || [],
     relatedProjectIds: [],
@@ -891,6 +963,7 @@ for (const instrument of instrumentsSource) {
     entityPayload.observations || [],
     metricRegistry,
   );
+  const reviewTriage = reviewSummary(metrics);
   const summary = {
     id,
     entityKey: instrument.entity_key,
@@ -898,8 +971,11 @@ for (const instrument of instrumentsSource) {
     jurisdiction: entityPayload.entity.jurisdiction || null,
     note: entityPayload.entity.note || null,
     dataSummary: instrument.summary,
-    latestPeriod: instrument.summary.history_to || null,
+    latestPeriod: latestAvailablePeriod(metrics),
     reviewCount: instrument.summary.review ?? 0,
+    qualityFlagCount: reviewTriage.qualityFlags,
+    openReviewCount: reviewTriage.open,
+    resolvedReviewCount: reviewTriage.resolved,
     detailPath: `/data/ferc/generations/${EXPECTED_GENERATION}/instruments/${id}.json.gz`,
   };
   instrumentSummaries.push(summary);

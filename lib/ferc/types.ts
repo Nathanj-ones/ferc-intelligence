@@ -217,7 +217,12 @@ export type BackendMetricSeries = {
   configuredDisplayUnit: string | null;
   pointCount: number;
   presentCount: number;
+  /** Present, current observations carrying a must-propagate quality flag. */
   reviewCount: number;
+  /** Present, current observations explicitly queued for human review. */
+  openReviewCount: number;
+  /** Present, current observations whose explicit review is complete. */
+  resolvedReviewCount: number;
   latest: BackendObservation | null;
   points: BackendObservation[];
 };
@@ -277,10 +282,20 @@ export type OperatingAssetSummary = {
     period: string;
     value: number | string | null;
     unit: string | null;
+    configuredDisplayUnit: string | null;
+    displayScale: number | null;
+    origin: string | null;
     availability: string;
     validation: string;
   } | null;
+  /** Legacy backend summary count; retained as source-contract evidence. */
   reviewCount: number;
+  /** Current observations carrying a must-propagate quality flag. */
+  qualityFlagCount: number;
+  /** Current observations explicitly queued for human review. */
+  openReviewCount: number;
+  /** Current observations whose explicit review is complete. */
+  resolvedReviewCount: number;
   detailPath: string;
   relatedAssetIds: string[];
   relatedProjectIds: string[];
@@ -340,6 +355,9 @@ export type OperatingInstrumentSummary = {
   dataSummary: BackendDataSummary;
   latestPeriod: string | null;
   reviewCount: number;
+  qualityFlagCount: number;
+  openReviewCount: number;
+  resolvedReviewCount: number;
   detailPath: string;
 };
 

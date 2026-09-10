@@ -549,10 +549,14 @@ export function BackendAssetDetail({
       : null;
   const observationCount = asset.dataSummary?.observations ?? 0;
   const usableCount = asset.dataSummary?.usable ?? 0;
+  const qualityFlagCount = asset.qualityFlagCount ?? asset.reviewCount;
+  const openReviewCount = asset.openReviewCount ?? 0;
   const reviewTone =
-    observationCount === 0 || asset.reviewCount > 0 || usableCount === 0
+    observationCount === 0 || openReviewCount > 0 || usableCount === 0
       ? 'warn'
-      : 'good';
+      : qualityFlagCount > 0
+        ? 'neutral'
+        : 'good';
 
   return (
     <main className="page-shell detail-page backend-detail-page">
@@ -581,11 +585,13 @@ export function BackendAssetDetail({
             <span className={`status status-${reviewTone}`}>
               {observationCount === 0
                 ? 'Identity only'
-                : asset.reviewCount > 0
-                  ? `${asset.reviewCount} review records`
-                  : usableCount > 0
-                    ? 'Validated records available'
-                    : 'No usable records'}
+                : openReviewCount > 0
+                  ? `${openReviewCount} need review`
+                  : qualityFlagCount > 0
+                    ? `${qualityFlagCount} quality flags`
+                    : usableCount > 0
+                      ? 'Validated records available'
+                      : 'No usable records'}
             </span>
             {!asset.inScope && (
               <span className="status status-warn">
@@ -631,7 +637,8 @@ export function BackendAssetDetail({
             <span>Pinned operating snapshot</span>
             <strong>{formatDate(detail.asOf)}</strong>
             <small>
-              History through {formatDate(asset.latestPeriod ?? undefined)}
+              Latest available period{' '}
+              {formatDate(asset.latestPeriod ?? undefined)}
             </small>
           </div>
         </div>
@@ -698,8 +705,8 @@ export function BackendAssetDetail({
           <h2>No current investor events in this generation</h2>
           <p>
             All {detail.events.length.toLocaleString()} linked events are
-            historical backfill or review records. They remain in the archive
-            and are not promoted as new developments.
+            historical backfill or data-quality events. They remain in the
+            archive and are not promoted as new developments.
           </p>
         </div>
         {latestEvent && (
@@ -786,7 +793,11 @@ export function BackendAssetDetail({
                 </div>
                 <span>
                   {selectedMetric.presentCount} present ·{' '}
-                  {selectedMetric.reviewCount} under review
+                  {selectedMetric.openReviewCount > 0
+                    ? `${selectedMetric.openReviewCount} need review`
+                    : selectedMetric.reviewCount > 0
+                      ? `${selectedMetric.reviewCount} quality flags`
+                      : 'no open reviews'}
                 </span>
               </div>
               {groupedSeries.length > 1 && (
