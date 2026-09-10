@@ -4,6 +4,11 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { gunzipSync } from 'node:zlib';
+import { isComparisonEligible } from '../lib/ferc/comparison.ts';
+import {
+  formatComparisonValue,
+  supportedComparisonUnitFamilies,
+} from '../lib/ferc/format.ts';
 
 const EXPECTED_GENERATION =
   '0dccbd426f15372f1330737537f9aac58bc9547a2eaf81ef6f4b655f10cf2824';
@@ -113,7 +118,16 @@ assert.ok(changesPayload.changes.some((change) => change.source.reportingDate));
 const isSafeSourceUrl = (raw) => {
   if (!raw) return true;
   const value = new URL(raw);
+  const placeholder =
+    /^(?:<[^>]*>|redacted|placeholder|your[ _-]*(?:api[ _-]*)?key|change[ _-]*me|\*+)$/i;
+  const hasPlaceholderCredential = [...value.searchParams].some(
+    ([key, credential]) =>
+      /(?:api[ _-]*key|access[ _-]*token|token|secret)/i.test(key) &&
+      (!credential || placeholder.test(credential.trim())),
+  );
   return (
+    !hasPlaceholderCredential &&
+    !/<redacted>|%3credacted%3e/i.test(raw) &&
     value.protocol === 'https:' &&
     (value.hostname === 'ferc.gov' ||
       value.hostname.endsWith('.ferc.gov') ||
@@ -146,6 +160,27 @@ let normalizedDates = 0;
 let fayettevilleWarnings = 0;
 let comparisonBlocked = 0;
 const fullLineageExpected = new Map();
+const rawComparisonFamilies = new Set([
+  'currency',
+  'currency_rate',
+  'percent',
+  'fraction',
+  'multiplier',
+  'energy',
+  'energy_rate',
+  'volume',
+  'volume_rate',
+  'volume_metric',
+  'liquid_volume',
+  'mass_rate',
+  'distance',
+  'length',
+  'work',
+  'power',
+  'count',
+  'categorical',
+  'date',
+]);
 for (const asset of directory.assets) {
   assert.match(asset.id, /^[a-z0-9][a-z0-9-]*$/);
   assert.equal(asset.detailPath, `${publicRoot}/assets/${asset.id}.json.gz`);
@@ -157,13 +192,43 @@ for (const asset of directory.assets) {
   annotations += detail.annotations.length;
   if (!asset.comparisonEligible) comparisonBlocked += 1;
   assert.equal(asset.reviewCount, asset.dataSummary?.review ?? 0);
+  assert.ok(Array.isArray(asset.comparisonGroups));
+  for (const group of asset.comparisonGroups) {
+    assert.match(group.groupId, /^comparison-group-v1-/);
+    assert.ok(group.metricCount > 0);
+    assert.ok(group.seriesCount > 0);
+    assert.ok(group.periodFingerprints.length > 0);
+    assert.ok(
+      group.periodFingerprints.every((fingerprint) =>
+        /^[a-f0-9]{16}$/.test(fingerprint),
+      ),
+    );
+  }
   if (asset.latestMetric) {
     assert.equal(asset.latestMetric.availability, 'present');
     assert.equal(asset.latestMetric.validation, 'pass');
     assert.notEqual(asset.latestMetric.value, null);
     assert.notEqual(asset.latestMetric.value, '');
+    assert.equal(
+      typeof asset.latestMetric.value === 'string' &&
+        /[\r\n]/.test(asset.latestMetric.value),
+      false,
+    );
+    assert.ok(
+      typeof asset.latestMetric.value !== 'string' ||
+        asset.latestMetric.value.length <= 160,
+    );
+    assert.equal(
+      typeof asset.latestMetric.value === 'string' &&
+        (asset.latestMetric.value.trim().startsWith('{') ||
+          asset.latestMetric.value.trim().startsWith('[')),
+      false,
+    );
   }
   for (const series of detail.metrics) {
+    if (asset.latestMetric?.metricId === series.id) {
+      assert.equal(series.role, 'headline');
+    }
     for (const point of series.points) {
       assert.ok(point.quality);
       assert.ok(point.scope);
@@ -188,6 +253,33 @@ for (const asset of directory.assets) {
         );
         assert.notEqual(point.comparison.comparison_value_base, null);
         assert.ok(point.comparison.base_unit_family);
+        assert.ok(
+          supportedComparisonUnitFamilies.has(
+            point.comparison.base_unit_family,
+          ),
+        );
+        const renderedComparison = formatComparisonValue(
+          point.comparison.comparison_value_base,
+          point.comparison.base_unit_family,
+          true,
+          series.id,
+        );
+        assert.equal(/\b(?:undefined|nan)\b/i.test(renderedComparison), false);
+        assert.equal(
+          rawComparisonFamilies.has(
+            renderedComparison.split(/\s+/).at(-1)?.toLowerCase(),
+          ),
+          false,
+          `Raw comparison family leaked for ${asset.id}/${series.id}`,
+        );
+        if (series.id === 'certificated_horsepower') {
+          assert.equal(
+            asset.comparisonGroups.some(
+              (group) => group.groupId === point.comparison.group_id,
+            ),
+            false,
+          );
+        }
       }
       if (
         point.lineage &&
@@ -207,6 +299,31 @@ for (const asset of directory.assets) {
     }
   }
 }
+
+const assetById = new Map(directory.assets.map((asset) => [asset.id, asset]));
+const comparisonPair = (leftId, rightId) => {
+  const left = assetById.get(leftId);
+  const right = assetById.get(rightId);
+  assert.ok(left && right, `Missing comparison fixture: ${leftId}/${rightId}`);
+  return isComparisonEligible(left, right);
+};
+assert.equal(comparisonPair('wmb-transco', 'kmi-tennessee-gas-pipeline'), true);
+for (const [left, right] of [
+  ['kmi-gulf-lng-pipeline', 'wmb-gulfstream'],
+  ['kmi-gulf-lng-pipeline', 'wmb-mountainwest-overthrust'],
+  ['kmi-gulf-lng-pipeline', 'kmi-tennessee-gas-pipeline'],
+  ['oke-bridgeline', 'kmi-keystone-gas-storage'],
+  ['oke-bridgeline', 'oke-louisiana-intrastate-gas'],
+  ['kmi-gulf-lng-terminal', 'lng-sabine-pass-lng-terminal'],
+  ['oke-louisiana-intrastate-gas', 'oke-matterhorn-express'],
+]) {
+  assert.equal(comparisonPair(left, right), false, `${left}/${right}`);
+}
+assert.equal(
+  directory.assets.find((asset) => asset.id === 'trgp-badlands-crude')
+    ?.latestMetric?.value,
+  'IS26-24: accepted AND SUSPENDED, subject to refund -- refund clock started',
+);
 
 assert.equal(
   directory.assets.find((asset) => asset.id === 'oke-northern-border')?.company,

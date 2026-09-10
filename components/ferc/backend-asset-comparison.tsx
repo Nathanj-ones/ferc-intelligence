@@ -16,13 +16,20 @@ import {
   commonComparisonGroupIds,
   MAX_COMPARISON_ASSETS,
 } from '@/lib/ferc/comparison';
+import {
+  comparisonUnitLabel,
+  formatComparisonValue,
+  humanizeFercText,
+  isMetricPresentationBlocked,
+  sourceUnitLabel,
+} from '@/lib/ferc/format';
 import type {
   BackendMetricSeries,
   BackendObservation,
   OperatingAssetDetail,
   SourceDetail,
 } from '@/lib/ferc/types';
-import { formatBackendValue, observationSource } from './backend-asset-detail';
+import { observationSource } from './backend-asset-detail';
 
 const colors = ['#176b61', '#4f70a3', '#885d83', '#73815b'];
 const dashes = [undefined, '8 4', '3 3', '10 3 2 3'];
@@ -50,12 +57,56 @@ type ComparableSeries = {
 
 type ComparableGroup = {
   id: string;
+  metricId: string;
   label: string;
   description: string | null;
   unitFamily: string;
   scopeContract: string;
+  periodBasis: string;
+  scopeLabel: string;
+  sourceLabel: string;
   series: ComparableSeries[];
   commonPeriodKeys: string[];
+};
+
+const scopeDiscriminator = (scope: string) => {
+  const bucket = /remaining primary term bucket ([^|;]+)/i.exec(scope)?.[1];
+  if (bucket) return `Bucket: ${humanizeFercText(bucket)}`;
+  if (scope.includes('|')) return humanizeFercText(scope);
+  const segments = scope
+    .split(';')
+    .map((part) => part.trim())
+    .filter(Boolean);
+  const detail =
+    segments.find((part) =>
+      /context dimensions|aggregate|consolidated source context/i.test(part),
+    ) ||
+    segments.at(-1) ||
+    scope;
+  const rendered = humanizeFercText(detail);
+  return rendered.length > 100
+    ? `${rendered.slice(0, 48)}…${rendered.slice(-48)}`
+    : rendered;
+};
+
+const comparisonOptionLabel = (
+  group: ComparableGroup,
+  groups: ComparableGroup[],
+) => {
+  const base = `${group.label} · ${humanizeFercText(group.periodBasis)} · ${comparisonUnitLabel(group.unitFamily, group.metricId)} · ${group.scopeLabel}`;
+  const withSource = `${base} · ${group.sourceLabel}`;
+  const baseMatches = groups.filter(
+    (candidate) =>
+      `${candidate.label} · ${humanizeFercText(candidate.periodBasis)} · ${comparisonUnitLabel(candidate.unitFamily, candidate.metricId)} · ${candidate.scopeLabel}` ===
+      base,
+  );
+  if (baseMatches.length === 1) return base;
+  const sourceMatches = baseMatches.filter(
+    (candidate) => `${base} · ${candidate.sourceLabel}` === withSource,
+  );
+  return sourceMatches.length === 1
+    ? withSource
+    : `${withSource} · Contract ref ${group.id.slice(-6)}`;
 };
 
 function buildGroups(details: OperatingAssetDetail[]): ComparableGroup[] {
@@ -67,6 +118,12 @@ function buildGroups(details: OperatingAssetDetail[]): ComparableGroup[] {
         metric.points
           .filter(
             (point) =>
+              metric.id !== 'certificated_horsepower' &&
+              !isMetricPresentationBlocked(
+                metric.id,
+                point.value.display_unit || point.value.unit,
+                point.quality.validation,
+              ) &&
               point.comparison.eligible &&
               point.comparison.group_id === groupId &&
               typeof point.comparison.comparison_value_base === 'number',
@@ -109,13 +166,18 @@ function buildGroups(details: OperatingAssetDetail[]): ComparableGroup[] {
       const own = new Set(entry.points.map(periodKey));
       return common.filter((key) => own.has(key));
     }, complete[0].points.map(periodKey));
+    if (commonPeriodKeys.length === 0) return [];
     return [
       {
         id: groupId,
+        metricId: complete[0].metric.id,
         label: complete[0].metric.label,
         description: complete[0].metric.description,
         unitFamily,
         scopeContract,
+        periodBasis: first.period.basis,
+        scopeLabel: scopeDiscriminator(first.scope.actual),
+        sourceLabel: `${humanizeFercText(first.quality.origin)} · ${sourceUnitLabel(first.value.display_unit || first.value.unit) || 'unit not supplied'}`,
         series: complete,
         commonPeriodKeys,
       },
@@ -221,7 +283,7 @@ export function BackendAssetComparison({
                 >
                   {groups.map((group) => (
                     <option key={group.id} value={group.id}>
-                      {group.label}
+                      {comparisonOptionLabel(group, groups)}
                     </option>
                   ))}
                 </select>
@@ -241,9 +303,13 @@ export function BackendAssetComparison({
             <Info />
             <p>
               <strong>Comparison contract:</strong>{' '}
-              {selectedGroup.scopeContract} · base unit family{' '}
-              {selectedGroup.unitFamily}. Values are the backend’s base
-              comparison values, not frontend conversions.
+              {humanizeFercText(selectedGroup.scopeContract)} · base unit{' '}
+              {comparisonUnitLabel(
+                selectedGroup.unitFamily,
+                selectedGroup.metricId,
+              )}
+              . Values are the backend’s base comparison values, not frontend
+              conversions.
             </p>
           </div>
 
@@ -289,7 +355,11 @@ export function BackendAssetComparison({
               <div className="comparison-row-label">
                 <strong>{selectedGroup.label}</strong>
                 <span>
-                  {selectedGroup.unitFamily} · identical period required
+                  {comparisonUnitLabel(
+                    selectedGroup.unitFamily,
+                    selectedGroup.metricId,
+                  )}{' '}
+                  · identical period required
                 </span>
               </div>
               {assets.map((asset, index) => {
@@ -306,10 +376,11 @@ export function BackendAssetComparison({
                     }
                   >
                     <strong>
-                      {formatBackendValue(
+                      {formatComparisonValue(
                         point?.comparison.comparison_value_base,
                         selectedGroup.unitFamily,
                         true,
+                        selectedGroup.metricId,
                       )}
                     </strong>
                     <span>
@@ -344,18 +415,21 @@ export function BackendAssetComparison({
                   <YAxis
                     width={72}
                     tickFormatter={(value) =>
-                      formatBackendValue(
+                      formatComparisonValue(
                         Number(value),
                         selectedGroup.unitFamily,
+                        false,
+                        selectedGroup.metricId,
                       )
                     }
                   />
                   <RechartsTooltip
                     formatter={(value) =>
-                      formatBackendValue(
+                      formatComparisonValue(
                         Number(value),
                         selectedGroup.unitFamily,
                         true,
+                        selectedGroup.metricId,
                       )
                     }
                   />
@@ -416,10 +490,11 @@ export function BackendAssetComparison({
                                   }
                                 >
                                   <span>
-                                    {formatBackendValue(
+                                    {formatComparisonValue(
                                       point.comparison.comparison_value_base,
                                       selectedGroup.unitFamily,
                                       true,
+                                      selectedGroup.metricId,
                                     )}
                                   </span>
                                   <small>Details</small>

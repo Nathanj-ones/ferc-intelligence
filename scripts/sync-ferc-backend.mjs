@@ -324,6 +324,93 @@ function metricSeries(observations, metricRegistry) {
     });
 }
 
+function comparisonPeriodKey(point) {
+  const period = point.period || {};
+  return [
+    period.basis,
+    period.start,
+    period.end,
+    period.instant,
+    period.label,
+  ].join('|');
+}
+
+function comparisonGroupSummaries(metrics) {
+  const groups = new Map();
+  for (const metric of metrics) {
+    // The pinned backend tags the rendered horsepower column as utr:MW and
+    // does not propagate that anomaly to every comparison point. Keep the
+    // observations visible, but fail closed for cross-asset comparison.
+    if (metric.id === 'certificated_horsepower') continue;
+    for (const point of metric.points) {
+      const comparison = point.comparison;
+      if (
+        ((metric.id === 'liq_barrel_miles' ||
+          metric.id === 'p700_barrel_miles') &&
+          (point.value?.display_unit || point.value?.unit)
+            ?.trim()
+            .toLowerCase() === 'utr:bbl' &&
+          point.quality?.validation === 'unit_warning') ||
+        comparison?.eligible !== true ||
+        !comparison.group_id ||
+        typeof comparison.comparison_value_base !== 'number' ||
+        !Number.isFinite(comparison.comparison_value_base)
+      ) {
+        continue;
+      }
+      const group = groups.get(comparison.group_id) || {
+        metricIds: new Set(),
+        seriesIds: new Set(),
+        periodKeys: new Set(),
+      };
+      group.metricIds.add(metric.id);
+      if (comparison.series_id) group.seriesIds.add(comparison.series_id);
+      const periodKey = comparisonPeriodKey(point);
+      if (periodKey !== '||||') group.periodKeys.add(periodKey);
+      groups.set(comparison.group_id, group);
+    }
+  }
+  return [...groups.entries()]
+    .map(([groupId, group]) => ({
+      groupId,
+      metricCount: group.metricIds.size,
+      seriesCount: group.seriesIds.size,
+      periodFingerprints: [...group.periodKeys]
+        .map((periodKey) => sha256(Buffer.from(periodKey)).slice(0, 16))
+        .sort((left, right) => left.localeCompare(right)),
+    }))
+    .sort((left, right) => left.groupId.localeCompare(right.groupId));
+}
+
+function isDirectorySummaryValue(point) {
+  const value = directoryPresentationValue(point);
+  if (typeof value === 'number') return Number.isFinite(value);
+  if (typeof value !== 'string') return false;
+  const trimmed = value.trim();
+  if (!trimmed || trimmed.length > 160 || /[\r\n]/.test(trimmed)) return false;
+  if (!trimmed.startsWith('{') && !trimmed.startsWith('[')) return true;
+  try {
+    const parsed = JSON.parse(trimmed);
+    return parsed === null || typeof parsed !== 'object';
+  } catch {
+    return true;
+  }
+}
+
+function directoryPresentationValue(point) {
+  const value = point?.value || {};
+  if (value.display_value !== null && value.display_value !== undefined) {
+    return value.display_value;
+  }
+  const normalizedUnit = (value.display_unit || value.unit || '')
+    .trim()
+    .toLowerCase();
+  if (['date', '(date)', '(date range)'].includes(normalizedUnit)) {
+    return value.normalized_iso || value.as_filed || null;
+  }
+  return value.as_filed || value.normalized_iso || null;
+}
+
 function eventDate(event) {
   const candidates = [
     event.effective_date,
@@ -341,7 +428,16 @@ function safeFercUrl(raw) {
   if (!raw) return undefined;
   try {
     const value = new URL(raw);
+    const placeholder =
+      /^(?:<[^>]*>|redacted|placeholder|your[ _-]*(?:api[ _-]*)?key|change[ _-]*me|\*+)$/i;
+    const hasPlaceholderCredential = [...value.searchParams].some(
+      ([key, credential]) =>
+        /(?:api[ _-]*key|access[ _-]*token|token|secret)/i.test(key) &&
+        (!credential || placeholder.test(credential.trim())),
+    );
     if (
+      !hasPlaceholderCredential &&
+      !/<redacted>|%3credacted%3e/i.test(raw) &&
       value.protocol === 'https:' &&
       (value.hostname === 'ferc.gov' ||
         value.hostname.endsWith('.ferc.gov') ||
@@ -672,8 +768,23 @@ for (const rawAsset of directorySource.assets) {
       ),
     ),
   ].sort((left, right) => left.localeCompare(right));
-  const latestMetric =
-    projectedMetrics.find((series) => series.latest)?.latest || null;
+  const comparisonGroups = comparisonGroupSummaries(projectedMetrics);
+  const latestMetricSeries = projectedMetrics.find(
+    (series) =>
+      series.role === 'headline' &&
+      series.latest &&
+      isDirectorySummaryValue(series.latest),
+  );
+  const latestMetric = latestMetricSeries?.latest || null;
+  const frontendComparisonEligible = Boolean(
+    rawAsset.comparisonEligible &&
+    comparisonGroups.some(
+      (group) =>
+        group.metricCount === 1 &&
+        group.seriesCount === 1 &&
+        group.periodFingerprints.length > 0,
+    ),
+  );
   const reviewCount = entityPayload?.summary?.review ?? 0;
   const company =
     rawAsset.parent ||
@@ -705,11 +816,13 @@ for (const rawAsset of directorySource.assets) {
     exclusionReason: rawAsset.exclusionReason,
     scopeRelation: rawAsset.scopeRelation,
     scopeNote: assetPayload.scope_note,
-    comparisonEligible: Boolean(
-      rawAsset.comparisonEligible && comparisonGroupIds.length > 0,
-    ),
-    comparisonBlockedReason: rawAsset.comparisonBlockedReason,
+    comparisonEligible: frontendComparisonEligible,
+    comparisonBlockedReason: frontendComparisonEligible
+      ? rawAsset.comparisonBlockedReason
+      : rawAsset.comparisonBlockedReason ||
+        'no_unambiguous_dated_comparison_series_in_snapshot',
     comparisonGroupIds,
+    comparisonGroups,
     comparisonSubjectIds,
     dataStatus: rawAsset.dataStatus,
     dataSummary: rawAsset.dataSummary,
@@ -720,18 +833,10 @@ for (const rawAsset of directorySource.assets) {
     lastFiled: rawAsset.lastFiled,
     latestMetric: latestMetric
       ? {
-          metricId: projectedMetrics.find(
-            (series) => series.latest === latestMetric,
-          )?.id,
-          label: projectedMetrics.find(
-            (series) => series.latest === latestMetric,
-          )?.label,
+          metricId: latestMetricSeries.id,
+          label: latestMetricSeries.label,
           period: latestMetric.period?.label || latestMetric.sortKey,
-          value:
-            latestMetric.value?.display_value ??
-            latestMetric.value?.normalized_iso ??
-            latestMetric.value?.as_filed ??
-            null,
+          value: directoryPresentationValue(latestMetric),
           unit: latestMetric.value?.display_unit || latestMetric.value?.unit,
           availability: latestMetric.quality?.availability,
           validation: latestMetric.quality?.validation,

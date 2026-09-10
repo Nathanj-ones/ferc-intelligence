@@ -41,7 +41,6 @@ import { ChartContainer } from '@/components/ui/chart';
 import { BackendAssetComparison } from '@/components/ferc/backend-asset-comparison';
 import {
   BackendAssetDetail,
-  formatBackendValue,
   formatObservationValue,
   observationSource,
   safeFercUrl,
@@ -76,8 +75,10 @@ import {
   validateComparisonSelection,
 } from '@/lib/ferc/comparison';
 import {
+  formatBackendValue,
   formatCompact,
   formatDate,
+  humanizeFercText,
   margin,
   percentChange,
 } from '@/lib/ferc/format';
@@ -366,12 +367,13 @@ function FullLineage({
                   </td>
                   <td>{edge.input_concept || 'Referenced row'}</td>
                   <td>
-                    {[edge.input_value, edge.input_unit]
-                      .filter(
-                        (value) =>
-                          value !== null && value !== undefined && value !== '',
-                      )
-                      .join(' ') || '—'}
+                    {edge.input_value !== null && edge.input_value !== ''
+                      ? formatBackendValue(
+                          edge.input_value,
+                          edge.input_unit,
+                          true,
+                        )
+                      : '—'}
                   </td>
                   <td>{edge.input_period || '—'}</td>
                 </tr>
@@ -408,12 +410,11 @@ function FullLineage({
           ) && (
             <p>
               Aggregate:{' '}
-              {[population.aggregate_value, population.aggregate_unit]
-                .filter(
-                  (value) =>
-                    value !== null && value !== undefined && value !== '',
-                )
-                .join(' ')}
+              {formatBackendValue(
+                population.aggregate_value,
+                population.aggregate_unit,
+                true,
+              )}
             </p>
           )}
           {population.filing_ids && (
@@ -446,20 +447,46 @@ function SourceDrawer({
         ['Availability', source.availability],
         ['Origin', source.origin],
         ['Method', source.method],
-        ['Version', source.filingVersion ?? 'Not supplied'],
-        ['Canonical occurrence', source.canonicalStatus ?? 'Not supplied'],
-        ['Canonical reason', source.canonicalReason ?? 'Not supplied'],
-        ['Acceptance status', source.acceptanceStatus ?? 'Not supplied'],
-        ['Data origin', source.dataOrigin ?? 'Not supplied'],
-        ['Validation', source.validation],
-        ['Entity / facility scope', source.scope ?? 'Not supplied'],
-        ['Period / date', source.period ?? 'Not supplied'],
-        ['Units', source.unit ?? 'Not supplied'],
         [
-          'Native identity',
-          source.nativeIdentity ?? 'Not copied into this frontend slice',
+          'Version',
+          source.filingVersion
+            ? humanizeFercText(source.filingVersion)
+            : 'Not supplied',
         ],
-        ['Docket', source.docket ?? 'Not applicable'],
+        ['Canonical occurrence', source.canonicalStatus || 'Not supplied'],
+        [
+          'Canonical reason',
+          source.canonicalReason
+            ? humanizeFercText(source.canonicalReason)
+            : 'Not supplied',
+        ],
+        [
+          'Acceptance status',
+          source.acceptanceStatus
+            ? humanizeFercText(source.acceptanceStatus)
+            : 'Not supplied',
+        ],
+        [
+          'Data origin',
+          source.dataOrigin
+            ? humanizeFercText(source.dataOrigin)
+            : 'Not supplied',
+        ],
+        ['Validation', source.validation],
+        ['Entity / facility scope', source.scope || 'Not supplied'],
+        ['Period / date', source.period || 'Not supplied'],
+        ['Display unit', source.displayUnit || source.unit || 'Not supplied'],
+        ['Filed / stored unit', source.filedUnit || 'Not supplied'],
+        [
+          'Display scale',
+          source.displayScale === null || source.displayScale === undefined
+            ? 'Not supplied'
+            : source.displayScale === 1
+              ? '×1 (no scaling)'
+              : `×${source.displayScale.toLocaleString('en-US')}`,
+        ],
+        ['Native identity', source.nativeIdentity || 'Not supplied'],
+        ['Docket', source.docket || 'Not applicable'],
         ['Accession', source.accession || 'Not supplied'],
         ['Filing occurrence', source.filingId || 'Not supplied'],
         ['Source fact', source.sourceFactId || 'Not supplied'],
@@ -519,6 +546,18 @@ function SourceDrawer({
                   <span>{source.valueLabel ?? 'Exact source value'}</span>
                   <strong>{source.value}</strong>
                 </div>
+              )}
+              {source.filedValue && (
+                <div className="source-value source-filed-value">
+                  <span>Filed / stored value</span>
+                  <strong>{source.filedValue}</strong>
+                </div>
+              )}
+              {source.filedValueRaw && (
+                <details className="raw-filed-value">
+                  <summary>View raw structured filed value</summary>
+                  <pre>{source.filedValueRaw}</pre>
+                </details>
               )}
               {source.comparisonValue && (
                 <div className="source-value source-comparison-value">
@@ -630,7 +669,7 @@ function SourceDrawer({
                 <h3>Warnings and limits</h3>
                 {source.warnings?.length ? (
                   <ul>
-                    {source.warnings.map((warning) => (
+                    {[...new Set(source.warnings)].map((warning) => (
                       <li key={warning}>{warning}</li>
                     ))}
                   </ul>
@@ -649,8 +688,11 @@ function SourceDrawer({
                 </a>
               ) : (
                 <div className="unavailable-inline">
-                  <CircleAlert /> No allowlisted public source URL is available
-                  for this record. Its source identity is retained above.
+                  <CircleAlert /> No usable allowlisted public source URL is
+                  available for this record.
+                  {source.nativeIdentity
+                    ? ' Its source identity is retained above.'
+                    : ' No native source identity was supplied.'}
                 </div>
               )}
             </div>
@@ -1591,7 +1633,14 @@ function ReferenceInstruments({
                             <td>
                               {point.period.label || point.sortKey || '—'}
                             </td>
-                            <td>{formatObservationValue(point, true)}</td>
+                            <td>
+                              {formatObservationValue(
+                                point,
+                                true,
+                                metric.id,
+                                metric.configuredDisplayUnit,
+                              )}
+                            </td>
                             <td>{point.value.as_filed || '—'}</td>
                             <td>
                               <Status

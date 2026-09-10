@@ -1,10 +1,18 @@
 import assert from 'node:assert/strict';
 import {
+  comparisonUnitLabel,
+  formatBackendValue,
+  formatComparisonValue,
   formatCompact,
   formatDate,
+  humanizeFercReason,
+  isMetricPresentationBlocked,
+  isStructuredFercValue,
   margin,
   percentChange,
   percentagePointChange,
+  presentationUnit,
+  selectBackendDisplayValue,
 } from '../lib/ferc/format.ts';
 import {
   changes,
@@ -30,6 +38,109 @@ assert.equal(percentChange(110, 100), 10);
 assert.equal(percentagePointChange(42, 39.5), 2.5);
 assert.equal(formatDate('2026-08-19T00:00:00'), '19 Aug 2026');
 assert.equal(formatDate('not-a-date'), 'Unavailable');
+assert.equal(formatBackendValue(2_483_411, 'iso4217:USD', true), '$2,483,411');
+assert.equal(formatComparisonValue(2_483_411, 'currency', true), '$2,483,411');
+assert.equal(
+  formatComparisonValue(18_374_126, 'energy', true),
+  '18,374,126 Dth',
+);
+assert.equal(
+  formatComparisonValue(1_000, 'energy_rate', true),
+  '1,000 Dth/day',
+);
+assert.equal(
+  formatComparisonValue(1.023892, 'currency_rate', true),
+  '$1.023892/bbl',
+);
+assert.equal(formatComparisonValue(0.0954, 'fraction', true), '0.0954');
+assert.equal(comparisonUnitLabel('currency'), 'US dollars (USD)');
+assert.equal(
+  formatComparisonValue(517, 'fraction', true, 'compressor_units'),
+  '517 compressor units',
+);
+assert.equal(
+  formatComparisonValue(117_080_088_031, 'fraction', true, 'p700_barrel_miles'),
+  '117,080,088,031 barrel-miles',
+);
+assert.equal(
+  formatComparisonValue(
+    686_430_870,
+    'fraction',
+    true,
+    'discounted_rate_volumes',
+  ),
+  '686,430,870 Dth',
+);
+assert.equal(
+  presentationUnit('compressor_units', 'pure', { displayScale: 1 }),
+  'compressor units',
+);
+assert.equal(
+  presentationUnit('discounted_rate_volumes', 'pure', {
+    displayScale: 1,
+    origin: 'ferc_migrated',
+  }),
+  'Dth',
+);
+assert.equal(
+  presentationUnit('discounted_rate_volumes', 'pure', {
+    displayScale: 1,
+    origin: 'native_xbrl',
+  }),
+  'pure',
+);
+assert.equal(
+  presentationUnit('certificated_horsepower', 'utr:MW', { displayScale: 1 }),
+  'hp',
+);
+assert.equal(
+  presentationUnit('certificated_horsepower', 'utr:MW', {
+    configuredDisplayUnit: 'MW',
+    displayScale: 1,
+  }),
+  'utr:MW',
+);
+assert.equal(
+  presentationUnit('certificated_horsepower', 'utr:MW', { displayScale: 100 }),
+  'utr:MW',
+);
+assert.equal(
+  isMetricPresentationBlocked('p700_barrel_miles', 'utr:bbl', 'unit_warning'),
+  true,
+);
+assert.equal(
+  isMetricPresentationBlocked('liq_barrel_miles', 'utr:bbl', 'unit_warning'),
+  true,
+);
+assert.equal(presentationUnit('p700_wacc', 'xbrli:pure'), 'xbrli:pure');
+assert.equal(formatBackendValue(9.54, 'percent', true), '9.54%');
+assert.equal(
+  selectBackendDisplayValue({
+    as_filed: 'IS22-176: rate change filed with FERC',
+    normalized_iso: '2022-01-28',
+    display_value: null,
+    display_unit: 'categorical',
+  }),
+  'IS22-176: rate change filed with FERC',
+);
+assert.equal(
+  selectBackendDisplayValue({
+    as_filed: '11/26/2025',
+    normalized_iso: '2025-11-26',
+    display_value: null,
+    display_unit: '(date)',
+  }),
+  '2025-11-26',
+);
+assert.equal(isStructuredFercValue('{"bucket":1}'), true);
+assert.equal(
+  formatBackendValue('{"bucket":1}', 'categorical'),
+  'Structured record · 1 field',
+);
+assert.equal(
+  humanizeFercReason('availability:source_blank'),
+  'Availability: source blank.',
+);
 
 assert.ok(changes.every((item) => item.firstSeen === undefined));
 assert.equal(
@@ -182,6 +293,123 @@ assert.equal(
   ).issues[0]?.code,
   'duplicate_subject',
 );
+
+const comparisonGroup = (
+  groupId,
+  {
+    metricCount = 1,
+    seriesCount = 1,
+    periodFingerprints = ['period-2026-q1'],
+  } = {},
+) => ({ groupId, metricCount, seriesCount, periodFingerprints });
+const richAnchor = {
+  ...backendAnchor,
+  id: 'rich-anchor',
+  comparisonGroupIds: ['group-volume'],
+  comparisonGroups: [comparisonGroup('group-volume')],
+  comparisonSubjectIds: ['rich-subject-a'],
+};
+const richPeer = {
+  ...backendPeer,
+  id: 'rich-peer',
+  comparisonGroupIds: ['group-volume'],
+  comparisonGroups: [comparisonGroup('group-volume')],
+  comparisonSubjectIds: ['rich-subject-b'],
+};
+assert.equal(isComparisonEligible(richAnchor, richPeer), true);
+assert.equal(
+  isComparisonEligible(richAnchor, {
+    ...richPeer,
+    comparisonGroups: [
+      comparisonGroup('group-volume', {
+        metricCount: 2,
+      }),
+    ],
+  }),
+  false,
+);
+assert.equal(
+  isComparisonEligible(richAnchor, {
+    ...richPeer,
+    comparisonGroups: [
+      comparisonGroup('group-volume', {
+        seriesCount: 2,
+      }),
+    ],
+  }),
+  false,
+);
+assert.equal(
+  isComparisonEligible(richAnchor, {
+    ...richPeer,
+    comparisonGroups: [
+      comparisonGroup('group-volume', {
+        periodFingerprints: ['period-2025-q1'],
+      }),
+    ],
+  }),
+  false,
+);
+assert.equal(
+  isComparisonEligible(richAnchor, {
+    ...richPeer,
+    comparisonGroups: undefined,
+  }),
+  false,
+);
+
+const firstPeriod = 'period-2026-q1';
+const secondPeriod = 'period-2026-q2';
+const multiPeriodAnchor = {
+  ...richAnchor,
+  id: 'multi-period-anchor',
+  comparisonGroups: [
+    comparisonGroup('group-volume', {
+      periodFingerprints: [firstPeriod, secondPeriod],
+    }),
+  ],
+  comparisonSubjectIds: ['multi-period-subject-a'],
+};
+const firstPeriodPeer = {
+  ...richPeer,
+  id: 'first-period-peer',
+  comparisonGroups: [
+    comparisonGroup('group-volume', {
+      periodFingerprints: [firstPeriod],
+    }),
+  ],
+  comparisonSubjectIds: ['multi-period-subject-b'],
+};
+const secondPeriodPeer = {
+  ...richPeer,
+  id: 'second-period-peer',
+  comparisonGroups: [
+    comparisonGroup('group-volume', {
+      periodFingerprints: [secondPeriod],
+    }),
+  ],
+  comparisonSubjectIds: ['multi-period-subject-c'],
+};
+assert.equal(isComparisonEligible(multiPeriodAnchor, firstPeriodPeer), true);
+assert.equal(isComparisonEligible(multiPeriodAnchor, secondPeriodPeer), true);
+assert.deepEqual(
+  commonComparisonGroupIds([
+    multiPeriodAnchor,
+    firstPeriodPeer,
+    secondPeriodPeer,
+  ]),
+  [],
+);
+const multiPeriodSelection = validateComparisonSelection(
+  multiPeriodAnchor,
+  [firstPeriodPeer.id, secondPeriodPeer.id],
+  [multiPeriodAnchor, firstPeriodPeer, secondPeriodPeer],
+);
+assert.deepEqual(
+  multiPeriodSelection.assets.map((asset) => asset.id),
+  [multiPeriodAnchor.id, firstPeriodPeer.id],
+);
+assert.equal(multiPeriodSelection.issues[0]?.code, 'incompatible_type');
 
 const project = projects.find((item) => item.docket === 'CP25-219');
 assert.ok(project);

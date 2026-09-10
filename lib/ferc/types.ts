@@ -30,8 +30,13 @@ export type SourceDetail = {
   period?: string;
   scope?: string;
   unit?: string;
+  displayUnit?: string;
+  filedUnit?: string;
+  displayScale?: number | null;
   value?: string;
   valueLabel?: string;
+  filedValue?: string;
+  filedValueRaw?: string;
   method: string;
   availability: string;
   origin: string;
@@ -229,6 +234,13 @@ export type BackendDataSummary = {
   history_to: string | null;
 };
 
+export type ComparisonGroupSummary = {
+  groupId: string;
+  metricCount: number;
+  seriesCount: number;
+  periodFingerprints: string[];
+};
+
 export type OperatingAssetSummary = {
   id: string;
   name: string;
@@ -251,6 +263,7 @@ export type OperatingAssetSummary = {
   comparisonEligible: boolean;
   comparisonBlockedReason: string | null;
   comparisonGroupIds: string[];
+  comparisonGroups: ComparisonGroupSummary[];
   comparisonSubjectIds: string[];
   dataStatus: string;
   dataSummary: BackendDataSummary | null;

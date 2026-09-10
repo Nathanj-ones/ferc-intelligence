@@ -1,3 +1,17 @@
+import type { ComparisonGroupSummary } from './types';
+
+const humanizeComparisonReason = (value: string) => {
+  const spaced = value
+    .trim()
+    .replaceAll('_', ' ')
+    .replace(/\s*:\s*/g, ': ')
+    .replace(/\s+/g, ' ');
+  const rendered = spaced
+    ? `${spaced[0].toUpperCase()}${spaced.slice(1)}`
+    : spaced;
+  return rendered && !/[.!?]$/.test(rendered) ? `${rendered}.` : rendered;
+};
+
 export const MAX_COMPARISON_ASSETS = 4;
 
 export type ComparableAsset = {
@@ -8,6 +22,7 @@ export type ComparableAsset = {
   comparisonEligible?: boolean;
   comparisonBlockedReason?: string | null;
   comparisonGroupIds?: string[];
+  comparisonGroups?: ComparisonGroupSummary[];
   comparisonSubjectIds?: string[];
 };
 
@@ -26,6 +41,24 @@ export type ComparisonIssue = {
   message: string;
 };
 
+const hasRichComparisonContract = (asset: ComparableAsset) =>
+  asset.comparisonGroups !== undefined;
+
+const groupSummary = (asset: ComparableAsset, groupId: string) => {
+  const matches = asset.comparisonGroups?.filter(
+    (group) => group.groupId === groupId,
+  );
+  return matches?.length === 1 ? matches[0] : undefined;
+};
+
+const isUnambiguousGroup = (group: ComparisonGroupSummary | undefined) =>
+  Boolean(
+    group &&
+    group.metricCount === 1 &&
+    group.seriesCount === 1 &&
+    group.periodFingerprints.length > 0,
+  );
+
 export const isComparisonEligible = (
   anchor: ComparableAsset,
   candidate: ComparableAsset,
@@ -40,20 +73,36 @@ export const isComparisonEligible = (
   ) {
     return false;
   }
-  const candidateGroups = new Set(candidate.comparisonGroupIds);
-  return anchor.comparisonGroupIds.some((group) => candidateGroups.has(group));
+  return commonComparisonGroupIds([anchor, candidate]).length > 0;
 };
 
 export function commonComparisonGroupIds(assets: ComparableAsset[]) {
   if (!assets.length || assets.some((asset) => !asset.comparisonGroupIds))
     return [];
-  return assets.slice(1).reduce(
+  const sharedGroupIds = assets.slice(1).reduce(
     (common, asset) => {
       const groups = new Set(asset.comparisonGroupIds);
       return common.filter((group) => groups.has(group));
     },
     [...(assets[0].comparisonGroupIds ?? [])],
   );
+
+  if (!assets.some(hasRichComparisonContract)) return sharedGroupIds;
+  if (assets.some((asset) => !hasRichComparisonContract(asset))) return [];
+
+  return sharedGroupIds.filter((groupId) => {
+    const summaries = assets.map((asset) => groupSummary(asset, groupId));
+    if (summaries.some((group) => !isUnambiguousGroup(group))) return false;
+    const complete = summaries as ComparisonGroupSummary[];
+    const commonPeriods = complete.slice(1).reduce(
+      (periods, group) => {
+        const ownPeriods = new Set(group.periodFingerprints);
+        return periods.filter((period) => ownPeriods.has(period));
+      },
+      [...new Set(complete[0].periodFingerprints)],
+    );
+    return commonPeriods.length > 0;
+  });
 }
 
 export function validateComparisonSelection(
@@ -69,7 +118,8 @@ export function validateComparisonSelection(
   if (
     anchor.comparisonEligible !== true ||
     !anchor.comparisonGroupIds?.length ||
-    !anchor.comparisonSubjectIds?.length
+    !anchor.comparisonSubjectIds?.length ||
+    commonComparisonGroupIds([anchor]).length === 0
   ) {
     return {
       assets: accepted,
@@ -77,9 +127,9 @@ export function validateComparisonSelection(
         {
           code: 'missing_anchor_type' as const,
           assetId: anchor.id,
-          message:
-            anchor.comparisonBlockedReason ||
-            `${anchor.name} has no eligible backend comparison series.`,
+          message: anchor.comparisonBlockedReason
+            ? humanizeComparisonReason(anchor.comparisonBlockedReason)
+            : `${anchor.name} has no eligible backend comparison series.`,
         },
       ],
     };
@@ -115,14 +165,15 @@ export function validateComparisonSelection(
     if (
       candidate.comparisonEligible !== true ||
       !candidate.comparisonGroupIds?.length ||
-      !candidate.comparisonSubjectIds?.length
+      !candidate.comparisonSubjectIds?.length ||
+      commonComparisonGroupIds([candidate]).length === 0
     ) {
       issues.push({
         code: 'missing_type',
         assetId,
-        message:
-          candidate.comparisonBlockedReason ||
-          `${candidate.name} has no eligible backend comparison series.`,
+        message: candidate.comparisonBlockedReason
+          ? humanizeComparisonReason(candidate.comparisonBlockedReason)
+          : `${candidate.name} has no eligible backend comparison series.`,
       });
       continue;
     }
@@ -130,7 +181,7 @@ export function validateComparisonSelection(
       issues.push({
         code: 'incompatible_type',
         assetId,
-        message: `${candidate.name} has no eligible metric, period-basis, unit-family and scope-contract group in common with ${anchor.name}.`,
+        message: `${candidate.name} has no unambiguous comparison group with an identical reporting period in common with ${anchor.name}.`,
       });
       continue;
     }
@@ -141,7 +192,7 @@ export function validateComparisonSelection(
       issues.push({
         code: 'incompatible_type',
         assetId,
-        message: `${candidate.name} would leave the selected assets without one exact backend comparison group in common.`,
+        message: `${candidate.name} would leave the selected assets without one unambiguous backend comparison group and identical reporting period in common.`,
       });
       continue;
     }

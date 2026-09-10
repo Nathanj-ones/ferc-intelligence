@@ -21,7 +21,21 @@ import {
   YAxis,
 } from 'recharts';
 import { ChartContainer } from '@/components/ui/chart';
-import { formatDate } from '@/lib/ferc/format';
+import {
+  comparisonUnitLabel,
+  formatBackendValue,
+  formatComparisonValue,
+  formatDate,
+  humanizeFercReason,
+  humanizeFercText,
+  isMetricPresentationBlocked,
+  isStructuredFercValue,
+  presentationUnit,
+  presentationUnitOverrideNote,
+  selectBackendDisplayValue,
+  sourceUnitLabel,
+  unitLabel,
+} from '@/lib/ferc/format';
 import type {
   BackendMetricSeries,
   BackendObservation,
@@ -30,64 +44,34 @@ import type {
 } from '@/lib/ferc/types';
 
 const statusLabel = (value: string | null | undefined) =>
-  value ? value.replaceAll('_', ' ') : 'Not assessed';
-
-const unitLabel = (unit: string | null | undefined) => {
-  if (!unit) return '';
-  const normalized = unit.toLowerCase();
-  if (normalized === 'iso4217:usd') return 'USD';
-  if (normalized === 'utr:dth' || normalized === 'ferc:dth') return 'Dth';
-  if (normalized === 'utr:bbl') return 'bbl';
-  if (normalized === 'utr:mi') return 'miles';
-  if (normalized === 'percent') return '%';
-  if (normalized === 'fraction') return 'fraction';
-  return unit;
-};
-
-export function formatBackendValue(
-  value: number | string | null | undefined,
-  unit?: string | null,
-  exact = false,
-) {
-  if (value === null || value === undefined || value === '')
-    return 'Unavailable';
-  if (typeof value === 'string')
-    return unitLabel(unit) ? `${value} ${unitLabel(unit)}` : value;
-  const normalized = unit?.toLowerCase() || '';
-  if (normalized.includes('iso4217:usd')) {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
-      notation: exact ? 'standard' : 'compact',
-      maximumFractionDigits: exact ? 2 : 2,
-    }).format(value);
-  }
-  if (normalized === 'percent') return `${value.toFixed(exact ? 4 : 1)}%`;
-  const rendered = new Intl.NumberFormat('en-US', {
-    notation: exact ? 'standard' : 'compact',
-    maximumFractionDigits: exact ? 6 : 2,
-  }).format(value);
-  const label = unitLabel(unit);
-  return label ? `${rendered} ${label}` : rendered;
-}
+  value ? humanizeFercText(value) : 'Not assessed';
 
 export function formatObservationValue(
   point: BackendObservation,
   exact = false,
+  metricId?: string | null,
+  configuredDisplayUnit?: string | null,
 ) {
+  const suppliedUnit = point.value.display_unit || point.value.unit;
   if (
-    point.value.display_value !== null &&
-    point.value.display_value !== undefined
+    isMetricPresentationBlocked(
+      metricId,
+      suppliedUnit,
+      point.quality.validation,
+    )
   ) {
-    return formatBackendValue(
-      point.value.display_value,
-      point.value.display_unit || point.value.unit,
-      exact,
-    );
+    return 'Unit conflict — see evidence';
   }
-  if (point.value.normalized_iso) return point.value.normalized_iso;
-  if (point.value.as_filed) return point.value.as_filed;
-  return 'Unavailable';
+  return formatBackendValue(
+    selectBackendDisplayValue(point.value),
+    presentationUnit(metricId, suppliedUnit, {
+      configuredDisplayUnit,
+      displayScale: point.value.display_scale,
+      origin: point.quality.origin,
+      validation: point.quality.validation,
+    }),
+    exact,
+  );
 }
 
 const periodLabel = (point: BackendObservation) =>
@@ -106,6 +90,26 @@ const seriesKey = (point: BackendObservation) =>
   ]
     .filter(Boolean)
     .join('|');
+
+function metricSeriesGroups(metric: BackendMetricSeries | undefined) {
+  const groups = new Map<string, BackendObservation[]>();
+  for (const point of metric?.points || []) {
+    const key = seriesKey(point);
+    groups.set(key, [...(groups.get(key) || []), point]);
+  }
+  const usableCount = (points: BackendObservation[]) =>
+    points.filter(
+      (point) =>
+        point.quality.availability === 'present' &&
+        point.quality.validation === 'pass' &&
+        point.quality.version_status !== 'superseded',
+    ).length;
+  return [...groups.entries()].sort((left, right) => {
+    const usableDifference = usableCount(right[1]) - usableCount(left[1]);
+    if (usableDifference) return usableDifference;
+    return right[1].length - left[1].length || left[0].localeCompare(right[0]);
+  });
+}
 
 const recordText = (record: Record<string, unknown>, key: string) => {
   const value = record[key];
@@ -141,7 +145,16 @@ export function safeFercUrl(raw: string | null | undefined) {
   if (!raw) return undefined;
   try {
     const value = new URL(raw);
+    const placeholder =
+      /^(?:<[^>]*>|redacted|placeholder|your[ _-]*(?:api[ _-]*)?key|change[ _-]*me|\*+)$/i;
+    const hasPlaceholderCredential = [...value.searchParams].some(
+      ([key, credential]) =>
+        /(?:api[ _-]*key|access[ _-]*token|token|secret)/i.test(key) &&
+        (!credential || placeholder.test(credential.trim())),
+    );
     if (
+      !hasPlaceholderCredential &&
+      !/<redacted>|%3credacted%3e/i.test(raw) &&
       value.protocol === 'https:' &&
       (value.hostname === 'ferc.gov' ||
         value.hostname.endsWith('.ferc.gov') ||
@@ -157,7 +170,7 @@ export function safeFercUrl(raw: string | null | undefined) {
 }
 
 function observationWarnings(point: BackendObservation) {
-  return [
+  const warnings = [
     point.quality.validation !== 'pass'
       ? `Validation: ${statusLabel(point.quality.validation)}.`
       : null,
@@ -172,12 +185,16 @@ function observationWarnings(point: BackendObservation) {
     point.scope.resolved
       ? null
       : 'The backend did not resolve this observation scope.',
-    ...(point.comparison?.reasons || []),
+    point.quality.version_status === 'superseded'
+      ? 'This filing occurrence is superseded and is excluded from current values and charts.'
+      : null,
+    ...(point.comparison?.reasons || []).map(humanizeFercReason),
     point.notes,
     ...point.source.assertions.flatMap((assertion) =>
       [assertion.reviewState, assertion.reviewerNote].filter(Boolean),
     ),
   ].filter((warning): warning is string => Boolean(warning));
+  return [...new Set(warnings.map(humanizeFercText))];
 }
 
 export function observationSource(
@@ -195,14 +212,16 @@ export function observationSource(
           : `Derivation input ${index + 1}`;
     const rawValue = edge.input_value;
     const rawUnit = edge.input_unit;
-    const value = [
+    const value =
       typeof rawValue === 'string' || typeof rawValue === 'number'
-        ? String(rawValue)
-        : null,
-      typeof rawUnit === 'string' ? rawUnit : null,
-    ]
-      .filter((item): item is string => item !== null)
-      .join(' ');
+        ? formatBackendValue(
+            rawValue,
+            typeof rawUnit === 'string' ? rawUnit : null,
+            true,
+          )
+        : typeof rawUnit === 'string'
+          ? `Unit: ${unitLabel(rawUnit)}`
+          : '';
     return {
       label: role,
       value: value || 'Referenced input',
@@ -247,12 +266,11 @@ export function observationSource(
   });
   const populations = (point.lineage?.populationSample || []).map(
     (population, index) => {
-      const aggregate = [
-        recordText(population, 'aggregate_value'),
-        recordText(population, 'aggregate_unit'),
-      ]
-        .filter(Boolean)
-        .join(' ');
+      const aggregateValue = recordText(population, 'aggregate_value');
+      const aggregateUnit = recordText(population, 'aggregate_unit');
+      const aggregate = aggregateValue
+        ? formatBackendValue(aggregateValue, aggregateUnit, true)
+        : '';
       return {
         id:
           recordText(population, 'population_id') ||
@@ -289,6 +307,25 @@ export function observationSource(
       `Showing a bounded population sample; the backend records ${point.lineage.populationCount} population descriptor(s).`,
     );
   }
+  const rawFiledValue =
+    point.value.as_filed || point.source.fact?.valueAsFiled || undefined;
+  const structuredFiledValue = isStructuredFercValue(rawFiledValue);
+  const suppliedUnit = point.source.fact?.unitText || point.value.unit;
+  const unitPresentationBlocked = isMetricPresentationBlocked(
+    metric.id,
+    point.value.display_unit || point.value.unit,
+    point.quality.validation,
+  );
+  const presentationNote = presentationUnitOverrideNote(
+    metric.id,
+    point.value.display_unit || point.value.unit,
+    {
+      configuredDisplayUnit: metric.configuredDisplayUnit,
+      displayScale: point.value.display_scale,
+      origin: point.quality.origin,
+      validation: point.quality.validation,
+    },
+  );
   return {
     id: point.id,
     title: `${asset.name} · ${metric.label}`,
@@ -316,18 +353,64 @@ export function observationSource(
     dataOrigin: point.source.dataOrigin || undefined,
     period: periodLabel(point),
     scope: `${point.scope.actual} · Contract: ${point.scope.contract_rule}`,
-    unit: unitLabel(point.value.display_unit || point.value.unit),
-    value: formatObservationValue(point, true),
-    valueLabel: point.value.as_filed
-      ? `Displayed value · filed as ${point.value.as_filed}`
-      : 'Displayed value',
-    comparisonValue:
-      typeof point.comparison?.comparison_value_base === 'number'
-        ? formatBackendValue(point.comparison.comparison_value_base, null, true)
-        : undefined,
-    comparisonValueLabel: point.comparison?.base_unit_family
-      ? `Backend comparison base · ${point.comparison.base_unit_family} · no frontend conversion`
+    unit: unitPresentationBlocked
+      ? 'Unit conflict — see warnings'
+      : unitLabel(
+          presentationUnit(
+            metric.id,
+            point.value.display_unit || point.value.unit,
+            {
+              configuredDisplayUnit: metric.configuredDisplayUnit,
+              displayScale: point.value.display_scale,
+              origin: point.quality.origin,
+              validation: point.quality.validation,
+            },
+          ),
+        ),
+    displayUnit: unitPresentationBlocked
+      ? 'Unit conflict — see warnings'
+      : unitLabel(
+          presentationUnit(
+            metric.id,
+            point.value.display_unit || point.value.unit,
+            {
+              configuredDisplayUnit: metric.configuredDisplayUnit,
+              displayScale: point.value.display_scale,
+              origin: point.quality.origin,
+              validation: point.quality.validation,
+            },
+          ),
+        ),
+    filedUnit: sourceUnitLabel(suppliedUnit),
+    displayScale: point.value.display_scale,
+    value: formatObservationValue(
+      point,
+      true,
+      metric.id,
+      metric.configuredDisplayUnit,
+    ),
+    valueLabel: 'Displayed value',
+    filedValue: rawFiledValue
+      ? structuredFiledValue
+        ? formatBackendValue(rawFiledValue, null, true)
+        : rawFiledValue
       : undefined,
+    filedValueRaw: structuredFiledValue ? rawFiledValue : undefined,
+    comparisonValue:
+      metric.id !== 'certificated_horsepower' &&
+      typeof point.comparison?.comparison_value_base === 'number'
+        ? formatComparisonValue(
+            point.comparison.comparison_value_base,
+            point.comparison.base_unit_family,
+            true,
+            metric.id,
+          )
+        : undefined,
+    comparisonValueLabel:
+      point.comparison?.base_unit_family &&
+      metric.id !== 'certificated_horsepower'
+        ? `Backend comparison base · ${comparisonUnitLabel(point.comparison.base_unit_family, metric.id)} · no frontend conversion`
+        : undefined,
     method: statusLabel(point.quality.method),
     availability: statusLabel(point.quality.availability),
     origin: statusLabel(point.quality.origin),
@@ -340,7 +423,18 @@ export function observationSource(
     formula: point.lineage?.derivation || undefined,
     inputs: edgeInputs.length ? edgeInputs : undefined,
     populations: populations.length ? populations : undefined,
-    warnings: [...observationWarnings(point), ...lineageWarnings],
+    warnings: [
+      ...new Set(
+        [
+          ...observationWarnings(point),
+          ...lineageWarnings,
+          presentationNote,
+          unitPresentationBlocked
+            ? 'Unit conflict: this barrel-mile metric carries a barrel source tag. No presentation unit is asserted; inspect the filed unit and evidence.'
+            : null,
+        ].filter((warning): warning is string => Boolean(warning)),
+      ),
+    ],
     url: safeFercUrl(point.source.url),
     filingId: point.source.filingId || undefined,
     sourceFactId: point.source.sourceFactId || undefined,
@@ -360,7 +454,8 @@ export function observationSource(
 
 function qualityTone(point: BackendObservation) {
   return point.quality.availability === 'present' &&
-    point.quality.validation === 'pass'
+    point.quality.validation === 'pass' &&
+    point.quality.version_status !== 'superseded'
     ? 'good'
     : 'warn';
 }
@@ -389,26 +484,17 @@ export function BackendAssetDetail({
   );
   const selectedMetric =
     metrics.find((metric) => metric.id === selectedMetricId) || initialMetric;
-  const groupedSeries = (() => {
-    const groups = new Map<string, BackendObservation[]>();
-    for (const point of selectedMetric?.points || []) {
-      const key = seriesKey(point);
-      const points = groups.get(key) || [];
-      points.push(point);
-      groups.set(key, points);
-    }
-    return [...groups.entries()].sort((left, right) => {
-      const present = (entry: [string, BackendObservation[]]) =>
-        entry[1].filter((point) => point.quality.availability === 'present')
-          .length;
-      return present(right) - present(left);
-    });
-  })();
+  const groupedSeries = metricSeriesGroups(selectedMetric);
   const [selectedSeriesKey, setSelectedSeriesKey] = useState(
     groupedSeries[0]?.[0] || '',
   );
+  const effectiveSeriesKey = groupedSeries.some(
+    ([key]) => key === selectedSeriesKey,
+  )
+    ? selectedSeriesKey
+    : groupedSeries[0]?.[0] || '';
   const selectedPoints =
-    groupedSeries.find(([key]) => key === selectedSeriesKey)?.[1] ||
+    groupedSeries.find(([key]) => key === effectiveSeriesKey)?.[1] ||
     groupedSeries[0]?.[1] ||
     [];
   const chartPoints = selectedPoints
@@ -425,10 +511,20 @@ export function BackendAssetDetail({
       value: point.value.display_value as number,
       point,
     }));
-  const headlineMetrics = [
-    ...metrics.filter((metric) => metric.role === 'headline' && metric.latest),
-    ...metrics.filter((metric) => metric.role !== 'headline' && metric.latest),
-  ].slice(0, 4);
+  const headlineMetrics = metrics
+    .filter((metric) => {
+      if (metric.role !== 'headline' || !metric.latest) return false;
+      const value = selectBackendDisplayValue(metric.latest.value);
+      if (typeof value === 'number') return Number.isFinite(value);
+      return (
+        typeof value === 'string' &&
+        value.trim().length > 0 &&
+        value.length <= 160 &&
+        !/[\r\n]/.test(value) &&
+        !isStructuredFercValue(value)
+      );
+    })
+    .slice(0, 4);
   const sortedEvents = [...detail.events].sort((left, right) =>
     right.date.localeCompare(left.date),
   );
@@ -440,18 +536,17 @@ export function BackendAssetDetail({
       return [
         interest.parent,
         amount,
-        interest.ticker ? `${interest.ticker} interest` : null,
+        interest.basis ? `${statusLabel(interest.basis)} basis` : null,
+        interest.ticker || null,
       ]
         .filter(Boolean)
         .join(' · ');
     })
     .join(' / ');
-  const interestDescription = structuredInterest
-    ? asset.interestDisplay &&
-      !structuredInterest.includes(asset.interestDisplay)
-      ? `${structuredInterest} · ${asset.interestDisplay}`
-      : structuredInterest
-    : asset.interestDisplay;
+  const additionalInterest =
+    asset.interestDisplay && !structuredInterest.includes(asset.interestDisplay)
+      ? asset.interestDisplay
+      : null;
   const observationCount = asset.dataSummary?.observations ?? 0;
   const usableCount = asset.dataSummary?.usable ?? 0;
   const reviewTone =
@@ -503,9 +598,19 @@ export function BackendAssetDetail({
             {asset.company} ({asset.ticker}) · {asset.legalFiler} ·{' '}
             {asset.cid || 'No FERC CID'}
           </p>
-          {interestDescription && (
+          {structuredInterest && (
             <p className="asset-ownership">
-              Reviewed interest: {interestDescription}
+              Structured ownership record: {structuredInterest}
+            </p>
+          )}
+          {additionalInterest && (
+            <p className="asset-ownership asset-interest-disclosure">
+              Additional asset-interest disclosure: {additionalInterest}
+            </p>
+          )}
+          {asset.note && (
+            <p className="asset-directory-note">
+              <strong>Directory note:</strong> {asset.note}
             </p>
           )}
         </div>
@@ -514,7 +619,11 @@ export function BackendAssetDetail({
             className="compare-button"
             onClick={openCompare}
             disabled={!asset.comparisonEligible}
-            title={asset.comparisonBlockedReason || undefined}
+            title={
+              asset.comparisonBlockedReason
+                ? statusLabel(asset.comparisonBlockedReason)
+                : undefined
+            }
           >
             <GitCompareArrows /> Compare
           </button>
@@ -543,7 +652,7 @@ export function BackendAssetDetail({
           <CircleAlert />
           <div>
             <strong>Comparison unavailable</strong>
-            <p>{asset.comparisonBlockedReason}</p>
+            <p>{humanizeFercReason(asset.comparisonBlockedReason)}</p>
           </div>
         </output>
       )}
@@ -576,7 +685,7 @@ export function BackendAssetDetail({
           </strong>
         </div>
         <div>
-          <span>FERC filings</span>
+          <span>Latest FERC filing</span>
           <strong>
             {asset.lastFiled ? formatDate(asset.lastFiled) : 'Not mapped'}
           </strong>
@@ -615,7 +724,14 @@ export function BackendAssetDetail({
                 }
               >
                 <span>{metric.label}</span>
-                <strong>{formatObservationValue(point)}</strong>
+                <strong>
+                  {formatObservationValue(
+                    point,
+                    false,
+                    metric.id,
+                    metric.configuredDisplayUnit,
+                  )}
+                </strong>
                 <small>
                   {periodLabel(point)} · {statusLabel(point.quality.validation)}
                 </small>
@@ -645,13 +761,9 @@ export function BackendAssetDetail({
                   const nextMetric = metrics.find(
                     (metric) => metric.id === nextId,
                   );
-                  const keys = new Map<string, BackendObservation[]>();
-                  for (const point of nextMetric?.points || []) {
-                    const key = seriesKey(point);
-                    keys.set(key, [...(keys.get(key) || []), point]);
-                  }
+                  const nextGroups = metricSeriesGroups(nextMetric);
                   setSelectedMetricId(nextId);
-                  setSelectedSeriesKey(keys.keys().next().value || '');
+                  setSelectedSeriesKey(nextGroups[0]?.[0] || '');
                 }}
               >
                 {metrics.map((metric) => (
@@ -681,7 +793,7 @@ export function BackendAssetDetail({
                 <label className="series-selector">
                   <span>Filed scope series</span>
                   <select
-                    value={selectedSeriesKey}
+                    value={effectiveSeriesKey}
                     onChange={(event) =>
                       setSelectedSeriesKey(event.target.value)
                     }
@@ -689,10 +801,27 @@ export function BackendAssetDetail({
                     {groupedSeries.map(([key, points], index) => (
                       <option key={key} value={key}>
                         Series {index + 1} · {points[0]?.period.basis} ·{' '}
-                        {unitLabel(
+                        {isMetricPresentationBlocked(
+                          selectedMetric.id,
                           points[0]?.value.display_unit ||
                             points[0]?.value.unit,
-                        )}{' '}
+                          points[0]?.quality.validation,
+                        )
+                          ? 'Unit conflict'
+                          : unitLabel(
+                              presentationUnit(
+                                selectedMetric.id,
+                                points[0]?.value.display_unit ||
+                                  points[0]?.value.unit,
+                                {
+                                  configuredDisplayUnit:
+                                    selectedMetric.configuredDisplayUnit,
+                                  displayScale: points[0]?.value.display_scale,
+                                  origin: points[0]?.quality.origin,
+                                  validation: points[0]?.quality.validation,
+                                },
+                              ),
+                            )}{' '}
                         · {points.length} records
                       </option>
                     ))}
@@ -726,8 +855,19 @@ export function BackendAssetDetail({
                       tickFormatter={(value) =>
                         formatBackendValue(
                           Number(value),
-                          selectedPoints[0]?.value.display_unit ||
-                            selectedPoints[0]?.value.unit,
+                          presentationUnit(
+                            selectedMetric.id,
+                            selectedPoints[0]?.value.display_unit ||
+                              selectedPoints[0]?.value.unit,
+                            {
+                              configuredDisplayUnit:
+                                selectedMetric.configuredDisplayUnit,
+                              displayScale:
+                                selectedPoints[0]?.value.display_scale,
+                              origin: selectedPoints[0]?.quality.origin,
+                              validation: selectedPoints[0]?.quality.validation,
+                            },
+                          ),
                         )
                       }
                     />
@@ -735,8 +875,19 @@ export function BackendAssetDetail({
                       formatter={(value) =>
                         formatBackendValue(
                           Number(value),
-                          selectedPoints[0]?.value.display_unit ||
-                            selectedPoints[0]?.value.unit,
+                          presentationUnit(
+                            selectedMetric.id,
+                            selectedPoints[0]?.value.display_unit ||
+                              selectedPoints[0]?.value.unit,
+                            {
+                              configuredDisplayUnit:
+                                selectedMetric.configuredDisplayUnit,
+                              displayScale:
+                                selectedPoints[0]?.value.display_scale,
+                              origin: selectedPoints[0]?.quality.origin,
+                              validation: selectedPoints[0]?.quality.validation,
+                            },
+                          ),
                           true,
                         )
                       }
@@ -772,6 +923,7 @@ export function BackendAssetDetail({
                         <th>Value</th>
                         <th>Availability</th>
                         <th>Validation</th>
+                        <th>Version</th>
                         <th>Evidence</th>
                       </tr>
                     </thead>
@@ -779,15 +931,26 @@ export function BackendAssetDetail({
                       {selectedPoints.map((point) => (
                         <tr key={point.id}>
                           <td>{periodLabel(point)}</td>
-                          <td>{formatObservationValue(point, true)}</td>
+                          <td>
+                            {formatObservationValue(
+                              point,
+                              true,
+                              selectedMetric.id,
+                              selectedMetric.configuredDisplayUnit,
+                            )}
+                          </td>
                           <td>{statusLabel(point.quality.availability)}</td>
                           <td>
                             <span
                               className={`status status-${qualityTone(point)}`}
                             >
                               {statusLabel(point.quality.validation)}
+                              {point.quality.version_status === 'superseded'
+                                ? ' · superseded'
+                                : ''}
                             </span>
                           </td>
+                          <td>{statusLabel(point.quality.version_status)}</td>
                           <td>
                             <button
                               onClick={() =>
