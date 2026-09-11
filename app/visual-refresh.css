@@ -3350,3 +3350,21 @@ body {
     min-height: 154px;
   }
 }
+.local-refresh-panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.8rem 2rem;
+  border-bottom: 1px solid #d7e1e8;
+  background: #f2f7fa;
+  color: #314754;
+  font-size: 0.8rem;
+}
+.local-refresh-copy { min-width: 0; }
+.local-refresh-message { display: block; margin-top: 0.2rem; line-height: 1.5; }
+.local-refresh-copy small { display: block; margin-top: 0.2rem; }
+.local-refresh-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; flex-shrink: 0; }
+@media (max-width: 700px) {
+  .local-refresh-panel { align-items: flex-start; flex-direction: column; padding: 0.8rem 1rem; }
+}

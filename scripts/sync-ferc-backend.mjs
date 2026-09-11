@@ -11,7 +11,9 @@ import {
 } from '../lib/ferc/metric-presentation.ts';
 
 const EXPECTED_GENERATION =
+  process.env.FERC_EXPECTED_GENERATION ||
   '0dccbd426f15372f1330737537f9aac58bc9547a2eaf81ef6f4b655f10cf2824';
+assert.match(EXPECTED_GENERATION, /^[a-f0-9]{64}$/, 'Invalid expected generation');
 const EXPECTED_SCHEMA = 'ferc_operating_assets_frontend_v1';
 const EXPECTED_CONTRACT_VERSION = '1.1.0';
 const SNAPSHOT_SCHEMA = 'ferc_site_snapshot_v1';

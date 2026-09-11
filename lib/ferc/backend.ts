@@ -5,11 +5,27 @@ import type {
   OperatingInstrumentDetail,
   OperatingInstrumentSummary,
 } from './types';
+import { getLocalRefreshStatus } from './local-refresh.ts';
 
 export const FERC_GENERATION_ID =
   '0dccbd426f15372f1330737537f9aac58bc9547a2eaf81ef6f4b655f10cf2824';
 export const FERC_CONTRACT_VERSION = '1.1.0';
-const SNAPSHOT_ROOT = `/data/ferc/generations/${FERC_GENERATION_ID}`;
+let selectedGeneration = FERC_GENERATION_ID;
+let SNAPSHOT_ROOT = `/data/ferc/generations/${selectedGeneration}`;
+let selectionPromise: Promise<void> | null = null;
+
+function selectSnapshot() {
+  selectionPromise ??= getLocalRefreshStatus().then((status) => {
+    if (status?.generationId) {
+      selectedGeneration = status.generationId;
+      SNAPSHOT_ROOT = `/data/ferc/generations/${selectedGeneration}`;
+    }
+  }).catch((error) => {
+    selectionPromise = null;
+    throw error;
+  });
+  return selectionPromise;
+}
 
 type GeneratedFile = {
   bytes: number;
@@ -253,6 +269,7 @@ async function fetchGenerated<T>(
 }
 
 async function loadManifest() {
+  await selectSnapshot();
   const response = await fetch(`${SNAPSHOT_ROOT}/manifest.json`, {
     cache: 'no-cache',
   });
@@ -262,9 +279,9 @@ async function loadManifest() {
   assertRecord(value, 'FERC snapshot manifest');
   if (
     value.schema !== 'ferc_site_snapshot_v1' ||
-    value.generationId !== FERC_GENERATION_ID
+    value.generationId !== selectedGeneration
   ) {
-    throw new Error('The FERC snapshot generation is not the pinned release.');
+    throw new Error('The FERC snapshot generation does not match the selected release.');
   }
   const manifest = value as FercSnapshotManifest;
   if (manifest.source.contractVersion !== FERC_CONTRACT_VERSION) {
@@ -302,7 +319,7 @@ export function loadFercCatalog(): Promise<FercCatalog> {
       );
     }
     if (
-      directory.generationId !== FERC_GENERATION_ID ||
+      directory.generationId !== selectedGeneration ||
       !Array.isArray(directory.assets)
     ) {
       throw new Error('The FERC catalog failed runtime validation.');
@@ -337,7 +354,7 @@ export function loadFercChanges(): Promise<ChangeItem[]> {
     }>('changes.json.gz', metadata);
     if (
       payload.schema !== 'ferc_site_snapshot_v1' ||
-      payload.generationId !== FERC_GENERATION_ID ||
+      payload.generationId !== selectedGeneration ||
       !Array.isArray(payload.changes)
     ) {
       throw new Error('The FERC change archive failed runtime validation.');
@@ -373,7 +390,7 @@ export async function loadFercAsset(assetId: string) {
       );
       if (
         detail.schema !== 'ferc_site_snapshot_v1' ||
-        detail.generationId !== FERC_GENERATION_ID ||
+        detail.generationId !== selectedGeneration ||
         detail.asset.id !== resolvedId ||
         !Array.isArray(detail.metrics) ||
         !Array.isArray(detail.events)
@@ -417,7 +434,7 @@ export async function loadFercInstrument(instrumentId: string) {
       );
       if (
         detail.schema !== 'ferc_site_snapshot_v1' ||
-        detail.generationId !== FERC_GENERATION_ID ||
+        detail.generationId !== selectedGeneration ||
         detail.instrument.id !== instrumentId ||
         !Array.isArray(detail.metrics)
       ) {
@@ -441,6 +458,7 @@ export async function loadFercLineage(
   relativeUrl: string,
   observationId: string,
 ): Promise<FercLineageEntry> {
+  const catalog = await loadFercCatalog();
   const expectedBucket = observationId.slice(4, 6);
   const expectedUrl = `${SNAPSHOT_ROOT}/provenance/lineage-${expectedBucket}.json.gz`;
   if (
@@ -449,7 +467,6 @@ export async function loadFercLineage(
   ) {
     throw new Error('The lineage request is outside the snapshot whitelist.');
   }
-  const catalog = await loadFercCatalog();
   const relativePath = `provenance/lineage-${expectedBucket}.json.gz`;
   const metadata = catalog.manifest.files[relativePath];
   if (!metadata)
@@ -460,7 +477,7 @@ export async function loadFercLineage(
       (shard) => {
         if (
           shard.schema !== 'ferc_site_snapshot_v1_lineage' ||
-          shard.generationId !== FERC_GENERATION_ID ||
+          shard.generationId !== selectedGeneration ||
           shard.bucket !== expectedBucket ||
           !shard.observations
         ) {

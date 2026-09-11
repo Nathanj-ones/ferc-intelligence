@@ -3,6 +3,7 @@ import tailwindcss from '@tailwindcss/postcss';
 import vinext from 'vinext';
 import { defineConfig } from 'vite';
 import hostingConfig from './.openai/hosting.json';
+import { localFercRefresh } from './scripts/local-ferc-refresh.mjs';
 
 const SITE_CREATOR_PLACEHOLDER_DATABASE_ID =
   '00000000-0000-4000-8000-000000000000';
@@ -46,10 +47,14 @@ export default defineConfig(async () => {
 
   return {
     css: { postcss: { plugins: [tailwindcss()] } },
-    server: isCodexSeatbeltSandbox
-      ? { watch: { useFsEvents: false, usePolling: true } }
-      : undefined,
+    server: {
+      fs: { deny: ['.env', '.env.*', '*.{crt,pem}', '**/.git/**', '**/.ferc-local/**'] },
+      ...(isCodexSeatbeltSandbox
+        ? { watch: { useFsEvents: false, usePolling: true, ignored: ['**/.ferc-local/**'] } }
+        : { watch: { ignored: ['**/.ferc-local/**'] } }),
+    },
     plugins: [
+      ...(process.env.FERC_LOCAL_REFRESH === '1' ? [localFercRefresh()] : []),
       vinext(),
       sites(),
       cloudflare({

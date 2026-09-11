@@ -38,6 +38,7 @@ import {
 } from 'recharts';
 import type { DotItemDotProps } from 'recharts';
 import { ChartContainer } from '@/components/ui/chart';
+import { LocalDataRefresh } from '@/components/ferc/local-refresh';
 import { BackendAssetComparison } from '@/components/ferc/backend-asset-comparison';
 import {
   BackendAssetDetail,
@@ -837,8 +838,9 @@ function AppHeader({
         {catalog
           ? `As of ${formatDate(catalog.directory.asOf)}`
           : 'Loading verified data…'}
-        {' · '}Updates are not live
+        {' · '}Snapshot data · Not a continuous feed
       </div>
+      <LocalDataRefresh generationId={catalog?.manifest.generationId} />
     </>
   );
 }
