@@ -1,0 +1,98 @@
+<html>
+<head>
+<title>Federal Register, Volume 90 Issue 98 (Thursday, May 22, 2025)</title>
+</head>
+<body><pre>
+[Federal Register Volume 90, Number 98 (Thursday, May 22, 2025)]
+[Notices]
+[Pages 21917-21918]
+From the Federal Register Online via the Government Publishing Office [<a href="http://www.gpo.gov">www.gpo.gov</a>]
+[FR Doc No: 2025-09243]
+
+
+-----------------------------------------------------------------------
+
+DEPARTMENT OF ENERGY
+
+Federal Energy Regulatory Commission
+
+[Docket No. RM93-11-000]
+
+
+Notice of Annual Change in the Producer Price Index for Finished 
+Goods; Oil Pipeline Regulations Pursuant to the Energy Policy Act of 
+1992; Revisions
+
+    The Commission's regulations include a methodology for oil 
+pipelines to change their rates through use of an index system that 
+establishes ceiling levels for such rates. The Commission bases the 
+index system, found at 18 CFR 342.3, on the annual change in the 
+Producer Price Index for Finished Goods (PPI-FG), plus zero-point seven 
+eight percent (PPI-FG + 0.78%). The Commission determined in the 
+December 2020 Order \1\ and in the Order Reinstating Index \2\ that 
+PPI-FG + 0.78% is the appropriate oil pricing index factor for 
+pipelines to use for the five-year period commencing July 1, 2021.
+---------------------------------------------------------------------------
+
+    \1\ Five-Year Rev. of the Oil Pipeline Index, 173 FERC ] 61,245 
+(2020) (December 2020 Order).
+    \2\ Revisions to Oil Pipeline Regulations Pursuant to the Energy 
+Pol'y Act of 1992, 188 FERC ] 61,173 (2024) (Order Reinstating 
+Index).
+---------------------------------------------------------------------------
+
+    The regulations provide that the Commission will publish annually 
+an index figure reflecting the final change in the PPI-FG after the 
+Bureau of Labor Statistics publishes the final PPI-FG in May of each 
+calendar year. The annual average PPI-FG index figures were 254.6 for 
+2023 and 257.7 for 2024.\3\ Thus, the percent change (expressed as a 
+decimal) in the annual average PPI-FG from 2023 to 2024, plus 0.78%, is 
+positive 0.019976.\4\ Oil pipelines must multiply their July 1, 2025, 
+through June 30, 2026 index ceiling levels by positive 1.019976 \5\ to 
+compute their index ceiling levels for July 1, 2025, through June 30, 
+2026, in accordance with 18 CFR 342.3(d). For guidance in calculating 
+the ceiling levels for each 12-month period beginning January 1,
+
+[[Page 21918]]
+
+l995,\6\ see Explorer Pipeline Company, 71 FERC ] 61,416, at n.6 
+(1995).
+---------------------------------------------------------------------------
+
+    \3\ Bureau of Labor Statistics (BLS) publishes the final figure 
+in mid-May of each year. This figure is publicly available at <a href="http://www.bls.gov/ppi/home.htm">http://www.bls.gov/ppi/home.htm</a>. To obtain the BLS data, go to the ``PPI 
+Data'' menu across the top of the screen, click ``Databases,'' and 
+click on ``Top Picks'' of the Commodity Data including ``headline'' 
+FD-ID indexes (Producer Price Index--PPI). At the next screen, under 
+the heading ``PPI Commodity Data,'' select the box, ``Finished 
+goods--WPUFD49207,'' then scroll to the bottom of this screen and 
+click on Retrieve data.
+    \4\ [257.7-254.6] / 254.6 = 0.012176 + 0.0078 = +0.019976.
+    \5\ 1 + 0.019976 = 1.019976.
+    \6\ For a listing of all prior multipliers issued by the 
+Commission, see the Commission's website, <a href="https://www.ferc.gov/general-information-1/oil-pipeline-index">https://www.ferc.gov/general-information-1/oil-pipeline-index</a>.
+---------------------------------------------------------------------------
+
+    In addition to publishing the full text of this document in the 
+Federal Register, the Commission provides all interested persons an 
+opportunity to view and/or print this document via the internet through 
+the Commission's Home Page (<a href="http://www.ferc.gov">http://www.ferc.gov</a>) using the eLibrary 
+link. To access this document in eLibrary, type the docket number 
+excluding the last three digits of this document in the docket number 
+field and follow other directions on the search page.
+    User assistance is available for eLibrary and other aspects of the 
+Commission's website during normal business hours. For assistance, 
+please contact the Commission's Online Support at 1-866-208-3676 (toll 
+free) or 202-502-6652 (email at <a href="/cdn-cgi/l/email-protection#da9c9f889995b4b6b3b4bf89afaaaab5a8ae9abcbfa8b9f4bdb5ac"><span class="__cf_email__" data-cfemail="9bdddec9d8d4f5f7f2f5fec8eeebebf4e9efdbfdfee9f8b5fcf4ed">[email&#160;protected]</span></a>), or the 
+Public Reference Room at 202-502-8371, TTY 202-502-8659. Email the 
+Public Reference Room at <a href="/cdn-cgi/l/email-protection#dbabaeb9b7b2b8f5a9bebdbea9beb5b8bea9b4b4b69bbdbea9b8f5bcb4ad"><span class="__cf_email__" data-cfemail="c7b7b2a5abaea4e9b5a2a1a2b5a2a9a4a2b5a8a8aa87a1a2b5a4e9a0a8b1">[email&#160;protected]</span></a>.
+
+    Dated: May 16, 2025.
+Debbie-Anne A. Reese,
+Secretary.
+[FR Doc. 2025-09243 Filed 5-21-25; 8:45 am]
+BILLING CODE 6717-01-P
+
+
+</pre><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

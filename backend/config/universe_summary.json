@@ -1,0 +1,28 @@
+{
+ "asset_rows_post_cod": 120,
+ "in_template_rows": 109,
+ "out_of_template_rows": 11,
+ "by_template": {
+  "OUT_OF_TEMPLATE": 11,
+  "liquids": 30,
+  "lng": 9,
+  "gas_storage": 9,
+  "interstate_gas": 33,
+  "intrastate_549d": 28
+ },
+ "distinct_filing_entities": 115,
+ "in_template_entities": 104,
+ "local_key_entities": [
+  "NO-FERC-CID:Corpus Christi Liquefaction, LLC",
+  "NO-FERC-CID:Elba Liquefaction Company, L.L.C.",
+  "NO-FERC-CID:Gregory Power Partners LLC",
+  "NO-FERC-CID:Gulf LNG Energy, LLC",
+  "NO-FERC-CID:Odyssey Energy Altura Cogen, LLC",
+  "NO-FERC-CID:Roadrunner Gas Transmission, LLC",
+  "NO-FERC-CID:Sabine Pass LNG, L.P.",
+  "NO-FERC-CID:Sabine Pass Liquefaction, LLC",
+  "NO-FERC-CID:Targa Pipeline Mid-Continent WestTex LLC"
+ ],
+ "rows_without_entity": 0,
+ "note": "OUT_OF_TEMPLATE rows are FPA/electric authority and have no approved operating template in this contract. They are retained for universe reconciliation and are never described as having no FERC data."
+}

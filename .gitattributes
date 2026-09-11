@@ -1,0 +1,2 @@
+# Reviewed backend inputs are hash-bound. Preserve their exact bytes on every OS.
+backend/** -text -whitespace

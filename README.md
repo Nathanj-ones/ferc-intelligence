@@ -1,21 +1,79 @@
-# FERC Intelligence frontend
+# FERC Intelligence — frontend and backend
 
-Frontend for reviewing source-backed operating-asset results and FERC project developments.
+One repository for the website, Python ingestion pipeline, reviewed source inputs,
+validation, and local live-refresh integration. No other checkout or Desktop folder
+is required.
 
-## Run locally
+## Quick start
+
+Requirements: Node.js 22.13+ (24 recommended), Python 3.9–3.14, and GitHub access
+to this private repository. The frontend works on its checked-in snapshot without
+a FERC key. Live pulls require your own `FERC_API_KEY`.
 
 ```bash
 npm ci
-npm run build
-npm start
+npm run setup:backend
+cp .env.example .env
+# Set FERC_API_KEY in .env if you want live source pulls.
+npm run dev:live
 ```
 
-Open `http://localhost:8787/`.
+Open [localhost:5173](http://localhost:5173/?view=assets). Both the website and
+the local refresh endpoint start with that command.
+
+`setup:backend` downloads the pinned starting-data bundle from **this repository's
+private GitHub Release**, verifies the archive and every extracted file, checks
+SQLite integrity and row counts, then installs it under ignored backend folders.
+Install the GitHub CLI and run `gh auth login` first, or download both release assets
+into the same folder and run `npm run setup:backend -- --archive /path/to/ferc-backend-data-2026-09-10-v1.zip`.
+Allow 8 GB of free disk space for the seed, downloads, and separate working copies.
+Setup is idempotent and refuses to overwrite an unrelated database.
+
+For full image-only capacity extraction/replay, the existing backend requires
+**macOS, Swift/macOS Vision, and Poppler (`pdftoppm`)**. On macOS, install Poppler
+with `brew install poppler` and the Apple command-line tools with `xcode-select --install`
+if needed. The website, seeded data verification, and text-based adapters do not
+require those OCR tools. Unavailable OCR is reported as a failure, never skipped
+as a successful full refresh. See `backend/RUNTIME_REQUIREMENTS.json`.
+
+## Repository layout
+
+- `app/`, `components/`, `lib/`: frontend and verified browser-data loader.
+- `backend/`: Python engine, all regime adapters, SQL schema/migrations, reviewed
+  inputs/configuration, tests, and original backend contracts.
+- `scripts/`: setup, local API, backend commands, and frontend export integration.
+- `public/data/ferc/`: the ready-to-view, hash-verified reviewed browser snapshot.
+- `backend/bootstrap.json`: pinned release asset identity and database counts.
+- `.ferc-local/`: ignored generated working state; never committed or served.
+
+Credentials, caches and SQLite files are not in Git history. The reviewed seed
+database and official-source cache are in the checksum-pinned private release;
+newly generated databases and refresh results stay local.
+
+## Backend commands
+
+```bash
+npm run backend:check       # All declared inputs + complete source cache verified
+npm run backend:verify      # Seed -> export -> validation -> frontend, offline
+npm run backend:test        # Python unit/regression suite
+npm run backend -- status  # Work on a separate CLI database/cache
+npm run backend -- refresh --budget 2000
+```
+
+The website's **Refresh live data** button orchestrates collection, coverage,
+field statuses, export, validation, and frontend activation. The raw backend CLI
+is for individual pipeline operations and does not update the website on its own.
+The seed is preserved; the button and CLI each use separate working databases.
+See [local refresh details](LOCAL-LIVE-DATA.md).
+
+The existing private hosted site is a separately published, pinned snapshot.
+Pushing to GitHub does not redeploy it or make the Python process run on Sites.
 
 ## Checks
 
 ```bash
 npm test
+npm run backend:verify
 npx tsc --noEmit
 npm run lint
 npm run build
@@ -35,10 +93,10 @@ same URL, so it never combines old directory eligibility with new detail data.
 A bad cached response gets one revalidated retry; persistent corruption fails
 closed.
 
-Regenerate the snapshot from the authoritative backend export with:
+Regenerate the snapshot from a validated backend export with its receipt generation:
 
 ```bash
-FERC_BACKEND_ROOT=/path/to/operating_assets_all_regimes npm run sync:ferc
+FERC_BACKEND_ROOT=/path/to/export-output FERC_EXPECTED_GENERATION=<receipt-generation-id> npm run sync:ferc
 ```
 
 The sync fails closed if the generation, frontend contract, dependency hashes,

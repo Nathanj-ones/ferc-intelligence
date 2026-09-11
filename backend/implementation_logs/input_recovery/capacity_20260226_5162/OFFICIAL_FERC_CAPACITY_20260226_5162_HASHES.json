@@ -1,0 +1,34 @@
+{
+  "files": {
+    "/private/tmp/ferc_buildA_20260909_lokqmf/payload_root/implementation_logs/input_recovery/capacity_20260226_5162/OFFICIAL_FERC_CAPACITY_20260226_5162_RESULTS.json": {
+      "bytes": 6120,
+      "sha256": "32e0e37e7b24b9079f98794d317dbb42f37d262b2195dcd1c564d6877b3619d6"
+    },
+    "/private/tmp/ferc_buildA_20260909_lokqmf/payload_root/implementation_logs/input_recovery/capacity_20260226_5162/get.attempt.json": {
+      "bytes": 576,
+      "sha256": "fc7f6260604dac5d63b0108e89b3392b4b7f931dd39535038024d901ff59f4d6"
+    },
+    "/private/tmp/ferc_buildA_20260909_lokqmf/payload_root/implementation_logs/input_recovery/capacity_20260226_5162/post.attempt.json": {
+      "bytes": 568,
+      "sha256": "2bc1d2d73f18a14d36aed7bc8ee1d05b063ea5ea051f80c76d075cd984ffbd01"
+    },
+    "/private/tmp/ferc_buildA_20260909_lokqmf/payload_root/inputs/official_ferc_capacity_20260226_5162/attachment_response.body": {
+      "bytes": 173287,
+      "sha256": "983e6a1c12a2f15934d99a2149c7a18e3dbbedf145f0848b9844dc4467dac5eb"
+    },
+    "/private/tmp/ferc_buildA_20260909_lokqmf/payload_root/inputs/official_ferc_capacity_20260226_5162/attachment_response.headers.json": {
+      "bytes": 343,
+      "sha256": "5c1ad249c3319162704d730626c82c716222a86aefcd198ce0c1c84afaf0cb84"
+    },
+    "/private/tmp/ferc_buildA_20260909_lokqmf/payload_root/inputs/official_ferc_capacity_20260226_5162/list_response.body": {
+      "bytes": 2234,
+      "sha256": "40b887b783567bf031bba63c82562daa455092bb4c02d3a9adf1a28c814f6a88"
+    },
+    "/private/tmp/ferc_buildA_20260909_lokqmf/payload_root/inputs/official_ferc_capacity_20260226_5162/list_response.headers.json": {
+      "bytes": 220,
+      "sha256": "c514f87b65601d3ab46685eba42374aa19082ff8c716e1322fec87e4ac25894d"
+    }
+  },
+  "schema": "official_ferc_recovery_hash_index_v1",
+  "self_excluded": true
+}

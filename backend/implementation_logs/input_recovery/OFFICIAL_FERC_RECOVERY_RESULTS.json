@@ -1,0 +1,2105 @@
+{
+  "completed_utc": "2026-09-09T16:29:56.843708+00:00",
+  "evidence_lane": "new official-FERC evidence collected after the audit; not retroactive bundled evidence",
+  "inventory_identity": {
+    "bytes": 50851,
+    "path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/evidence/repair_records/MISSING_INPUT_INVENTORY_13.json",
+    "sha256": "d78bc51bde259ff0058775a3e7ffe4a8e18fc6ad849e4dfb46ba901ace337d4f"
+  },
+  "network_policy": "public official FERC eLibrary endpoints only; no credentials, cookies, bypass or retries",
+  "results": [
+    {
+      "accession_number": "20250102-5121",
+      "attachment_inspection": {
+        "inspection_error": null,
+        "kind": "zip",
+        "members": [
+          {
+            "bytes": 234434,
+            "name": "20250102-5121_2025_0102_GSGC_IOC.pdf",
+            "sha256": "9795612f6177cb09b324efb222de4f4832e5c13cfa78a52e772fc01f59e434ba",
+            "zip_crc32": "2b0ff67f"
+          },
+          {
+            "bytes": 11791,
+            "name": "20250102-5121_IC0000882501.TAB",
+            "sha256": "256f7e0de4b019a657b9011101753594328c3ca1d79c73e26716df4f4683e9c7",
+            "zip_crc32": "7cf32754"
+          }
+        ]
+      },
+      "attachment_response": {
+        "accession": "20250102-5121",
+        "attempt_ended_utc": "2026-09-09T16:28:53.646450+00:00",
+        "attempt_marker": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/requests/20250102-5121.attachment.attempt.json",
+        "attempt_started_utc": "2026-09-09T16:28:52.048505+00:00",
+        "attempted_this_run": true,
+        "body_capture_limitation": null,
+        "content_disposition": "attachment; filename=20250102-5121_134334449326471200.zip",
+        "credentials_or_cookies_sent": false,
+        "final_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/DownloadP8File",
+        "http_reason": "OK",
+        "http_status": 200,
+        "method": "POST",
+        "network_error": null,
+        "official_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/DownloadP8File",
+        "raw_body_path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/attachment_responses/20250102-5121.body",
+        "raw_headers_path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/attachment_responses/20250102-5121.headers.json",
+        "redirects": [],
+        "request_kind": "attachment",
+        "response_bytes": 185843,
+        "response_media_type": "application/octet-stream",
+        "response_sha256": "4873370e95996c17904f02f97247e59f51e9ddc5422f3a3a52dd13e841a41ce4",
+        "response_sha256_is_complete": true
+      },
+      "classification_before_recovery": "mandatory executable prerequisite",
+      "consumers": [
+        "ioc adapter",
+        "source-cache index/object store",
+        "A20/C35/C54 archive-only offline replay and reproducibility gate",
+        "IOC filings/source facts/observations/lineage",
+        "coverage and source-linked asset history"
+      ],
+      "inventory_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/GetFileListFromP8/20250102-5121",
+      "list_response": {
+        "accession": "20250102-5121",
+        "attempt_ended_utc": "2026-09-09T16:28:52.045639+00:00",
+        "attempt_marker": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/requests/20250102-5121.list.attempt.json",
+        "attempt_started_utc": "2026-09-09T16:28:50.934014+00:00",
+        "attempted_this_run": true,
+        "body_capture_limitation": null,
+        "content_disposition": null,
+        "credentials_or_cookies_sent": false,
+        "final_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/GetFileListFromP8/20250102-5121",
+        "http_reason": "OK",
+        "http_status": 200,
+        "method": "GET",
+        "network_error": null,
+        "official_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/GetFileListFromP8/20250102-5121",
+        "raw_body_path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/list_responses/20250102-5121.body",
+        "raw_headers_path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/list_responses/20250102-5121.headers.json",
+        "redirects": [],
+        "request_kind": "list",
+        "response_bytes": 4466,
+        "response_media_type": "application/json; charset=utf-8",
+        "response_sha256": "c17ade2a1b9ba495429b765d3c06f7697c5da1ba44a04af114e2b461ee73d802",
+        "response_sha256_is_complete": true
+      },
+      "parsed_file_list": {
+        "attachment_ids": [
+          "B40AABF5-3207-C385-9709-9427A7400000",
+          "9924FC8C-739A-C9E8-9F57-9427A7400000"
+        ],
+        "attachment_metadata": [
+          {
+            "accession_number": "20250102-5121",
+            "attachment_id": "B40AABF5-3207-C385-9709-9427A7400000",
+            "availability_code": null,
+            "availability_mode": "P",
+            "description": "Index of Customers Report of Gulfstream Natural Gas System, L.L.C. for Q1 of 2025.",
+            "mime_type": "application/pdf",
+            "transmittal_type": null
+          },
+          {
+            "accession_number": "20250102-5121",
+            "attachment_id": "9924FC8C-739A-C9E8-9F57-9427A7400000",
+            "availability_code": null,
+            "availability_mode": "P",
+            "description": "Index of Customers Report of Gulfstream Natural Gas System, L.L.C. for Q1 of 2025.",
+            "mime_type": "application/octet-stream",
+            "transmittal_type": null
+          }
+        ],
+        "data_list_count": 2,
+        "error_list": [],
+        "json_parsed": true,
+        "parse_error": null
+      }
+    },
+    {
+      "accession_number": "20250401-5098",
+      "attachment_inspection": {
+        "inspection_error": null,
+        "kind": "zip",
+        "members": [
+          {
+            "bytes": 110505,
+            "name": "20250401-5098_2025_0401_GSGC_IOC.pdf",
+            "sha256": "b626bed355a1a1d8f18d5c9e781474c7c65d6d6597a104bf323539833d6cb5b4",
+            "zip_crc32": "3d415f73"
+          },
+          {
+            "bytes": 11791,
+            "name": "20250401-5098_IC0000882504.TAB",
+            "sha256": "cb5e09e4cbb8cc82570580ff6f215dd08959391e1b71a688f46d0d816554c267",
+            "zip_crc32": "e5e89518"
+          }
+        ]
+      },
+      "attachment_response": {
+        "accession": "20250401-5098",
+        "attempt_ended_utc": "2026-09-09T16:28:55.665843+00:00",
+        "attempt_marker": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/requests/20250401-5098.attachment.attempt.json",
+        "attempt_started_utc": "2026-09-09T16:28:54.588392+00:00",
+        "attempted_this_run": true,
+        "body_capture_limitation": null,
+        "content_disposition": "attachment; filename=20250401-5098_134334449350311512.zip",
+        "credentials_or_cookies_sent": false,
+        "final_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/DownloadP8File",
+        "http_reason": "OK",
+        "http_status": 200,
+        "method": "POST",
+        "network_error": null,
+        "official_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/DownloadP8File",
+        "raw_body_path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/attachment_responses/20250401-5098.body",
+        "raw_headers_path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/attachment_responses/20250401-5098.headers.json",
+        "redirects": [],
+        "request_kind": "attachment",
+        "response_bytes": 85464,
+        "response_media_type": "application/octet-stream",
+        "response_sha256": "d6441fd45cf5a4f8da2578e9a92788e1d1db0c1fad9be8f112338ffaf8ae2bdd",
+        "response_sha256_is_complete": true
+      },
+      "classification_before_recovery": "mandatory executable prerequisite",
+      "consumers": [
+        "ioc adapter",
+        "source-cache index/object store",
+        "A20/C35/C54 archive-only offline replay and reproducibility gate",
+        "IOC filings/source facts/observations/lineage",
+        "coverage and source-linked asset history",
+        "A15 public-alternative gate",
+        "blk-61aa163f18d6bf88",
+        "blk-d5a42d025ee876fa"
+      ],
+      "inventory_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/GetFileListFromP8/20250401-5098",
+      "list_response": {
+        "accession": "20250401-5098",
+        "attempt_ended_utc": "2026-09-09T16:28:54.586521+00:00",
+        "attempt_marker": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/requests/20250401-5098.list.attempt.json",
+        "attempt_started_utc": "2026-09-09T16:28:53.651947+00:00",
+        "attempted_this_run": true,
+        "body_capture_limitation": null,
+        "content_disposition": null,
+        "credentials_or_cookies_sent": false,
+        "final_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/GetFileListFromP8/20250401-5098",
+        "http_reason": "OK",
+        "http_status": 200,
+        "method": "GET",
+        "network_error": null,
+        "official_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/GetFileListFromP8/20250401-5098",
+        "raw_body_path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/list_responses/20250401-5098.body",
+        "raw_headers_path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/list_responses/20250401-5098.headers.json",
+        "redirects": [],
+        "request_kind": "list",
+        "response_bytes": 4464,
+        "response_media_type": "application/json; charset=utf-8",
+        "response_sha256": "82d5eedb2716558a495859f5badb3d780fac7155d25a00f637cf7e76ee8e0f9b",
+        "response_sha256_is_complete": true
+      },
+      "parsed_file_list": {
+        "attachment_ids": [
+          "BC5D96AF-228B-C8BC-8589-95F1A2D00000",
+          "970F16CD-D260-C4D9-8D40-95F1A2D00000"
+        ],
+        "attachment_metadata": [
+          {
+            "accession_number": "20250401-5098",
+            "attachment_id": "BC5D96AF-228B-C8BC-8589-95F1A2D00000",
+            "availability_code": null,
+            "availability_mode": "P",
+            "description": "Index of Customers Report of Gulfstream Natural Gas System, L.L.C.for Q2 of 2025.",
+            "mime_type": "application/pdf",
+            "transmittal_type": null
+          },
+          {
+            "accession_number": "20250401-5098",
+            "attachment_id": "970F16CD-D260-C4D9-8D40-95F1A2D00000",
+            "availability_code": null,
+            "availability_mode": "P",
+            "description": "Index of Customers Report of Gulfstream Natural Gas System, L.L.C.for Q2 of 2025.",
+            "mime_type": "application/octet-stream",
+            "transmittal_type": null
+          }
+        ],
+        "data_list_count": 2,
+        "error_list": [],
+        "json_parsed": true,
+        "parse_error": null
+      }
+    },
+    {
+      "accession_number": "20250701-5150",
+      "attachment_inspection": {
+        "inspection_error": null,
+        "kind": "zip",
+        "members": [
+          {
+            "bytes": 111026,
+            "name": "20250701-5150_2025_0701_GSGC_IOC.pdf",
+            "sha256": "09942940208175437ec2999e704308e943f31da6279e3149b74ab748b0c8bac6",
+            "zip_crc32": "ef85a7cf"
+          },
+          {
+            "bytes": 11791,
+            "name": "20250701-5150_IC0000882507.TAB",
+            "sha256": "84eed5113ea0208c740f508b0e816ff4ac0c9445eb26f7db5aa44113d6d0613a",
+            "zip_crc32": "29291a64"
+          }
+        ]
+      },
+      "attachment_response": {
+        "accession": "20250701-5150",
+        "attempt_ended_utc": "2026-09-09T16:28:57.712146+00:00",
+        "attempt_marker": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/requests/20250701-5150.attachment.attempt.json",
+        "attempt_started_utc": "2026-09-09T16:28:56.626758+00:00",
+        "attempted_this_run": true,
+        "body_capture_limitation": null,
+        "content_disposition": "attachment; filename=20250701-5150_134334449371491592.zip",
+        "credentials_or_cookies_sent": false,
+        "final_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/DownloadP8File",
+        "http_reason": "OK",
+        "http_status": 200,
+        "method": "POST",
+        "network_error": null,
+        "official_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/DownloadP8File",
+        "raw_body_path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/attachment_responses/20250701-5150.body",
+        "raw_headers_path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/attachment_responses/20250701-5150.headers.json",
+        "redirects": [],
+        "request_kind": "attachment",
+        "response_bytes": 85990,
+        "response_media_type": "application/octet-stream",
+        "response_sha256": "a30dd46073a57a85f1d7d6a59bcb9081c3c63eb3faed7a53fbe7028e9a9dda00",
+        "response_sha256_is_complete": true
+      },
+      "classification_before_recovery": "mandatory executable prerequisite",
+      "consumers": [
+        "ioc adapter",
+        "source-cache index/object store",
+        "A20/C35/C54 archive-only offline replay and reproducibility gate",
+        "IOC filings/source facts/observations/lineage",
+        "coverage and source-linked asset history"
+      ],
+      "inventory_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/GetFileListFromP8/20250701-5150",
+      "list_response": {
+        "accession": "20250701-5150",
+        "attempt_ended_utc": "2026-09-09T16:28:56.624517+00:00",
+        "attempt_marker": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/requests/20250701-5150.list.attempt.json",
+        "attempt_started_utc": "2026-09-09T16:28:55.670889+00:00",
+        "attempted_this_run": true,
+        "body_capture_limitation": null,
+        "content_disposition": null,
+        "credentials_or_cookies_sent": false,
+        "final_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/GetFileListFromP8/20250701-5150",
+        "http_reason": "OK",
+        "http_status": 200,
+        "method": "GET",
+        "network_error": null,
+        "official_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/GetFileListFromP8/20250701-5150",
+        "raw_body_path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/list_responses/20250701-5150.body",
+        "raw_headers_path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/list_responses/20250701-5150.headers.json",
+        "redirects": [],
+        "request_kind": "list",
+        "response_bytes": 4466,
+        "response_media_type": "application/json; charset=utf-8",
+        "response_sha256": "e5b4da8228ed24795414cd3d800fd4c7b93e50c467729ed25c0a18ac4b673082",
+        "response_sha256_is_complete": true
+      },
+      "parsed_file_list": {
+        "attachment_ids": [
+          "258024C3-F8F1-CF19-9486-97C68A200000",
+          "03A59689-DD01-CED5-9E8A-97C68A200000"
+        ],
+        "attachment_metadata": [
+          {
+            "accession_number": "20250701-5150",
+            "attachment_id": "258024C3-F8F1-CF19-9486-97C68A200000",
+            "availability_code": null,
+            "availability_mode": "P",
+            "description": "Index of Customers Report of Gulfstream Natural Gas System, L.L.C. for Q3 of 2025.",
+            "mime_type": "application/pdf",
+            "transmittal_type": null
+          },
+          {
+            "accession_number": "20250701-5150",
+            "attachment_id": "03A59689-DD01-CED5-9E8A-97C68A200000",
+            "availability_code": null,
+            "availability_mode": "P",
+            "description": "Index of Customers Report of Gulfstream Natural Gas System, L.L.C. for Q3 of 2025.",
+            "mime_type": "application/octet-stream",
+            "transmittal_type": null
+          }
+        ],
+        "data_list_count": 2,
+        "error_list": [],
+        "json_parsed": true,
+        "parse_error": null
+      }
+    },
+    {
+      "accession_number": "20251001-5165",
+      "attachment_inspection": {
+        "inspection_error": null,
+        "kind": "zip",
+        "members": [
+          {
+            "bytes": 203187,
+            "name": "20251001-5165_2025_1001_GSGC_IOC.pdf",
+            "sha256": "c09c3d794fce567f5394551f0f12bed678b12b884f42cb7e7b95fa2bfa12b0a0",
+            "zip_crc32": "977c01b5"
+          },
+          {
+            "bytes": 11793,
+            "name": "20251001-5165_IC0000882510.TAB",
+            "sha256": "5e019c8f30745f148426aef52d0def9f61480008f17e5676942b5e2b021b950f",
+            "zip_crc32": "d18289b4"
+          }
+        ]
+      },
+      "attachment_response": {
+        "accession": "20251001-5165",
+        "attempt_ended_utc": "2026-09-09T16:28:59.865625+00:00",
+        "attempt_marker": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/requests/20251001-5165.attachment.attempt.json",
+        "attempt_started_utc": "2026-09-09T16:28:58.565786+00:00",
+        "attempted_this_run": true,
+        "body_capture_limitation": null,
+        "content_disposition": "attachment; filename=20251001-5165_134334449390721676.zip",
+        "credentials_or_cookies_sent": false,
+        "final_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/DownloadP8File",
+        "http_reason": "OK",
+        "http_status": 200,
+        "method": "POST",
+        "network_error": null,
+        "official_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/DownloadP8File",
+        "raw_body_path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/attachment_responses/20251001-5165.body",
+        "raw_headers_path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/attachment_responses/20251001-5165.headers.json",
+        "redirects": [],
+        "request_kind": "attachment",
+        "response_bytes": 151653,
+        "response_media_type": "application/octet-stream",
+        "response_sha256": "14c924e0ec0635f8aee8c7dea05698af13c2837d425f16b6f19b658f9cf6f38b",
+        "response_sha256_is_complete": true
+      },
+      "classification_before_recovery": "mandatory executable prerequisite",
+      "consumers": [
+        "ioc adapter",
+        "source-cache index/object store",
+        "A20/C35/C54 archive-only offline replay and reproducibility gate",
+        "IOC filings/source facts/observations/lineage",
+        "coverage and source-linked asset history"
+      ],
+      "inventory_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/GetFileListFromP8/20251001-5165",
+      "list_response": {
+        "accession": "20251001-5165",
+        "attempt_ended_utc": "2026-09-09T16:28:58.561788+00:00",
+        "attempt_marker": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/requests/20251001-5165.list.attempt.json",
+        "attempt_started_utc": "2026-09-09T16:28:57.721421+00:00",
+        "attempted_this_run": true,
+        "body_capture_limitation": null,
+        "content_disposition": null,
+        "credentials_or_cookies_sent": false,
+        "final_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/GetFileListFromP8/20251001-5165",
+        "http_reason": "OK",
+        "http_status": 200,
+        "method": "GET",
+        "network_error": null,
+        "official_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/GetFileListFromP8/20251001-5165",
+        "raw_body_path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/list_responses/20251001-5165.body",
+        "raw_headers_path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/list_responses/20251001-5165.headers.json",
+        "redirects": [],
+        "request_kind": "list",
+        "response_bytes": 4466,
+        "response_media_type": "application/json; charset=utf-8",
+        "response_sha256": "25fb1dc3935e1e68ea12a83854469d888ae32e54d922aad34da824eb17855f47",
+        "response_sha256_is_complete": true
+      },
+      "parsed_file_list": {
+        "attachment_ids": [
+          "F425036B-9DF5-C323-9B8B-99A07A800000",
+          "54748B26-2906-CDBB-A3CC-99A07A800000"
+        ],
+        "attachment_metadata": [
+          {
+            "accession_number": "20251001-5165",
+            "attachment_id": "F425036B-9DF5-C323-9B8B-99A07A800000",
+            "availability_code": null,
+            "availability_mode": "P",
+            "description": "Index of Customers Report of Gulfstream Natural Gas System, L.L.C. for Q4 of 2025.",
+            "mime_type": "application/pdf",
+            "transmittal_type": null
+          },
+          {
+            "accession_number": "20251001-5165",
+            "attachment_id": "54748B26-2906-CDBB-A3CC-99A07A800000",
+            "availability_code": null,
+            "availability_mode": "P",
+            "description": "Index of Customers Report of Gulfstream Natural Gas System, L.L.C. for Q4 of 2025.",
+            "mime_type": "application/octet-stream",
+            "transmittal_type": null
+          }
+        ],
+        "data_list_count": 2,
+        "error_list": [],
+        "json_parsed": true,
+        "parse_error": null
+      }
+    },
+    {
+      "accession_number": "20260102-5146",
+      "attachment_inspection": {
+        "inspection_error": null,
+        "kind": "zip",
+        "members": [
+          {
+            "bytes": 111031,
+            "name": "20260102-5146_2026_0102_GSGC_IOC.pdf",
+            "sha256": "47f64a8fe0f830df2d66397a99e04b5d68f2127a1a80599ec526ace59569fc8a",
+            "zip_crc32": "ab4620b3"
+          },
+          {
+            "bytes": 12482,
+            "name": "20260102-5146_IC0000882601.TAB",
+            "sha256": "7ac412edaaaf84a99f9df1cbab9e1a865ea3c12e434f24282776882081cb801a",
+            "zip_crc32": "6b061b46"
+          }
+        ]
+      },
+      "attachment_response": {
+        "accession": "20260102-5146",
+        "attempt_ended_utc": "2026-09-09T16:29:01.940472+00:00",
+        "attempt_marker": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/requests/20260102-5146.attachment.attempt.json",
+        "attempt_started_utc": "2026-09-09T16:29:00.713592+00:00",
+        "attempted_this_run": true,
+        "body_capture_limitation": null,
+        "content_disposition": "attachment; filename=20260102-5146_134334449412882837.zip",
+        "credentials_or_cookies_sent": false,
+        "final_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/DownloadP8File",
+        "http_reason": "OK",
+        "http_status": 200,
+        "method": "POST",
+        "network_error": null,
+        "official_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/DownloadP8File",
+        "raw_body_path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/attachment_responses/20260102-5146.body",
+        "raw_headers_path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/attachment_responses/20260102-5146.headers.json",
+        "redirects": [],
+        "request_kind": "attachment",
+        "response_bytes": 86080,
+        "response_media_type": "application/octet-stream",
+        "response_sha256": "8083808c5ec88324a29641f4555d0b19545d46ebd23f12d024560d9e2a1662c3",
+        "response_sha256_is_complete": true
+      },
+      "classification_before_recovery": "mandatory executable prerequisite",
+      "consumers": [
+        "ioc adapter",
+        "source-cache index/object store",
+        "A20/C35/C54 archive-only offline replay and reproducibility gate",
+        "IOC filings/source facts/observations/lineage",
+        "coverage and source-linked asset history"
+      ],
+      "inventory_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/GetFileListFromP8/20260102-5146",
+      "list_response": {
+        "accession": "20260102-5146",
+        "attempt_ended_utc": "2026-09-09T16:29:00.711691+00:00",
+        "attempt_marker": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/requests/20260102-5146.list.attempt.json",
+        "attempt_started_utc": "2026-09-09T16:28:59.869174+00:00",
+        "attempted_this_run": true,
+        "body_capture_limitation": null,
+        "content_disposition": null,
+        "credentials_or_cookies_sent": false,
+        "final_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/GetFileListFromP8/20260102-5146",
+        "http_reason": "OK",
+        "http_status": 200,
+        "method": "GET",
+        "network_error": null,
+        "official_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/GetFileListFromP8/20260102-5146",
+        "raw_body_path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/list_responses/20260102-5146.body",
+        "raw_headers_path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/list_responses/20260102-5146.headers.json",
+        "redirects": [],
+        "request_kind": "list",
+        "response_bytes": 4466,
+        "response_media_type": "application/json; charset=utf-8",
+        "response_sha256": "9a2fb0dcee4fcb3b35262e4d7ed52f9bd49f767c8273aed753f220275eb9bec9",
+        "response_sha256_is_complete": true
+      },
+      "parsed_file_list": {
+        "attachment_ids": [
+          "7C54035F-1456-C231-9A37-9B7F82800000",
+          "D0EFA784-C14D-C575-A0FF-9B7F82800000"
+        ],
+        "attachment_metadata": [
+          {
+            "accession_number": "20260102-5146",
+            "attachment_id": "7C54035F-1456-C231-9A37-9B7F82800000",
+            "availability_code": null,
+            "availability_mode": "P",
+            "description": "Index of Customers Report of Gulfstream Natural Gas System, L.L.C. for Q1 of 2026.",
+            "mime_type": "application/pdf",
+            "transmittal_type": null
+          },
+          {
+            "accession_number": "20260102-5146",
+            "attachment_id": "D0EFA784-C14D-C575-A0FF-9B7F82800000",
+            "availability_code": null,
+            "availability_mode": "P",
+            "description": "Index of Customers Report of Gulfstream Natural Gas System, L.L.C. for Q1 of 2026.",
+            "mime_type": "application/octet-stream",
+            "transmittal_type": null
+          }
+        ],
+        "data_list_count": 2,
+        "error_list": [],
+        "json_parsed": true,
+        "parse_error": null
+      }
+    },
+    {
+      "accession_number": "20260401-5141",
+      "attachment_inspection": {
+        "inspection_error": null,
+        "kind": "zip",
+        "members": [
+          {
+            "bytes": 154326,
+            "name": "20260401-5141_2026_0401_GSGC_IOC.pdf",
+            "sha256": "80fd51cb248a67e2403936ca7a2466d5314d5b288e91abfe664b438308e2d3fd",
+            "zip_crc32": "54b1d806"
+          },
+          {
+            "bytes": 11777,
+            "name": "20260401-5141_IC0000882604.TAB",
+            "sha256": "9da3ad6ceb27b3c69279d9b8c1328c4f7e7521b75f85aca7a50fc98625d7be0a",
+            "zip_crc32": "0080ceef"
+          }
+        ]
+      },
+      "attachment_response": {
+        "accession": "20260401-5141",
+        "attempt_ended_utc": "2026-09-09T16:29:03.933583+00:00",
+        "attempt_marker": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/requests/20260401-5141.attachment.attempt.json",
+        "attempt_started_utc": "2026-09-09T16:29:02.876080+00:00",
+        "attempted_this_run": true,
+        "body_capture_limitation": null,
+        "content_disposition": "attachment; filename=20260401-5141_134334449434169445.zip",
+        "credentials_or_cookies_sent": false,
+        "final_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/DownloadP8File",
+        "http_reason": "OK",
+        "http_status": 200,
+        "method": "POST",
+        "network_error": null,
+        "official_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/DownloadP8File",
+        "raw_body_path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/attachment_responses/20260401-5141.body",
+        "raw_headers_path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/attachment_responses/20260401-5141.headers.json",
+        "redirects": [],
+        "request_kind": "attachment",
+        "response_bytes": 115618,
+        "response_media_type": "application/octet-stream",
+        "response_sha256": "f953639d06e751ece4567598f432f188e9b85c2d1f31e99dd610c7d2242d311e",
+        "response_sha256_is_complete": true
+      },
+      "classification_before_recovery": "mandatory executable prerequisite",
+      "consumers": [
+        "ioc adapter",
+        "source-cache index/object store",
+        "A20/C35/C54 archive-only offline replay and reproducibility gate",
+        "IOC filings/source facts/observations/lineage",
+        "coverage and source-linked asset history"
+      ],
+      "inventory_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/GetFileListFromP8/20260401-5141",
+      "list_response": {
+        "accession": "20260401-5141",
+        "attempt_ended_utc": "2026-09-09T16:29:02.873310+00:00",
+        "attempt_marker": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/requests/20260401-5141.list.attempt.json",
+        "attempt_started_utc": "2026-09-09T16:29:01.943797+00:00",
+        "attempted_this_run": true,
+        "body_capture_limitation": null,
+        "content_disposition": null,
+        "credentials_or_cookies_sent": false,
+        "final_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/GetFileListFromP8/20260401-5141",
+        "http_reason": "OK",
+        "http_status": 200,
+        "method": "GET",
+        "network_error": null,
+        "official_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/GetFileListFromP8/20260401-5141",
+        "raw_body_path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/list_responses/20260401-5141.body",
+        "raw_headers_path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/list_responses/20260401-5141.headers.json",
+        "redirects": [],
+        "request_kind": "list",
+        "response_bytes": 4466,
+        "response_media_type": "application/json; charset=utf-8",
+        "response_sha256": "06bf5075072cbc442a042accff1bba5e10c366cfbf644e9c835285f72c7f5434",
+        "response_sha256_is_complete": true
+      },
+      "parsed_file_list": {
+        "attachment_ids": [
+          "2309798C-F543-C972-9A32-9D496D000000",
+          "51F581C3-B184-C9AB-A053-9D496D000000"
+        ],
+        "attachment_metadata": [
+          {
+            "accession_number": "20260401-5141",
+            "attachment_id": "2309798C-F543-C972-9A32-9D496D000000",
+            "availability_code": null,
+            "availability_mode": "P",
+            "description": "Index of Customers Report of Gulfstream Natural Gas System, L.L.C. for Q2 of 2026.",
+            "mime_type": "application/pdf",
+            "transmittal_type": null
+          },
+          {
+            "accession_number": "20260401-5141",
+            "attachment_id": "51F581C3-B184-C9AB-A053-9D496D000000",
+            "availability_code": null,
+            "availability_mode": "P",
+            "description": "Index of Customers Report of Gulfstream Natural Gas System, L.L.C. for Q2 of 2026.",
+            "mime_type": "application/octet-stream",
+            "transmittal_type": null
+          }
+        ],
+        "data_list_count": 2,
+        "error_list": [],
+        "json_parsed": true,
+        "parse_error": null
+      }
+    },
+    {
+      "accession_number": "20260701-5109",
+      "attachment_inspection": {
+        "inspection_error": null,
+        "kind": "zip",
+        "members": [
+          {
+            "bytes": 199804,
+            "name": "20260701-5109_2026_0701_GSGC_IOC.pdf",
+            "sha256": "e521e346c9565810c7f1a46bb9b187bd15669743afacd5c4a1a2bba78a78f3e1",
+            "zip_crc32": "6515a521"
+          },
+          {
+            "bytes": 11777,
+            "name": "20260701-5109_IC0000882607.TAB",
+            "sha256": "23287da55b7b02697e719fa0271043458d6bd57c05c1adb7324973bedb524a32",
+            "zip_crc32": "4c6041d7"
+          }
+        ]
+      },
+      "attachment_response": {
+        "accession": "20260701-5109",
+        "attempt_ended_utc": "2026-09-09T16:29:05.906358+00:00",
+        "attempt_marker": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/requests/20260701-5109.attachment.attempt.json",
+        "attempt_started_utc": "2026-09-09T16:29:04.742701+00:00",
+        "attempted_this_run": true,
+        "body_capture_limitation": null,
+        "content_disposition": "attachment; filename=20260701-5109_134334449452789851.zip",
+        "credentials_or_cookies_sent": false,
+        "final_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/DownloadP8File",
+        "http_reason": "OK",
+        "http_status": 200,
+        "method": "POST",
+        "network_error": null,
+        "official_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/DownloadP8File",
+        "raw_body_path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/attachment_responses/20260701-5109.body",
+        "raw_headers_path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/attachment_responses/20260701-5109.headers.json",
+        "redirects": [],
+        "request_kind": "attachment",
+        "response_bytes": 148353,
+        "response_media_type": "application/octet-stream",
+        "response_sha256": "dd226091fb8961274b18a269e6f99352c455116132f16b622b172e1b61a5c4aa",
+        "response_sha256_is_complete": true
+      },
+      "classification_before_recovery": "mandatory executable prerequisite",
+      "consumers": [
+        "ioc adapter",
+        "source-cache index/object store",
+        "A20/C35/C54 archive-only offline replay and reproducibility gate",
+        "IOC filings/source facts/observations/lineage",
+        "coverage and source-linked asset history"
+      ],
+      "inventory_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/GetFileListFromP8/20260701-5109",
+      "list_response": {
+        "accession": "20260701-5109",
+        "attempt_ended_utc": "2026-09-09T16:29:04.739776+00:00",
+        "attempt_marker": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/requests/20260701-5109.list.attempt.json",
+        "attempt_started_utc": "2026-09-09T16:29:03.938363+00:00",
+        "attempted_this_run": true,
+        "body_capture_limitation": null,
+        "content_disposition": null,
+        "credentials_or_cookies_sent": false,
+        "final_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/GetFileListFromP8/20260701-5109",
+        "http_reason": "OK",
+        "http_status": 200,
+        "method": "GET",
+        "network_error": null,
+        "official_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/GetFileListFromP8/20260701-5109",
+        "raw_body_path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/list_responses/20260701-5109.body",
+        "raw_headers_path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/list_responses/20260701-5109.headers.json",
+        "redirects": [],
+        "request_kind": "list",
+        "response_bytes": 4466,
+        "response_media_type": "application/json; charset=utf-8",
+        "response_sha256": "9c8965e004487724c420c6d8d48f9e4090c70a279309a45cc3839f5cd580f9f4",
+        "response_sha256_is_complete": true
+      },
+      "parsed_file_list": {
+        "attachment_ids": [
+          "C6276160-7A64-C624-9811-9F1E36300000",
+          "A3ADFB29-EF3A-C41A-A013-9F1E36300000"
+        ],
+        "attachment_metadata": [
+          {
+            "accession_number": "20260701-5109",
+            "attachment_id": "C6276160-7A64-C624-9811-9F1E36300000",
+            "availability_code": null,
+            "availability_mode": "P",
+            "description": "Index of Customers Report of Gulfstream Natural Gas System, L.L.C. for Q3 of 2026.",
+            "mime_type": "application/pdf",
+            "transmittal_type": null
+          },
+          {
+            "accession_number": "20260701-5109",
+            "attachment_id": "A3ADFB29-EF3A-C41A-A013-9F1E36300000",
+            "availability_code": null,
+            "availability_mode": "P",
+            "description": "Index of Customers Report of Gulfstream Natural Gas System, L.L.C. for Q3 of 2026.",
+            "mime_type": "application/octet-stream",
+            "transmittal_type": null
+          }
+        ],
+        "data_list_count": 2,
+        "error_list": [],
+        "json_parsed": true,
+        "parse_error": null
+      }
+    },
+    {
+      "accession_number": "20231229-5212",
+      "attachment_inspection": {
+        "inspection_error": null,
+        "kind": "binary",
+        "members": []
+      },
+      "attachment_response": {
+        "accession": "20231229-5212",
+        "attempt_ended_utc": "2026-09-09T16:29:19.327638+00:00",
+        "attempt_marker": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/requests/20231229-5212.attachment.attempt.json",
+        "attempt_started_utc": "2026-09-09T16:29:07.453751+00:00",
+        "attempted_this_run": true,
+        "body_capture_limitation": null,
+        "content_disposition": null,
+        "credentials_or_cookies_sent": false,
+        "final_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/DownloadP8File",
+        "http_reason": "Internal Server Error",
+        "http_status": 500,
+        "method": "POST",
+        "network_error": null,
+        "official_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/DownloadP8File",
+        "raw_body_path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/attachment_responses/20231229-5212.body",
+        "raw_headers_path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/attachment_responses/20231229-5212.headers.json",
+        "redirects": [],
+        "request_kind": "attachment",
+        "response_bytes": 61,
+        "response_media_type": "application/json; charset=utf-8",
+        "response_sha256": "e081cde7589ce317c72b9c017743982b29b8b5825e79dc5ce01da787253fc7b9",
+        "response_sha256_is_complete": true
+      },
+      "classification_before_recovery": "mandatory executable prerequisite",
+      "consumers": [
+        "elibrary_docs adapter",
+        "source-cache index/object store",
+        "A20/C35/C54 archive-only offline replay and reproducibility gate",
+        "document/filing archive",
+        "observation metric tariff_operative_rate",
+        "field-status/coverage/export consumers"
+      ],
+      "inventory_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/GetFileListFromP8/20231229-5212",
+      "list_response": {
+        "accession": "20231229-5212",
+        "attempt_ended_utc": "2026-09-09T16:29:07.448624+00:00",
+        "attempt_marker": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/requests/20231229-5212.list.attempt.json",
+        "attempt_started_utc": "2026-09-09T16:29:05.913007+00:00",
+        "attempted_this_run": true,
+        "body_capture_limitation": null,
+        "content_disposition": null,
+        "credentials_or_cookies_sent": false,
+        "final_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/GetFileListFromP8/20231229-5212",
+        "http_reason": "OK",
+        "http_status": 200,
+        "method": "GET",
+        "network_error": null,
+        "official_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/GetFileListFromP8/20231229-5212",
+        "raw_body_path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/list_responses/20231229-5212.body",
+        "raw_headers_path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/list_responses/20231229-5212.headers.json",
+        "redirects": [],
+        "request_kind": "list",
+        "response_bytes": 22930,
+        "response_media_type": "application/json; charset=utf-8",
+        "response_sha256": "f5ef1ce4c1fda3adabb4f063fd6c0a4cd33f4d1e5dd391f176faa15e88538ddc",
+        "response_sha256_is_complete": true
+      },
+      "parsed_file_list": {
+        "attachment_ids": [
+          "4F78CA14-4794-C5FD-92DC-8CB6CB000000",
+          "58621AD7-AF29-CF3F-9BB0-8CB6CB000000",
+          "3C44D08A-94D2-C98C-A144-8CB6CB000000",
+          "DC601E40-7B07-C8BD-ABA3-8CB6CB000000",
+          "EA0FA8BB-43BF-C77E-B032-8CB6CB000000",
+          "786B85FD-42BA-CE09-B879-8CB6CB000000",
+          "F19520DA-2360-C302-8619-8CB6CB100000",
+          "BEBAB862-02BD-C19D-8DB5-8CB6CB100000",
+          "C664C03C-8CBF-CE07-9719-8CB6CB100000",
+          "3428E21F-78F8-CAD9-8809-8CB6CB200000"
+        ],
+        "attachment_metadata": [
+          {
+            "accession_number": "20231229-5212",
+            "attachment_id": "4F78CA14-4794-C5FD-92DC-8CB6CB000000",
+            "availability_code": null,
+            "availability_mode": "P",
+            "description": "Northern Border Pipeline Company submits tariff filing per 154.312: NBPL Section 4 Rate Case (1 of 2) to be effective 2/1/2024 under RP24-287. Filing Type : 690",
+            "mime_type": "application/pdf",
+            "transmittal_type": null
+          },
+          {
+            "accession_number": "20231229-5212",
+            "attachment_id": "58621AD7-AF29-CF3F-9BB0-8CB6CB000000",
+            "availability_code": null,
+            "availability_mode": "P",
+            "description": "Northern Border Pipeline Company submits tariff filing per 154.312: NBPL Section 4 Rate Case (1 of 2) to be effective 2/1/2024 under RP24-287. Filing Type : 690",
+            "mime_type": "application/pdf",
+            "transmittal_type": null
+          },
+          {
+            "accession_number": "20231229-5212",
+            "attachment_id": "3C44D08A-94D2-C98C-A144-8CB6CB000000",
+            "availability_code": null,
+            "availability_mode": "P",
+            "description": "Northern Border Pipeline Company submits tariff filing per 154.312: NBPL Section 4 Rate Case (1 of 2) to be effective 2/1/2024 under RP24-287. Filing Type : 690",
+            "mime_type": "application/pdf",
+            "transmittal_type": null
+          },
+          {
+            "accession_number": "20231229-5212",
+            "attachment_id": "DC601E40-7B07-C8BD-ABA3-8CB6CB000000",
+            "availability_code": null,
+            "availability_mode": "P",
+            "description": "Northern Border Pipeline Company submits tariff filing per 154.312: NBPL Section 4 Rate Case (1 of 2) to be effective 2/1/2024 under RP24-287. Filing Type : 690",
+            "mime_type": "application/pdf",
+            "transmittal_type": null
+          },
+          {
+            "accession_number": "20231229-5212",
+            "attachment_id": "EA0FA8BB-43BF-C77E-B032-8CB6CB000000",
+            "availability_code": null,
+            "availability_mode": "P",
+            "description": "Northern Border Pipeline Company submits tariff filing per 154.312: NBPL Section 4 Rate Case (1 of 2) to be effective 2/1/2024 under RP24-287. Filing Type : 690",
+            "mime_type": "application/pdf",
+            "transmittal_type": null
+          },
+          {
+            "accession_number": "20231229-5212",
+            "attachment_id": "786B85FD-42BA-CE09-B879-8CB6CB000000",
+            "availability_code": null,
+            "availability_mode": "P",
+            "description": "Northern Border Pipeline Company submits tariff filing per 154.312: NBPL Section 4 Rate Case (1 of 2) to be effective 2/1/2024 under RP24-287. Filing Type : 690",
+            "mime_type": "application/msexcel",
+            "transmittal_type": null
+          },
+          {
+            "accession_number": "20231229-5212",
+            "attachment_id": "F19520DA-2360-C302-8619-8CB6CB100000",
+            "availability_code": null,
+            "availability_mode": "P",
+            "description": "Northern Border Pipeline Company submits tariff filing per 154.312: NBPL Section 4 Rate Case (1 of 2) to be effective 2/1/2024 under RP24-287. Filing Type : 690",
+            "mime_type": "application/msexcel",
+            "transmittal_type": null
+          },
+          {
+            "accession_number": "20231229-5212",
+            "attachment_id": "BEBAB862-02BD-C19D-8DB5-8CB6CB100000",
+            "availability_code": null,
+            "availability_mode": "P",
+            "description": "Northern Border Pipeline Company submits tariff filing per 154.312: NBPL Section 4 Rate Case (1 of 2) to be effective 2/1/2024 under RP24-287. Filing Type : 690",
+            "mime_type": "application/msexcel",
+            "transmittal_type": null
+          },
+          {
+            "accession_number": "20231229-5212",
+            "attachment_id": "C664C03C-8CBF-CE07-9719-8CB6CB100000",
+            "availability_code": null,
+            "availability_mode": "P",
+            "description": "Northern Border Pipeline Company submits tariff filing per 154.312: NBPL Section 4 Rate Case (1 of 2) to be effective 2/1/2024 under RP24-287. Filing Type : 690",
+            "mime_type": "application/msexcel",
+            "transmittal_type": null
+          },
+          {
+            "accession_number": "20231229-5212",
+            "attachment_id": "3428E21F-78F8-CAD9-8809-8CB6CB200000",
+            "availability_code": null,
+            "availability_mode": "P",
+            "description": "Northern Border Pipeline Company submits tariff filing per 154.312: NBPL Section 4 Rate Case (1 of 2) to be effective 2/1/2024 under RP24-287. Filing Type : 690",
+            "mime_type": "application/octet-stream",
+            "transmittal_type": null
+          }
+        ],
+        "data_list_count": 10,
+        "error_list": [],
+        "json_parsed": true,
+        "parse_error": null
+      }
+    },
+    {
+      "accession_number": "20150930-5060",
+      "attachment_inspection": {
+        "inspection_error": null,
+        "kind": "zip",
+        "members": [
+          {
+            "bytes": 406842,
+            "name": "20150930-5060_Sabine_Pipe_Line_Transmittal.PDF",
+            "sha256": "2f4b0f681d259c580a2035642b3cffdc627cfbc01e8363c282f3a044132ce518",
+            "zip_crc32": "f36741a9"
+          },
+          {
+            "bytes": 382934,
+            "name": "20150930-5060_Workpapers.XLSX",
+            "sha256": "765f678ab174b0bf15384a012875de1d268ae98ab872f877f5c906e86df8faa8",
+            "zip_crc32": "24b9a5db"
+          },
+          {
+            "bytes": 3166441,
+            "name": "20150930-5060_Sabine_FERC_Form_No_2_2014.PDF",
+            "sha256": "bdfeb32bcbbe073229c31c65836fe27c928be14a5890cd31a6e884e9612c21e4",
+            "zip_crc32": "5525ba6c"
+          },
+          {
+            "bytes": 377164,
+            "name": "20150930-5060_Statement_P_Pellegrin.PDF",
+            "sha256": "d18c1d661a649d74a9353b83ede44905c6240f9a453d91c90e78ecd50beaf1f1",
+            "zip_crc32": "fabf40f4"
+          },
+          {
+            "bytes": 299321,
+            "name": "20150930-5060_Statement_P_Warner.PDF",
+            "sha256": "d5a76bfcf9b8ed6472620551e5f9551feb2c2c41b6cbd5fba03252e4db66490f",
+            "zip_crc32": "89936b7b"
+          },
+          {
+            "bytes": 374768,
+            "name": "20150930-5060_Statement_P_Guenther.PDF",
+            "sha256": "52aae14e81ef9f4d9b624c3c379e845b8a481f4107e51bce8a11617f37932ce7",
+            "zip_crc32": "a0d92750"
+          },
+          {
+            "bytes": 423054,
+            "name": "20150930-5060_Statement_P_McAden.PDF",
+            "sha256": "39f008bf1ac8c2a0fc2e21255ccdde62241db5c4dc296c14a2485331e226ee5b",
+            "zip_crc32": "e4afa500"
+          },
+          {
+            "bytes": 348753,
+            "name": "20150930-5060_Statement_P_Garcia_Espejo.PDF",
+            "sha256": "d1d7bae3f61cc0b53e497de8b3a943ee3b94cd524dfb03320e425bc00017931c",
+            "zip_crc32": "5969fa47"
+          },
+          {
+            "bytes": 899577,
+            "name": "20150930-5060_Statement_P_Hevert.PDF",
+            "sha256": "17a8d627ad8039ad726702226151af8d377553c8cad8b833f95aa7a622e73cfe",
+            "zip_crc32": "c3c8f3e2"
+          },
+          {
+            "bytes": 636055,
+            "name": "20150930-5060_Statement_P_Lovinger.PDF",
+            "sha256": "317051a66a48d990594125706154c86f1f65404a569f87971797252f8f6aaabe",
+            "zip_crc32": "f61d55d9"
+          },
+          {
+            "bytes": 85563,
+            "name": "20150930-5060_Statement_P_Greneaux.PDF",
+            "sha256": "4506391855436367d7336d74b188c405c730874f301f406f6a727cf27c685f77",
+            "zip_crc32": "377b02cb"
+          },
+          {
+            "bytes": 975829,
+            "name": "20150930-5060_Statement_P_Taylor.PDF",
+            "sha256": "c7d11dfbf791e58fd459438c3433dd7c173197c6e940cd3833ce8b1f75ce6ed4",
+            "zip_crc32": "6e687411"
+          },
+          {
+            "bytes": 4006079,
+            "name": "20150930-5060_Statement_P_Kirk.PDF",
+            "sha256": "d410ae1351f5e975455f87f0f692b0bc0d815315d83fde88441bbf90059ad4dc",
+            "zip_crc32": "89f1cfd7"
+          },
+          {
+            "bytes": 7626916,
+            "name": "20150930-5060_Statement_P_Crowley1.PDF",
+            "sha256": "b999dfde036c57d37e95d9567a38f12c16df0fddd200afa175130bb6169bb9de",
+            "zip_crc32": "fcae3d48"
+          },
+          {
+            "bytes": 4400724,
+            "name": "20150930-5060_Statement_P_Sullivan.PDF",
+            "sha256": "e7407e5432185981bcdef3fd752d7298c2f898ee2ba89fb8f47d4fa570f7403c",
+            "zip_crc32": "22bbd539"
+          },
+          {
+            "bytes": 15175,
+            "name": "20150930-5060_Schedule_H-2.XLSX",
+            "sha256": "e13b4540c8fad1e63d1f8d34df4db9bc765c625e5f297165e12679c4f14491eb",
+            "zip_crc32": "f6ec7276"
+          },
+          {
+            "bytes": 14900,
+            "name": "20150930-5060_Schedule_H-3.XLSX",
+            "sha256": "661809d6778c90a40b587a77b7fd7596a5e01782534426c85372213ba80de68b",
+            "zip_crc32": "ba0cb8e1"
+          },
+          {
+            "bytes": 14550,
+            "name": "20150930-5060_Statement_H-4.XLSX",
+            "sha256": "9c863828b989d69d750274baf6a655f0629946bae5ca28d60a75abb04ceb9c04",
+            "zip_crc32": "4f2f9249"
+          },
+          {
+            "bytes": 75913,
+            "name": "20150930-5060_Schedule_I-1_files.XLSX",
+            "sha256": "97aaebc18e10c433cca65a04bb6cd1f75638c86b67810aa2d0424cbf1c4b26a1",
+            "zip_crc32": "d3f40222"
+          },
+          {
+            "bytes": 22286,
+            "name": "20150930-5060_Statement_J_files.XLSX",
+            "sha256": "87cedbfc52d51e0aa6bbe04b8d8c25bb88183f4c11b4833377298b2d657788bf",
+            "zip_crc32": "fa6ab2b1"
+          },
+          {
+            "bytes": 11605,
+            "name": "20150930-5060_Statement_L.XLSX",
+            "sha256": "2e5ebf77ca5948cfbaa18139e5e9ba0212e5d9e9be49f59d454d190463fd04e5",
+            "zip_crc32": "d593a9d3"
+          },
+          {
+            "bytes": 11619,
+            "name": "20150930-5060_Statement_M.XLSX",
+            "sha256": "945ff4e2077ba7dc0d7717b49bb1af66838d7552f7a19369256332044c62b183",
+            "zip_crc32": "4997e7a3"
+          },
+          {
+            "bytes": 487185,
+            "name": "20150930-5060_Statement_O.PDF",
+            "sha256": "09b702de5ec82c2f48d84431a8ad70bdadf639b906ce0c1f7fffe6ee3c5dcf12",
+            "zip_crc32": "583b3a2f"
+          },
+          {
+            "bytes": 23426,
+            "name": "20150930-5060_Statement_B_files.XLSX",
+            "sha256": "7dd695af0178a3f3ceb193f5bc4e8519b1bc720a2769e79678dc1bfdad43f6ae",
+            "zip_crc32": "c8905aea"
+          },
+          {
+            "bytes": 25592,
+            "name": "20150930-5060_Statement_C_Files.XLSX",
+            "sha256": "69e2a1c2e91fe872714f3dd7f1267b4bd712e46e236010a655525a2b01f9ba7c",
+            "zip_crc32": "8a0cc7d7"
+          },
+          {
+            "bytes": 13643,
+            "name": "20150930-5060_Statement_D.XLSX",
+            "sha256": "c6d173ed6bc7c4ec8b60214384d55a38ec9a15ac4e70e6940adbe948480206a3",
+            "zip_crc32": "bf8670ab"
+          },
+          {
+            "bytes": 19364,
+            "name": "20150930-5060_Statement_E_Files.XLSX",
+            "sha256": "94911512ea845d20f0dd3205672cffe049e0c2ca9a792593312b2c1c6f6ea3c1",
+            "zip_crc32": "49509897"
+          },
+          {
+            "bytes": 20103,
+            "name": "20150930-5060_Statement_F_Files.XLSX",
+            "sha256": "75e93700301b62cc0a79faddf708e0c83de6eb7de768a1cc4d9dc0d444991dd4",
+            "zip_crc32": "bf1c1fdf"
+          },
+          {
+            "bytes": 95275,
+            "name": "20150930-5060_Statement_G_Files.XLSX",
+            "sha256": "9133b84d8337d9ec8b40da2b48809eef9e30283967002cb671f3141b02a674bd",
+            "zip_crc32": "6f18605a"
+          },
+          {
+            "bytes": 53985,
+            "name": "20150930-5060_Statement_H-1.XLSX",
+            "sha256": "fe372d9dfebf76a13d8e713855885a628cd595b29b4e50d415e84ea33837bb06",
+            "zip_crc32": "9790a345"
+          },
+          {
+            "bytes": 11086,
+            "name": "20150930-5060_Statement_A.XLSX",
+            "sha256": "db39cc171c495358e10933a368693e5990d7a408705eb284928e044690f96d4f",
+            "zip_crc32": "5c20d29e"
+          },
+          {
+            "bytes": 134940,
+            "name": "20150930-5060_Sabine Tariff Clean.PDF",
+            "sha256": "c18f3c427f78d21ee60945a938dd4154d8d81936bdf47e1ed54534446137e5f1",
+            "zip_crc32": "ab190bf4"
+          },
+          {
+            "bytes": 140624,
+            "name": "20150930-5060_Redline Sabine tariff.PDF",
+            "sha256": "a58b42374f8ecd6e9f8cb0b0848effe445587c6942ce3bda9f817ab172456c5a",
+            "zip_crc32": "c09bf71f"
+          },
+          {
+            "bytes": 116239,
+            "name": "20150930-5060_FERC GENERATED TARIFF FILING.RTF",
+            "sha256": "7536086e17d8e11cfe88a81f8ab96bfda11d196747484e826bd8ddc1a37f12d3",
+            "zip_crc32": "b31c030d"
+          }
+        ]
+      },
+      "attachment_response": {
+        "accession": "20150930-5060",
+        "attempt_ended_utc": "2026-09-09T16:29:42.926019+00:00",
+        "attempt_marker": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/requests/20150930-5060.attachment.attempt.json",
+        "attempt_started_utc": "2026-09-09T16:29:23.217665+00:00",
+        "attempted_this_run": true,
+        "body_capture_limitation": null,
+        "content_disposition": "attachment; filename=20150930-5060_134334449636904929.zip",
+        "credentials_or_cookies_sent": false,
+        "final_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/DownloadP8File",
+        "http_reason": "OK",
+        "http_status": 200,
+        "method": "POST",
+        "network_error": null,
+        "official_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/DownloadP8File",
+        "raw_body_path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/attachment_responses/20150930-5060.body",
+        "raw_headers_path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/attachment_responses/20150930-5060.headers.json",
+        "redirects": [],
+        "request_kind": "attachment",
+        "response_bytes": 19759596,
+        "response_media_type": "application/octet-stream",
+        "response_sha256": "2cf3ef55e1495fd1f737d3ca777b712fc7d5e6cb31a8d7d06420d60ea6cf423b",
+        "response_sha256_is_complete": true
+      },
+      "classification_before_recovery": "mandatory executable prerequisite",
+      "consumers": [
+        "elibrary_docs adapter",
+        "source-cache index/object store",
+        "A20/C35/C54 archive-only offline replay and reproducibility gate",
+        "document/filing archive",
+        "observation metric tariff_operative_rate",
+        "field-status/coverage/export consumers"
+      ],
+      "inventory_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/GetFileListFromP8/20150930-5060",
+      "list_response": {
+        "accession": "20150930-5060",
+        "attempt_ended_utc": "2026-09-09T16:29:23.214665+00:00",
+        "attempt_marker": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/requests/20150930-5060.list.attempt.json",
+        "attempt_started_utc": "2026-09-09T16:29:19.332376+00:00",
+        "attempted_this_run": true,
+        "body_capture_limitation": null,
+        "content_disposition": null,
+        "credentials_or_cookies_sent": false,
+        "final_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/GetFileListFromP8/20150930-5060",
+        "http_reason": "OK",
+        "http_status": 200,
+        "method": "GET",
+        "network_error": null,
+        "official_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/GetFileListFromP8/20150930-5060",
+        "raw_body_path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/list_responses/20150930-5060.body",
+        "raw_headers_path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/list_responses/20150930-5060.headers.json",
+        "redirects": [],
+        "request_kind": "list",
+        "response_bytes": 78696,
+        "response_media_type": "application/json; charset=utf-8",
+        "response_sha256": "7a52dec4f10ecaf0be3c09ab7862938625936dc55e6e31e6fe6a8a496ee1e504",
+        "response_sha256_is_complete": true
+      },
+      "parsed_file_list": {
+        "attachment_ids": [
+          "01D7CB76-66E2-5005-8110-C31FAFC91712",
+          "01D7CB77-66E2-5005-8110-C31FAFC91712",
+          "01D7CB78-66E2-5005-8110-C31FAFC91712",
+          "01D7CB79-66E2-5005-8110-C31FAFC91712",
+          "01D7CB7A-66E2-5005-8110-C31FAFC91712",
+          "01D7CB7B-66E2-5005-8110-C31FAFC91712",
+          "01D7CB7C-66E2-5005-8110-C31FAFC91712",
+          "01D7CB7D-66E2-5005-8110-C31FAFC91712",
+          "01D7CB7E-66E2-5005-8110-C31FAFC91712",
+          "01D7CB7F-66E2-5005-8110-C31FAFC91712",
+          "01D7CB80-66E2-5005-8110-C31FAFC91712",
+          "01D7CB81-66E2-5005-8110-C31FAFC91712",
+          "01D7CB82-66E2-5005-8110-C31FAFC91712",
+          "01D7CB83-66E2-5005-8110-C31FAFC91712",
+          "01D7CB84-66E2-5005-8110-C31FAFC91712",
+          "01D7CB85-66E2-5005-8110-C31FAFC91712",
+          "01D7CB86-66E2-5005-8110-C31FAFC91712",
+          "01D7CB87-66E2-5005-8110-C31FAFC91712",
+          "01D7CB88-66E2-5005-8110-C31FAFC91712",
+          "01D7CB89-66E2-5005-8110-C31FAFC91712",
+          "01D7CB8A-66E2-5005-8110-C31FAFC91712",
+          "01D7CB8B-66E2-5005-8110-C31FAFC91712",
+          "01D7CB8C-66E2-5005-8110-C31FAFC91712",
+          "01D7CB8D-66E2-5005-8110-C31FAFC91712",
+          "01D7CB8E-66E2-5005-8110-C31FAFC91712",
+          "01D7CB8F-66E2-5005-8110-C31FAFC91712",
+          "01D7CB90-66E2-5005-8110-C31FAFC91712",
+          "01D7CB91-66E2-5005-8110-C31FAFC91712",
+          "01D7CB92-66E2-5005-8110-C31FAFC91712",
+          "01D7CB93-66E2-5005-8110-C31FAFC91712",
+          "01D7CB94-66E2-5005-8110-C31FAFC91712",
+          "01D7CB95-66E2-5005-8110-C31FAFC91712",
+          "01D7CB96-66E2-5005-8110-C31FAFC91712",
+          "01D7CB97-66E2-5005-8110-C31FAFC91712"
+        ],
+        "attachment_metadata": [
+          {
+            "accession_number": "20150930-5060",
+            "attachment_id": "01D7CB76-66E2-5005-8110-C31FAFC91712",
+            "availability_code": "P",
+            "availability_mode": "P",
+            "description": "Sabine Pipe Line LLC submits tariff filing per 154.312: Sabine Pipe Line Section 4 Rate Case (2015) to be effective 11/1/2015 under RP15-1322 Filing Type : 690",
+            "mime_type": "application/octet-stream",
+            "transmittal_type": "Mixed Format"
+          },
+          {
+            "accession_number": "20150930-5060",
+            "attachment_id": "01D7CB77-66E2-5005-8110-C31FAFC91712",
+            "availability_code": "P",
+            "availability_mode": "P",
+            "description": "Sabine Pipe Line LLC submits tariff filing per 154.312: Sabine Pipe Line Section 4 Rate Case (2015) to be effective 11/1/2015 under RP15-1322 Filing Type : 690",
+            "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            "transmittal_type": "Mixed Format"
+          },
+          {
+            "accession_number": "20150930-5060",
+            "attachment_id": "01D7CB78-66E2-5005-8110-C31FAFC91712",
+            "availability_code": "P",
+            "availability_mode": "P",
+            "description": "Sabine Pipe Line LLC submits tariff filing per 154.312: Sabine Pipe Line Section 4 Rate Case (2015) to be effective 11/1/2015 under RP15-1322 Filing Type : 690",
+            "mime_type": "application/octet-stream",
+            "transmittal_type": "Mixed Format"
+          },
+          {
+            "accession_number": "20150930-5060",
+            "attachment_id": "01D7CB79-66E2-5005-8110-C31FAFC91712",
+            "availability_code": "P",
+            "availability_mode": "P",
+            "description": "Sabine Pipe Line LLC submits tariff filing per 154.312: Sabine Pipe Line Section 4 Rate Case (2015) to be effective 11/1/2015 under RP15-1322 Filing Type : 690",
+            "mime_type": "application/octet-stream",
+            "transmittal_type": "Mixed Format"
+          },
+          {
+            "accession_number": "20150930-5060",
+            "attachment_id": "01D7CB7A-66E2-5005-8110-C31FAFC91712",
+            "availability_code": "P",
+            "availability_mode": "P",
+            "description": "Sabine Pipe Line LLC submits tariff filing per 154.312: Sabine Pipe Line Section 4 Rate Case (2015) to be effective 11/1/2015 under RP15-1322 Filing Type : 690",
+            "mime_type": "application/octet-stream",
+            "transmittal_type": "Mixed Format"
+          },
+          {
+            "accession_number": "20150930-5060",
+            "attachment_id": "01D7CB7B-66E2-5005-8110-C31FAFC91712",
+            "availability_code": "P",
+            "availability_mode": "P",
+            "description": "Sabine Pipe Line LLC submits tariff filing per 154.312: Sabine Pipe Line Section 4 Rate Case (2015) to be effective 11/1/2015 under RP15-1322 Filing Type : 690",
+            "mime_type": "application/octet-stream",
+            "transmittal_type": "Mixed Format"
+          },
+          {
+            "accession_number": "20150930-5060",
+            "attachment_id": "01D7CB7C-66E2-5005-8110-C31FAFC91712",
+            "availability_code": "P",
+            "availability_mode": "P",
+            "description": "Sabine Pipe Line LLC submits tariff filing per 154.312: Sabine Pipe Line Section 4 Rate Case (2015) to be effective 11/1/2015 under RP15-1322 Filing Type : 690",
+            "mime_type": "application/octet-stream",
+            "transmittal_type": "Mixed Format"
+          },
+          {
+            "accession_number": "20150930-5060",
+            "attachment_id": "01D7CB7D-66E2-5005-8110-C31FAFC91712",
+            "availability_code": "P",
+            "availability_mode": "P",
+            "description": "Sabine Pipe Line LLC submits tariff filing per 154.312: Sabine Pipe Line Section 4 Rate Case (2015) to be effective 11/1/2015 under RP15-1322 Filing Type : 690",
+            "mime_type": "application/octet-stream",
+            "transmittal_type": "Mixed Format"
+          },
+          {
+            "accession_number": "20150930-5060",
+            "attachment_id": "01D7CB7E-66E2-5005-8110-C31FAFC91712",
+            "availability_code": "P",
+            "availability_mode": "P",
+            "description": "Sabine Pipe Line LLC submits tariff filing per 154.312: Sabine Pipe Line Section 4 Rate Case (2015) to be effective 11/1/2015 under RP15-1322 Filing Type : 690",
+            "mime_type": "application/octet-stream",
+            "transmittal_type": "Mixed Format"
+          },
+          {
+            "accession_number": "20150930-5060",
+            "attachment_id": "01D7CB7F-66E2-5005-8110-C31FAFC91712",
+            "availability_code": "P",
+            "availability_mode": "P",
+            "description": "Sabine Pipe Line LLC submits tariff filing per 154.312: Sabine Pipe Line Section 4 Rate Case (2015) to be effective 11/1/2015 under RP15-1322 Filing Type : 690",
+            "mime_type": "application/octet-stream",
+            "transmittal_type": "Mixed Format"
+          },
+          {
+            "accession_number": "20150930-5060",
+            "attachment_id": "01D7CB80-66E2-5005-8110-C31FAFC91712",
+            "availability_code": "P",
+            "availability_mode": "P",
+            "description": "Sabine Pipe Line LLC submits tariff filing per 154.312: Sabine Pipe Line Section 4 Rate Case (2015) to be effective 11/1/2015 under RP15-1322 Filing Type : 690",
+            "mime_type": "application/octet-stream",
+            "transmittal_type": "Mixed Format"
+          },
+          {
+            "accession_number": "20150930-5060",
+            "attachment_id": "01D7CB81-66E2-5005-8110-C31FAFC91712",
+            "availability_code": "P",
+            "availability_mode": "P",
+            "description": "Sabine Pipe Line LLC submits tariff filing per 154.312: Sabine Pipe Line Section 4 Rate Case (2015) to be effective 11/1/2015 under RP15-1322 Filing Type : 690",
+            "mime_type": "application/octet-stream",
+            "transmittal_type": "Mixed Format"
+          },
+          {
+            "accession_number": "20150930-5060",
+            "attachment_id": "01D7CB82-66E2-5005-8110-C31FAFC91712",
+            "availability_code": "P",
+            "availability_mode": "P",
+            "description": "Sabine Pipe Line LLC submits tariff filing per 154.312: Sabine Pipe Line Section 4 Rate Case (2015) to be effective 11/1/2015 under RP15-1322 Filing Type : 690",
+            "mime_type": "application/octet-stream",
+            "transmittal_type": "Mixed Format"
+          },
+          {
+            "accession_number": "20150930-5060",
+            "attachment_id": "01D7CB83-66E2-5005-8110-C31FAFC91712",
+            "availability_code": "P",
+            "availability_mode": "P",
+            "description": "Sabine Pipe Line LLC submits tariff filing per 154.312: Sabine Pipe Line Section 4 Rate Case (2015) to be effective 11/1/2015 under RP15-1322 Filing Type : 690",
+            "mime_type": "application/octet-stream",
+            "transmittal_type": "Mixed Format"
+          },
+          {
+            "accession_number": "20150930-5060",
+            "attachment_id": "01D7CB84-66E2-5005-8110-C31FAFC91712",
+            "availability_code": "P",
+            "availability_mode": "P",
+            "description": "Sabine Pipe Line LLC submits tariff filing per 154.312: Sabine Pipe Line Section 4 Rate Case (2015) to be effective 11/1/2015 under RP15-1322 Filing Type : 690",
+            "mime_type": "application/octet-stream",
+            "transmittal_type": "Mixed Format"
+          },
+          {
+            "accession_number": "20150930-5060",
+            "attachment_id": "01D7CB85-66E2-5005-8110-C31FAFC91712",
+            "availability_code": "P",
+            "availability_mode": "P",
+            "description": "Sabine Pipe Line LLC submits tariff filing per 154.312: Sabine Pipe Line Section 4 Rate Case (2015) to be effective 11/1/2015 under RP15-1322 Filing Type : 690",
+            "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            "transmittal_type": "Mixed Format"
+          },
+          {
+            "accession_number": "20150930-5060",
+            "attachment_id": "01D7CB86-66E2-5005-8110-C31FAFC91712",
+            "availability_code": "P",
+            "availability_mode": "P",
+            "description": "Sabine Pipe Line LLC submits tariff filing per 154.312: Sabine Pipe Line Section 4 Rate Case (2015) to be effective 11/1/2015 under RP15-1322 Filing Type : 690",
+            "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            "transmittal_type": "Mixed Format"
+          },
+          {
+            "accession_number": "20150930-5060",
+            "attachment_id": "01D7CB87-66E2-5005-8110-C31FAFC91712",
+            "availability_code": "P",
+            "availability_mode": "P",
+            "description": "Sabine Pipe Line LLC submits tariff filing per 154.312: Sabine Pipe Line Section 4 Rate Case (2015) to be effective 11/1/2015 under RP15-1322 Filing Type : 690",
+            "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            "transmittal_type": "Mixed Format"
+          },
+          {
+            "accession_number": "20150930-5060",
+            "attachment_id": "01D7CB88-66E2-5005-8110-C31FAFC91712",
+            "availability_code": "P",
+            "availability_mode": "P",
+            "description": "Sabine Pipe Line LLC submits tariff filing per 154.312: Sabine Pipe Line Section 4 Rate Case (2015) to be effective 11/1/2015 under RP15-1322 Filing Type : 690",
+            "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            "transmittal_type": "Mixed Format"
+          },
+          {
+            "accession_number": "20150930-5060",
+            "attachment_id": "01D7CB89-66E2-5005-8110-C31FAFC91712",
+            "availability_code": "P",
+            "availability_mode": "P",
+            "description": "Sabine Pipe Line LLC submits tariff filing per 154.312: Sabine Pipe Line Section 4 Rate Case (2015) to be effective 11/1/2015 under RP15-1322 Filing Type : 690",
+            "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            "transmittal_type": "Mixed Format"
+          },
+          {
+            "accession_number": "20150930-5060",
+            "attachment_id": "01D7CB8A-66E2-5005-8110-C31FAFC91712",
+            "availability_code": "P",
+            "availability_mode": "P",
+            "description": "Sabine Pipe Line LLC submits tariff filing per 154.312: Sabine Pipe Line Section 4 Rate Case (2015) to be effective 11/1/2015 under RP15-1322 Filing Type : 690",
+            "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            "transmittal_type": "Mixed Format"
+          },
+          {
+            "accession_number": "20150930-5060",
+            "attachment_id": "01D7CB8B-66E2-5005-8110-C31FAFC91712",
+            "availability_code": "P",
+            "availability_mode": "P",
+            "description": "Sabine Pipe Line LLC submits tariff filing per 154.312: Sabine Pipe Line Section 4 Rate Case (2015) to be effective 11/1/2015 under RP15-1322 Filing Type : 690",
+            "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            "transmittal_type": "Mixed Format"
+          },
+          {
+            "accession_number": "20150930-5060",
+            "attachment_id": "01D7CB8C-66E2-5005-8110-C31FAFC91712",
+            "availability_code": "P",
+            "availability_mode": "P",
+            "description": "Sabine Pipe Line LLC submits tariff filing per 154.312: Sabine Pipe Line Section 4 Rate Case (2015) to be effective 11/1/2015 under RP15-1322 Filing Type : 690",
+            "mime_type": "application/octet-stream",
+            "transmittal_type": "Mixed Format"
+          },
+          {
+            "accession_number": "20150930-5060",
+            "attachment_id": "01D7CB8D-66E2-5005-8110-C31FAFC91712",
+            "availability_code": "P",
+            "availability_mode": "P",
+            "description": "Sabine Pipe Line LLC submits tariff filing per 154.312: Sabine Pipe Line Section 4 Rate Case (2015) to be effective 11/1/2015 under RP15-1322 Filing Type : 690",
+            "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            "transmittal_type": "Mixed Format"
+          },
+          {
+            "accession_number": "20150930-5060",
+            "attachment_id": "01D7CB8E-66E2-5005-8110-C31FAFC91712",
+            "availability_code": "P",
+            "availability_mode": "P",
+            "description": "Sabine Pipe Line LLC submits tariff filing per 154.312: Sabine Pipe Line Section 4 Rate Case (2015) to be effective 11/1/2015 under RP15-1322 Filing Type : 690",
+            "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            "transmittal_type": "Mixed Format"
+          },
+          {
+            "accession_number": "20150930-5060",
+            "attachment_id": "01D7CB8F-66E2-5005-8110-C31FAFC91712",
+            "availability_code": "P",
+            "availability_mode": "P",
+            "description": "Sabine Pipe Line LLC submits tariff filing per 154.312: Sabine Pipe Line Section 4 Rate Case (2015) to be effective 11/1/2015 under RP15-1322 Filing Type : 690",
+            "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            "transmittal_type": "Mixed Format"
+          },
+          {
+            "accession_number": "20150930-5060",
+            "attachment_id": "01D7CB90-66E2-5005-8110-C31FAFC91712",
+            "availability_code": "P",
+            "availability_mode": "P",
+            "description": "Sabine Pipe Line LLC submits tariff filing per 154.312: Sabine Pipe Line Section 4 Rate Case (2015) to be effective 11/1/2015 under RP15-1322 Filing Type : 690",
+            "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            "transmittal_type": "Mixed Format"
+          },
+          {
+            "accession_number": "20150930-5060",
+            "attachment_id": "01D7CB91-66E2-5005-8110-C31FAFC91712",
+            "availability_code": "P",
+            "availability_mode": "P",
+            "description": "Sabine Pipe Line LLC submits tariff filing per 154.312: Sabine Pipe Line Section 4 Rate Case (2015) to be effective 11/1/2015 under RP15-1322 Filing Type : 690",
+            "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            "transmittal_type": "Mixed Format"
+          },
+          {
+            "accession_number": "20150930-5060",
+            "attachment_id": "01D7CB92-66E2-5005-8110-C31FAFC91712",
+            "availability_code": "P",
+            "availability_mode": "P",
+            "description": "Sabine Pipe Line LLC submits tariff filing per 154.312: Sabine Pipe Line Section 4 Rate Case (2015) to be effective 11/1/2015 under RP15-1322 Filing Type : 690",
+            "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            "transmittal_type": "Mixed Format"
+          },
+          {
+            "accession_number": "20150930-5060",
+            "attachment_id": "01D7CB93-66E2-5005-8110-C31FAFC91712",
+            "availability_code": "P",
+            "availability_mode": "P",
+            "description": "Sabine Pipe Line LLC submits tariff filing per 154.312: Sabine Pipe Line Section 4 Rate Case (2015) to be effective 11/1/2015 under RP15-1322 Filing Type : 690",
+            "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            "transmittal_type": "Mixed Format"
+          },
+          {
+            "accession_number": "20150930-5060",
+            "attachment_id": "01D7CB94-66E2-5005-8110-C31FAFC91712",
+            "availability_code": "P",
+            "availability_mode": "P",
+            "description": "Sabine Pipe Line LLC submits tariff filing per 154.312: Sabine Pipe Line Section 4 Rate Case (2015) to be effective 11/1/2015 under RP15-1322 Filing Type : 690",
+            "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            "transmittal_type": "Mixed Format"
+          },
+          {
+            "accession_number": "20150930-5060",
+            "attachment_id": "01D7CB95-66E2-5005-8110-C31FAFC91712",
+            "availability_code": "P",
+            "availability_mode": "P",
+            "description": "Sabine Pipe Line LLC submits tariff filing per 154.312: Sabine Pipe Line Section 4 Rate Case (2015) to be effective 11/1/2015 under RP15-1322 Filing Type : 690",
+            "mime_type": "application/octet-stream",
+            "transmittal_type": "Mixed Format"
+          },
+          {
+            "accession_number": "20150930-5060",
+            "attachment_id": "01D7CB96-66E2-5005-8110-C31FAFC91712",
+            "availability_code": "P",
+            "availability_mode": "P",
+            "description": "Sabine Pipe Line LLC submits tariff filing per 154.312: Sabine Pipe Line Section 4 Rate Case (2015) to be effective 11/1/2015 under RP15-1322 Filing Type : 690",
+            "mime_type": "application/octet-stream",
+            "transmittal_type": "Mixed Format"
+          },
+          {
+            "accession_number": "20150930-5060",
+            "attachment_id": "01D7CB97-66E2-5005-8110-C31FAFC91712",
+            "availability_code": "P",
+            "availability_mode": "P",
+            "description": "Sabine Pipe Line LLC submits tariff filing per 154.312: Sabine Pipe Line Section 4 Rate Case (2015) to be effective 11/1/2015 under RP15-1322 Filing Type : 690",
+            "mime_type": "application/msword",
+            "transmittal_type": "Mixed Format"
+          }
+        ],
+        "data_list_count": 34,
+        "error_list": [],
+        "json_parsed": true,
+        "parse_error": null
+      }
+    },
+    {
+      "accession_number": "20260527-5009",
+      "attachment_inspection": {
+        "inspection_error": null,
+        "kind": "zip",
+        "members": [
+          {
+            "bytes": 165472,
+            "name": "20260527-5009_TLNP-44  Indexing 2026.pdf",
+            "sha256": "742ab13a0c73626d27991cbb677e39e8223141150fcda1e23ba32c301d1ad10a",
+            "zip_crc32": "3068aca7"
+          },
+          {
+            "bytes": 138521,
+            "name": "20260527-5009_Attachment A.pdf",
+            "sha256": "bf136cc251a33172d6f74d76bfb4f8b56a7a7e77d996c311ea12514f7ad68ca7",
+            "zip_crc32": "bebad7eb"
+          },
+          {
+            "bytes": 456002,
+            "name": "20260527-5009_Clean Tariff.pdf",
+            "sha256": "7ba68dba539173c1b1d0303e2436c4640ac5bba6dd782c99829286b470c73889",
+            "zip_crc32": "332d040e"
+          },
+          {
+            "bytes": 686071,
+            "name": "20260527-5009_FERC GENERATED TARIFF FILING.PDF",
+            "sha256": "0decac0513b16561b4019f75a0a5276c414bd9bb9c5f3b51912daf952d976bc8",
+            "zip_crc32": "fe86baa7"
+          }
+        ]
+      },
+      "attachment_response": {
+        "accession": "20260527-5009",
+        "attempt_ended_utc": "2026-09-09T16:29:46.305967+00:00",
+        "attempt_marker": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/requests/20260527-5009.attachment.attempt.json",
+        "attempt_started_utc": "2026-09-09T16:29:44.066915+00:00",
+        "attempted_this_run": true,
+        "body_capture_limitation": null,
+        "content_disposition": "attachment; filename=20260527-5009_134334449844758111.zip",
+        "credentials_or_cookies_sent": false,
+        "final_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/DownloadP8File",
+        "http_reason": "OK",
+        "http_status": 200,
+        "method": "POST",
+        "network_error": null,
+        "official_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/DownloadP8File",
+        "raw_body_path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/attachment_responses/20260527-5009.body",
+        "raw_headers_path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/attachment_responses/20260527-5009.headers.json",
+        "redirects": [],
+        "request_kind": "attachment",
+        "response_bytes": 1378987,
+        "response_media_type": "application/octet-stream",
+        "response_sha256": "7d64d81d4dde3d6f7148648ee7ea34469432b7fd93e9b1c23288bdcd2b685dff",
+        "response_sha256_is_complete": true
+      },
+      "classification_before_recovery": "mandatory executable prerequisite",
+      "consumers": [
+        "elibrary_docs adapter",
+        "source-cache index/object store",
+        "A20/C35/C54 archive-only offline replay and reproducibility gate",
+        "document/filing archive",
+        "observation metric tariff_operative_rate",
+        "field-status/coverage/export consumers"
+      ],
+      "inventory_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/GetFileListFromP8/20260527-5009",
+      "list_response": {
+        "accession": "20260527-5009",
+        "attempt_ended_utc": "2026-09-09T16:29:44.063124+00:00",
+        "attempt_marker": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/requests/20260527-5009.list.attempt.json",
+        "attempt_started_utc": "2026-09-09T16:29:43.152041+00:00",
+        "attempted_this_run": true,
+        "body_capture_limitation": null,
+        "content_disposition": null,
+        "credentials_or_cookies_sent": false,
+        "final_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/GetFileListFromP8/20260527-5009",
+        "http_reason": "OK",
+        "http_status": 200,
+        "method": "GET",
+        "network_error": null,
+        "official_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/GetFileListFromP8/20260527-5009",
+        "raw_body_path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/list_responses/20260527-5009.body",
+        "raw_headers_path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/list_responses/20260527-5009.headers.json",
+        "redirects": [],
+        "request_kind": "list",
+        "response_bytes": 9041,
+        "response_media_type": "application/json; charset=utf-8",
+        "response_sha256": "05187ee7ab6b617c0aa508977fb82cdd65c5e546e0d4d97a1388b38378356562",
+        "response_sha256_is_complete": true
+      },
+      "parsed_file_list": {
+        "attachment_ids": [
+          "4E2AAC7A-DFB7-C005-9C1D-9E694A300000",
+          "A5E68799-4C2E-C85F-A549-9E694A300000",
+          "4D79C12D-C8CE-C50F-AD4A-9E694A300000",
+          "55A37DCF-3B38-C34D-B542-9E694A300000"
+        ],
+        "attachment_metadata": [
+          {
+            "accession_number": "20260527-5009",
+            "attachment_id": "4E2AAC7A-DFB7-C005-9C1D-9E694A300000",
+            "availability_code": null,
+            "availability_mode": "P",
+            "description": "Tesoro Logistics Northwest Pipeline LLC submits tariff filing per 342.3: 2026 Indexing to be effective 7/1/2026 under IS26-326 Filing Type : 860",
+            "mime_type": "application/pdf",
+            "transmittal_type": null
+          },
+          {
+            "accession_number": "20260527-5009",
+            "attachment_id": "A5E68799-4C2E-C85F-A549-9E694A300000",
+            "availability_code": null,
+            "availability_mode": "P",
+            "description": "Tesoro Logistics Northwest Pipeline LLC submits tariff filing per 342.3: 2026 Indexing to be effective 7/1/2026 under IS26-326 Filing Type : 860",
+            "mime_type": "application/pdf",
+            "transmittal_type": null
+          },
+          {
+            "accession_number": "20260527-5009",
+            "attachment_id": "4D79C12D-C8CE-C50F-AD4A-9E694A300000",
+            "availability_code": null,
+            "availability_mode": "P",
+            "description": "Tesoro Logistics Northwest Pipeline LLC submits tariff filing per 342.3: 2026 Indexing to be effective 7/1/2026 under IS26-326 Filing Type : 860",
+            "mime_type": "application/pdf",
+            "transmittal_type": null
+          },
+          {
+            "accession_number": "20260527-5009",
+            "attachment_id": "55A37DCF-3B38-C34D-B542-9E694A300000",
+            "availability_code": null,
+            "availability_mode": "P",
+            "description": "Tesoro Logistics Northwest Pipeline LLC submits tariff filing per 342.3: 2026 Indexing to be effective 7/1/2026 under IS26-326 Filing Type : 860",
+            "mime_type": "application/pdf",
+            "transmittal_type": null
+          }
+        ],
+        "data_list_count": 4,
+        "error_list": [],
+        "json_parsed": true,
+        "parse_error": null
+      }
+    },
+    {
+      "accession_number": "20191231-5075",
+      "attachment_inspection": {
+        "inspection_error": null,
+        "kind": "zip",
+        "members": [
+          {
+            "bytes": 1461030,
+            "name": "20191231-5075_NET Mexico 311 rate petition 12 30 2019 FINAL-c.PDF",
+            "sha256": "c55b35b35b50a3cab2ac1f8022e3252c46e36494eeea9c5316790fbbc9b3a4f8",
+            "zip_crc32": "c9fa64cb"
+          },
+          {
+            "bytes": 113910,
+            "name": "20191231-5075_FERC GENERATED TARIFF FILING.RTF",
+            "sha256": "609bcb2b650713022721a307790f37d4b20f706895d8a9071198a536993464b1",
+            "zip_crc32": "1e087fe9"
+          }
+        ]
+      },
+      "attachment_response": {
+        "accession": "20191231-5075",
+        "attempt_ended_utc": "2026-09-09T16:29:48.959150+00:00",
+        "attempt_marker": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/requests/20191231-5075.attachment.attempt.json",
+        "attempt_started_utc": "2026-09-09T16:29:47.101723+00:00",
+        "attempted_this_run": true,
+        "body_capture_limitation": null,
+        "content_disposition": "attachment; filename=20191231-5075_134334449875734014.zip",
+        "credentials_or_cookies_sent": false,
+        "final_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/DownloadP8File",
+        "http_reason": "OK",
+        "http_status": 200,
+        "method": "POST",
+        "network_error": null,
+        "official_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/DownloadP8File",
+        "raw_body_path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/attachment_responses/20191231-5075.body",
+        "raw_headers_path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/attachment_responses/20191231-5075.headers.json",
+        "redirects": [],
+        "request_kind": "attachment",
+        "response_bytes": 1386663,
+        "response_media_type": "application/octet-stream",
+        "response_sha256": "d0e477e4ad941acbd6d713d4eaa7421c907b8477168780a9b0679a1c7c35a945",
+        "response_sha256_is_complete": true
+      },
+      "classification_before_recovery": "assertion reproduction evidence",
+      "consumers": [
+        "elibrary_docs adapter",
+        "source-cache index/object store",
+        "A20/C35/C54 archive-only offline replay and reproducibility gate",
+        "document/filing archive",
+        "A16-CREDENTIAL/C004698 failure-classification fixture"
+      ],
+      "inventory_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/GetFileListFromP8/20191231-5075",
+      "list_response": {
+        "accession": "20191231-5075",
+        "attempt_ended_utc": "2026-09-09T16:29:47.099289+00:00",
+        "attempt_marker": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/requests/20191231-5075.list.attempt.json",
+        "attempt_started_utc": "2026-09-09T16:29:46.322533+00:00",
+        "attempted_this_run": true,
+        "body_capture_limitation": null,
+        "content_disposition": null,
+        "credentials_or_cookies_sent": false,
+        "final_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/GetFileListFromP8/20191231-5075",
+        "http_reason": "OK",
+        "http_status": 200,
+        "method": "GET",
+        "network_error": null,
+        "official_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/GetFileListFromP8/20191231-5075",
+        "raw_body_path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/list_responses/20191231-5075.body",
+        "raw_headers_path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/list_responses/20191231-5075.headers.json",
+        "redirects": [],
+        "request_kind": "list",
+        "response_bytes": 4715,
+        "response_media_type": "application/json; charset=utf-8",
+        "response_sha256": "b7985fb6b8972bb3367356bab5ec46d3e270c962d9f4f3bbd52f5ed9cda79436",
+        "response_sha256_is_complete": true
+      },
+      "parsed_file_list": {
+        "attachment_ids": [
+          "0205B060-66E2-5005-8110-C31FAFC91712",
+          "0205B061-66E2-5005-8110-C31FAFC91712"
+        ],
+        "attachment_metadata": [
+          {
+            "accession_number": "20191231-5075",
+            "attachment_id": "0205B060-66E2-5005-8110-C31FAFC91712",
+            "availability_code": "P",
+            "availability_mode": "P",
+            "description": "NET Mexico Pipeline Partners, LLC submits tariff filing per 284.123(b)(2)+(: Petition for NGPA Section 311 Rate Approval to be effective 12/30/2019 under PR20-19 Filing Type : 1310",
+            "mime_type": "application/octet-stream",
+            "transmittal_type": "Mixed Format"
+          },
+          {
+            "accession_number": "20191231-5075",
+            "attachment_id": "0205B061-66E2-5005-8110-C31FAFC91712",
+            "availability_code": "P",
+            "availability_mode": "P",
+            "description": "NET Mexico Pipeline Partners, LLC submits tariff filing per 284.123(b)(2)+(: Petition for NGPA Section 311 Rate Approval to be effective 12/30/2019 under PR20-19 Filing Type : 1310",
+            "mime_type": "application/msword",
+            "transmittal_type": "Mixed Format"
+          }
+        ],
+        "data_list_count": 2,
+        "error_list": [],
+        "json_parsed": true,
+        "parse_error": null
+      }
+    },
+    {
+      "accession_number": "20171010-5329",
+      "attachment_inspection": {
+        "inspection_error": null,
+        "kind": "zip",
+        "members": [
+          {
+            "bytes": 18149,
+            "name": "20171010-5329_AcaciaTransmittalLetter.PDF",
+            "sha256": "ae4b5d12510736986c50a846a7a6463257c647bed0ab6f9a28d933226e345bed",
+            "zip_crc32": "79dac8bd"
+          },
+          {
+            "bytes": 1530406,
+            "name": "20171010-5329_AcaciaPetitionforRateApproval.PDF",
+            "sha256": "01d3491ed1c3c826ce58b407a1bc60a76861e3edc9ec3cb7c527753581fdc3d0",
+            "zip_crc32": "cac1f7df"
+          },
+          {
+            "bytes": 111649,
+            "name": "20171010-5329_FERC GENERATED TARIFF FILING.RTF",
+            "sha256": "9bd649fde79164421cb491569240b9ea6f5d24affd0ce7a05132885dbab33adb",
+            "zip_crc32": "c34b5de9"
+          }
+        ]
+      },
+      "attachment_response": {
+        "accession": "20171010-5329",
+        "attempt_ended_utc": "2026-09-09T16:29:52.406232+00:00",
+        "attempt_marker": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/requests/20171010-5329.attachment.attempt.json",
+        "attempt_started_utc": "2026-09-09T16:29:49.936467+00:00",
+        "attempted_this_run": true,
+        "body_capture_limitation": null,
+        "content_disposition": "attachment; filename=20171010-5329_134334449903656907.zip",
+        "credentials_or_cookies_sent": false,
+        "final_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/DownloadP8File",
+        "http_reason": "OK",
+        "http_status": 200,
+        "method": "POST",
+        "network_error": null,
+        "official_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/DownloadP8File",
+        "raw_body_path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/attachment_responses/20171010-5329.body",
+        "raw_headers_path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/attachment_responses/20171010-5329.headers.json",
+        "redirects": [],
+        "request_kind": "attachment",
+        "response_bytes": 1516373,
+        "response_media_type": "application/octet-stream",
+        "response_sha256": "7b59a7b1ccf1b0a67a59e94a904788f0e458e82654f94637cfa700f36c2d0047",
+        "response_sha256_is_complete": true
+      },
+      "classification_before_recovery": "assertion reproduction evidence",
+      "consumers": [
+        "elibrary_docs adapter",
+        "source-cache index/object store",
+        "A20/C35/C54 archive-only offline replay and reproducibility gate",
+        "document/filing archive"
+      ],
+      "inventory_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/GetFileListFromP8/20171010-5329",
+      "list_response": {
+        "accession": "20171010-5329",
+        "attempt_ended_utc": "2026-09-09T16:29:49.933656+00:00",
+        "attempt_marker": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/requests/20171010-5329.list.attempt.json",
+        "attempt_started_utc": "2026-09-09T16:29:48.975693+00:00",
+        "attempted_this_run": true,
+        "body_capture_limitation": null,
+        "content_disposition": null,
+        "credentials_or_cookies_sent": false,
+        "final_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/GetFileListFromP8/20171010-5329",
+        "http_reason": "OK",
+        "http_status": 200,
+        "method": "GET",
+        "network_error": null,
+        "official_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/GetFileListFromP8/20171010-5329",
+        "raw_body_path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/list_responses/20171010-5329.body",
+        "raw_headers_path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/list_responses/20171010-5329.headers.json",
+        "redirects": [],
+        "request_kind": "list",
+        "response_bytes": 7009,
+        "response_media_type": "application/json; charset=utf-8",
+        "response_sha256": "8454f34659b651de3848e63d137f0575553a6a0d37d9734ea6adc89702f456dc",
+        "response_sha256_is_complete": true
+      },
+      "parsed_file_list": {
+        "attachment_ids": [
+          "01EF0A6B-66E2-5005-8110-C31FAFC91712",
+          "01EF0A6C-66E2-5005-8110-C31FAFC91712",
+          "01EF0A6D-66E2-5005-8110-C31FAFC91712"
+        ],
+        "attachment_metadata": [
+          {
+            "accession_number": "20171010-5329",
+            "attachment_id": "01EF0A6B-66E2-5005-8110-C31FAFC91712",
+            "availability_code": "P",
+            "availability_mode": "P",
+            "description": "Acacia Natural Gas, L.L.C. submits tariff filing per 284.123(b)(2)+(: Acacia Natural Gas Petition for Rate Approval to be effective 11/1/2017 under PR18-2 Filing Type : 1310",
+            "mime_type": "application/octet-stream",
+            "transmittal_type": "Mixed Format"
+          },
+          {
+            "accession_number": "20171010-5329",
+            "attachment_id": "01EF0A6C-66E2-5005-8110-C31FAFC91712",
+            "availability_code": "P",
+            "availability_mode": "P",
+            "description": "Acacia Natural Gas, L.L.C. submits tariff filing per 284.123(b)(2)+(: Acacia Natural Gas Petition for Rate Approval to be effective 11/1/2017 under PR18-2 Filing Type : 1310",
+            "mime_type": "application/octet-stream",
+            "transmittal_type": "Mixed Format"
+          },
+          {
+            "accession_number": "20171010-5329",
+            "attachment_id": "01EF0A6D-66E2-5005-8110-C31FAFC91712",
+            "availability_code": "P",
+            "availability_mode": "P",
+            "description": "Acacia Natural Gas, L.L.C. submits tariff filing per 284.123(b)(2)+(: Acacia Natural Gas Petition for Rate Approval to be effective 11/1/2017 under PR18-2 Filing Type : 1310",
+            "mime_type": "application/msword",
+            "transmittal_type": "Mixed Format"
+          }
+        ],
+        "data_list_count": 3,
+        "error_list": [],
+        "json_parsed": true,
+        "parse_error": null
+      }
+    },
+    {
+      "accession_number": "20151215-5229",
+      "attachment_inspection": {
+        "inspection_error": null,
+        "kind": "zip",
+        "members": [
+          {
+            "bytes": 258265,
+            "name": "20151215-5229_AGSMarkedSOCDec2015final.PDF",
+            "sha256": "7ce3ba6a171d6bb27b7013bca93ef3bbf92e70d3accb53fb6fd9ed7d0c30955f",
+            "zip_crc32": "6f45a444"
+          },
+          {
+            "bytes": 34819,
+            "name": "20151215-5229_ArcadiaMBRpetition121515final.PDF",
+            "sha256": "e95b55bc4b3d8e1de41e6846d4df82c8fec3720aaba80327d2b6f2c947c630e2",
+            "zip_crc32": "b61a9766"
+          },
+          {
+            "bytes": 176100,
+            "name": "20151215-5229_AGSCleanSOCDec2015 final.PDF",
+            "sha256": "f012ca4b79c81b7aaa962834ee7f35dd013bed0d6e6f38c56e0abb0048e59563",
+            "zip_crc32": "f5d8eb90"
+          },
+          {
+            "bytes": 2643328,
+            "name": "20151215-5229_AGS Market Power Study - Testimony and Exhibits Final V5.PDF",
+            "sha256": "3abb959ecc5759bd7d3e2a00c230692abc25f2cc9412f09a8bfe2b5399ee449e",
+            "zip_crc32": "eabd4f0f"
+          },
+          {
+            "bytes": 107534,
+            "name": "20151215-5229_FERC GENERATED TARIFF FILING.RTF",
+            "sha256": "d93192122b7caf43751b76102fa76947710df36c5a3fc4ad1ac25a536d8aa10f",
+            "zip_crc32": "42e94475"
+          }
+        ]
+      },
+      "attachment_response": {
+        "accession": "20151215-5229",
+        "attempt_ended_utc": "2026-09-09T16:29:56.813972+00:00",
+        "attempt_marker": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/requests/20151215-5229.attachment.attempt.json",
+        "attempt_started_utc": "2026-09-09T16:29:53.678798+00:00",
+        "attempted_this_run": true,
+        "body_capture_limitation": null,
+        "content_disposition": "attachment; filename=20151215-5229_134334449941266000.zip",
+        "credentials_or_cookies_sent": false,
+        "final_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/DownloadP8File",
+        "http_reason": "OK",
+        "http_status": 200,
+        "method": "POST",
+        "network_error": null,
+        "official_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/DownloadP8File",
+        "raw_body_path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/attachment_responses/20151215-5229.body",
+        "raw_headers_path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/attachment_responses/20151215-5229.headers.json",
+        "redirects": [],
+        "request_kind": "attachment",
+        "response_bytes": 3009989,
+        "response_media_type": "application/octet-stream",
+        "response_sha256": "4886a88ad61c25aa332f47f7a1aa0c20e771aa30fad9d4c297a42f3fc6907b15",
+        "response_sha256_is_complete": true
+      },
+      "classification_before_recovery": "assertion reproduction evidence",
+      "consumers": [
+        "elibrary_docs adapter",
+        "source-cache index/object store",
+        "A20/C35/C54 archive-only offline replay and reproducibility gate",
+        "document/filing archive"
+      ],
+      "inventory_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/GetFileListFromP8/20151215-5229",
+      "list_response": {
+        "accession": "20151215-5229",
+        "attempt_ended_utc": "2026-09-09T16:29:53.674011+00:00",
+        "attempt_marker": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/requests/20151215-5229.list.attempt.json",
+        "attempt_started_utc": "2026-09-09T16:29:52.446601+00:00",
+        "attempted_this_run": true,
+        "body_capture_limitation": null,
+        "content_disposition": null,
+        "credentials_or_cookies_sent": false,
+        "final_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/GetFileListFromP8/20151215-5229",
+        "http_reason": "OK",
+        "http_status": 200,
+        "method": "GET",
+        "network_error": null,
+        "official_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/GetFileListFromP8/20151215-5229",
+        "raw_body_path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/list_responses/20151215-5229.body",
+        "raw_headers_path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/list_responses/20151215-5229.headers.json",
+        "redirects": [],
+        "request_kind": "list",
+        "response_bytes": 11658,
+        "response_media_type": "application/json; charset=utf-8",
+        "response_sha256": "964beb4eebec75654a1ea1f88017d67f0caedf87306bf6328a899c4fb7e95566",
+        "response_sha256_is_complete": true
+      },
+      "parsed_file_list": {
+        "attachment_ids": [
+          "01DA4259-66E2-5005-8110-C31FAFC91712",
+          "01DA425A-66E2-5005-8110-C31FAFC91712",
+          "01DA425B-66E2-5005-8110-C31FAFC91712",
+          "01DA425C-66E2-5005-8110-C31FAFC91712",
+          "01DA425D-66E2-5005-8110-C31FAFC91712"
+        ],
+        "attachment_metadata": [
+          {
+            "accession_number": "20151215-5229",
+            "attachment_id": "01DA4259-66E2-5005-8110-C31FAFC91712",
+            "availability_code": "P",
+            "availability_mode": "P",
+            "description": "Arcadia Gas Storage, LLC submits tariff filing per 284.123(b)(2)/.: Arcadia Gas Storage - Dec15 SOC Modifications to be effective 12/15/2015 under PR16-9 Filing Type : 760",
+            "mime_type": "application/octet-stream",
+            "transmittal_type": "Mixed Format"
+          },
+          {
+            "accession_number": "20151215-5229",
+            "attachment_id": "01DA425A-66E2-5005-8110-C31FAFC91712",
+            "availability_code": "P",
+            "availability_mode": "P",
+            "description": "Arcadia Gas Storage, LLC submits tariff filing per 284.123(b)(2)/.: Arcadia Gas Storage - Dec15 SOC Modifications to be effective 12/15/2015 under PR16-9 Filing Type : 760",
+            "mime_type": "application/octet-stream",
+            "transmittal_type": "Mixed Format"
+          },
+          {
+            "accession_number": "20151215-5229",
+            "attachment_id": "01DA425B-66E2-5005-8110-C31FAFC91712",
+            "availability_code": "P",
+            "availability_mode": "P",
+            "description": "Arcadia Gas Storage, LLC submits tariff filing per 284.123(b)(2)/.: Arcadia Gas Storage - Dec15 SOC Modifications to be effective 12/15/2015 under PR16-9 Filing Type : 760",
+            "mime_type": "application/octet-stream",
+            "transmittal_type": "Mixed Format"
+          },
+          {
+            "accession_number": "20151215-5229",
+            "attachment_id": "01DA425C-66E2-5005-8110-C31FAFC91712",
+            "availability_code": "P",
+            "availability_mode": "P",
+            "description": "Arcadia Gas Storage, LLC submits tariff filing per 284.123(b)(2)/.: Arcadia Gas Storage - Dec15 SOC Modifications to be effective 12/15/2015 under PR16-9 Filing Type : 760",
+            "mime_type": "application/octet-stream",
+            "transmittal_type": "Mixed Format"
+          },
+          {
+            "accession_number": "20151215-5229",
+            "attachment_id": "01DA425D-66E2-5005-8110-C31FAFC91712",
+            "availability_code": "P",
+            "availability_mode": "P",
+            "description": "Arcadia Gas Storage, LLC submits tariff filing per 284.123(b)(2)/.: Arcadia Gas Storage - Dec15 SOC Modifications to be effective 12/15/2015 under PR16-9 Filing Type : 760",
+            "mime_type": "application/msword",
+            "transmittal_type": "Mixed Format"
+          }
+        ],
+        "data_list_count": 5,
+        "error_list": [],
+        "json_parsed": true,
+        "parse_error": null
+      }
+    }
+  ],
+  "schema": "official_ferc_recovery_results_v1",
+  "summary": {
+    "accessions": 13,
+    "attachment_http_200": 12,
+    "attachment_requests_attempted": 13,
+    "file_lists_with_attachment_ids": 13,
+    "list_http_200": 13,
+    "list_network_errors": 0,
+    "list_requests_attempted": 13
+  }
+}

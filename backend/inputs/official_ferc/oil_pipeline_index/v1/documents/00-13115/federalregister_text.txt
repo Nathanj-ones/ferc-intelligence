@@ -1,0 +1,136 @@
+<html>
+<head>
+<title>Federal Register, Volume 65 Issue 102 (Thursday, May 25, 2000)</title>
+</head>
+<body><pre>
+[Federal Register Volume 65, Number 102 (Thursday, May 25, 2000)]
+[Notices]
+[Page 33816]
+From the Federal Register Online via the Government Publishing Office [<a href="http://www.gpo.gov">www.gpo.gov</a>]
+[FR Doc No: 00-13115]
+
+
+-----------------------------------------------------------------------
+
+DEPARTMENT OF ENERGY
+
+Federal Energy Regulatory Commission
+
+[Docket No. RM93-11-000]
+
+
+Revisions to Oil Pipeline Regulations Pursuant to the Energy 
+Policy Act of 1992
+
+May 19, 2000.
+AGENCY: Federal Energy Regulatory Commission, Department of Energy.
+
+ACTION: Notice of annual change in the Producer Price Index for 
+Finished Goods, minus one percent.
+
+-----------------------------------------------------------------------
+
+SUMMARY: The Commission is issuing the index that oil pipelines must 
+apply to their July 1, 1999-June 30, 2000 index ceiling levels to 
+compute their index ceiling levels for the period July 1, 2000 through 
+June 30, 2001, in accordance with 18 CFR 342.3(d). This index, which is 
+the percent change (expressed as a decimal) in the annual average 
+Producer Price Index for Finished Goods from 1998 to 1999, minus one 
+percent, is 0.007598. Oil pipelines must multiply their July 1, 1999-
+June 30, 2000 index ceiling levels by 1.007598 to compute their index 
+ceiling levels for the period July 1, 2000 through June 30, 2001.
+
+FOR FURTHER INFORMATION CONTACT: David Ulevich, Office of Markets, 
+Tariffs, and Rates, Corporate Applications, Group 2, Federal Energy 
+Regulatory Commission, 888 First Street, NE, Washington, DC 20426, 
+(202) 208-0678.
+
+SUPPLEMENTARY INFORMATION: In addition to publishing the full text of 
+this document in the Federal Register, the Commission provides all 
+interested persons an opportunity to view and/or print the contents of 
+this document via the Internet through FERC's Home Page (http://www./
+ferc./fed.us) and in FERC's Public Reference Room during normal 
+business hours (8:30 a.m. to 5:00 p.m. Eastern time) at 888 First 
+Street, N.E., Room 2A, Washington, DC 20426.
+    From FERC's Home Page on the Internet, this information is 
+available in both the Commission Issuance Posting System (CIPS) and the 
+Records and Information management System (RIMS).
+    CIPS provides access to the texts of formal documents issued by the 
+Commission since November 14, 1994. CIPS can be accessed using the CIPS 
+link or the Energy Information Online icon. The full text of this 
+document is available on CIPS in ASCII and WordPerfect 8.0 format for 
+viewing, printing, and/or downloading.
+    RIMS contains images of documents submitted to an issued by the 
+Commission after November 16, 1981. Documents from November 1995 to the 
+present can be viewed and printed from FERC's Home page using the RIMS 
+link or the Energy Information Online icon. Descriptions of documents 
+back to November 16, 1981, are also available from RIMS-on-the-Web; 
+requests for copies of these and other older documents should be 
+submitted to the Public Reference Room.
+    User assistance is available for RIMS, CIPS, and the Website during 
+normal business hours from our Help line at (202) 208-222 (E-Mail to 
+<a href="/cdn-cgi/l/email-protection#acfbc9cee1cddfd8c9deeccac9decf82cac9c882d9df"><span class="__cf_email__" data-cfemail="1443717659756760716654727166773a7271703a6167">[email&#160;protected]</span></a>) or the Public Reference at (202) 208-1371 (E-
+Mail to public.reference <a href="/cdn-cgi/l/email-protection#f78598989ab791928594d9919293d98284"><span class="__cf_email__" data-cfemail="85f7eaeae8c5e3e0f7e6abe3e0e1abf0f6">[email&#160;protected]</span></a>).
+    During normal business hours, documents can also be viewed and/or 
+printed in FERC's Public Reference Room where RIMS, CIPS, and the FERC 
+Website are available. User assistance is also available.
+    The Commission's regulations include a methodology for oil 
+pipelines to change their rates through use of an index system that 
+establishes ceiling levels for such rates. The index system as set 
+forth at 18 CFR 342.3 is based on the annual change in the Producer 
+Price Index for Finished Goods (PPI-FG), minus one percent. The 
+regulations provide that each year the Commission will publish an index 
+reflecting the final change in the PPI-FG, minus one percent, after the 
+final PPI-FG is made available by the Bureau of Labor Statistics in May 
+of each calendar year.
+    The annual average PPI-FG index figure for 1998 was 130.7 and the 
+annual average PPI-FG index figure for 1999 was 133.0.\1\ Thus, the 
+percent change (expressed as a decimal) in the annual average PPI-FG 
+from 1998 to 1999, minus one percent is 0.007598.\2\ Oil pipelines must 
+multiply their July 1, 1999-June 30, 2000 index ceiling levels by 
+1.007598 \3\ to compute their index ceiling levels for the period July 
+1, 2000, through June 30, 2001, in accordance with 18 CFR 342.3(d).
+---------------------------------------------------------------------------
+
+    \1\ The final figure for the annual average PPI-FG is published 
+by the Bureau of Labor Statistics in mid-May of each year. This 
+figure is publicly available from the Division of Industrial Prices 
+and Price Indexes of the Bureau of Labor Statistics, at (202) 606-
+7705, and is available in print in August in Table 1 of the annual 
+data supplement to the BLS publication Producer Price Indexes. The 
+PPI data are also available via the Internet. The Internet address 
+is <a href="http://www.fedstats.gov">http://www.fedstats.gov</a>. This site contains data from a number of 
+government agencies; to obtain the BLS data, click on agencies, then 
+click on Bureau of Labor Statistics, then click on data, Most 
+Requested Series, scroll to Producer Price Indexes-Commodities 
+(Finished Goods), for the latest available data.
+    \2\ [133.0-130.7]/130.7=0.017598-.01=0.007598.
+    \3\ 1+(0.007598)=1.007598.
+---------------------------------------------------------------------------
+
+    To obtain July 1, 1999-June 30, 2000 ceiling levels, pipelines must 
+first calculate their ceiling levels for the January 1, 1995-June 30, 
+1995 index period, by multiplying their December 31, 1994 rates by 
+1.002175. Pipelines must then multiply those ceiling levels by 0.996415 
+to obtain the July 1, 1995-June 30, 1996 ceiling levels. Then pipelines 
+must multiply their July 1, 1995-June 30, 1996 ceiling levels by 
+1.009124 to obtain the July 1, 1996-June 30, 1997 ceiling levels, and 
+multiply the July 1, 1996-June 30, 1997 ceiling levels by 1.016583 to 
+obtain the July 1, 1997-June 30, 1998 ceiling levels. Pipelines then 
+must multiply the July 1, 1997-June 30, 1998 ceiling levels by 0.993808 
+to obtain the July 1, 1998-June 30, 1999 ceiling levels. Then, 
+pipelines must multiply the July 1, 1998-June 30, 1999 ceiling levels 
+by 0.981654 to obtain the July 1, 1999-June 30, 2000 ceiling levels. 
+Finally, pipelines must multiply the July 1, 1999-June 30, 2000 ceiling 
+levels by 1.007698 to obtain the July 1, 2000-June 30, 2001 ceiling 
+levels. See Explorer Pipeline Company, 71 FERC para. 61,416 at n.6 
+(1995) for an explanation of how ceiling levels must be calculated.
+
+Linwood A. Watson, Jr.,
+Acting Secretary.
+[FR Doc. 00-13115 Filed 5-24-00; 8:45 am]
+BILLING CODE 6717-01-M
+
+
+</pre><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

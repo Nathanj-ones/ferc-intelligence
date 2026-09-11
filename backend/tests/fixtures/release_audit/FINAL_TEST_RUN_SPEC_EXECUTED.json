@@ -1,0 +1,710 @@
+{
+  "schema": "ferc-final-test-run-spec-v1",
+  "draft": false,
+  "purpose": "Executed run specification for the two complete, verbose Build-A candidate suites. It maps every audited issue, all 34 original exceptions, and all twenty-seven repair-time findings to exact unittest identities and records only directly observed execution status.",
+  "population": {
+    "audited_issue_rows": 64,
+    "original_exception_rows": 34,
+    "related_repair_findings": 27
+  },
+  "execution_record": [
+    "Both declared commands executed from the unchanged Build-A candidate after the ten-step replay completed and the SQLite WAL was absent or zero bytes.",
+    "Each exact relative log contains that command's complete combined stdout and stderr without concatenating another unittest invocation.",
+    "Both commands returned the directly observed integer exit code 0; neither log contains a skip or expected failure requiring classification.",
+    "Counts, observed test identifiers, byte sizes and hashes are intentionally omitted here and reconstructed from the complete logs by implementation/build_test_run_manifest.py."
+  ],
+  "allowed_optional_outcomes": [
+    {
+      "test": "tests.test_acceptance_suite_bridge_codex.AcceptanceSuiteBridgeTests.test_case_008_a12_4_test_a12_suite_integrity_t_absent_external_reference_is_skipped",
+      "classification": "external_optional_reference_unavailable",
+      "reason": "A12.4 is the sole registry-declared external_optional acceptance case; it may skip only when its optional external reference package is genuinely unavailable.",
+      "required": false
+    }
+  ],
+  "issue_test_evidence": {
+    "A01": [
+      "tests.test_acceptance_suite_bridge_codex.AcceptanceSuiteBridgeTests.test_case_026_m1_1_test_matrix_runtime_t_done_checkpoint_does_not_hide_a_new_filing",
+      "tests.test_acceptance_suite_bridge_codex.AcceptanceSuiteBridgeTests.test_case_028_m2_1_test_matrix_runtime_t_narrow_window_preserves_earlier_years",
+      "tests.test_acceptance_suite_bridge_codex.AcceptanceSuiteBridgeTests.test_case_031_m2_4_test_matrix_runtime_t_resume_recovers_without_duplication",
+      "tests.test_retrieval_failure_atomicity_codex.RetrievalUnitAtomicityTests.test_keyboard_interrupt_rolls_back_and_propagates",
+      "tests.test_retrieval_failure_atomicity_codex.RetrievalUnitAtomicityTests.test_ordinary_retrieve_exception_rolls_back_retrieval_rows"
+    ],
+    "A02": [
+      "tests.test_ioc_population_codex.TestIOCReplayOrderSafety.test_mountainwest_overthrust_is_order_independent",
+      "tests.test_revision_graph_codex.RevisionGraphRegressionTests.test_three_revisions_have_same_acyclic_graph_in_both_replay_orders"
+    ],
+    "A03": [
+      "tests.test_documents.TestLNGStatesAreFourNotOne.test_operation_is_asserted_only_from_a_body_that_states_it",
+      "tests.test_documents.TestLNGStatesAreFourNotOne.test_the_eight_real_requests_are_not_authorisations"
+    ],
+    "A04": [
+      "tests.test_lineage_invariants_codex.PersistedLineageInvariantTests.test_recursive_gas_chain_accepts_blank_outer_direct_ids_and_mixed_dates",
+      "tests.test_scope_lineage_codex.ScopeLineageRegressionTests.test_ratio_preserves_supported_common_scope",
+      "tests.test_scope_lineage_codex.ScopeLineageRegressionTests.test_ratio_refuses_mismatched_scope_and_emits_no_lineage"
+    ],
+    "A05": [
+      "tests.test_obligations_codex_integration.FailedIngestionCannotShrinkGrid.test_parse_failure_and_success_generate_the_same_ioc_denominator",
+      "tests.test_obligations_codex_integration.RequirementAndOutcomeSeparation.test_required_not_required_and_unknown_are_three_states",
+      "tests.test_obligations_codex_integration.UniverseEligibility.test_template_eligibility_seeds_unknown_slots_without_claiming_an_occurrence"
+    ],
+    "A06": [
+      "tests.test_coverage_codex_integration.CurrentOilFactorCoverage.test_current_direct_factor_accepts_role_aware_historical_basis",
+      "tests.test_coverage_codex_integration.CurrentOilFactorCoverage.test_currentness_guards_still_reject_the_observation_itself",
+      "tests.test_coverage_codex_integration.CurrentOilFactorCoverage.test_unit_scope_and_period_guards_stay_closed"
+    ],
+    "A07": [
+      "tests.test_coverage.TestFieldReadiness.test_a_local_pass_does_mark_the_template_ready",
+      "tests.test_coverage.TestFieldReadiness.test_cross_template_passes_cannot_make_a_template_ready",
+      "tests.test_crosswalk_isolation_codex.CrosswalkIsolationTests.test_valid_external_generation_does_not_touch_frozen_config"
+    ],
+    "A08": [
+      "tests.test_ioc_lineage_codex.IOCTopFiveLineageTests.test_targetless_group_summary_is_rejected",
+      "tests.test_lineage_invariants_codex.PersistedLineageInvariantTests.test_missing_direct_fact_is_rejected_but_real_fact_passes",
+      "tests.test_lineage_invariants_codex.PersistedLineageInvariantTests.test_observation_cycle_is_rejected_but_unchanged_chain_passes"
+    ],
+    "A09": [
+      "tests.test_annotations_codex.AnnotationRegressionTests.test_bundled_metadata_is_complete_and_recomputable",
+      "tests.test_annotations_codex.AnnotationRegressionTests.test_reviewed_final_maps_to_resolved_while_open_stays_open",
+      "tests.test_annotations_codex.AnnotationRegressionTests.test_seed_does_not_zero_count_and_swap_reconciles_atomically"
+    ],
+    "A10": [
+      "tests.test_document_semantics_codex.TestRefundRolesNeedTheirOwnOperativeText.test_both_transco_motion_dates_without_refund_language_are_gated",
+      "tests.test_refund_boundary_codex.TestRefundBoundaryOrderChain.test_suspension_plus_later_motion_order_establishes_start",
+      "tests.test_refund_boundary_codex.TestRefundBoundaryOrderChain.test_report_acceptance_is_not_closure_but_explicit_order_is"
+    ],
+    "A11": [
+      "tests.test_documents.TestHistoricalBackfillIsNotCurrentNews.test_a_newly_discovered_older_order_gets_late_discovery_treatment",
+      "tests.test_documents.TestHistoricalBackfillIsNotCurrentNews.test_an_identical_resubmission_creates_no_economic_change_event"
+    ],
+    "A12": [
+      "tests.test_acceptance_suite_bridge_codex.AcceptanceSuiteBridgeTests.test_case_001_a12_1_test_a12_suite_integrity_t_missing_required_reference_is_fatal",
+      "tests.test_acceptance_suite_bridge_codex.AcceptanceSuiteBridgeTests.test_case_002_a12_1b_test_a12_suite_integrity_t_no_comparison_is_not_a_pass",
+      "tests.test_acceptance_suite_bridge_codex.AcceptanceSuiteBridgeTests.test_case_003_a12_1c_test_a12_suite_integrity_t_value_comparison_is_exact_decimal",
+      "tests.test_acceptance_suite_bridge_codex.AcceptanceSuiteBridgeTests.test_case_004_a12_2_test_a12_suite_integrity_t_identical_resubmission_fixture_is_exercised",
+      "tests.test_acceptance_suite_bridge_codex.AcceptanceSuiteBridgeTests.test_case_005_a12_2b_test_a12_suite_integrity_t_absent_resubmission_fixture_is_a_failure",
+      "tests.test_acceptance_suite_bridge_codex.AcceptanceSuiteBridgeTests.test_case_006_a12_3_test_a12_suite_integrity_t_wrong_occurrence_edge_rejected",
+      "tests.test_acceptance_suite_bridge_codex.AcceptanceSuiteBridgeTests.test_case_007_a12_3b_test_a12_suite_integrity_t_removing_a_contributing_edge_fails",
+      "tests.test_build_test_run_manifest_codex.BuildTestRunManifestTests.test_truncated_nonverbose_and_zero_case_logs_are_rejected"
+    ],
+    "A13": [
+      "tests.test_acceptance_suite_bridge_codex.AcceptanceSuiteBridgeTests.test_case_010_a13_1_test_a13_release_contract_t_removing_quarterly_metrics_fails_the_release",
+      "tests.test_acceptance_suite_bridge_codex.AcceptanceSuiteBridgeTests.test_case_011_a13_2_test_a13_release_contract_t_missing_mandatory_group_outputs_fail",
+      "tests.test_release_builder_codex.ReleaseBuilderTests.test_fixed_contract_rejects_removed_required_export",
+      "tests.test_replay_publication_codex.MandatoryExportTests.test_complete_required_export_reaches_publication_boundary"
+    ],
+    "A14": [
+      "tests.test_exception_34_build_a_codex.OriginalException34BuildA.test_a14_ioc_parser_19_exact_occurrences_and_lineage"
+    ],
+    "A15": [
+      "tests.test_exception_34_build_a_codex.OriginalException34BuildA.test_a15_ioc_access_5_metadata_and_replacements",
+      "tests.test_final_exception_records_hardening_codex.ExactExceptionFinalizerTests.test_metadata_n_null_http_is_valid_but_invented_401_fails"
+    ],
+    "A16": [
+      "tests.test_549d_semantics.BlockerReconciliation.test_the_six_blockers_are_4_filer_years_plus_2_policy_duplicates",
+      "tests.test_exception_34_build_a_codex.OriginalException34BuildA.test_a16_form549d_8_storage_grain_and_cache_semantics"
+    ],
+    "A16-CREDENTIAL": [
+      "tests.test_credential_matrix_codex.CredentialAndRetrievalMatrix.test_actual_http_failure_is_the_valid_source_failure_control",
+      "tests.test_credential_matrix_codex.CredentialAndRetrievalMatrix.test_cached_success_is_credential_free_and_never_opens_a_socket",
+      "tests.test_credential_matrix_codex.CredentialAndRetrievalMatrix.test_missing_key_is_local_configuration_before_any_request",
+      "tests.test_credential_matrix_codex.CredentialAndRetrievalMatrix.test_offline_cache_miss_is_not_a_source_or_ferc_failure"
+    ],
+    "A17": [
+      "tests.test_exception_34_build_a_codex.OriginalException34BuildA.test_a17_capacity_2_ocr_values_qualifiers_and_lineage",
+      "tests.test_reviewed_image_gate_codex.ReviewedImageGateTests.test_missing_pdftoppm_is_failure_not_skip",
+      "tests.test_reviewed_image_gate_codex.ReviewedImageGateTests.test_missing_swift_is_failure_not_skip",
+      "tests.test_reviewed_image_gate_codex.ReviewedImageGateTests.test_valid_isolated_cache_passes_and_retains_no_render"
+    ],
+    "A18": [
+      "tests.test_coverage_codex_integration.CurrentOilFactorCoverage.test_current_direct_factor_accepts_role_aware_historical_basis",
+      "tests.test_oil_index_instrument_codex.InstrumentIdentityAndSlots.test_complete_expected_history_is_exactly_30_factors_and_30_changes",
+      "tests.test_oil_index_source_evidence_codex.OilIndexOfficialSourceBundle.test_complete_bundle_is_valid_and_has_one_occurrence_per_table_row"
+    ],
+    "A19": [
+      "tests.test_document_semantics_codex.TestGulfLNGOperativeRecommendation.test_administrative_extension_sentence_alone_is_not_a_finding",
+      "tests.test_document_semantics_codex.TestGulfLNGOperativeRecommendation.test_numbered_recommendation_outranks_extension_procedure"
+    ],
+    "A20": [
+      "tests.test_build_b_acceptance_runner_codex.PlanAndAcceptancePolicyTests.test_plan_refuses_online_or_external_path_commands",
+      "tests.test_candidate_packaging_isolation_codex.CleanCandidateMaterializationTests.test_apply_starts_with_no_generated_outputs_and_keeps_declared_recovery_inputs",
+      "tests.test_crosswalk_isolation_codex.CrosswalkIsolationTests.test_bad_prerequisite_preserves_files_and_database",
+      "tests.test_replay_publication_codex.ReplayIdentityTests.test_resume_skips_only_while_input_and_output_identities_hold"
+    ],
+    "A21": [
+      "tests.test_acceptance_suite_bridge_codex.AcceptanceSuiteBridgeTests.test_case_017_a21_1_test_a21_release_identity_t_delivered_manifest_has_stale_entries",
+      "tests.test_acceptance_suite_bridge_codex.AcceptanceSuiteBridgeTests.test_case_023_a21_7_test_a21_release_identity_t_release_takes_no_size_from_stat",
+      "tests.test_release_builder_codex.ReleaseBuilderTests.test_archive_is_exact_crc_clean_safe_and_receipt_external",
+      "tests.test_release_builder_codex.ReleaseBuilderTests.test_lite_full_names_and_identity_sidecars_are_distinct",
+      "tests.test_release_builder_codex.ReleaseBuilderTests.test_stage2_reuses_the_cache_contract_byte_stream_identity"
+    ],
+    "A22": [
+      "tests.test_build_test_run_manifest_codex.BuildTestRunManifestTests.test_valid_manifest_is_deterministic_and_accepted_by_final_consumer",
+      "tests.test_final_release_records_codex.FinalReleaseRecordsTests.test_zero_case_and_required_skip_cannot_be_green",
+      "tests.test_runtime_requirements_codex.RuntimeManifestTests.test_python_version_and_dependency_contract"
+    ],
+    "ADOPTION-W4-COVERAGE": [
+      "tests.test_coverage.TestObligationCalendar.test_breaking_ingestion_cannot_raise_coverage",
+      "tests.test_coverage.TestFieldReadiness.test_cross_template_passes_cannot_make_a_template_ready"
+    ],
+    "COORDINATOR-REQUESTS": [
+      "tests.test_ioc_lineage_codex.IOCTopFiveLineageTests.test_targetless_group_summary_is_rejected",
+      "tests.test_lineage_invariants_codex.PersistedLineageInvariantTests.test_population_occurrence_mutation_is_rejected_but_original_passes"
+    ],
+    "INCIDENT-BASELINE-BYTES": [
+      "tests.test_migration_003_codex.FilingEntityMigration003Tests.test_legacy_dry_run_is_read_only_then_apply_preserves_rows_and_backfills_once"
+    ],
+    "INCIDENT-RAGGED-BATCH-COLUMNS": [
+      "tests.test_acceptance_suite_bridge_codex.AcceptanceSuiteBridgeTests.test_case_044_m_staging_1_test_matrix_identity_t_batch_writer_uses_the_column_union"
+    ],
+    "INCIDENT-SCHEMA-DRIFT": [
+      "tests.test_acceptance_suite_bridge_codex.AcceptanceSuiteBridgeTests.test_case_043_m_schema_1_test_matrix_identity_t_pre_repair_database_is_detected",
+      "tests.test_migration_codex.IntegratedMigrationTests.test_staging_detects_silent_drift_before_schema_script_and_names_migration_002"
+    ],
+    "INCIDENT-SOURCE-CACHE": [
+      "tests.test_import_official_recovery.ImportOfficialRecoveryTests.test_conflicting_url_aborts_before_any_new_import_and_preserves_bytes",
+      "tests.test_replay_publication_codex.CachePreflightTests.test_valid_cache_passes_and_corrupt_object_fails"
+    ],
+    "MATRIX": [
+      "tests.test_acceptance_suite_bridge_codex.AcceptanceSuiteBridgeTests.test_case_029_m2_2_test_matrix_runtime_t_interruption_preserves_last_good",
+      "tests.test_acceptance_suite_bridge_codex.AcceptanceSuiteBridgeTests.test_case_033_m3_1i_test_matrix_identity_t_ioc_ownership_is_corrected_in_the_repaired_data",
+      "tests.test_acceptance_suite_bridge_codex.AcceptanceSuiteBridgeTests.test_case_038_m7_3_test_matrix_identity_t_a_cover_sheet_does_not_prove_operation",
+      "tests.test_acceptance_suite_bridge_codex.AcceptanceSuiteBridgeTests.test_case_043_m_schema_1_test_matrix_identity_t_pre_repair_database_is_detected"
+    ],
+    "OPEN-ITEM-ADOPTED-SUITE-STALE-RUN-COMMAND": [
+      "tests.test_build_test_run_manifest_codex.BuildTestRunManifestTests.test_cli_writes_exact_hash_and_counts",
+      "tests.test_runtime_requirements_codex.RuntimeManifestTests.test_subprocess_and_command_boundaries_are_exact"
+    ],
+    "OPEN-ITEM-UNGUARDED-PREDICATE": [
+      "tests.test_span_guard_codex.SpanGuardRegressionTests.test_formatted_number_matches_only_a_complete_numeric_token",
+      "tests.test_span_guard_codex.SpanGuardRegressionTests.test_nil_and_blank_remain_constructor_errors",
+      "tests.test_span_guard_codex.SpanGuardRegressionTests.test_numeric_zero_is_a_real_required_value",
+      "tests.test_span_guard_codex.SpanGuardRegressionTests.test_zero_does_not_match_inside_another_number"
+    ],
+    "P700-SAFEGUARD": [
+      "tests.test_549d_semantics.Page700IsNotRealisedReturn.test_adapter_module_states_the_safeguard",
+      "tests.test_549d_semantics.Page700IsNotRealisedReturn.test_page_700_scope_differs_from_whole_entity_form_6",
+      "tests.test_549d_semantics.Page700IsNotRealisedReturn.test_return_components_are_cost_of_service_inputs"
+    ],
+    "R01-SHIPPED-SUITE-NOT-GREEN": [
+      "tests.test_build_test_run_manifest_codex.BuildTestRunManifestTests.test_exit_code_and_result_must_agree_in_both_directions",
+      "tests.test_build_test_run_manifest_codex.BuildTestRunManifestTests.test_valid_manifest_is_deterministic_and_accepted_by_final_consumer",
+      "tests.test_final_release_records_codex.FinalReleaseRecordsTests.test_current_code_and_executed_test_ids_are_independently_bound"
+    ],
+    "R02-RELEASE-IDENTITY-DETAILS-STALE": [
+      "tests.test_release_builder_codex.ReleaseBuilderTests.test_archive_is_exact_crc_clean_safe_and_receipt_external",
+      "tests.test_release_builder_codex.ReleaseBuilderTests.test_stream_verifier_rejects_member_whose_bytes_disagree_with_manifest"
+    ],
+    "R03-STATIC-REGISTRY-STALE": [
+      "tests.test_instrument_grid_codex.IndependentInstrumentGrid.test_registry_cannot_claim_oil_implementation_with_zero_slots",
+      "tests.test_oil_index.OilPipelineIndex.test_crosswalk_refuses_to_pretend_the_old_name_had_one_meaning",
+      "tests.test_oil_index.OilPipelineIndex.test_metric_is_renamed_away_from_commodity_price"
+    ],
+    "R04-ZERO-SPAN-SUBSTRING": [
+      "tests.test_span_guard_codex.SpanGuardRegressionTests.test_numeric_zero_is_a_real_required_value",
+      "tests.test_span_guard_codex.SpanGuardRegressionTests.test_zero_does_not_match_inside_another_number",
+      "tests.test_span_guard_codex.SpanGuardRegressionTests.test_number_attached_to_a_recognised_filed_unit_is_still_a_complete_token"
+    ],
+    "R05-OIL-INDEX-CURRENT-VERSION-REFUSED": [
+      "tests.test_coverage_codex_integration.CurrentOilFactorCoverage.test_current_direct_factor_accepts_role_aware_historical_basis",
+      "tests.test_coverage_codex_integration.CurrentOilFactorCoverage.test_currentness_guards_still_reject_the_observation_itself"
+    ],
+    "R06-GULF-LNG-FINDING-MISLABELLED": [
+      "tests.test_document_semantics_codex.TestGulfLNGOperativeRecommendation.test_administrative_extension_sentence_alone_is_not_a_finding",
+      "tests.test_document_semantics_codex.TestGulfLNGOperativeRecommendation.test_numbered_recommendation_outranks_extension_procedure"
+    ],
+    "R07-IOC-SUPERSESSION-CYCLES": [
+      "tests.test_revision_graph_codex.RevisionGraphRegressionTests.test_identical_resubmission_is_retained_without_economic_revision",
+      "tests.test_revision_graph_codex.RevisionGraphRegressionTests.test_three_revisions_have_same_acyclic_graph_in_both_replay_orders"
+    ],
+    "R08-ANNOTATION-STATUS-COUNTERS": [
+      "tests.test_annotations_codex.AnnotationRegressionTests.test_bundled_metadata_is_complete_and_recomputable",
+      "tests.test_annotations_codex.AnnotationRegressionTests.test_reviewed_final_maps_to_resolved_while_open_stays_open",
+      "tests.test_annotations_codex.AnnotationRegressionTests.test_seed_does_not_zero_count_and_swap_reconciles_atomically"
+    ],
+    "R09-PLAN-CHECKSUM-WORDING": [
+      "tests.test_final_release_records_codex.FinalReleaseRecordsTests.test_real_shaped_sha_only_run_plan_is_accepted_when_republished",
+      "tests.test_replay_publication_codex.CachePreflightTests.test_valid_cache_passes_and_corrupt_object_fails"
+    ],
+    "R10-LOGICAL-LINEAGE-TARGETS": [
+      "tests.test_ioc_lineage_codex.IOCTopFiveLineageTests.test_targetless_group_summary_is_rejected",
+      "tests.test_lineage_invariants_codex.PersistedLineageInvariantTests.test_deleted_terminal_fact_is_rejected_but_unchanged_chain_passes",
+      "tests.test_lineage_invariants_codex.PersistedLineageInvariantTests.test_valid_source_population_is_a_terminal"
+    ],
+    "R11-REPORT-PLACEHOLDERS-AND-STALE-SECTIONS": [
+      "tests.test_final_release_records_codex.FinalReleaseRecordsTests.test_complete_fixture_publishes_and_preserves_explicit_limits",
+      "tests.test_final_release_records_codex.FinalReleaseRecordsTests.test_unclaimed_empty_evidence_and_placeholder_basis_are_refused"
+    ],
+    "R12-EXCEPTIONS-UNCLAIMED": [
+      "tests.test_exception_34_build_a_codex.OriginalException34BuildA.test_a14_ioc_parser_19_exact_occurrences_and_lineage",
+      "tests.test_exception_34_build_a_codex.OriginalException34BuildA.test_a15_ioc_access_5_metadata_and_replacements",
+      "tests.test_exception_34_build_a_codex.OriginalException34BuildA.test_a16_form549d_8_storage_grain_and_cache_semantics",
+      "tests.test_exception_34_build_a_codex.OriginalException34BuildA.test_a17_capacity_2_ocr_values_qualifiers_and_lineage",
+      "tests.test_final_release_records_codex.FinalReleaseRecordsTests.test_unclaimed_empty_evidence_and_placeholder_basis_are_refused"
+    ],
+    "R13-EMPTY-DECLARED-STORES": [
+      "tests.test_final_release_records_codex.FinalReleaseRecordsTests.test_complete_fixture_publishes_and_preserves_explicit_limits",
+      "tests.test_release_builder_codex.ReleaseBuilderTests.test_full_payload_contract_is_fixed_not_inventoried"
+    ],
+    "R14-STALE-RUNNING-RUN": [
+      "tests.test_abrupt_recovery_codex.AbruptExitRecoveryTests.test_os_exit_after_commit_before_status_recovers_as_done",
+      "tests.test_final_release_records_codex.FinalReleaseRecordsTests.test_r30_publication_boundary_rejects_incomplete_unit_state"
+    ],
+    "R15-MISSING-RUNTIME-EVIDENCE": [
+      "tests.test_build_test_run_manifest_codex.BuildTestRunManifestTests.test_valid_manifest_is_deterministic_and_accepted_by_final_consumer",
+      "tests.test_runtime_requirements_codex.RuntimeManifestTests.test_import_inventory_is_exact_and_stdlib_is_importable",
+      "tests.test_runtime_requirements_codex.RuntimeManifestTests.test_python_version_and_dependency_contract",
+      "tests.test_runtime_requirements_codex.RuntimeManifestTests.test_subprocess_and_command_boundaries_are_exact"
+    ],
+    "R16-W4-STATE-MIXED-SCRATCH": [
+      "tests.test_build_b_acceptance_runner_codex.DatabaseSemanticComparisonTests.test_scope_and_warning_changes_remain_blocking",
+      "tests.test_release_builder_codex.ReleaseBuilderTests.test_build_a_boundary_ties_database_generation_and_exports",
+      "tests.test_replay_publication_codex.PublicationBoundaryValidationTests.test_database_manifest_compatibility_and_snapshot_mismatches_are_rejected"
+    ],
+    "R17-INTERRUPT-STATUS-DIVERGENCE": [
+      "tests.test_retrieval_failure_atomicity_codex.AbruptOuterBoundaryTests.test_process_exit_after_outer_commit_recovers_committed_generation",
+      "tests.test_retrieval_failure_atomicity_codex.RetrievalUnitAtomicityTests.test_keyboard_interrupt_rolls_back_and_propagates"
+    ],
+    "R18-DERIVED-SCOPE-NOT-ACTUAL": [
+      "tests.test_scope_lineage_codex.ScopeLineageRegressionTests.test_registry_instruction_is_not_stored_as_observation_scope",
+      "tests.test_scope_lineage_codex.ScopeLineageRegressionTests.test_ratio_preserves_supported_common_scope",
+      "tests.test_scope_lineage_codex.ScopeLineageRegressionTests.test_ratio_refuses_matching_but_unresolved_scope"
+    ],
+    "R19-HISTORICAL-MARGINS-NO-SOURCE-ID": [
+      "tests.test_lineage_invariants_codex.PersistedLineageInvariantTests.test_occurrence_only_edge_is_rejected_but_unchanged_chain_passes",
+      "tests.test_lineage_invariants_codex.PersistedLineageInvariantTests.test_recursive_gas_chain_accepts_blank_outer_direct_ids_and_mixed_dates",
+      "tests.test_lineage_invariants_codex.PersistedLineageInvariantTests.test_redundant_occurrence_must_agree_with_linked_observation"
+    ],
+    "R20-FIELD-READINESS-NOT-DATA-COMPLETENESS": [
+      "tests.test_coverage.TestFieldReadiness.test_a_local_pass_does_mark_the_template_ready",
+      "tests.test_coverage.TestFieldReadiness.test_cross_template_passes_cannot_make_a_template_ready",
+      "tests.test_final_exception_records_hardening_codex.ExactExceptionFinalizerTests.test_a15_and_readiness_ledger_states_are_derived_not_stale_targets"
+    ],
+    "R21-REQUIREMENTS-CROSSWALK-NOT-FIELD-MAP": [
+      "tests.test_crosswalk_isolation_codex.CrosswalkIsolationTests.test_field_status_rejects_bad_crosswalk_before_opening_outputs_or_db",
+      "tests.test_crosswalk_isolation_codex.CrosswalkIsolationTests.test_valid_external_generation_does_not_touch_frozen_config"
+    ],
+    "R22-RUN-PLAN-NONRESUMABLE-UNDECLARED-INPUTS": [
+      "tests.test_crosswalk_isolation_codex.CrosswalkIsolationTests.test_bad_prerequisite_preserves_files_and_database",
+      "tests.test_replay_publication_codex.ReplayIdentityTests.test_resume_skips_only_while_input_and_output_identities_hold"
+    ],
+    "R23-CAPACITY-FILER-IDENTITY-COLLISION": [
+      "tests.test_capacity_20260226_5162_capture.Capacity202602265162CaptureTests.test_exact_get_then_one_post_produces_importable_immutable_evidence",
+      "tests.test_capacity_filer_identity_codex.CapacityFilerDescriptionBoundary.test_mountainwest_and_overthrust_are_not_interchangeable",
+      "tests.test_capacity_filer_identity_codex.CapacityPopulationIdentity.test_population_id_binds_owner_observation_and_occurrence"
+    ],
+    "R24-CPYTHON39-VERBOSE-TEST-ID": [
+      "tests.test_build_test_run_manifest_codex.BuildTestRunManifestTests.test_final_suite_spec_uses_package_qualified_discovery",
+      "tests.test_build_test_run_manifest_codex.BuildTestRunManifestTests.test_multiline_and_interleaved_verbose_results_are_complete_and_fail_closed",
+      "tests.test_external_release_evidence_codex.TestExternalReleaseEvidence.test_verbose_parser_accepts_multiline_capture_and_rejects_ambiguous_status",
+      "tests.test_final_release_records_codex.FinalReleaseRecordsTests.test_verbose_log_parser_handles_descriptions_and_captured_output_without_guessing",
+      "tests.test_final_release_records_codex.FinalReleaseRecordsTests.test_verbose_log_parser_normalises_supported_python_runtime_formats"
+    ],
+    "R25-ELIBRARY-AS-OF-FUTURE-OCCURRENCE-LEAK": [
+      "tests.test_bounded_elibrary_search_capture_codex.BoundedELibrarySearchCaptureTests.test_valid_import_preserves_unrelated_entry_and_all_response_metadata",
+      "tests.test_final_release_records_codex.FinalReleaseRecordsTests.test_search_response_inputs_and_related_elibrary_gates_require_exact_application",
+      "tests.test_refund_boundary_codex.TestELibraryLegalNameBoundary.test_point_in_time_replay_keeps_valid_prior_filing_and_rejects_future_hit"
+    ],
+    "R26-ELIBRARY-HIDDEN-PROCEEDING-SEED": [
+      "tests.test_elibrary_seed_inventory_codex.ELibrarySeedContract.test_curated_seed_retains_transco_and_liquids_history",
+      "tests.test_elibrary_seed_inventory_codex.ELibrarySeedContract.test_missing_seed_fails_instead_of_silently_changing_dockets",
+      "tests.test_elibrary_seed_inventory_codex.ELibrarySeedContract.test_seed_bytes_participate_in_resume_config_digest",
+      "tests.test_elibrary_seed_inventory_codex.ELibrarySeedContract.test_seed_is_versioned_packaged_input_with_exact_identity",
+      "tests.test_final_release_records_codex.FinalReleaseRecordsTests.test_search_response_inputs_and_related_elibrary_gates_require_exact_application"
+    ],
+    "R27-ELIBRARY-RUN-INPUT-IDENTITY": [
+      "tests.test_elibrary_seed_inventory_codex.ELibraryRunInputIdentity.test_persist_returns_complete_occurrence_shape_for_append_only_inventory",
+      "tests.test_final_release_records_codex.FinalReleaseRecordsTests.test_search_response_inputs_and_related_elibrary_gates_require_exact_application"
+    ],
+    "R28-LNG-ROUTING-AUTHORITY-ASSOCIATIONS": [
+      "tests.test_filing_entity_associations_codex.CoverageAssociationGate.test_rate_capacity_and_cross_facility_borrowing_are_rejected",
+      "tests.test_filing_entity_associations_codex.CoverageAssociationGate.test_shared_elba_and_sabine_operational_occurrences_are_accepted",
+      "tests.test_filing_entity_associations_codex.ReviewedLNGInputs.test_dynamic_filing_docket_is_visible_but_never_promoted_to_authority",
+      "tests.test_filing_entity_associations_codex.ReviewedLNGInputs.test_lng_seed_has_exact_frozen_64_row_identity",
+      "tests.test_filing_entity_associations_codex.ReviewedLNGInputs.test_lng_seed_missing_and_tampered_inputs_are_refused",
+      "tests.test_filing_entity_associations_codex.ReviewedLNGInputs.test_occurrence_relations_are_source_and_facility_specific",
+      "tests.test_filing_entity_associations_codex.ReviewedLNGInputs.test_reviewed_authority_has_exact_44_static_rows"
+    ],
+    "R29-ELIBRARY-SIBLING-FILER-CONTAMINATION": [
+      "tests.test_filing_entity_associations_codex.FilingEntityPersistence.test_exclusive_owner_conflict_is_rejected_without_mutation",
+      "tests.test_filing_entity_associations_codex.FilingEntityPersistence.test_exclusive_same_owner_replay_is_idempotent",
+      "tests.test_filing_entity_associations_codex.FilingEntityPersistence.test_shared_anchor_is_deterministic_under_reverse_replay",
+      "tests.test_filing_entity_associations_codex.TariffActorBoundary.test_tariff_actor_accepts_exact_products_ngpl_and_reordered_mountainwest",
+      "tests.test_filing_entity_associations_codex.TariffActorBoundary.test_tariff_actor_rejects_enlink_and_oneok_siblings",
+      "tests.test_migration_003_codex.FilingEntityMigration003Tests.test_apply_error_rolls_back_column_table_index_and_backfill_together",
+      "tests.test_migration_003_codex.FilingEntityMigration003Tests.test_current_database_dry_run_and_apply_are_verified_noops",
+      "tests.test_migration_003_codex.FilingEntityMigration003Tests.test_legacy_dry_run_is_read_only_then_apply_preserves_rows_and_backfills_once",
+      "tests.test_migration_003_codex.FilingEntityMigration003Tests.test_unknown_asset_docket_shape_is_refused_before_any_write"
+    ],
+    "R30-RETRIEVAL-UNIT-PARTIAL-ROW-LEAKAGE": [
+      "tests.test_retrieval_failure_atomicity_codex.AbruptOuterBoundaryTests.test_process_exit_after_outer_commit_recovers_committed_generation",
+      "tests.test_retrieval_failure_atomicity_codex.AbruptOuterBoundaryTests.test_process_exit_before_outer_commit_keeps_last_good_generation",
+      "tests.test_retrieval_failure_atomicity_codex.AbruptOuterBoundaryTests.test_process_exit_during_outer_commit_keeps_last_good_generation",
+      "tests.test_retrieval_failure_atomicity_codex.NestedTransactionTests.test_caught_ordinary_nested_failure_rolls_back_only_its_savepoint",
+      "tests.test_retrieval_failure_atomicity_codex.NestedTransactionTests.test_keyboard_interrupt_unwinds_nested_and_outer_transactions",
+      "tests.test_retrieval_failure_atomicity_codex.RetrievalUnitAtomicityTests.test_canonicalisation_exception_rolls_back_raw_and_expected_rows",
+      "tests.test_retrieval_failure_atomicity_codex.RetrievalUnitAtomicityTests.test_keyboard_interrupt_rolls_back_and_propagates",
+      "tests.test_retrieval_failure_atomicity_codex.RetrievalUnitAtomicityTests.test_offline_cache_miss_rolls_back_retrieval_rows",
+      "tests.test_retrieval_failure_atomicity_codex.RetrievalUnitAtomicityTests.test_ordinary_retrieve_exception_rolls_back_retrieval_rows",
+      "tests.test_retrieval_failure_atomicity_codex.RetrievalUnitAtomicityTests.test_required_subitem_failure_rolls_back_then_restart_and_unchanged_succeed",
+      "tests.test_retrieval_failure_atomicity_codex.RetrievalUnitAtomicityTests.test_system_exit_rolls_back_and_propagates"
+    ],
+    "R31-REDUNDANT-INPUT-SNAPSHOT-PACKAGING-MISMATCH": [
+      "tests.test_input_snapshot_packaging_codex.InputSnapshotPackagingTests.test_build_a_alias_and_packaged_canonical_object_have_same_snapshot",
+      "tests.test_input_snapshot_packaging_codex.InputSnapshotPackagingTests.test_missing_or_tampered_canonical_identity_is_refused",
+      "tests.test_input_snapshot_packaging_codex.InputSnapshotPackagingTests.test_tampered_alias_is_refused_before_exclusion",
+      "tests.test_input_snapshot_packaging_codex.InputSnapshotPackagingTests.test_tampered_retained_provenance_is_refused",
+      "tests.test_input_snapshot_packaging_codex.InputSnapshotPackagingTests.test_unrelated_omitted_input_changes_snapshot"
+    ],
+    "R32-PENDING-TEST-SPEC-PAYLOAD-LEAK": [
+      "tests.test_release_builder_codex.ReleaseBuilderTests.test_payload_excludes_draft_claims_and_unselected_worker_logs"
+    ],
+    "R33-UNDECLARED-ELIBRARY-REPLAY-DEPENDENCIES": [
+      "tests.test_final_release_records_codex.FinalReleaseRecordsTests.test_dependency_capture_bundle_requires_exact_delta_and_completed_units",
+      "tests.test_replay_publication_codex.CachePreflightTests.test_valid_cache_passes_and_corrupt_object_fails"
+    ],
+    "R34-STALE-PROVISIONAL-PAYLOAD-LEAKS": [
+      "tests.test_candidate_packaging_isolation_codex.CleanCandidateMaterializationTests.test_exact_stale_snapshots_are_excluded_but_lookalikes_survive",
+      "tests.test_release_builder_codex.ReleaseBuilderTests.test_full_payload_contract_is_fixed_not_inventoried",
+      "tests.test_release_builder_codex.ReleaseBuilderTests.test_payload_excludes_draft_claims_and_unselected_worker_logs"
+    ],
+    "R35-MUTABLE-CACHE-PATH-FOR-HISTORICAL-IDENTITY": [
+      "tests.test_final_release_records_codex.FinalReleaseRecordsTests.test_historical_cache_boundary_binds_preserved_index_not_mutable_current_path"
+    ],
+    "R36-NAMED-LNG-FILER-COVERAGE-GATE": [
+      "tests.test_filing_entity_associations_codex.CoverageAssociationGate.test_jointly_named_filer_application_order_and_capacity_are_accepted",
+      "tests.test_filing_entity_associations_codex.CoverageAssociationGate.test_rate_capacity_and_cross_facility_borrowing_are_rejected",
+      "tests.test_filing_entity_associations_codex.ReviewedLNGInputs.test_occurrence_relations_are_source_and_facility_specific",
+      "tests.test_final_release_records_codex.FinalReleaseRecordsTests.test_r36_named_lng_filer_gate_binds_database_quality_and_export"
+    ],
+    "R37-STALE-TAXONOMY-CACHE-FREEZE": [
+      "tests.test_replay_publication_codex.CachePreflightTests.test_taxonomy_pin_preflight_accepts_exact_freeze_and_rejects_stale_index",
+      "tests.test_replay_publication_codex.CachePreflightTests.test_plan_preflight_reports_taxonomy_cache_mismatch_before_replay",
+      "tests.test_replay_publication_codex.ReplayIdentityTests.test_resume_skips_only_while_input_and_output_identities_hold",
+      "tests.test_final_release_records_codex.FinalReleaseRecordsTests.test_r37_taxonomy_cache_plan_and_replay_boundary_is_fail_closed"
+    ],
+    "R38-IOC-LINEAGE-VALIDATOR-SCOPE-AND-EXTENDED-POINT-CODE": [
+      "tests.test_ioc_lineage_codex.IOCTopFiveLineageTests.test_standard_and_three_character_point_codes_redraw_exactly",
+      "tests.test_ioc_lineage_codex.IOCTopFiveLineageTests.test_foreign_adapter_population_is_outside_ioc_validator",
+      "tests.test_final_release_records_codex.FinalReleaseRecordsTests.test_r38_ioc_lineage_gate_binds_exact_data_validation_and_exports"
+    ],
+    "R39-BLANK-IOC-POINT-CODE-PROMOTION": [
+      "tests.test_ioc_lineage_codex.IOCTopFiveLineageTests.test_blank_point_code_cannot_be_promoted_as_present",
+      "tests.test_ioc_lineage_codex.IOCTopFiveLineageTests.test_blank_point_code_rejection_does_not_depend_on_rule_prose",
+      "tests.test_ioc_lineage_codex.IOCTopFiveLineageTests.test_blank_point_code_cannot_masquerade_as_file_census",
+      "tests.test_ioc_lineage_codex.IOCTopFiveLineageTests.test_snapshot_builder_retains_blank_point_rows_without_promoting_a_code",
+      "tests.test_final_release_records_codex.FinalReleaseRecordsTests.test_r39_blank_point_code_gate_requires_source_retention_and_export_removal"
+    ],
+    "R40-IOC-ZERO-POINT-CENSUS-CANDIDATE-COUNT": [
+      "tests.test_ioc_lineage_codex.IOCTopFiveLineageTests.test_snapshot_builder_retains_blank_point_rows_without_promoting_a_code",
+      "tests.test_ioc_lineage_codex.IOCTopFiveLineageTests.test_zero_point_file_census_records_and_redraws_zero_candidate_count",
+      "tests.test_final_release_records_codex.FinalReleaseRecordsTests.test_r40_zero_point_census_gate_binds_exact_rows_and_exports"
+    ],
+    "R41-IOC-INTEGRATION-FIXTURE-FK-LIFECYCLE": [
+      "tests.test_ioc.HarnessIsolationTests.test_real_byte_context_seeds_fk_parents_and_removes_temp_root",
+      "tests.test_ioc.IOCRetrievalTests.test_retrieval_returned_real_filings",
+      "tests.test_ioc.CapacityReportTests.test_transco_system_total_is_extracted_with_its_unit",
+      "tests.test_ioc.CapacityReportTests.test_every_published_figure_has_page_evidence_and_a_verbatim_span"
+    ],
+    "R42-A13-LAST-GOOD-ATTEMPT-RECEIPT-ASSERTION": [
+      "tests.test_acceptance_suite_bridge_codex.AcceptanceSuiteBridgeTests.test_case_010_a13_1_test_a13_release_contract_t_removing_quarterly_metrics_fails_the_release",
+      "tests.test_release_builder_codex.ReleaseBuilderTests.test_lite_main_publishes_only_after_verification_and_preserves_last_good"
+    ],
+    "R43-FINAL-LEDGER-SUBSET-HIDDEN-W5-DEPENDENCY": [
+      "tests.test_final_exception_records_hardening_codex.ExactExceptionFinalizerTests.test_a15_and_readiness_ledger_states_are_derived_not_stale_targets"
+    ],
+    "R44-CPYTHON39-CSV-C0-CONTROL-PORTABILITY": [
+      "tests.test_export_control_chars_codex.ExtractedTextControlTests.test_production_extractor_replaces_binary_controls_without_dropping_zero",
+      "tests.test_export_control_chars_codex.ExtractedTextControlTests.test_capacity_coordinate_reader_normalises_but_gates_affected_scope",
+      "tests.test_export_control_chars_codex.ExtractedTextControlTests.test_capacity_common_boundary_covers_direct_ocr_rows",
+      "tests.test_export_control_chars_codex.ExtractedTextControlTests.test_writer_rejects_an_unsanitised_bad_row_and_accepts_valid_zero",
+      "tests.test_export_control_chars_codex.IntegratedPublicationControlTests.test_complete_but_ambiguous_capacity_is_not_applicability_unknown",
+      "tests.test_export_control_chars_codex.IntegratedPublicationControlTests.test_published_csvs_are_portable_and_keep_database_populations",
+      "tests.test_final_release_records_codex.FinalReleaseRecordsTests.test_r44_capacity_semantic_gate_rejects_status_and_coverage_regressions",
+      "tests.test_candidate_packaging_isolation_codex.AcceptanceCandidateCSVTests.test_slim_copy_counts_csv_records_and_preserves_quoted_newlines",
+      "tests.test_release_builder_codex.ReleaseBuilderTests.test_fixed_contract_rejects_binary_controls_as_malformed_csv"
+    ],
+    "R45-BUILD-B-PENDING-INSTRUCTION-CORRUPTS-EXTRACTION": [
+      "tests.test_release_builder_codex.ReleaseBuilderTests.test_pending_full_candidate_has_no_pass_receipt_and_finalizes_only_from_bound_b",
+      "tests.test_release_builder_codex.ReleaseBuilderTests.test_full_release_requires_deferred_build_b_and_pending_is_not_ignored",
+      "tests.test_release_builder_codex.ReleaseBuilderTests.test_full_bundle_shim_and_docs_preserve_the_clean_extraction"
+    ],
+    "R46-CANDIDATE-MATERIALIZER-RETAINS-HIDDEN-SCRATCH": [
+      "tests.test_candidate_packaging_isolation_codex.CleanCandidateMaterializationTests.test_apply_refuses_nonempty_destination_instead_of_retaining_hidden_state",
+      "tests.test_candidate_packaging_isolation_codex.CleanCandidateMaterializationTests.test_selected_files_retain_inputs_code_and_evidence_but_not_generated_state",
+      "tests.test_final_release_records_codex.FinalReleaseRecordsTests.test_declared_historical_boundary_can_record_an_omitted_old_artifact"
+    ],
+    "R47-FORM549D-HIDDEN-CANDIDATE-WRITE": [
+      "tests.test_549d.TestSourceSemantics.test_resolution_evidence_uses_declared_output_root"
+    ],
+    "R48-BUILD-B-REPLAY-LEDGER-OBJECT-ORDER": [
+      "tests.test_build_b_acceptance_runner_codex.ReplayLedgerPolicyTests.test_canonical_key_sort_does_not_reject_completed_plan_order",
+      "tests.test_build_b_acceptance_runner_codex.ReplayLedgerPolicyTests.test_wrong_or_duplicate_ordinals_remain_blocking",
+      "tests.test_build_b_acceptance_runner_codex.ReplayLedgerPolicyTests.test_nonzero_exit_or_incomplete_step_remains_blocking"
+    ],
+    "R49-BUILD-B-ACCEPTANCE-MIRROR-MISSING-DEPENDENCY": [
+      "tests.test_build_b_acceptance_runner_codex.AcceptanceMirrorDependencyTests.test_mirror_copies_the_a12_regression_dependency",
+      "tests.test_build_b_acceptance_runner_codex.AcceptanceMirrorDependencyTests.test_missing_a12_regression_dependency_is_refused"
+    ],
+    "SELF-DEFECT-RUNNER-FALSE-PASS": [
+      "tests.test_build_test_run_manifest_codex.BuildTestRunManifestTests.test_truncated_nonverbose_and_zero_case_logs_are_rejected",
+      "tests.test_final_release_records_codex.FinalReleaseRecordsTests.test_zero_case_and_required_skip_cannot_be_green"
+    ],
+    "SELF-DEFECT-SILENT-SKIP-AND-INERT-FIXTURE": [
+      "tests.test_acceptance_suite_bridge_codex.AcceptanceSuiteBridgeTests.test_case_002_a12_1b_test_a12_suite_integrity_t_no_comparison_is_not_a_pass",
+      "tests.test_acceptance_suite_bridge_codex.AcceptanceSuiteBridgeTests.test_case_005_a12_2b_test_a12_suite_integrity_t_absent_resubmission_fixture_is_a_failure",
+      "tests.test_acceptance_suite_bridge_codex.AcceptanceSuiteBridgeTests.test_case_006_a12_3_test_a12_suite_integrity_t_wrong_occurrence_edge_rejected",
+      "tests.test_acceptance_suite_bridge_codex.AcceptanceSuiteBridgeTests.test_case_007_a12_3b_test_a12_suite_integrity_t_removing_a_contributing_edge_fails"
+    ],
+    "W2-EXTRA-01": [
+      "tests.test_import_official_recovery.ImportOfficialRecoveryTests.test_result_index_and_body_tampering_each_fail_closed",
+      "tests.test_replay_publication_codex.CachePreflightTests.test_valid_cache_passes_and_corrupt_object_fails"
+    ],
+    "W2-EXTRA-02": [
+      "tests.test_ioc_population_codex.TestSevenPermissiveDefaults.test_control_inventory_is_exact_and_callable",
+      "tests.test_ioc_population_codex.TestSevenPermissiveDefaults.test_header_units_keep_three_states",
+      "tests.test_ioc_population_codex.TestSevenPermissiveDefaults.test_missing_retrieval_state_is_unverified",
+      "tests.test_ioc_population_codex.TestSevenPermissiveDefaults.test_missing_template_is_refused",
+      "tests.test_ioc_population_codex.TestSevenPermissiveDefaults.test_missing_version_is_unresolved",
+      "tests.test_ioc_population_codex.TestSevenPermissiveDefaults.test_population_requires_both_rules",
+      "tests.test_ioc_population_codex.TestSevenPermissiveDefaults.test_unparseable_unit_rule_cannot_pass"
+    ],
+    "W2-EXTRA-03": [
+      "tests.test_ioc_population_codex.TestIOCStorageUnitPopulation.test_exact_seven_replay_as_unitless_warnings",
+      "tests.test_ioc_population_codex.TestIOCStorageUnitPopulation.test_frozen_source_and_output_populations_reconcile",
+      "tests.test_ioc_population_codex.TestIOCStorageUnitPopulation.test_stated_unit_and_no_storage_are_valid_controls"
+    ],
+    "W2-EXTRA-04": [
+      "tests.test_replay_publication_codex.ReplayIdentityTests.test_resume_skips_only_while_input_and_output_identities_hold",
+      "tests.test_replay_publication_codex.PublicationTests.test_mid_publish_exception_restores_legacy_files_and_old_receipt"
+    ],
+    "W3-EXTRA-UNIT-VALIDATION": [
+      "tests.test_coverage.TestAdmissibility.test_right_unit_family_still_satisfies",
+      "tests.test_coverage.TestAdmissibility.test_wrong_unit_family_cannot_satisfy_a_usd_slot",
+      "tests.test_ioc_population_codex.TestSevenPermissiveDefaults.test_unparseable_unit_rule_cannot_pass"
+    ],
+    "W5-FOSSIL": [
+      "tests.test_acceptance_suite_bridge_codex.AcceptanceSuiteBridgeTests.test_case_041_m_staging_2_test_matrix_identity_t_no_document_fact_outlives_its_own_span",
+      "tests.test_acceptance_suite_bridge_codex.AcceptanceSuiteBridgeTests.test_case_042_m_staging_2i_test_matrix_identity_t_regeneration_leaves_no_fossil_document_fact",
+      "tests.test_final_release_records_codex.FinalReleaseRecordsTests.test_w5_horizon_attached_unit_counterevidence_is_occurrence_bound",
+      "tests.test_span_guard_codex.SpanGuardRegressionTests.test_number_attached_to_a_recognised_filed_unit_is_still_a_complete_token",
+      "tests.test_documents.TestRefundWindowResolvesToOperativeText.test_a_bound_fact_is_replaced_not_duplicated_when_extraction_changes"
+    ],
+    "W5-GRAIN": [
+      "tests.test_exception_34_build_a_codex.OriginalException34BuildA.test_a17_capacity_2_ocr_values_qualifiers_and_lineage",
+      "tests.test_ioc.CapacityReportTests.test_every_published_figure_has_page_evidence_and_a_verbatim_span",
+      "tests.test_ioc.CapacityReportTests.test_storage_space_and_deliverability_keep_different_units"
+    ]
+  },
+  "exception_test_evidence": {
+    "blk-010f11ba7ab3f034": [
+      "tests.test_exception_34_build_a_codex.OriginalException34BuildA.test_a14_ioc_parser_19_exact_occurrences_and_lineage"
+    ],
+    "blk-05a8dedba157934e": [
+      "tests.test_exception_34_build_a_codex.OriginalException34BuildA.test_a14_ioc_parser_19_exact_occurrences_and_lineage"
+    ],
+    "blk-0e1bef5b42c6c2c8": [
+      "tests.test_exception_34_build_a_codex.OriginalException34BuildA.test_a14_ioc_parser_19_exact_occurrences_and_lineage"
+    ],
+    "blk-11652f800db8da1f": [
+      "tests.test_exception_34_build_a_codex.OriginalException34BuildA.test_a16_form549d_8_storage_grain_and_cache_semantics",
+      "tests.test_final_exception_records_hardening_codex.ExactExceptionFinalizerTests.test_exact_549d_service_billing_period_passes_but_generic_value_fails"
+    ],
+    "blk-14a56caaab90cb00": [
+      "tests.test_exception_34_build_a_codex.OriginalException34BuildA.test_a14_ioc_parser_19_exact_occurrences_and_lineage"
+    ],
+    "blk-187aa7808a87cf34": [
+      "tests.test_exception_34_build_a_codex.OriginalException34BuildA.test_a17_capacity_2_ocr_values_qualifiers_and_lineage",
+      "tests.test_reviewed_image_gate_codex.ReviewedImageGateTests.test_valid_isolated_cache_passes_and_retains_no_render"
+    ],
+    "blk-1fdc86170bf76cff": [
+      "tests.test_exception_34_build_a_codex.OriginalException34BuildA.test_a14_ioc_parser_19_exact_occurrences_and_lineage"
+    ],
+    "blk-23902889f085cfa0": [
+      "tests.test_exception_34_build_a_codex.OriginalException34BuildA.test_a14_ioc_parser_19_exact_occurrences_and_lineage"
+    ],
+    "blk-283ff9fe93424302": [
+      "tests.test_exception_34_build_a_codex.OriginalException34BuildA.test_a14_ioc_parser_19_exact_occurrences_and_lineage"
+    ],
+    "blk-3baeb084500d53e2": [
+      "tests.test_exception_34_build_a_codex.OriginalException34BuildA.test_a14_ioc_parser_19_exact_occurrences_and_lineage",
+      "tests.test_final_exception_records_hardening_codex.ExactExceptionFinalizerTests.test_parsed_noncanonical_zero_is_valid_but_wrong_native_cid_fails"
+    ],
+    "blk-433ea58ae2a4a07c": [
+      "tests.test_exception_34_build_a_codex.OriginalException34BuildA.test_a17_capacity_2_ocr_values_qualifiers_and_lineage",
+      "tests.test_reviewed_image_gate_codex.ReviewedImageGateTests.test_valid_isolated_cache_passes_and_retains_no_render"
+    ],
+    "blk-4e70dc991829dbe4": [
+      "tests.test_exception_34_build_a_codex.OriginalException34BuildA.test_a14_ioc_parser_19_exact_occurrences_and_lineage"
+    ],
+    "blk-61aa163f18d6bf88": [
+      "tests.test_exception_34_build_a_codex.OriginalException34BuildA.test_a15_ioc_access_5_metadata_and_replacements",
+      "tests.test_final_exception_records_hardening_codex.ExactExceptionFinalizerTests.test_metadata_n_null_http_is_valid_but_invented_401_fails"
+    ],
+    "blk-65725cb603ec902d": [
+      "tests.test_exception_34_build_a_codex.OriginalException34BuildA.test_a14_ioc_parser_19_exact_occurrences_and_lineage"
+    ],
+    "blk-6c1ae60577ce89ca": [
+      "tests.test_credential_matrix_codex.CredentialAndRetrievalMatrix.test_actual_http_failure_is_the_valid_source_failure_control",
+      "tests.test_credential_matrix_codex.CredentialAndRetrievalMatrix.test_missing_key_is_local_configuration_before_any_request",
+      "tests.test_exception_34_build_a_codex.OriginalException34BuildA.test_a16_form549d_8_storage_grain_and_cache_semantics"
+    ],
+    "blk-75cce911464fd9f7": [
+      "tests.test_exception_34_build_a_codex.OriginalException34BuildA.test_a14_ioc_parser_19_exact_occurrences_and_lineage"
+    ],
+    "blk-7a2d5583942ea884": [
+      "tests.test_exception_34_build_a_codex.OriginalException34BuildA.test_a14_ioc_parser_19_exact_occurrences_and_lineage"
+    ],
+    "blk-813db4fdd559d280": [
+      "tests.test_exception_34_build_a_codex.OriginalException34BuildA.test_a14_ioc_parser_19_exact_occurrences_and_lineage"
+    ],
+    "blk-86a5207f2d741448": [
+      "tests.test_exception_34_build_a_codex.OriginalException34BuildA.test_a16_form549d_8_storage_grain_and_cache_semantics",
+      "tests.test_final_exception_records_hardening_codex.ExactExceptionFinalizerTests.test_exact_549d_service_billing_period_passes_but_generic_value_fails"
+    ],
+    "blk-951b30d9725b40b2": [
+      "tests.test_exception_34_build_a_codex.OriginalException34BuildA.test_a14_ioc_parser_19_exact_occurrences_and_lineage"
+    ],
+    "blk-acacbee7fb646a01": [
+      "tests.test_exception_34_build_a_codex.OriginalException34BuildA.test_a14_ioc_parser_19_exact_occurrences_and_lineage"
+    ],
+    "blk-b93bb12170552fd3": [
+      "tests.test_exception_34_build_a_codex.OriginalException34BuildA.test_a16_form549d_8_storage_grain_and_cache_semantics",
+      "tests.test_final_exception_records_hardening_codex.ExactExceptionFinalizerTests.test_exact_549d_service_billing_period_passes_but_generic_value_fails"
+    ],
+    "blk-bcf7aaefcfb67a22": [
+      "tests.test_exception_34_build_a_codex.OriginalException34BuildA.test_a14_ioc_parser_19_exact_occurrences_and_lineage"
+    ],
+    "blk-be0da85a84688d1a": [
+      "tests.test_exception_34_build_a_codex.OriginalException34BuildA.test_a15_ioc_access_5_metadata_and_replacements",
+      "tests.test_final_exception_records_hardening_codex.ExactExceptionFinalizerTests.test_metadata_n_null_http_is_valid_but_invented_401_fails"
+    ],
+    "blk-c0c35027d5a35025": [
+      "tests.test_exception_34_build_a_codex.OriginalException34BuildA.test_a14_ioc_parser_19_exact_occurrences_and_lineage"
+    ],
+    "blk-c29e1a69a09275d1": [
+      "tests.test_549d_semantics.BlockerReconciliation.test_the_six_blockers_are_4_filer_years_plus_2_policy_duplicates",
+      "tests.test_exception_34_build_a_codex.OriginalException34BuildA.test_a16_form549d_8_storage_grain_and_cache_semantics"
+    ],
+    "blk-ccd4f5d8651f2179": [
+      "tests.test_exception_34_build_a_codex.OriginalException34BuildA.test_a14_ioc_parser_19_exact_occurrences_and_lineage"
+    ],
+    "blk-d5a42d025ee876fa": [
+      "tests.test_exception_34_build_a_codex.OriginalException34BuildA.test_a15_ioc_access_5_metadata_and_replacements",
+      "tests.test_final_exception_records_hardening_codex.ExactExceptionFinalizerTests.test_metadata_n_null_http_is_valid_but_invented_401_fails"
+    ],
+    "blk-dd6dc6d6d74b49c4": [
+      "tests.test_exception_34_build_a_codex.OriginalException34BuildA.test_a15_ioc_access_5_metadata_and_replacements",
+      "tests.test_final_exception_records_hardening_codex.ExactExceptionFinalizerTests.test_metadata_n_null_http_is_valid_but_invented_401_fails"
+    ],
+    "blk-df2155105afc957e": [
+      "tests.test_549d_semantics.BlockerReconciliation.test_the_six_blockers_are_4_filer_years_plus_2_policy_duplicates",
+      "tests.test_exception_34_build_a_codex.OriginalException34BuildA.test_a16_form549d_8_storage_grain_and_cache_semantics"
+    ],
+    "blk-eb9f11f46f600233": [
+      "tests.test_exception_34_build_a_codex.OriginalException34BuildA.test_a14_ioc_parser_19_exact_occurrences_and_lineage"
+    ],
+    "blk-f8a4430ac37587d6": [
+      "tests.test_exception_34_build_a_codex.OriginalException34BuildA.test_a16_form549d_8_storage_grain_and_cache_semantics",
+      "tests.test_final_exception_records_hardening_codex.ExactExceptionFinalizerTests.test_exact_549d_service_billing_period_passes_but_generic_value_fails"
+    ],
+    "blk-f9fc2cc2c28a2f14": [
+      "tests.test_credential_matrix_codex.CredentialAndRetrievalMatrix.test_actual_http_failure_is_the_valid_source_failure_control",
+      "tests.test_credential_matrix_codex.CredentialAndRetrievalMatrix.test_missing_key_is_local_configuration_before_any_request",
+      "tests.test_exception_34_build_a_codex.OriginalException34BuildA.test_a16_form549d_8_storage_grain_and_cache_semantics"
+    ],
+    "blk-fda56f7e4db97a5f": [
+      "tests.test_exception_34_build_a_codex.OriginalException34BuildA.test_a15_ioc_access_5_metadata_and_replacements",
+      "tests.test_final_exception_records_hardening_codex.ExactExceptionFinalizerTests.test_metadata_n_null_http_is_valid_but_invented_401_fails"
+    ]
+  },
+  "runs": [
+    {
+      "run_id": "build-a-cpython314-complete",
+      "kind": "complete_suite",
+      "acceptance_role": "acceptance",
+      "complete_suite": true,
+      "log": "complete_suite_cpython314.log",
+      "command": [
+        "/usr/bin/env",
+        "-u",
+        "PYTHONPATH",
+        "-u",
+        "PYTHONHOME",
+        "-u",
+        "PYTHONSTARTUP",
+        "-u",
+        "PYTHONUSERBASE",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "PYTHONNOUSERSITE=1",
+        "FERC_OFFLINE=1",
+        "FERC_STAGING_DB=staging/operating_assets.sqlite",
+        "FERC_ACCEPTANCE_REFERENCE_DB=staging/operating_assets.sqlite",
+        "FERC_ACCEPTANCE_REFERENCE_TREE=.",
+        "/opt/homebrew/bin/python3.14",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-t",
+        ".",
+        "-p",
+        "test*.py",
+        "-v"
+      ],
+      "working_directory": ".",
+      "interpreter": "CPython 3.14.7 (/opt/homebrew/bin/python3.14)",
+      "execution_status": "completed",
+      "log_exists_at_draft_time": true,
+      "required_exit_code": 0,
+      "exit_code": 0,
+      "skip_details": [],
+      "xfail_details": []
+    },
+    {
+      "run_id": "build-a-cpython39-complete",
+      "kind": "complete_suite",
+      "acceptance_role": "acceptance",
+      "complete_suite": true,
+      "log": "complete_suite_cpython39.log",
+      "command": [
+        "/usr/bin/env",
+        "-u",
+        "PYTHONPATH",
+        "-u",
+        "PYTHONHOME",
+        "-u",
+        "PYTHONSTARTUP",
+        "-u",
+        "PYTHONUSERBASE",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "PYTHONNOUSERSITE=1",
+        "FERC_OFFLINE=1",
+        "FERC_STAGING_DB=staging/operating_assets.sqlite",
+        "FERC_ACCEPTANCE_REFERENCE_DB=staging/operating_assets.sqlite",
+        "FERC_ACCEPTANCE_REFERENCE_TREE=.",
+        "/usr/bin/python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-t",
+        ".",
+        "-p",
+        "test*.py",
+        "-v"
+      ],
+      "working_directory": ".",
+      "interpreter": "CPython 3.9.6 (/usr/bin/python3)",
+      "execution_status": "completed",
+      "log_exists_at_draft_time": true,
+      "required_exit_code": 0,
+      "exit_code": 0,
+      "skip_details": [],
+      "xfail_details": []
+    }
+  ]
+}

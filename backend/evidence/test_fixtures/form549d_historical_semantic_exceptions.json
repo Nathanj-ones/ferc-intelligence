@@ -1,0 +1,18 @@
+{
+  "schema": "ferc-form549d-historical-semantic-exceptions-v1",
+  "provenance": {
+    "source": "FERC_Independent_Audit_2026-09-08/exceptions_34.json",
+    "source_register_sha256": "3e0c9584690469df611bbcce30993cdd5b0ebb0269d2b2b1a1da6f55e667e35f",
+    "selection": "adapter=form549d AND kind=semantic",
+    "source_register_rows": 34,
+    "selected_rows": 6
+  },
+  "rows": [
+    {"blocker_id":"blk-f8a4430ac37587d6","adapter":"form549d","scope":"C000826:2024","kind":"semantic","summary":"Order 735-A says annual customer revenue excludes storage services, but Form 549D Q4 rows report storage revenue anyway","exact_error":"C000826 2024-Q4 reports $10,812,326 of Total_Rev on Storage rows; table-wide 544 Q4 storage rows carry $237,017,275. Reported as filed and excluded from the transportation figure; a display decision is required."},
+    {"blocker_id":"blk-11652f800db8da1f","adapter":"form549d","scope":"C000826:2025","kind":"semantic","summary":"Order 735-A says annual customer revenue excludes storage services, but Form 549D Q4 rows report storage revenue anyway","exact_error":"C000826 2025-Q4 reports $13,346,064 of Total_Rev on Storage rows; table-wide 544 Q4 storage rows carry $237,017,275. Reported as filed and excluded from the transportation figure; a display decision is required."},
+    {"blocker_id":"blk-c29e1a69a09275d1","adapter":"form549d","scope":"549D annual revenue scope","kind":"semantic","summary":"Order 735-A says annual customer revenue excludes storage services, but Form 549D Q4 rows report storage revenue anyway; table-wide 544 Q4 storage rows carry $237,017,275","exact_error":"Reported as filed, excluded from the transportation figure, neither interpretation applied. Per-filer amounts are carried as order_735a_scope_divergence events."},
+    {"blocker_id":"blk-df2155105afc957e","adapter":"form549d","scope":"549D annual revenue scope","kind":"semantic","summary":"Order 735-A says annual customer revenue excludes storage services, but Form 549D Q4 rows report storage revenue anyway","exact_error":"Table-wide, 544 Q4 storage rows carry $237,017,275. Reported as filed, excluded from the transportation figure, neither interpretation applied. Per-filer amounts are carried as order_735a_scope_divergence events."},
+    {"blocker_id":"blk-b93bb12170552fd3","adapter":"form549d","scope":"C001773:2024","kind":"semantic","summary":"Order 735-A says annual customer revenue excludes storage services, but Form 549D Q4 rows report storage revenue anyway","exact_error":"C001773 2024-Q4 reports $8,090,679 of Total_Rev on Storage rows; table-wide 544 Q4 storage rows carry $237,017,275. Reported as filed and excluded from the transportation figure; a display decision is required."},
+    {"blocker_id":"blk-86a5207f2d741448","adapter":"form549d","scope":"C001773:2025","kind":"semantic","summary":"Order 735-A says annual customer revenue excludes storage services, but Form 549D Q4 rows report storage revenue anyway","exact_error":"C001773 2025-Q4 reports $7,049,958 of Total_Rev on Storage rows; table-wide 544 Q4 storage rows carry $237,017,275. Reported as filed and excluded from the transportation figure; a display decision is required."}
+  ]
+}

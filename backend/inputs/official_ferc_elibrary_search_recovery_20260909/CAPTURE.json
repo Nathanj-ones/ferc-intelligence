@@ -1,0 +1,240 @@
+{
+  "network_policy": "three exact public POST requests; no credentials/cookies; two attempts max; no bypass",
+  "requests_made": 3,
+  "retrieved_utc": "2026-09-09T22:25:39.647546+00:00",
+  "rows": [
+    {
+      "accessions": [
+        "20260731-5000"
+      ],
+      "cache_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/Search/AdvancedSearch#body=44205e596cb7cb8201a3bcfe63eaa6d0",
+      "docket": "IS26-587",
+      "media_type": "application/json",
+      "method": "POST",
+      "num_hits": 1,
+      "official_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/Search/AdvancedSearch",
+      "request_payload": {
+        "accessionNumber": null,
+        "affiliations": [],
+        "allDates": false,
+        "availability": null,
+        "categories": [],
+        "classTypes": [
+          {
+            "documentClass": "Order/Opinion",
+            "documentType": "Commission Order/Opinion"
+          },
+          {
+            "documentClass": "Order/Opinion",
+            "documentType": "Delegated Order"
+          },
+          {
+            "documentClass": "ALJ Issuance",
+            "documentType": "Certification of Settlement"
+          },
+          {
+            "documentClass": "ALJ Issuance",
+            "documentType": "Report to the Commission"
+          },
+          {
+            "documentClass": "Pleading/Motion",
+            "documentType": "Petition for Review"
+          },
+          {
+            "documentClass": "Application/Petition/Request",
+            "documentType": "Tariff Filing"
+          },
+          {
+            "documentClass": "Application/Petition/Request",
+            "documentType": "Complaints"
+          }
+        ],
+        "curPage": 0,
+        "dateSearches": [
+          {
+            "dateType": "filed_date",
+            "endDate": "2026-12-31",
+            "startDate": "2015-01-01"
+          }
+        ],
+        "docketSearches": [
+          {
+            "docketNumber": "IS26-587",
+            "subDocketNumbers": []
+          }
+        ],
+        "eFiling": false,
+        "groupBy": "NONE",
+        "idolResultID": "",
+        "libraries": [],
+        "resultsPerPage": 100,
+        "searchDescription": false,
+        "searchFullText": false,
+        "searchText": "",
+        "sortBy": ""
+      },
+      "request_payload_bytes": 1042,
+      "request_payload_sha256": "44205e596cb7cb8201a3bcfe63eaa6d0178a6c3a97c6e35e0a6d126dd1686db1",
+      "response_bytes": 1778,
+      "response_sha256": "2bb46982d886dab57e12ecaebb1787aa4fedc02dcd18046fdce163da0ca84b6b",
+      "success": true,
+      "total_hits": 1
+    },
+    {
+      "accessions": [
+        "20260909-5053",
+        "20260825-5125"
+      ],
+      "cache_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/Search/AdvancedSearch#body=2280cc641139baafaf01d5f47c1cf7b4",
+      "docket": "RP26-1091",
+      "media_type": "application/json",
+      "method": "POST",
+      "num_hits": 2,
+      "official_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/Search/AdvancedSearch",
+      "request_payload": {
+        "accessionNumber": null,
+        "affiliations": [],
+        "allDates": false,
+        "availability": null,
+        "categories": [],
+        "classTypes": [
+          {
+            "documentClass": "Order/Opinion",
+            "documentType": "Commission Order/Opinion"
+          },
+          {
+            "documentClass": "Order/Opinion",
+            "documentType": "Delegated Order"
+          },
+          {
+            "documentClass": "ALJ Issuance",
+            "documentType": "Certification of Settlement"
+          },
+          {
+            "documentClass": "ALJ Issuance",
+            "documentType": "Report to the Commission"
+          },
+          {
+            "documentClass": "Pleading/Motion",
+            "documentType": "Petition for Review"
+          },
+          {
+            "documentClass": "Application/Petition/Request",
+            "documentType": "Tariff Filing"
+          },
+          {
+            "documentClass": "Application/Petition/Request",
+            "documentType": "Complaints"
+          }
+        ],
+        "curPage": 0,
+        "dateSearches": [
+          {
+            "dateType": "filed_date",
+            "endDate": "2026-12-31",
+            "startDate": "2015-01-01"
+          }
+        ],
+        "docketSearches": [
+          {
+            "docketNumber": "RP26-1091",
+            "subDocketNumbers": []
+          }
+        ],
+        "eFiling": false,
+        "groupBy": "NONE",
+        "idolResultID": "",
+        "libraries": [],
+        "resultsPerPage": 100,
+        "searchDescription": false,
+        "searchFullText": false,
+        "searchText": "",
+        "sortBy": ""
+      },
+      "request_payload_bytes": 1043,
+      "request_payload_sha256": "2280cc641139baafaf01d5f47c1cf7b404c6e2938c8dbe7fd84f98eda7205005",
+      "response_bytes": 4371,
+      "response_sha256": "e084af687cb7e44210ca12ba9fac107f20b0b990f607d8cca39c64bd5e732fad",
+      "success": true,
+      "total_hits": 2
+    },
+    {
+      "accessions": [
+        "20260721-5070"
+      ],
+      "cache_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/Search/AdvancedSearch#body=15d2a70f0df065e0b787634f1d90a289",
+      "docket": "RP26-981",
+      "media_type": "application/json",
+      "method": "POST",
+      "num_hits": 1,
+      "official_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/Search/AdvancedSearch",
+      "request_payload": {
+        "accessionNumber": null,
+        "affiliations": [],
+        "allDates": false,
+        "availability": null,
+        "categories": [],
+        "classTypes": [
+          {
+            "documentClass": "Order/Opinion",
+            "documentType": "Commission Order/Opinion"
+          },
+          {
+            "documentClass": "Order/Opinion",
+            "documentType": "Delegated Order"
+          },
+          {
+            "documentClass": "ALJ Issuance",
+            "documentType": "Certification of Settlement"
+          },
+          {
+            "documentClass": "ALJ Issuance",
+            "documentType": "Report to the Commission"
+          },
+          {
+            "documentClass": "Pleading/Motion",
+            "documentType": "Petition for Review"
+          },
+          {
+            "documentClass": "Application/Petition/Request",
+            "documentType": "Tariff Filing"
+          },
+          {
+            "documentClass": "Application/Petition/Request",
+            "documentType": "Complaints"
+          }
+        ],
+        "curPage": 0,
+        "dateSearches": [
+          {
+            "dateType": "filed_date",
+            "endDate": "2026-12-31",
+            "startDate": "2015-01-01"
+          }
+        ],
+        "docketSearches": [
+          {
+            "docketNumber": "RP26-981",
+            "subDocketNumbers": []
+          }
+        ],
+        "eFiling": false,
+        "groupBy": "NONE",
+        "idolResultID": "",
+        "libraries": [],
+        "resultsPerPage": 100,
+        "searchDescription": false,
+        "searchFullText": false,
+        "searchText": "",
+        "sortBy": ""
+      },
+      "request_payload_bytes": 1042,
+      "request_payload_sha256": "15d2a70f0df065e0b787634f1d90a289f55e63f857b76c94e04b93b28445c7ee",
+      "response_bytes": 2005,
+      "response_sha256": "79eb4eb2b984f550ba534704fd2bf74c39e71c629bd091d314631a9aaa1d85c3",
+      "success": true,
+      "total_hits": 1
+    }
+  ],
+  "schema": "bounded_official_elibrary_search_capture_v1"
+}

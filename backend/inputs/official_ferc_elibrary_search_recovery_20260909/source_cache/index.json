@@ -1,0 +1,35 @@
+{
+"28b07c9c4df4098f19304183ff6469f1f8584105fdb38ba5b7d71235d30b2dd8": {
+"byte_size": 1778,
+"cache_path": "objects/2b/2bb46982d886dab57e12ecaebb1787aa4fedc02dcd18046fdce163da0ca84b6b",
+"content_hash": "2bb46982d886dab57e12ecaebb1787aa4fedc02dcd18046fdce163da0ca84b6b",
+"fetch_count": 1,
+"first_seen_at": "2026-09-09T22:25:29+00:00",
+"last_seen_at": "2026-09-09T22:25:29+00:00",
+"media_type": "application/json",
+"source_system": "eLibrary",
+"source_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/Search/AdvancedSearch#body=44205e596cb7cb8201a3bcfe63eaa6d0"
+},
+"6d88f0c43265fea6adef3ca9990940eac29afeea2dbf5dd1c174e70d420bbd4a": {
+"byte_size": 4371,
+"cache_path": "objects/e0/e084af687cb7e44210ca12ba9fac107f20b0b990f607d8cca39c64bd5e732fad",
+"content_hash": "e084af687cb7e44210ca12ba9fac107f20b0b990f607d8cca39c64bd5e732fad",
+"fetch_count": 1,
+"first_seen_at": "2026-09-09T22:25:34+00:00",
+"last_seen_at": "2026-09-09T22:25:34+00:00",
+"media_type": "application/json",
+"source_system": "eLibrary",
+"source_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/Search/AdvancedSearch#body=2280cc641139baafaf01d5f47c1cf7b4"
+},
+"d4a5a8bc13c750b5ef0992043923b0dbff3ded8672e1af916f176c2595a91e59": {
+"byte_size": 2005,
+"cache_path": "objects/79/79eb4eb2b984f550ba534704fd2bf74c39e71c629bd091d314631a9aaa1d85c3",
+"content_hash": "79eb4eb2b984f550ba534704fd2bf74c39e71c629bd091d314631a9aaa1d85c3",
+"fetch_count": 1,
+"first_seen_at": "2026-09-09T22:25:39+00:00",
+"last_seen_at": "2026-09-09T22:25:39+00:00",
+"media_type": "application/json",
+"source_system": "eLibrary",
+"source_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/Search/AdvancedSearch#body=15d2a70f0df065e0b787634f1d90a289"
+}
+}

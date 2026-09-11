@@ -1,0 +1,125 @@
+{
+  "completed_utc": "2026-09-09T21:43:11.217098+00:00",
+  "discovery": {
+    "audited_missing_input_population": "not one of the final audit's 13 inputs",
+    "cause": "corrected exact-filer capacity selection exposed a missing revised filing",
+    "pinned_search_evidence": {
+      "accession_number": "20260226-5162",
+      "attachment_id": "92064CA7-EE7A-C2DC-9CF5-9C9B20600000",
+      "bytes": 8072,
+      "cache_key": "1a50db78a6f794a8e054797323778ba5d79fe9d56642fabd9f88664ac2c6f30d",
+      "description": "Revised Annual Peak Day Capacity Report of MountainWest Pipeline, LLC for 2024 under RM85-1.",
+      "entity": "MountainWest Pipeline, LLC",
+      "file_name": "Capacity 2024-MWP-Revised.pdf",
+      "index_path": "/private/tmp/ferc_buildA_20260909_lokqmf/payload_root/source_cache/index.json",
+      "listed_bytes": 173287,
+      "object_path": "/private/tmp/ferc_buildA_20260909_lokqmf/payload_root/source_cache/objects/94/94d8890253bdf7075cd21123bd136783dd113c4641690766dd0c51d87fa98ae3",
+      "sha256": "94d8890253bdf7075cd21123bd136783dd113c4641690766dd0c51d87fa98ae3",
+      "source_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/Search/AdvancedSearch#body=6576c27150c032c4c206e6cb0f5380bd"
+    }
+  },
+  "evidence_lane": "new official-FERC evidence collected after the independent audit; not retroactive bundled evidence",
+  "network_policy": "one direct public GET and at most one direct public POST; no proxy, redirect, retry, credential, cookie or bypass",
+  "results": [
+    {
+      "accession_number": "20260226-5162",
+      "attachment_inspection": {
+        "inspection_error": null,
+        "kind": "pdf",
+        "members": [
+          {
+            "bytes": 173287,
+            "name": "Capacity 2024-MWP-Revised.pdf",
+            "sha256": "983e6a1c12a2f15934d99a2149c7a18e3dbbedf145f0848b9844dc4467dac5eb"
+          }
+        ]
+      },
+      "attachment_response": {
+        "accession": "20260226-5162",
+        "attempt_ended_utc": "2026-09-09T21:43:11.214461+00:00",
+        "attempt_started_utc": "2026-09-09T21:43:10.456838+00:00",
+        "attempted_this_run": true,
+        "body_capture_limitation": null,
+        "content_disposition": "attachment; filename=\"20260226-5162_Capacity 2024-MWP-Revised.pdf\"",
+        "credentials_or_cookies_sent": false,
+        "final_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/DownloadP8File",
+        "http_reason": "OK",
+        "http_status": 200,
+        "method": "POST",
+        "network_error": null,
+        "official_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/DownloadP8File",
+        "raw_body_path": "/private/tmp/ferc_buildA_20260909_lokqmf/payload_root/inputs/official_ferc_capacity_20260226_5162/attachment_response.body",
+        "raw_headers_path": "/private/tmp/ferc_buildA_20260909_lokqmf/payload_root/inputs/official_ferc_capacity_20260226_5162/attachment_response.headers.json",
+        "redirects": [],
+        "request_kind": "attachment",
+        "response_bytes": 173287,
+        "response_media_type": "application/octet-stream",
+        "response_sha256": "983e6a1c12a2f15934d99a2149c7a18e3dbbedf145f0848b9844dc4467dac5eb",
+        "response_sha256_is_complete": true
+      },
+      "classification_before_recovery": "mandatory executable prerequisite discovered during semantic repair",
+      "consumers": [
+        "capacity adapter C001088 (MountainWest Pipeline, LLC)",
+        "capacity observations/lineage/coverage/exports"
+      ],
+      "inventory_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/GetFileListFromP8/20260226-5162",
+      "list_response": {
+        "accession": "20260226-5162",
+        "attempt_ended_utc": "2026-09-09T21:43:10.455310+00:00",
+        "attempt_started_utc": "2026-09-09T21:43:09.801891+00:00",
+        "attempted_this_run": true,
+        "body_capture_limitation": null,
+        "content_disposition": null,
+        "credentials_or_cookies_sent": false,
+        "final_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/GetFileListFromP8/20260226-5162",
+        "http_reason": "OK",
+        "http_status": 200,
+        "method": "GET",
+        "network_error": null,
+        "official_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/GetFileListFromP8/20260226-5162",
+        "raw_body_path": "/private/tmp/ferc_buildA_20260909_lokqmf/payload_root/inputs/official_ferc_capacity_20260226_5162/list_response.body",
+        "raw_headers_path": "/private/tmp/ferc_buildA_20260909_lokqmf/payload_root/inputs/official_ferc_capacity_20260226_5162/list_response.headers.json",
+        "redirects": [],
+        "request_kind": "list",
+        "response_bytes": 2234,
+        "response_media_type": "application/json; charset=utf-8",
+        "response_sha256": "40b887b783567bf031bba63c82562daa455092bb4c02d3a9adf1a28c814f6a88",
+        "response_sha256_is_complete": true
+      },
+      "parsed_file_list": {
+        "attachment_ids": [
+          "92064CA7-EE7A-C2DC-9CF5-9C9B20600000"
+        ],
+        "attachment_metadata": [
+          {
+            "accession_number": "20260226-5162",
+            "attachment_id": "92064CA7-EE7A-C2DC-9CF5-9C9B20600000",
+            "availability_code": null,
+            "availability_mode": "P",
+            "description": "Revised Annual Peak Day Capacity Report of MountainWest Pipeline, LLC for 2024 under RM85-1.",
+            "file_name": "Capacity 2024-MWP-Revised.pdf",
+            "file_size_num": 173287,
+            "mime_type": "application/pdf",
+            "transmittal_type": null
+          }
+        ],
+        "data_list_count": 1,
+        "error_list": [],
+        "json_parsed": true,
+        "parse_error": null
+      }
+    }
+  ],
+  "schema": "official_ferc_recovery_results_v1",
+  "summary": {
+    "accessions": 1,
+    "attachment_http_200": 1,
+    "attachment_requests_attempted": 1,
+    "attachment_validation_error": null,
+    "canonical_post_payload_sha256": "5cbdf764071370d4d42599158922ca683665d0b29b31a39290cb0e15a2e5bf3b",
+    "complete_validated_capture": true,
+    "list_http_200": 1,
+    "list_requests_attempted": 1,
+    "list_validation_error": null
+  }
+}

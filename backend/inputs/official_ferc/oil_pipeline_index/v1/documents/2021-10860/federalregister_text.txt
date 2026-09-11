@@ -1,0 +1,102 @@
+<html>
+<head>
+<title>Federal Register, Volume 86 Issue 98 (Monday, May 24, 2021)</title>
+</head>
+<body><pre>
+[Federal Register Volume 86, Number 98 (Monday, May 24, 2021)]
+[Notices]
+[Pages 27847-27848]
+From the Federal Register Online via the Government Publishing Office [<a href="http://www.gpo.gov">www.gpo.gov</a>]
+[FR Doc No: 2021-10860]
+
+
+-----------------------------------------------------------------------
+
+DEPARTMENT OF ENERGY
+
+Federal Energy Regulatory Commission
+
+[Docket No. RM93-11-000]
+
+
+Revisions to Oil Pipeline Regulations, Pursuant to the Energy 
+Policy Act of 1992; Notice of Annual Change in the Producer Price Index 
+for Finished Goods
+
+    The Commission's regulations include a methodology for oil 
+pipelines to change their rates through use of an index system that 
+establishes ceiling levels for such rates. The Commission bases the 
+index system, found at 18 CFR 342.3, on the annual change in the 
+Producer Price Index for Finished Goods (PPI-FG), plus point seven 
+eight percent (PPI-FG + 0.78). The Commission determined in an Order 
+Establishing Index Level,\1\ issued
+
+[[Page 27848]]
+
+December 17, 2020, that PPI-FG + 0.78 is the appropriate oil pricing 
+index factor for pipelines to use for the five-year period commencing 
+July 1, 2021.
+---------------------------------------------------------------------------
+
+    \1\ 173 FERC ] 61,245, at P 63 (2020), reh'g pending.
+---------------------------------------------------------------------------
+
+    The regulations provide that the Commission will publish annually 
+an index figure reflecting the final change in the PPI-FG after the 
+Bureau of Labor Statistics publishes the final PPI-FG in May of each 
+calendar year. The annual average PPI-FG index figures were 205.7 for 
+2019 and 202.9 for 2020.\2\ Thus, the percent change (expressed as a 
+decimal) in the annual average PPI-FG from 2019 to 2020, plus 0.78 
+percent, is negative 0.005812.\3\ Oil pipelines must multiply their 
+July 1, 2020, through June 30, 2021, index ceiling levels by positive 
+0.994188 \4\ to compute their index ceiling levels for July 1, 2021, 
+through June 30, 2022, in accordance with 18 CFR 342.3(d). For guidance 
+in calculating the ceiling levels for each 12-month period beginning 
+January 1, l995,\5\ see Explorer Pipeline Company, 71 FERC ] 61,416, at 
+n.6 (1995).
+---------------------------------------------------------------------------
+
+    \2\ Bureau of Labor Statistics (BLS) publishes the final figure 
+in mid-May of each year. This figure is publicly available from the 
+Division of Industrial Prices and Price Indexes of the BLS, at 202-
+691-7705, and in print in August in Table 1 of the annual data 
+supplement to the BLS publication Producer Price Indexes via the 
+internet at <a href="http://www.bls.gov/ppi/home.htm">http://www.bls.gov/ppi/home.htm</a>. To obtain the BLS data, 
+scroll down to ``PPI Databases'' and click on ``Top Picks'' of the 
+Commodity Data including ``headline'' FD-ID indexes (Producer Price 
+Index--PPI). At the next screen, under the heading ``PPI Commodity 
+Data,'' select the box, ``Finished goods--WPUFD49207,'' then scroll 
+to the bottom of this screen and click on Retrieve data.
+    \3\ [202.9-205.7]/205.7= (-0.013612) + 0.0078= (-0.005812).
+    \4\ 1-0.005812 = 0.994188.
+    \5\ For a listing of all prior multipliers issued by the 
+Commission, see the Commission's website, <a href="https://www.ferc.gov/industries-data/oil/general-information/oil-pipeline-index">https://www.ferc.gov/industries-data/oil/general-information/oil-pipeline-index</a>.
+---------------------------------------------------------------------------
+
+    In addition to publishing the full text of this Notice in the 
+Federal Register, the Commission provides all interested persons an 
+opportunity to view and/or print this Notice via the internet through 
+FERC's Home Page (<a href="http://www.ferc.gov">http://www.ferc.gov</a>) using the eLibrary link. To 
+access this document in eLibrary, type the docket number excluding the 
+last three digits of this document in the docket number field and 
+follow other directions on the search page. At this time, the 
+Commission has suspended access to the Commission's Public Reference 
+Room due to the proclamation declaring a National Emergency concerning 
+the Novel Coronavirus Disease (COVID-19) issued by the President on 
+March 13, 2020.
+    User assistance is available for eLibrary and other aspects of 
+FERC's website during normal business hours. For assistance, please 
+contact the Commission's Online Support at 1-866-208-3676 (toll free) 
+or 202-502-6652 (email at <a href="/cdn-cgi/l/email-protection#81c7c4d3c2ceefede8efe4d2f4f1f1eef3f5c1e7e4f3e2afe6eef7"><span class="__cf_email__" data-cfemail="cd8b889f8e82a3a1a4a3a89eb8bdbda2bfb98daba8bfaee3aaa2bb">[email&#160;protected]</span></a>), or the Public 
+Reference Room at 202-502-8371, TTY 202-502-8659. Email the Public 
+Reference Room at <a href="/cdn-cgi/l/email-protection#3c4c495e50555f124e595a594e59525f594e5353517c5a594e5f125b534a"><span class="__cf_email__" data-cfemail="7b0b0e1917121855091e1d1e091e15181e091414163b1d1e0918551c140d">[email&#160;protected]</span></a>.
+
+    Dated: May 14, 2021.
+Debbie-Anne A. Reese,
+Deputy Secretary.
+[FR Doc. 2021-10860 Filed 5-21-21; 8:45 am]
+BILLING CODE 6717-01-P
+
+
+</pre><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

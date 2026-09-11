@@ -1,0 +1,358 @@
+{
+  "files": {
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/evidence/repair_records/MISSING_INPUT_INVENTORY_13.csv": {
+      "bytes": 132773,
+      "sha256": "ee2494fb59f5fb9faae6918d2039f1595552e172ca15021c27c4863ba696ea41"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/evidence/repair_records/MISSING_INPUT_INVENTORY_13.json": {
+      "bytes": 174155,
+      "sha256": "1f00208fccb0beb4cfc4d323a0dc13389900e7895f457aa12839c3c95ecd642c"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/evidence/repair_records/REPAIR_RECORDS_HASHES.json": {
+      "bytes": 2043,
+      "sha256": "89cf3d7ea092fea7451b075dfac6436f470bea9856acad764d7255daadeb8c37"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/OFFICIAL_FERC_RECOVERY_EXECUTION.json": {
+      "bytes": 2206,
+      "sha256": "2deed5061ea8732420b5d3d1cdd23f891b6378afdf8cc282063da598b7762e8f"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/OFFICIAL_FERC_RECOVERY_RESULTS.json": {
+      "bytes": 107877,
+      "sha256": "cc27ccb4fa2b210808ab7c89345b1fd1059f7d8b5138bb678f21a4125e144fdd"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/OFFICIAL_FERC_RECOVERY_SUMMARY.md": {
+      "bytes": 1270,
+      "sha256": "5bef300bdbf5564cee2c4fdd72488dbb9dd79144462ee8dd39ea19a0df5b354b"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/OFFICIAL_FERC_RECOVERY_VALIDATION.json": {
+      "bytes": 1743,
+      "sha256": "2b3114a77622252c0b678b99cd01ffdc716bc239f271db67acd5178f814a5359"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/recover_official_ferc.py": {
+      "bytes": 17046,
+      "sha256": "bc47a846e6daa5b0e510ea39ca505415faa8c9db3e95a5aff2404d78c1a4140e"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/recovery_progress.jsonl": {
+      "bytes": 35554,
+      "sha256": "9d9ea75fd0b2f04b48dec3b0ebb91cb03ae49852e89b850a108ae23ed4511f70"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/requests/20150930-5060.attachment.attempt.json": {
+      "bytes": 1046,
+      "sha256": "322fbe3766a9c3811d215ff890e4c4a4f49ad8f7af086382058a60ce8d63f704"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/requests/20150930-5060.list.attempt.json": {
+      "bytes": 901,
+      "sha256": "97e6898abc128589106f0d2779af7a259e7591b21eaef36607622b925f72f926"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/requests/20151215-5229.attachment.attempt.json": {
+      "bytes": 1044,
+      "sha256": "c96ad2a5f50333c40c08748559aad18fb502ec62006507dcebe5940b92fad8cb"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/requests/20151215-5229.list.attempt.json": {
+      "bytes": 901,
+      "sha256": "e56fd5aa7f1a232c5637c38d98e929fea5981170b041d4fdbd7ae8278fffe46b"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/requests/20171010-5329.attachment.attempt.json": {
+      "bytes": 1044,
+      "sha256": "46102385d9ed5b5db1503c679307d4ba7e4b6c16fc31d8539f34d3e3dd766acf"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/requests/20171010-5329.list.attempt.json": {
+      "bytes": 901,
+      "sha256": "38398ba81353645c1e41aae96947bca696f2399cc9d1359790f73960a5bc5b9c"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/requests/20191231-5075.attachment.attempt.json": {
+      "bytes": 1044,
+      "sha256": "46ea1259ba3cbbc13dfbfab17e4c9493f81b6a953e79138858ecfe2040f42821"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/requests/20191231-5075.list.attempt.json": {
+      "bytes": 901,
+      "sha256": "1d52051ba39416a18c078168665cf050e4b2a6eddbb3429148c51ecdcfed63dc"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/requests/20231229-5212.attachment.attempt.json": {
+      "bytes": 1045,
+      "sha256": "db5f03d8761800b8d053c8fd3ee39eefac0338f0e2650687accf8c976cca8250"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/requests/20231229-5212.list.attempt.json": {
+      "bytes": 901,
+      "sha256": "569b42bfd7f077fd2a555a37febfac907802e8567f3e0be06ba2cce0b9f1d2af"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/requests/20250102-5121.attachment.attempt.json": {
+      "bytes": 1044,
+      "sha256": "8828da4af81d38a87003df33929dbf6995cef045e4b6d528aec1e7c6eee59750"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/requests/20250102-5121.list.attempt.json": {
+      "bytes": 901,
+      "sha256": "192888d710178b926b1b652362bc5156c2ea744085cece457698328fe6bc5d73"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/requests/20250401-5098.attachment.attempt.json": {
+      "bytes": 1044,
+      "sha256": "4edb0ee36980c83dc78866385a9bbe906888709854a4730ccafdb98319295fa5"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/requests/20250401-5098.list.attempt.json": {
+      "bytes": 901,
+      "sha256": "5aa60f71d13c7232ba23e2f7236b8d821a0dca71d9a917af11b3db9a8bf8d654"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/requests/20250701-5150.attachment.attempt.json": {
+      "bytes": 1044,
+      "sha256": "e2b0345363d6ecc6e93b80bb576445271e7ba824f9509f68160d86789c20c381"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/requests/20250701-5150.list.attempt.json": {
+      "bytes": 901,
+      "sha256": "d7ce314a4f555cff939e9c44b2c088f7f813b9f05a707109fca03766faf527e1"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/requests/20251001-5165.attachment.attempt.json": {
+      "bytes": 1044,
+      "sha256": "fdaaeaffcd7f959a5d1973b79c9a3d462e555c39344caa89640abbc73a2cf222"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/requests/20251001-5165.list.attempt.json": {
+      "bytes": 901,
+      "sha256": "e88bfae59a169f190a87bee5a942feb237bf894bacb363a1f08783159dc23287"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/requests/20260102-5146.attachment.attempt.json": {
+      "bytes": 1044,
+      "sha256": "295929713311fd82b29d76eb4b514e945d14acd317a717abdb9d41bd74e03ccf"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/requests/20260102-5146.list.attempt.json": {
+      "bytes": 901,
+      "sha256": "40f8c79987f97ca9a9f97aacb99289d22ca8f9e7eadceb6dda5c3523ec45ff5b"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/requests/20260401-5141.attachment.attempt.json": {
+      "bytes": 1044,
+      "sha256": "0b09003cb431e73585129f58fb07179bd3d44eac059c3144c9b8b04a73369cdd"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/requests/20260401-5141.list.attempt.json": {
+      "bytes": 901,
+      "sha256": "f4aefeeddaa8e9cca61e89b761f7a3ea25135185add4bb1ee8efe7f37b79b0d7"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/requests/20260527-5009.attachment.attempt.json": {
+      "bytes": 1044,
+      "sha256": "3808c1abe154b58825a7000ea65be88ba99bdeac3d675d409eb802e9513d7cf9"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/requests/20260527-5009.list.attempt.json": {
+      "bytes": 901,
+      "sha256": "666c11f335fbd244014c88ef069e83fb17c3a884b83873c7c4c2e65f5dbfbee8"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/requests/20260701-5109.attachment.attempt.json": {
+      "bytes": 1044,
+      "sha256": "ed0e738e5277022c52e0e3e251754e66f160a8686d458671ca363e3af2ca92e5"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/requests/20260701-5109.list.attempt.json": {
+      "bytes": 901,
+      "sha256": "d87362dfc98ea42df5e5d439ac0049600848f28b82b131a1136533dd4a3c4af0"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/update_inventory_from_official_recovery.py": {
+      "bytes": 21309,
+      "sha256": "6176488a79cb9f5590726b968921380691e464c1c0c11a6506c741804ccb0ac9"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/attachment_responses/20150930-5060.body": {
+      "bytes": 19759596,
+      "sha256": "2cf3ef55e1495fd1f737d3ca777b712fc7d5e6cb31a8d7d06420d60ea6cf423b"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/attachment_responses/20150930-5060.headers.json": {
+      "bytes": 1868,
+      "sha256": "19011d752802ef225447d988d010fb38b7d0f8e42193005b35ba525d63026771"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/attachment_responses/20151215-5229.body": {
+      "bytes": 3009989,
+      "sha256": "4886a88ad61c25aa332f47f7a1aa0c20e771aa30fad9d4c297a42f3fc6907b15"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/attachment_responses/20151215-5229.headers.json": {
+      "bytes": 1867,
+      "sha256": "ff6e19f2f3df55379f1e6903800719d532014b50b8f963ac2912002945514ee7"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/attachment_responses/20171010-5329.body": {
+      "bytes": 1516373,
+      "sha256": "7b59a7b1ccf1b0a67a59e94a904788f0e458e82654f94637cfa700f36c2d0047"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/attachment_responses/20171010-5329.headers.json": {
+      "bytes": 1866,
+      "sha256": "ea6146f226022680dde6e82067c1cd3164639a060c3f81a75d539cce49633b09"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/attachment_responses/20191231-5075.body": {
+      "bytes": 1386663,
+      "sha256": "d0e477e4ad941acbd6d713d4eaa7421c907b8477168780a9b0679a1c7c35a945"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/attachment_responses/20191231-5075.headers.json": {
+      "bytes": 1866,
+      "sha256": "bf72ec3ff9d861027ea830da2e0fcda60bb70c7a446144e9495c578ede883b93"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/attachment_responses/20231229-5212.body": {
+      "bytes": 61,
+      "sha256": "e081cde7589ce317c72b9c017743982b29b8b5825e79dc5ce01da787253fc7b9"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/attachment_responses/20231229-5212.headers.json": {
+      "bytes": 1663,
+      "sha256": "1abe53c53010dcd755f9bce1ec8dcd27e9564ef1d878f99c8c491bb823df45c9"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/attachment_responses/20250102-5121.body": {
+      "bytes": 185843,
+      "sha256": "4873370e95996c17904f02f97247e59f51e9ddc5422f3a3a52dd13e841a41ce4"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/attachment_responses/20250102-5121.headers.json": {
+      "bytes": 1866,
+      "sha256": "02e7bc23c0d4a30940fe311cea343b3eebe8370681f1fe54da1b91698f72b7b7"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/attachment_responses/20250401-5098.body": {
+      "bytes": 85464,
+      "sha256": "d6441fd45cf5a4f8da2578e9a92788e1d1db0c1fad9be8f112338ffaf8ae2bdd"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/attachment_responses/20250401-5098.headers.json": {
+      "bytes": 1865,
+      "sha256": "62f6bf6c195f471fe2b3496c7f2b995fcb18cbea2269c3f18c69f9da46f3b57f"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/attachment_responses/20250701-5150.body": {
+      "bytes": 85990,
+      "sha256": "a30dd46073a57a85f1d7d6a59bcb9081c3c63eb3faed7a53fbe7028e9a9dda00"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/attachment_responses/20250701-5150.headers.json": {
+      "bytes": 1865,
+      "sha256": "a8e05e1cf98303d192ad9e4ad76dc43b8634ad9a5e5300f7d38c734e55c94db1"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/attachment_responses/20251001-5165.body": {
+      "bytes": 151653,
+      "sha256": "14c924e0ec0635f8aee8c7dea05698af13c2837d425f16b6f19b658f9cf6f38b"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/attachment_responses/20251001-5165.headers.json": {
+      "bytes": 1865,
+      "sha256": "614c16be3eb41fb2b8c13693540ebaf5a4c4bef695a8ed9cb4719edd7cf39c89"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/attachment_responses/20260102-5146.body": {
+      "bytes": 86080,
+      "sha256": "8083808c5ec88324a29641f4555d0b19545d46ebd23f12d024560d9e2a1662c3"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/attachment_responses/20260102-5146.headers.json": {
+      "bytes": 1864,
+      "sha256": "74b1569263b5de35554201efa0245e45b753df39f6f499007f692e61f8f8e9ca"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/attachment_responses/20260401-5141.body": {
+      "bytes": 115618,
+      "sha256": "f953639d06e751ece4567598f432f188e9b85c2d1f31e99dd610c7d2242d311e"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/attachment_responses/20260401-5141.headers.json": {
+      "bytes": 1866,
+      "sha256": "2ce3984ff915983b3e47baa0753c680c149823c24abdb18871f6230fca1f3b38"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/attachment_responses/20260527-5009.body": {
+      "bytes": 1378987,
+      "sha256": "7d64d81d4dde3d6f7148648ee7ea34469432b7fd93e9b1c23288bdcd2b685dff"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/attachment_responses/20260527-5009.headers.json": {
+      "bytes": 1867,
+      "sha256": "6ed451a6319826851d77097649270fcb8fa8430e7f0f4c3f7d617c522b5bb453"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/attachment_responses/20260701-5109.body": {
+      "bytes": 148353,
+      "sha256": "dd226091fb8961274b18a269e6f99352c455116132f16b622b172e1b61a5c4aa"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/attachment_responses/20260701-5109.headers.json": {
+      "bytes": 1866,
+      "sha256": "f2d3a97409e9bfd1e9b10d95d5ddcd4d124841152de9d07112ddcaf28c8f0bfe"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/list_responses/20150930-5060.body": {
+      "bytes": 78696,
+      "sha256": "7a52dec4f10ecaf0be3c09ab7862938625936dc55e6e31e6fe6a8a496ee1e504"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/list_responses/20150930-5060.headers.json": {
+      "bytes": 1812,
+      "sha256": "2bf50cf9526e1854ec0612633f1dd562386c066563dc9a144048902ed3529e65"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/list_responses/20151215-5229.body": {
+      "bytes": 11658,
+      "sha256": "964beb4eebec75654a1ea1f88017d67f0caedf87306bf6328a899c4fb7e95566"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/list_responses/20151215-5229.headers.json": {
+      "bytes": 1812,
+      "sha256": "88db24a0aeebfa143f60a69e4b5055b62c958582fe07d6cb9291efd6af26bfba"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/list_responses/20171010-5329.body": {
+      "bytes": 7009,
+      "sha256": "8454f34659b651de3848e63d137f0575553a6a0d37d9734ea6adc89702f456dc"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/list_responses/20171010-5329.headers.json": {
+      "bytes": 1810,
+      "sha256": "a2d61c0df18a7dac320924a4048036b03c0885836d6c10e45c5b90a1ba6241bd"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/list_responses/20191231-5075.body": {
+      "bytes": 4715,
+      "sha256": "b7985fb6b8972bb3367356bab5ec46d3e270c962d9f4f3bbd52f5ed9cda79436"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/list_responses/20191231-5075.headers.json": {
+      "bytes": 1810,
+      "sha256": "faf2331bbcea11290cdce7735010ef9b3c6e8b896edd62d16a3a3c0d4e25e758"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/list_responses/20231229-5212.body": {
+      "bytes": 22930,
+      "sha256": "f5ef1ce4c1fda3adabb4f063fd6c0a4cd33f4d1e5dd391f176faa15e88538ddc"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/list_responses/20231229-5212.headers.json": {
+      "bytes": 1812,
+      "sha256": "496e6c910bff98e615f00510ab01ddc6566a3be3e731b04e446a3a28723fbf2e"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/list_responses/20250102-5121.body": {
+      "bytes": 4466,
+      "sha256": "c17ade2a1b9ba495429b765d3c06f7697c5da1ba44a04af114e2b461ee73d802"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/list_responses/20250102-5121.headers.json": {
+      "bytes": 1723,
+      "sha256": "460cda6a07561ce4cbe8e7d3fbf1fa800b54e3d71c73060295340d2d7f848fc7"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/list_responses/20250401-5098.body": {
+      "bytes": 4464,
+      "sha256": "82d5eedb2716558a495859f5badb3d780fac7155d25a00f637cf7e76ee8e0f9b"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/list_responses/20250401-5098.headers.json": {
+      "bytes": 1811,
+      "sha256": "c17502780a75a9c97caebdbca5c9b8ab4e3eae24769a9e5450602d1353ebc961"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/list_responses/20250701-5150.body": {
+      "bytes": 4466,
+      "sha256": "e5b4da8228ed24795414cd3d800fd4c7b93e50c467729ed25c0a18ac4b673082"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/list_responses/20250701-5150.headers.json": {
+      "bytes": 1830,
+      "sha256": "2d668df2b4c67628a03f5df2d6396f417e3f15d96a61dec1b02139a6d6584731"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/list_responses/20251001-5165.body": {
+      "bytes": 4466,
+      "sha256": "25fb1dc3935e1e68ea12a83854469d888ae32e54d922aad34da824eb17855f47"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/list_responses/20251001-5165.headers.json": {
+      "bytes": 1811,
+      "sha256": "361d999cca0f36c1b443b483e5ec3b89b6142a6322c3428dc372310fd748bacf"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/list_responses/20260102-5146.body": {
+      "bytes": 4466,
+      "sha256": "9a2fb0dcee4fcb3b35262e4d7ed52f9bd49f767c8273aed753f220275eb9bec9"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/list_responses/20260102-5146.headers.json": {
+      "bytes": 1722,
+      "sha256": "3ff6853e36028bf6366a7b2063ca418353e8a0f4db697821345d3f55d3906cf2"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/list_responses/20260401-5141.body": {
+      "bytes": 4466,
+      "sha256": "06bf5075072cbc442a042accff1bba5e10c366cfbf644e9c835285f72c7f5434"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/list_responses/20260401-5141.headers.json": {
+      "bytes": 1811,
+      "sha256": "c175917ae260f3725e6a8207296821620bad889ac94c8671f08ebc58914e00fe"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/list_responses/20260527-5009.body": {
+      "bytes": 9041,
+      "sha256": "05187ee7ab6b617c0aa508977fb82cdd65c5e546e0d4d97a1388b38378356562"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/list_responses/20260527-5009.headers.json": {
+      "bytes": 1723,
+      "sha256": "2eeadefcfc3b3c0c25fb39e6fedb96b803422f8dee06650b20dcadd886f2d9f2"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/list_responses/20260701-5109.body": {
+      "bytes": 4466,
+      "sha256": "9c8965e004487724c420c6d8d48f9e4090c70a279309a45cc3839f5cd580f9f4"
+    },
+    "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/list_responses/20260701-5109.headers.json": {
+      "bytes": 1830,
+      "sha256": "17a3565740e01eba6d79a141638feeb22195b524951fe1a064d80d2bfc2c8d2d"
+    }
+  },
+  "schema": "official_ferc_recovery_hash_index_v1",
+  "self_excluded": true
+}

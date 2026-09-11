@@ -1,0 +1,27 @@
+{
+ "files": {
+  "field_crosswalk_166.csv": {
+   "bytes": 28741,
+   "sha256": "5f36c8985b28c36d4d3efecd32f1c533d0a101952f89f72d4869e3024118e429"
+  },
+  "requirements_crosswalk.csv": {
+   "bytes": 38066,
+   "sha256": "482b0d7818d742af62ddc1a21b5bca05a3b88eff3b30d875f4b26817ef28f5e7"
+  },
+  "requirements_crosswalk_summary.json": {
+   "bytes": 2440,
+   "sha256": "cf109bf8580a331a565b1ca76be14db342cff9bde515d87824a6c860370b0647"
+  }
+ },
+ "generation_id": "018a70cf15b973b73c4d6f1c859a960ef90ecc87cbccebeef6fbb1c1aa6299ce",
+ "generation_path": ".generations/crosswalk/018a70cf15b973b73c4d6f1c859a960ef90ecc87cbccebeef6fbb1c1aa6299ce",
+ "kind": "crosswalk",
+ "metadata": {
+  "audited_fields": "inputs/audit_baseline/field_status_all_166_audited.csv",
+  "audited_rows": 166,
+  "gap": "inputs/day3/FERC_operating_assets_current_vs_target_gap.csv",
+  "matrix": "inputs/day3/FERC_operating_assets_metric_decision_matrix.csv",
+  "source_rows": 146,
+  "target_keys": 168
+ }
+}

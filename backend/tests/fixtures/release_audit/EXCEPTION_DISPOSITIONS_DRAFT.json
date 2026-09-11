@@ -1,0 +1,3064 @@
+{
+  "schema": "integrated_repair_exception_dispositions_draft_v1",
+  "draft": true,
+  "state_boundary_utc": "2026-09-09T17:31:26.491927+00:00",
+  "purpose": "Individually reconcile every original exception without deriving closure from blocker or issue-register totals.",
+  "source_population": {
+    "original_exception_rows": 34,
+    "all_unique_ids": true,
+    "final_audit_result": "34/34 unclaimed; attempts/evidence/replacement/obligation fields empty",
+    "population_warning": "The 34 original exceptions, 42 issue rows, and smaller/current blocker registers are different populations."
+  },
+  "source_identities": {
+    "final_audit_exception_reconciliation": {
+      "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/EXCEPTION_RECONCILIATION_34.json",
+      "bytes": 28183,
+      "sha256": "d3e400b5b111a19bb6b0c405539981fbb99e82514d1b90649d2d431527222f7a"
+    },
+    "final_audit_ioc_reconciliation": {
+      "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/IOC_19_AND_ACCESS_5_RECONCILIATION.json",
+      "bytes": 104756,
+      "sha256": "c7e3626ffa2d2d79333668f06dfb3f7aa23b8a84469653670293ecedf866c4ee"
+    },
+    "final_audit_549d_recompute": {
+      "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/INDEPENDENT_549D_RESULT.json",
+      "bytes": 78426,
+      "sha256": "1a0b8ecab6a9a0ae23f1b0afe3ac299da2c4e80c4507440b110b4b4000ea1adf"
+    },
+    "final_audit_a17_visual_verification": {
+      "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/A17_VISUAL_VERIFICATION.json",
+      "bytes": 2578,
+      "sha256": "12e283d0b3eda344b6199e7b8298463a7f0cb5e8993c8509450a748566c6e548"
+    },
+    "final_audit_issue_register": {
+      "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/CODEX_REAUDIT_ISSUES.json",
+      "bytes": 120872,
+      "sha256": "619e37d8804694544de2451a5a81cff03c181ffaa93eb6de9f0d930707d7e47d"
+    },
+    "candidate_seed_exception_ledger": {
+      "path": "evidence/repair_records/EXCEPTION_DISPOSITION_LEDGER_34.json",
+      "bytes": 114411,
+      "sha256": "0f2a940d4998261e5d003457cc18eb2f00277efdb20698402bc1a8faf1d28780"
+    },
+    "candidate_artifacts_at_draft_boundary": {
+      "ioc_code": {
+        "path": "adapters/ioc.py",
+        "bytes": 197363,
+        "sha256": "3654da8e6ac55d8bccf52196cc5efbae33231ab674117d02455d69fff9507522"
+      },
+      "ioc_tests": {
+        "path": "tests/test_ioc.py",
+        "bytes": 41892,
+        "sha256": "09243e3c502a8e157933f5f46b08ddd3cd6b15e67859349c9091d7d8b5a80402"
+      },
+      "ioc_lineage_tests": {
+        "path": "tests/test_ioc_lineage_codex.py",
+        "bytes": 16070,
+        "sha256": "0f61328db2331da55f753574a3326a09ca202ffaa7f8e00f7cced0f9c940c836"
+      },
+      "form549d_code": {
+        "path": "adapters/form549d.py",
+        "bytes": 158065,
+        "sha256": "e4e04a31f98668a4193e8021c2ab80d1aa88ec115aa7f8cefd4543ae6062693d"
+      },
+      "form549d_tests": {
+        "path": "tests/test_549d_semantics.py",
+        "bytes": 30582,
+        "sha256": "1fd25b0112da62610933f96a4c602d7a7bbaf3dbcf92d1f7c65df25afefe5eac"
+      },
+      "capacity_code": {
+        "path": "adapters/capacity.py",
+        "bytes": 111376,
+        "sha256": "7b3ece52d534905aa0384d2f709169160fae8caf34cfc4cf70911518b7e6fe85"
+      },
+      "document_tests": {
+        "path": "tests/test_documents.py",
+        "bytes": 78829,
+        "sha256": "c7079b55e5d6fff8e6ae1375ac4ea1b07bc82fce5dadaf5f901db3ee45f4d61b"
+      },
+      "elibrary_code": {
+        "path": "ferclib/elibrary.py",
+        "bytes": 51687,
+        "sha256": "6e67223abf39cecbf4b58bef843b25064edf6d1c294d1d6fc9d08d75c6338340"
+      },
+      "elibrary_fallback_tests": {
+        "path": "tests/test_elibrary_individual_fallback_codex.py",
+        "bytes": 5615,
+        "sha256": "35da1f151862363fcd70cc852a1a5b856643da33510b7e4671bff49db3c2a116"
+      },
+      "pre_build_a_suite_log": {
+        "path": "implementation_logs/full_tests_pre_build_a_20260909.log",
+        "bytes": 64754,
+        "sha256": "fb6f1a673d959640a40484af84858125cb08b59ab3994da65411c24c85827c5f"
+      },
+      "form549d_targeted_log": {
+        "path": "implementation_logs/frozen_runtime/test_549d_semantics.log",
+        "bytes": 8608,
+        "sha256": "ea7737e9deb0b7354306c2a7b0f5c3164175c450120f3964b6f49d4de306d3cf"
+      },
+      "a17_review_fixture_log": {
+        "path": "implementation_logs/frozen_runtime/test_ioc_a17.log",
+        "bytes": 827,
+        "sha256": "f7a3191605e8fc3a02cc249abd3c7450819b971c00bc6756be54796c29ab86ac"
+      }
+    }
+  },
+  "counts": {
+    "rows": 34,
+    "adapter": {
+      "capacity": 2,
+      "form549d": 8,
+      "ioc": 24
+    },
+    "kind": {
+      "access": 5,
+      "semantic": 6,
+      "source": 23
+    },
+    "disposition": {
+      "open_capability_gap": 2,
+      "pending_build_a": 32
+    },
+    "closed": 0
+  },
+  "rows": [
+    {
+      "original_exception_id": "blk-f8a4430ac37587d6",
+      "related_original_issue_ids": [
+        "A16"
+      ],
+      "related_final_finding_ids": [
+        "R12-EXCEPTIONS-UNCLAIMED"
+      ],
+      "occurrence_or_obligation": {
+        "scope": "C000826:2024",
+        "entity_key": "C000826",
+        "report_year": "2024",
+        "adapter": "form549d",
+        "kind": "semantic",
+        "original_summary": "Order 735-A says annual customer revenue excludes storage services, but Form 549D Q4 rows report storage revenue anyway",
+        "obligation_level_effect": null
+      },
+      "audit_claim": {
+        "summary": "Order 735-A says annual customer revenue excludes storage services, but Form 549D Q4 rows report storage revenue anyway",
+        "audit_classification": "unresolved semantics",
+        "audit_subtype": "storage-labelled annual revenue filer-year",
+        "audit_irreducible_established": "False",
+        "audit_required_action": "Preserve as filed outside transportation revenue; keep scope qualification; consolidate duplicate policy records, not source rows.",
+        "final_audit_classification": "unclaimed -- no workstream reported on this ID",
+        "empty_original_fields": {
+          "attempts_made": true,
+          "evidence": true,
+          "replacement_occurrence": true,
+          "obligation_level_effect": true,
+          "outstanding_action": true
+        }
+      },
+      "root_cause": "Form 549D Q4 contains storage-labelled amounts even though the Order 735-A transportation-revenue definition excludes storage; register duplication also conflated policy-level and filer-year rows.",
+      "current_repair_action": "Preserve storage-labelled components exactly as filed, exclude them from transportation revenue, retain an explicit scope/display warning, and add a filer-year assertion tied to this original ID. Rebuild the exact filer-year/policy scope and emit this original ID with its warning/gate evidence.",
+      "current_candidate_state": "semantic code and 41-test targeted suite present; Build A and per-ID output pending",
+      "current_audited_output": {
+        "audit_result": "ACCEPTED FOR TESTED POPULATION: independent recomputation checks 155 present 549D values (128 usage, 27 annual revenue) with zero value, filing-identity or period errors and exactly four interpretation gates; Page 700 remains separate. The 41-test supplemented 549D suite passes.",
+        "tested_population": {
+          "native_dataset_rows": 113255,
+          "native_dataset_submissions": 6770,
+          "present_values_checked": 155,
+          "gated_observations": 4,
+          "value_mismatches": 0,
+          "filing_identity_errors": 0,
+          "field_timebase_errors": 0
+        },
+        "exact_scope_present_value_count": 5,
+        "exact_scope_present_observation_ids": [
+          "obs-573ab9b34520b2432213608171589052",
+          "obs-36469613c930fbadd97f5de42d7395c2",
+          "obs-e73954395a428e68e108ff29b214f981",
+          "obs-96783c2f044acd62ad005f10a81215a0",
+          "obs-8670f30d03e3e8addd2e3f4bef909f5e"
+        ],
+        "exact_scope_gate_count": 0,
+        "exact_scope_gate_observation_ids": [],
+        "scope_note": "The original exception is about storage-labelled components/display scope; matched transportation totals do not erase that qualification."
+      },
+      "targeted_test_gate": "Build A must preserve the applicable storage-labelled components as filed, exclude them from transportation revenue, retain four filer-year ambiguity gates, preserve separate policy/source occurrences, and export an evidence-bearing disposition for this exact ID.",
+      "disposition": "pending_build_a",
+      "residual_limitation": "Independent arithmetic closes 155 present transportation values, but the source register has no per-ID attempts/evidence/disposition and the reason filers populated out-of-scope storage remains unknown.",
+      "evidence": [
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/EXCEPTION_RECONCILIATION_34.json",
+          "selector": "rows[blocker_id=blk-f8a4430ac37587d6]",
+          "bytes": 28183,
+          "sha256": "d3e400b5b111a19bb6b0c405539981fbb99e82514d1b90649d2d431527222f7a"
+        },
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/INDEPENDENT_549D_RESULT.json",
+          "selector": "summary, values and gated",
+          "bytes": 78426,
+          "sha256": "1a0b8ecab6a9a0ae23f1b0afe3ac299da2c4e80c4507440b110b4b4000ea1adf"
+        },
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/CODEX_REAUDIT_ISSUES.json",
+          "selector": "rows[issue_id=A16]",
+          "bytes": 120872,
+          "sha256": "619e37d8804694544de2451a5a81cff03c181ffaa93eb6de9f0d930707d7e47d"
+        },
+        {
+          "path": "adapters/form549d.py",
+          "bytes": 158065,
+          "sha256": "e4e04a31f98668a4193e8021c2ab80d1aa88ec115aa7f8cefd4543ae6062693d"
+        },
+        {
+          "path": "tests/test_549d_semantics.py",
+          "bytes": 30582,
+          "sha256": "1fd25b0112da62610933f96a4c602d7a7bbaf3dbcf92d1f7c65df25afefe5eac"
+        },
+        {
+          "path": "implementation_logs/frozen_runtime/test_549d_semantics.log",
+          "bytes": 8608,
+          "sha256": "ea7737e9deb0b7354306c2a7b0f5c3164175c450120f3964b6f49d4de306d3cf"
+        }
+      ]
+    },
+    {
+      "original_exception_id": "blk-11652f800db8da1f",
+      "related_original_issue_ids": [
+        "A16"
+      ],
+      "related_final_finding_ids": [
+        "R12-EXCEPTIONS-UNCLAIMED"
+      ],
+      "occurrence_or_obligation": {
+        "scope": "C000826:2025",
+        "entity_key": "C000826",
+        "report_year": "2025",
+        "adapter": "form549d",
+        "kind": "semantic",
+        "original_summary": "Order 735-A says annual customer revenue excludes storage services, but Form 549D Q4 rows report storage revenue anyway",
+        "obligation_level_effect": null
+      },
+      "audit_claim": {
+        "summary": "Order 735-A says annual customer revenue excludes storage services, but Form 549D Q4 rows report storage revenue anyway",
+        "audit_classification": "unresolved semantics",
+        "audit_subtype": "storage-labelled annual revenue filer-year",
+        "audit_irreducible_established": "False",
+        "audit_required_action": "Preserve as filed outside transportation revenue; keep scope qualification; consolidate duplicate policy records, not source rows.",
+        "final_audit_classification": "unclaimed -- no workstream reported on this ID",
+        "empty_original_fields": {
+          "attempts_made": true,
+          "evidence": true,
+          "replacement_occurrence": true,
+          "obligation_level_effect": true,
+          "outstanding_action": true
+        }
+      },
+      "root_cause": "Form 549D Q4 contains storage-labelled amounts even though the Order 735-A transportation-revenue definition excludes storage; register duplication also conflated policy-level and filer-year rows.",
+      "current_repair_action": "Preserve storage-labelled components exactly as filed, exclude them from transportation revenue, retain an explicit scope/display warning, and add a filer-year assertion tied to this original ID. Rebuild the exact filer-year/policy scope and emit this original ID with its warning/gate evidence.",
+      "current_candidate_state": "semantic code and 41-test targeted suite present; Build A and per-ID output pending",
+      "current_audited_output": {
+        "audit_result": "ACCEPTED FOR TESTED POPULATION: independent recomputation checks 155 present 549D values (128 usage, 27 annual revenue) with zero value, filing-identity or period errors and exactly four interpretation gates; Page 700 remains separate. The 41-test supplemented 549D suite passes.",
+        "tested_population": {
+          "native_dataset_rows": 113255,
+          "native_dataset_submissions": 6770,
+          "present_values_checked": 155,
+          "gated_observations": 4,
+          "value_mismatches": 0,
+          "filing_identity_errors": 0,
+          "field_timebase_errors": 0
+        },
+        "exact_scope_present_value_count": 4,
+        "exact_scope_present_observation_ids": [
+          "obs-fce1ef68930ae5e9fef255a890b99da5",
+          "obs-780fdd9f798ad21c0fa2e964cba24846",
+          "obs-06142b2a8bbdc323162785b079d8cdac",
+          "obs-f010ca58265c6470897bba27956573e1"
+        ],
+        "exact_scope_gate_count": 1,
+        "exact_scope_gate_observation_ids": [
+          "obs-38f8d7f69df2d17cffbcb5edb9d526c6"
+        ],
+        "scope_note": "The original exception is about storage-labelled components/display scope; matched transportation totals do not erase that qualification."
+      },
+      "targeted_test_gate": "Build A must preserve the applicable storage-labelled components as filed, exclude them from transportation revenue, retain four filer-year ambiguity gates, preserve separate policy/source occurrences, and export an evidence-bearing disposition for this exact ID.",
+      "disposition": "pending_build_a",
+      "residual_limitation": "Independent arithmetic closes 155 present transportation values, but the source register has no per-ID attempts/evidence/disposition and the reason filers populated out-of-scope storage remains unknown.",
+      "evidence": [
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/EXCEPTION_RECONCILIATION_34.json",
+          "selector": "rows[blocker_id=blk-11652f800db8da1f]",
+          "bytes": 28183,
+          "sha256": "d3e400b5b111a19bb6b0c405539981fbb99e82514d1b90649d2d431527222f7a"
+        },
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/INDEPENDENT_549D_RESULT.json",
+          "selector": "summary, values and gated",
+          "bytes": 78426,
+          "sha256": "1a0b8ecab6a9a0ae23f1b0afe3ac299da2c4e80c4507440b110b4b4000ea1adf"
+        },
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/CODEX_REAUDIT_ISSUES.json",
+          "selector": "rows[issue_id=A16]",
+          "bytes": 120872,
+          "sha256": "619e37d8804694544de2451a5a81cff03c181ffaa93eb6de9f0d930707d7e47d"
+        },
+        {
+          "path": "adapters/form549d.py",
+          "bytes": 158065,
+          "sha256": "e4e04a31f98668a4193e8021c2ab80d1aa88ec115aa7f8cefd4543ae6062693d"
+        },
+        {
+          "path": "tests/test_549d_semantics.py",
+          "bytes": 30582,
+          "sha256": "1fd25b0112da62610933f96a4c602d7a7bbaf3dbcf92d1f7c65df25afefe5eac"
+        },
+        {
+          "path": "implementation_logs/frozen_runtime/test_549d_semantics.log",
+          "bytes": 8608,
+          "sha256": "ea7737e9deb0b7354306c2a7b0f5c3164175c450120f3964b6f49d4de306d3cf"
+        }
+      ]
+    },
+    {
+      "original_exception_id": "blk-c29e1a69a09275d1",
+      "related_original_issue_ids": [
+        "A16"
+      ],
+      "related_final_finding_ids": [
+        "R12-EXCEPTIONS-UNCLAIMED"
+      ],
+      "occurrence_or_obligation": {
+        "scope": "549D annual revenue scope",
+        "policy_scope": "549D annual revenue scope",
+        "adapter": "form549d",
+        "kind": "semantic",
+        "original_summary": "Order 735-A says annual customer revenue excludes storage services, but Form 549D Q4 rows report storage revenue anyway; table-wide 544 Q4 storage rows carry $237,017,275",
+        "obligation_level_effect": null
+      },
+      "audit_claim": {
+        "summary": "Order 735-A says annual customer revenue excludes storage services, but Form 549D Q4 rows report storage revenue anyway; table-wide 544 Q4 storage rows carry $237,017,275",
+        "audit_classification": "unresolved semantics",
+        "audit_subtype": "storage revenue scope; duplicate policy entry",
+        "audit_irreducible_established": "False",
+        "audit_required_action": "Preserve as filed outside transportation revenue; keep scope qualification; consolidate duplicate policy records, not source rows.",
+        "final_audit_classification": "unclaimed -- no workstream reported on this ID",
+        "empty_original_fields": {
+          "attempts_made": true,
+          "evidence": true,
+          "replacement_occurrence": true,
+          "obligation_level_effect": true,
+          "outstanding_action": true
+        }
+      },
+      "root_cause": "Form 549D Q4 contains storage-labelled amounts even though the Order 735-A transportation-revenue definition excludes storage; register duplication also conflated policy-level and filer-year rows.",
+      "current_repair_action": "Consolidate this duplicate policy record administratively while preserving and individually linking the four filer-year source exceptions; do not delete source rows. Rebuild the exact filer-year/policy scope and emit this original ID with its warning/gate evidence.",
+      "current_candidate_state": "semantic code and 41-test targeted suite present; Build A and per-ID output pending",
+      "current_audited_output": {
+        "audit_result": "ACCEPTED FOR TESTED POPULATION: independent recomputation checks 155 present 549D values (128 usage, 27 annual revenue) with zero value, filing-identity or period errors and exactly four interpretation gates; Page 700 remains separate. The 41-test supplemented 549D suite passes.",
+        "tested_population": {
+          "native_dataset_rows": 113255,
+          "native_dataset_submissions": 6770,
+          "present_values_checked": 155,
+          "gated_observations": 4,
+          "value_mismatches": 0,
+          "filing_identity_errors": 0,
+          "field_timebase_errors": 0
+        },
+        "exact_scope_present_value_count": 0,
+        "exact_scope_present_observation_ids": [],
+        "exact_scope_gate_count": 0,
+        "exact_scope_gate_observation_ids": [],
+        "scope_note": "The original exception is about storage-labelled components/display scope; matched transportation totals do not erase that qualification."
+      },
+      "targeted_test_gate": "Build A must preserve the applicable storage-labelled components as filed, exclude them from transportation revenue, retain four filer-year ambiguity gates, preserve separate policy/source occurrences, and export an evidence-bearing disposition for this exact ID.",
+      "disposition": "pending_build_a",
+      "residual_limitation": "Independent arithmetic closes 155 present transportation values, but the source register has no per-ID attempts/evidence/disposition and the reason filers populated out-of-scope storage remains unknown.",
+      "evidence": [
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/EXCEPTION_RECONCILIATION_34.json",
+          "selector": "rows[blocker_id=blk-c29e1a69a09275d1]",
+          "bytes": 28183,
+          "sha256": "d3e400b5b111a19bb6b0c405539981fbb99e82514d1b90649d2d431527222f7a"
+        },
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/INDEPENDENT_549D_RESULT.json",
+          "selector": "summary, values and gated",
+          "bytes": 78426,
+          "sha256": "1a0b8ecab6a9a0ae23f1b0afe3ac299da2c4e80c4507440b110b4b4000ea1adf"
+        },
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/CODEX_REAUDIT_ISSUES.json",
+          "selector": "rows[issue_id=A16]",
+          "bytes": 120872,
+          "sha256": "619e37d8804694544de2451a5a81cff03c181ffaa93eb6de9f0d930707d7e47d"
+        },
+        {
+          "path": "adapters/form549d.py",
+          "bytes": 158065,
+          "sha256": "e4e04a31f98668a4193e8021c2ab80d1aa88ec115aa7f8cefd4543ae6062693d"
+        },
+        {
+          "path": "tests/test_549d_semantics.py",
+          "bytes": 30582,
+          "sha256": "1fd25b0112da62610933f96a4c602d7a7bbaf3dbcf92d1f7c65df25afefe5eac"
+        },
+        {
+          "path": "implementation_logs/frozen_runtime/test_549d_semantics.log",
+          "bytes": 8608,
+          "sha256": "ea7737e9deb0b7354306c2a7b0f5c3164175c450120f3964b6f49d4de306d3cf"
+        }
+      ]
+    },
+    {
+      "original_exception_id": "blk-df2155105afc957e",
+      "related_original_issue_ids": [
+        "A16"
+      ],
+      "related_final_finding_ids": [
+        "R12-EXCEPTIONS-UNCLAIMED"
+      ],
+      "occurrence_or_obligation": {
+        "scope": "549D annual revenue scope",
+        "policy_scope": "549D annual revenue scope",
+        "adapter": "form549d",
+        "kind": "semantic",
+        "original_summary": "Order 735-A says annual customer revenue excludes storage services, but Form 549D Q4 rows report storage revenue anyway",
+        "obligation_level_effect": null
+      },
+      "audit_claim": {
+        "summary": "Order 735-A says annual customer revenue excludes storage services, but Form 549D Q4 rows report storage revenue anyway",
+        "audit_classification": "unresolved semantics",
+        "audit_subtype": "storage revenue scope; duplicate policy entry",
+        "audit_irreducible_established": "False",
+        "audit_required_action": "Preserve as filed outside transportation revenue; keep scope qualification; consolidate duplicate policy records, not source rows.",
+        "final_audit_classification": "unclaimed -- no workstream reported on this ID",
+        "empty_original_fields": {
+          "attempts_made": true,
+          "evidence": true,
+          "replacement_occurrence": true,
+          "obligation_level_effect": true,
+          "outstanding_action": true
+        }
+      },
+      "root_cause": "Form 549D Q4 contains storage-labelled amounts even though the Order 735-A transportation-revenue definition excludes storage; register duplication also conflated policy-level and filer-year rows.",
+      "current_repair_action": "Consolidate this duplicate policy record administratively while preserving and individually linking the four filer-year source exceptions; do not delete source rows. Rebuild the exact filer-year/policy scope and emit this original ID with its warning/gate evidence.",
+      "current_candidate_state": "semantic code and 41-test targeted suite present; Build A and per-ID output pending",
+      "current_audited_output": {
+        "audit_result": "ACCEPTED FOR TESTED POPULATION: independent recomputation checks 155 present 549D values (128 usage, 27 annual revenue) with zero value, filing-identity or period errors and exactly four interpretation gates; Page 700 remains separate. The 41-test supplemented 549D suite passes.",
+        "tested_population": {
+          "native_dataset_rows": 113255,
+          "native_dataset_submissions": 6770,
+          "present_values_checked": 155,
+          "gated_observations": 4,
+          "value_mismatches": 0,
+          "filing_identity_errors": 0,
+          "field_timebase_errors": 0
+        },
+        "exact_scope_present_value_count": 0,
+        "exact_scope_present_observation_ids": [],
+        "exact_scope_gate_count": 0,
+        "exact_scope_gate_observation_ids": [],
+        "scope_note": "The original exception is about storage-labelled components/display scope; matched transportation totals do not erase that qualification."
+      },
+      "targeted_test_gate": "Build A must preserve the applicable storage-labelled components as filed, exclude them from transportation revenue, retain four filer-year ambiguity gates, preserve separate policy/source occurrences, and export an evidence-bearing disposition for this exact ID.",
+      "disposition": "pending_build_a",
+      "residual_limitation": "Independent arithmetic closes 155 present transportation values, but the source register has no per-ID attempts/evidence/disposition and the reason filers populated out-of-scope storage remains unknown.",
+      "evidence": [
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/EXCEPTION_RECONCILIATION_34.json",
+          "selector": "rows[blocker_id=blk-df2155105afc957e]",
+          "bytes": 28183,
+          "sha256": "d3e400b5b111a19bb6b0c405539981fbb99e82514d1b90649d2d431527222f7a"
+        },
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/INDEPENDENT_549D_RESULT.json",
+          "selector": "summary, values and gated",
+          "bytes": 78426,
+          "sha256": "1a0b8ecab6a9a0ae23f1b0afe3ac299da2c4e80c4507440b110b4b4000ea1adf"
+        },
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/CODEX_REAUDIT_ISSUES.json",
+          "selector": "rows[issue_id=A16]",
+          "bytes": 120872,
+          "sha256": "619e37d8804694544de2451a5a81cff03c181ffaa93eb6de9f0d930707d7e47d"
+        },
+        {
+          "path": "adapters/form549d.py",
+          "bytes": 158065,
+          "sha256": "e4e04a31f98668a4193e8021c2ab80d1aa88ec115aa7f8cefd4543ae6062693d"
+        },
+        {
+          "path": "tests/test_549d_semantics.py",
+          "bytes": 30582,
+          "sha256": "1fd25b0112da62610933f96a4c602d7a7bbaf3dbcf92d1f7c65df25afefe5eac"
+        },
+        {
+          "path": "implementation_logs/frozen_runtime/test_549d_semantics.log",
+          "bytes": 8608,
+          "sha256": "ea7737e9deb0b7354306c2a7b0f5c3164175c450120f3964b6f49d4de306d3cf"
+        }
+      ]
+    },
+    {
+      "original_exception_id": "blk-fda56f7e4db97a5f",
+      "related_original_issue_ids": [
+        "A15",
+        "A20"
+      ],
+      "related_final_finding_ids": [
+        "R12-EXCEPTIONS-UNCLAIMED"
+      ],
+      "occurrence_or_obligation": {
+        "scope": "C000654:20250701-5067",
+        "entity_key": "C000654",
+        "accession_number": "20250701-5067",
+        "adapter": "ioc",
+        "kind": "access",
+        "original_summary": "C000654 20250701-5067: availCode N -- attachment enumerated but not public (DownloadP8File returns HTTP 401); recorded as nonpublic, not retried",
+        "obligation_level_effect": null
+      },
+      "audit_claim": {
+        "summary": "C000654 20250701-5067: availCode N -- attachment enumerated but not public (DownloadP8File returns HTTP 401); recorded as nonpublic, not retried",
+        "audit_classification": "malformed/unavailable source",
+        "audit_subtype": "erroneously filed occurrence; confidentiality/access restriction unconfirmed",
+        "audit_irreducible_established": "False",
+        "audit_required_action": "Link the corrected public occurrence where found; do not infer an obligation-level gap or observed HTTP 401 from availability code N.",
+        "final_audit_classification": "unclaimed -- no workstream reported on this ID",
+        "empty_original_fields": {
+          "attempts_made": true,
+          "evidence": true,
+          "replacement_occurrence": true,
+          "obligation_level_effect": true,
+          "outstanding_action": true
+        }
+      },
+      "root_cause": "eLibrary metadata availability code N was converted into an asserted HTTP 401/access restriction even though no HTTP request was attempted; replacement linking was incomplete.",
+      "current_repair_action": "Retain the metadata-N/no-request correction and the audited public replacement 20250709-5064; on Build A reassert occurrence identity, replacement observations and the absence of any invented HTTP status, then write the result against this original ID.",
+      "current_candidate_state": "audited public replacement applied; candidate Build A and per-ID disposition pending",
+      "current_audited_output": {
+        "audit_result": "verified",
+        "metadata_only_accession": "20250701-5067",
+        "metadata_status": "N",
+        "http_request_attempted": false,
+        "observed_http_status": null,
+        "access_restriction_established": false,
+        "replacement_or_candidate_accession": "20250709-5064",
+        "same_period_public_filing_applied": true,
+        "replacement_observation_count": 28,
+        "qualification": null
+      },
+      "targeted_test_gate": "Replace the false HTTP-401 narrative with metadata-N/no-request facts; link public accession 20250709-5064 and its applied observations to this original ID; add a record-level regression and only then disposition it.",
+      "disposition": "pending_build_a",
+      "residual_limitation": "The final audit verified the public replacement in the audited database, but the original register stayed unclaimed and the current candidate build/export has not yet been reconciled.",
+      "evidence": [
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/EXCEPTION_RECONCILIATION_34.json",
+          "selector": "rows[blocker_id=blk-fda56f7e4db97a5f]",
+          "bytes": 28183,
+          "sha256": "d3e400b5b111a19bb6b0c405539981fbb99e82514d1b90649d2d431527222f7a"
+        },
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/IOC_19_AND_ACCESS_5_RECONCILIATION.json",
+          "selector": "a15_access_records[original_exception_id=blk-fda56f7e4db97a5f]",
+          "bytes": 104756,
+          "sha256": "c7e3626ffa2d2d79333668f06dfb3f7aa23b8a84469653670293ecedf866c4ee"
+        },
+        {
+          "path": "adapters/ioc.py",
+          "bytes": 197363,
+          "sha256": "3654da8e6ac55d8bccf52196cc5efbae33231ab674117d02455d69fff9507522"
+        },
+        {
+          "path": "tests/test_ioc.py",
+          "bytes": 41892,
+          "sha256": "09243e3c502a8e157933f5f46b08ddd3cd6b15e67859349c9091d7d8b5a80402"
+        },
+        {
+          "path": "implementation_logs/full_tests_pre_build_a_20260909.log",
+          "bytes": 64754,
+          "sha256": "fb6f1a673d959640a40484af84858125cb08b59ab3994da65411c24c85827c5f"
+        }
+      ]
+    },
+    {
+      "original_exception_id": "blk-b93bb12170552fd3",
+      "related_original_issue_ids": [
+        "A16"
+      ],
+      "related_final_finding_ids": [
+        "R12-EXCEPTIONS-UNCLAIMED"
+      ],
+      "occurrence_or_obligation": {
+        "scope": "C001773:2024",
+        "entity_key": "C001773",
+        "report_year": "2024",
+        "adapter": "form549d",
+        "kind": "semantic",
+        "original_summary": "Order 735-A says annual customer revenue excludes storage services, but Form 549D Q4 rows report storage revenue anyway",
+        "obligation_level_effect": null
+      },
+      "audit_claim": {
+        "summary": "Order 735-A says annual customer revenue excludes storage services, but Form 549D Q4 rows report storage revenue anyway",
+        "audit_classification": "unresolved semantics",
+        "audit_subtype": "storage-labelled annual revenue filer-year",
+        "audit_irreducible_established": "False",
+        "audit_required_action": "Preserve as filed outside transportation revenue; keep scope qualification; consolidate duplicate policy records, not source rows.",
+        "final_audit_classification": "unclaimed -- no workstream reported on this ID",
+        "empty_original_fields": {
+          "attempts_made": true,
+          "evidence": true,
+          "replacement_occurrence": true,
+          "obligation_level_effect": true,
+          "outstanding_action": true
+        }
+      },
+      "root_cause": "Form 549D Q4 contains storage-labelled amounts even though the Order 735-A transportation-revenue definition excludes storage; register duplication also conflated policy-level and filer-year rows.",
+      "current_repair_action": "Preserve storage-labelled components exactly as filed, exclude them from transportation revenue, retain an explicit scope/display warning, and add a filer-year assertion tied to this original ID. Rebuild the exact filer-year/policy scope and emit this original ID with its warning/gate evidence.",
+      "current_candidate_state": "semantic code and 41-test targeted suite present; Build A and per-ID output pending",
+      "current_audited_output": {
+        "audit_result": "ACCEPTED FOR TESTED POPULATION: independent recomputation checks 155 present 549D values (128 usage, 27 annual revenue) with zero value, filing-identity or period errors and exactly four interpretation gates; Page 700 remains separate. The 41-test supplemented 549D suite passes.",
+        "tested_population": {
+          "native_dataset_rows": 113255,
+          "native_dataset_submissions": 6770,
+          "present_values_checked": 155,
+          "gated_observations": 4,
+          "value_mismatches": 0,
+          "filing_identity_errors": 0,
+          "field_timebase_errors": 0
+        },
+        "exact_scope_present_value_count": 0,
+        "exact_scope_present_observation_ids": [],
+        "exact_scope_gate_count": 0,
+        "exact_scope_gate_observation_ids": [],
+        "scope_note": "The original exception is about storage-labelled components/display scope; matched transportation totals do not erase that qualification."
+      },
+      "targeted_test_gate": "Build A must preserve the applicable storage-labelled components as filed, exclude them from transportation revenue, retain four filer-year ambiguity gates, preserve separate policy/source occurrences, and export an evidence-bearing disposition for this exact ID.",
+      "disposition": "pending_build_a",
+      "residual_limitation": "Independent arithmetic closes 155 present transportation values, but the source register has no per-ID attempts/evidence/disposition and the reason filers populated out-of-scope storage remains unknown.",
+      "evidence": [
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/EXCEPTION_RECONCILIATION_34.json",
+          "selector": "rows[blocker_id=blk-b93bb12170552fd3]",
+          "bytes": 28183,
+          "sha256": "d3e400b5b111a19bb6b0c405539981fbb99e82514d1b90649d2d431527222f7a"
+        },
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/INDEPENDENT_549D_RESULT.json",
+          "selector": "summary, values and gated",
+          "bytes": 78426,
+          "sha256": "1a0b8ecab6a9a0ae23f1b0afe3ac299da2c4e80c4507440b110b4b4000ea1adf"
+        },
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/CODEX_REAUDIT_ISSUES.json",
+          "selector": "rows[issue_id=A16]",
+          "bytes": 120872,
+          "sha256": "619e37d8804694544de2451a5a81cff03c181ffaa93eb6de9f0d930707d7e47d"
+        },
+        {
+          "path": "adapters/form549d.py",
+          "bytes": 158065,
+          "sha256": "e4e04a31f98668a4193e8021c2ab80d1aa88ec115aa7f8cefd4543ae6062693d"
+        },
+        {
+          "path": "tests/test_549d_semantics.py",
+          "bytes": 30582,
+          "sha256": "1fd25b0112da62610933f96a4c602d7a7bbaf3dbcf92d1f7c65df25afefe5eac"
+        },
+        {
+          "path": "implementation_logs/frozen_runtime/test_549d_semantics.log",
+          "bytes": 8608,
+          "sha256": "ea7737e9deb0b7354306c2a7b0f5c3164175c450120f3964b6f49d4de306d3cf"
+        }
+      ]
+    },
+    {
+      "original_exception_id": "blk-86a5207f2d741448",
+      "related_original_issue_ids": [
+        "A16"
+      ],
+      "related_final_finding_ids": [
+        "R12-EXCEPTIONS-UNCLAIMED"
+      ],
+      "occurrence_or_obligation": {
+        "scope": "C001773:2025",
+        "entity_key": "C001773",
+        "report_year": "2025",
+        "adapter": "form549d",
+        "kind": "semantic",
+        "original_summary": "Order 735-A says annual customer revenue excludes storage services, but Form 549D Q4 rows report storage revenue anyway",
+        "obligation_level_effect": null
+      },
+      "audit_claim": {
+        "summary": "Order 735-A says annual customer revenue excludes storage services, but Form 549D Q4 rows report storage revenue anyway",
+        "audit_classification": "unresolved semantics",
+        "audit_subtype": "storage-labelled annual revenue filer-year",
+        "audit_irreducible_established": "False",
+        "audit_required_action": "Preserve as filed outside transportation revenue; keep scope qualification; consolidate duplicate policy records, not source rows.",
+        "final_audit_classification": "unclaimed -- no workstream reported on this ID",
+        "empty_original_fields": {
+          "attempts_made": true,
+          "evidence": true,
+          "replacement_occurrence": true,
+          "obligation_level_effect": true,
+          "outstanding_action": true
+        }
+      },
+      "root_cause": "Form 549D Q4 contains storage-labelled amounts even though the Order 735-A transportation-revenue definition excludes storage; register duplication also conflated policy-level and filer-year rows.",
+      "current_repair_action": "Preserve storage-labelled components exactly as filed, exclude them from transportation revenue, retain an explicit scope/display warning, and add a filer-year assertion tied to this original ID. Rebuild the exact filer-year/policy scope and emit this original ID with its warning/gate evidence.",
+      "current_candidate_state": "semantic code and 41-test targeted suite present; Build A and per-ID output pending",
+      "current_audited_output": {
+        "audit_result": "ACCEPTED FOR TESTED POPULATION: independent recomputation checks 155 present 549D values (128 usage, 27 annual revenue) with zero value, filing-identity or period errors and exactly four interpretation gates; Page 700 remains separate. The 41-test supplemented 549D suite passes.",
+        "tested_population": {
+          "native_dataset_rows": 113255,
+          "native_dataset_submissions": 6770,
+          "present_values_checked": 155,
+          "gated_observations": 4,
+          "value_mismatches": 0,
+          "filing_identity_errors": 0,
+          "field_timebase_errors": 0
+        },
+        "exact_scope_present_value_count": 0,
+        "exact_scope_present_observation_ids": [],
+        "exact_scope_gate_count": 0,
+        "exact_scope_gate_observation_ids": [],
+        "scope_note": "The original exception is about storage-labelled components/display scope; matched transportation totals do not erase that qualification."
+      },
+      "targeted_test_gate": "Build A must preserve the applicable storage-labelled components as filed, exclude them from transportation revenue, retain four filer-year ambiguity gates, preserve separate policy/source occurrences, and export an evidence-bearing disposition for this exact ID.",
+      "disposition": "pending_build_a",
+      "residual_limitation": "Independent arithmetic closes 155 present transportation values, but the source register has no per-ID attempts/evidence/disposition and the reason filers populated out-of-scope storage remains unknown.",
+      "evidence": [
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/EXCEPTION_RECONCILIATION_34.json",
+          "selector": "rows[blocker_id=blk-86a5207f2d741448]",
+          "bytes": 28183,
+          "sha256": "d3e400b5b111a19bb6b0c405539981fbb99e82514d1b90649d2d431527222f7a"
+        },
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/INDEPENDENT_549D_RESULT.json",
+          "selector": "summary, values and gated",
+          "bytes": 78426,
+          "sha256": "1a0b8ecab6a9a0ae23f1b0afe3ac299da2c4e80c4507440b110b4b4000ea1adf"
+        },
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/CODEX_REAUDIT_ISSUES.json",
+          "selector": "rows[issue_id=A16]",
+          "bytes": 120872,
+          "sha256": "619e37d8804694544de2451a5a81cff03c181ffaa93eb6de9f0d930707d7e47d"
+        },
+        {
+          "path": "adapters/form549d.py",
+          "bytes": 158065,
+          "sha256": "e4e04a31f98668a4193e8021c2ab80d1aa88ec115aa7f8cefd4543ae6062693d"
+        },
+        {
+          "path": "tests/test_549d_semantics.py",
+          "bytes": 30582,
+          "sha256": "1fd25b0112da62610933f96a4c602d7a7bbaf3dbcf92d1f7c65df25afefe5eac"
+        },
+        {
+          "path": "implementation_logs/frozen_runtime/test_549d_semantics.log",
+          "bytes": 8608,
+          "sha256": "ea7737e9deb0b7354306c2a7b0f5c3164175c450120f3964b6f49d4de306d3cf"
+        }
+      ]
+    },
+    {
+      "original_exception_id": "blk-f9fc2cc2c28a2f14",
+      "related_original_issue_ids": [
+        "A16"
+      ],
+      "related_final_finding_ids": [
+        "R12-EXCEPTIONS-UNCLAIMED"
+      ],
+      "occurrence_or_obligation": {
+        "scope": "C000435",
+        "policy_scope": "C000435",
+        "adapter": "form549d",
+        "kind": "source",
+        "original_summary": "C000435: FetchError",
+        "obligation_level_effect": null
+      },
+      "audit_claim": {
+        "summary": "C000435: FetchError",
+        "audit_classification": "implementation/parser defect",
+        "audit_subtype": "local credential/cache precondition, not FERC source failure",
+        "audit_irreducible_established": "False",
+        "audit_required_action": "Use cache-only mode before requiring a real API key; if live fetching is requested report missing configuration separately.",
+        "final_audit_classification": "unclaimed -- no workstream reported on this ID",
+        "empty_original_fields": {
+          "attempts_made": true,
+          "evidence": true,
+          "replacement_occurrence": true,
+          "obligation_level_effect": true,
+          "outstanding_action": true
+        }
+      },
+      "root_cause": "A missing local API credential/cache precondition was classified as a FERC source failure instead of separating cache-only, configuration and live HTTP outcomes.",
+      "current_repair_action": "Add the four-way cached/offline, uncached/offline, live-missing-key and live-source-failure matrix for this exact entity; attach the result to this original ID. Bind the exercised outcome to this exact entity and original ID in Build A status/export evidence.",
+      "current_candidate_state": "failure-classification tests passed pre-Build A; exact entity/run disposition pending",
+      "current_audited_output": {
+        "audit_result": "qualified",
+        "acceptance_result": "Offline execution and static exception paths are consistent with the repair, but the complete missing-credential/live-FERC classification matrix was not independently rerun.",
+        "repair_presence": {
+          "code": "verified_present_in_form549d_and_oil_index",
+          "ships_in_archive": "verified_shipped",
+          "applied_to_database_or_exports": "not_applicable_runtime_error_classification"
+        }
+      },
+      "targeted_test_gate": "Exercise cached offline success, uncached offline miss, live missing-key precondition and an attempted official-source failure as distinct outcomes; no branch may call a local credential/cache condition a FERC outage. Then reconcile this exact ID.",
+      "disposition": "pending_build_a",
+      "residual_limitation": "Static/offline paths are consistent with a repair, but the complete configuration/source-failure matrix was not independently rerun and the original ID remains unclaimed.",
+      "evidence": [
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/EXCEPTION_RECONCILIATION_34.json",
+          "selector": "rows[blocker_id=blk-f9fc2cc2c28a2f14]",
+          "bytes": 28183,
+          "sha256": "d3e400b5b111a19bb6b0c405539981fbb99e82514d1b90649d2d431527222f7a"
+        },
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/CODEX_REAUDIT_ISSUES.json",
+          "selector": "rows[issue_id=A16-CREDENTIAL]",
+          "bytes": 120872,
+          "sha256": "619e37d8804694544de2451a5a81cff03c181ffaa93eb6de9f0d930707d7e47d"
+        },
+        {
+          "path": "adapters/form549d.py",
+          "bytes": 158065,
+          "sha256": "e4e04a31f98668a4193e8021c2ab80d1aa88ec115aa7f8cefd4543ae6062693d"
+        },
+        {
+          "path": "tests/test_549d_semantics.py",
+          "bytes": 30582,
+          "sha256": "1fd25b0112da62610933f96a4c602d7a7bbaf3dbcf92d1f7c65df25afefe5eac"
+        },
+        {
+          "path": "implementation_logs/frozen_runtime/test_549d_semantics.log",
+          "bytes": 8608,
+          "sha256": "ea7737e9deb0b7354306c2a7b0f5c3164175c450120f3964b6f49d4de306d3cf"
+        }
+      ]
+    },
+    {
+      "original_exception_id": "blk-6c1ae60577ce89ca",
+      "related_original_issue_ids": [
+        "A16"
+      ],
+      "related_final_finding_ids": [
+        "R12-EXCEPTIONS-UNCLAIMED"
+      ],
+      "occurrence_or_obligation": {
+        "scope": "C004698",
+        "policy_scope": "C004698",
+        "adapter": "form549d",
+        "kind": "source",
+        "original_summary": "C004698: FetchError",
+        "obligation_level_effect": null
+      },
+      "audit_claim": {
+        "summary": "C004698: FetchError",
+        "audit_classification": "implementation/parser defect",
+        "audit_subtype": "local credential/cache precondition, not FERC source failure",
+        "audit_irreducible_established": "False",
+        "audit_required_action": "Use cache-only mode before requiring a real API key; if live fetching is requested report missing configuration separately.",
+        "final_audit_classification": "unclaimed -- no workstream reported on this ID",
+        "empty_original_fields": {
+          "attempts_made": true,
+          "evidence": true,
+          "replacement_occurrence": true,
+          "obligation_level_effect": true,
+          "outstanding_action": true
+        }
+      },
+      "root_cause": "A missing local API credential/cache precondition was classified as a FERC source failure instead of separating cache-only, configuration and live HTTP outcomes.",
+      "current_repair_action": "Add the four-way cached/offline, uncached/offline, live-missing-key and live-source-failure matrix for this exact entity; attach the result to this original ID. Bind the exercised outcome to this exact entity and original ID in Build A status/export evidence.",
+      "current_candidate_state": "failure-classification tests passed pre-Build A; exact entity/run disposition pending",
+      "current_audited_output": {
+        "audit_result": "qualified",
+        "acceptance_result": "Offline execution and static exception paths are consistent with the repair, but the complete missing-credential/live-FERC classification matrix was not independently rerun.",
+        "repair_presence": {
+          "code": "verified_present_in_form549d_and_oil_index",
+          "ships_in_archive": "verified_shipped",
+          "applied_to_database_or_exports": "not_applicable_runtime_error_classification"
+        }
+      },
+      "targeted_test_gate": "Exercise cached offline success, uncached offline miss, live missing-key precondition and an attempted official-source failure as distinct outcomes; no branch may call a local credential/cache condition a FERC outage. Then reconcile this exact ID.",
+      "disposition": "pending_build_a",
+      "residual_limitation": "Static/offline paths are consistent with a repair, but the complete configuration/source-failure matrix was not independently rerun and the original ID remains unclaimed.",
+      "evidence": [
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/EXCEPTION_RECONCILIATION_34.json",
+          "selector": "rows[blocker_id=blk-6c1ae60577ce89ca]",
+          "bytes": 28183,
+          "sha256": "d3e400b5b111a19bb6b0c405539981fbb99e82514d1b90649d2d431527222f7a"
+        },
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/CODEX_REAUDIT_ISSUES.json",
+          "selector": "rows[issue_id=A16-CREDENTIAL]",
+          "bytes": 120872,
+          "sha256": "619e37d8804694544de2451a5a81cff03c181ffaa93eb6de9f0d930707d7e47d"
+        },
+        {
+          "path": "adapters/form549d.py",
+          "bytes": 158065,
+          "sha256": "e4e04a31f98668a4193e8021c2ab80d1aa88ec115aa7f8cefd4543ae6062693d"
+        },
+        {
+          "path": "tests/test_549d_semantics.py",
+          "bytes": 30582,
+          "sha256": "1fd25b0112da62610933f96a4c602d7a7bbaf3dbcf92d1f7c65df25afefe5eac"
+        },
+        {
+          "path": "implementation_logs/frozen_runtime/test_549d_semantics.log",
+          "bytes": 8608,
+          "sha256": "ea7737e9deb0b7354306c2a7b0f5c3164175c450120f3964b6f49d4de306d3cf"
+        }
+      ]
+    },
+    {
+      "original_exception_id": "blk-be0da85a84688d1a",
+      "related_original_issue_ids": [
+        "A15",
+        "A20"
+      ],
+      "related_final_finding_ids": [
+        "R12-EXCEPTIONS-UNCLAIMED"
+      ],
+      "occurrence_or_obligation": {
+        "scope": "C000236:20250401-5132",
+        "entity_key": "C000236",
+        "accession_number": "20250401-5132",
+        "adapter": "ioc",
+        "kind": "access",
+        "original_summary": "C000236 20250401-5132: availCode N -- attachment enumerated but not public (DownloadP8File returns HTTP 401); recorded as nonpublic, not retried",
+        "obligation_level_effect": null
+      },
+      "audit_claim": {
+        "summary": "C000236 20250401-5132: availCode N -- attachment enumerated but not public (DownloadP8File returns HTTP 401); recorded as nonpublic, not retried",
+        "audit_classification": "malformed/unavailable source",
+        "audit_subtype": "erroneously filed occurrence; confidentiality/access restriction unconfirmed",
+        "audit_irreducible_established": "False",
+        "audit_required_action": "Link the corrected public occurrence where found; do not infer an obligation-level gap or observed HTTP 401 from availability code N.",
+        "final_audit_classification": "unclaimed -- no workstream reported on this ID",
+        "empty_original_fields": {
+          "attempts_made": true,
+          "evidence": true,
+          "replacement_occurrence": true,
+          "obligation_level_effect": true,
+          "outstanding_action": true
+        }
+      },
+      "root_cause": "eLibrary metadata availability code N was converted into an asserted HTTP 401/access restriction even though no HTTP request was attempted; replacement linking was incomplete.",
+      "current_repair_action": "Retain the metadata-N/no-request correction and the audited public replacement 20250401-5144; on Build A reassert occurrence identity, replacement observations and the absence of any invented HTTP status, then write the result against this original ID.",
+      "current_candidate_state": "audited public replacement applied; candidate Build A and per-ID disposition pending",
+      "current_audited_output": {
+        "audit_result": "verified",
+        "metadata_only_accession": "20250401-5132",
+        "metadata_status": "N",
+        "http_request_attempted": false,
+        "observed_http_status": null,
+        "access_restriction_established": false,
+        "replacement_or_candidate_accession": "20250401-5144",
+        "same_period_public_filing_applied": true,
+        "replacement_observation_count": 17,
+        "qualification": null
+      },
+      "targeted_test_gate": "Replace the false HTTP-401 narrative with metadata-N/no-request facts; link public accession 20250401-5144 and its applied observations to this original ID; add a record-level regression and only then disposition it.",
+      "disposition": "pending_build_a",
+      "residual_limitation": "The final audit verified the public replacement in the audited database, but the original register stayed unclaimed and the current candidate build/export has not yet been reconciled.",
+      "evidence": [
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/EXCEPTION_RECONCILIATION_34.json",
+          "selector": "rows[blocker_id=blk-be0da85a84688d1a]",
+          "bytes": 28183,
+          "sha256": "d3e400b5b111a19bb6b0c405539981fbb99e82514d1b90649d2d431527222f7a"
+        },
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/IOC_19_AND_ACCESS_5_RECONCILIATION.json",
+          "selector": "a15_access_records[original_exception_id=blk-be0da85a84688d1a]",
+          "bytes": 104756,
+          "sha256": "c7e3626ffa2d2d79333668f06dfb3f7aa23b8a84469653670293ecedf866c4ee"
+        },
+        {
+          "path": "adapters/ioc.py",
+          "bytes": 197363,
+          "sha256": "3654da8e6ac55d8bccf52196cc5efbae33231ab674117d02455d69fff9507522"
+        },
+        {
+          "path": "tests/test_ioc.py",
+          "bytes": 41892,
+          "sha256": "09243e3c502a8e157933f5f46b08ddd3cd6b15e67859349c9091d7d8b5a80402"
+        },
+        {
+          "path": "implementation_logs/full_tests_pre_build_a_20260909.log",
+          "bytes": 64754,
+          "sha256": "fb6f1a673d959640a40484af84858125cb08b59ab3994da65411c24c85827c5f"
+        }
+      ]
+    },
+    {
+      "original_exception_id": "blk-14a56caaab90cb00",
+      "related_original_issue_ids": [
+        "A14"
+      ],
+      "related_final_finding_ids": [
+        "R12-EXCEPTIONS-UNCLAIMED"
+      ],
+      "occurrence_or_obligation": {
+        "scope": "ioc:20240102-5300",
+        "accession_number": "20240102-5300",
+        "adapter": "ioc",
+        "kind": "source",
+        "original_summary": "20240102-5300: IOC parse failed",
+        "obligation_level_effect": null
+      },
+      "audit_claim": {
+        "summary": "20240102-5300: IOC parse failed",
+        "audit_classification": "implementation/parser defect",
+        "audit_subtype": "UTF-8 BOM decoded as Latin-1",
+        "audit_irreducible_established": "False",
+        "audit_required_action": "Detect encoding and decode UTF-8-sig before CSV parsing; revalidate header and all record fields.",
+        "final_audit_classification": "unclaimed -- no workstream reported on this ID",
+        "empty_original_fields": {
+          "attempts_made": true,
+          "evidence": true,
+          "replacement_occurrence": true,
+          "obligation_level_effect": true,
+          "outstanding_action": true
+        }
+      },
+      "root_cause": "IOC bytes with a UTF-8 BOM were decoded through the wrong fallback before CSV/header validation.",
+      "current_repair_action": "Preserve the audited bounded BOM, preamble, UTF-16 and shifted-header branches. On Build A, assert this exact accession's native CID, filing occurrence, facts, canonical/revision status, observations and lineage, then write the result against this original ID.",
+      "current_candidate_state": "verified parser repair retained; per-ID candidate Build A/export disposition pending",
+      "current_audited_output": {
+        "audit_result": "verified",
+        "parsed_and_persisted": true,
+        "defect_category": "utf8_bom",
+        "expected_entity": "C000626",
+        "native_header_cid": "C000626",
+        "header_match": true,
+        "source_fact_count": 488,
+        "observation_count": 16,
+        "applied_to_observations": true,
+        "filing_is_canonical": 1,
+        "filing_version_status": "original",
+        "qualification": null
+      },
+      "targeted_test_gate": "Add an exact-byte regression for this accession using the audited encoding/header branch, attach its evidence to the original exception ID, and make the candidate exception-disposition check mandatory. Assert parsed source facts, native-header CID, filing identity and exact observation count.",
+      "disposition": "pending_build_a",
+      "residual_limitation": "The final audit verified this source-specific behavior in the audited database, but the original register was unclaimed. Current candidate code/test presence does not prove the unchanged candidate rebuild or its exception export.",
+      "evidence": [
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/EXCEPTION_RECONCILIATION_34.json",
+          "selector": "rows[blocker_id=blk-14a56caaab90cb00]",
+          "bytes": 28183,
+          "sha256": "d3e400b5b111a19bb6b0c405539981fbb99e82514d1b90649d2d431527222f7a"
+        },
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/IOC_19_AND_ACCESS_5_RECONCILIATION.json",
+          "selector": "a14_parser_header_records[original_exception_id=blk-14a56caaab90cb00]",
+          "bytes": 104756,
+          "sha256": "c7e3626ffa2d2d79333668f06dfb3f7aa23b8a84469653670293ecedf866c4ee"
+        },
+        {
+          "path": "adapters/ioc.py",
+          "bytes": 197363,
+          "sha256": "3654da8e6ac55d8bccf52196cc5efbae33231ab674117d02455d69fff9507522"
+        },
+        {
+          "path": "tests/test_ioc.py",
+          "bytes": 41892,
+          "sha256": "09243e3c502a8e157933f5f46b08ddd3cd6b15e67859349c9091d7d8b5a80402"
+        },
+        {
+          "path": "tests/test_ioc_lineage_codex.py",
+          "bytes": 16070,
+          "sha256": "0f61328db2331da55f753574a3326a09ca202ffaa7f8e00f7cced0f9c940c836"
+        },
+        {
+          "path": "implementation_logs/full_tests_pre_build_a_20260909.log",
+          "bytes": 64754,
+          "sha256": "fb6f1a673d959640a40484af84858125cb08b59ab3994da65411c24c85827c5f"
+        }
+      ]
+    },
+    {
+      "original_exception_id": "blk-1fdc86170bf76cff",
+      "related_original_issue_ids": [
+        "A14"
+      ],
+      "related_final_finding_ids": [
+        "R12-EXCEPTIONS-UNCLAIMED"
+      ],
+      "occurrence_or_obligation": {
+        "scope": "ioc:20240401-5299",
+        "accession_number": "20240401-5299",
+        "adapter": "ioc",
+        "kind": "source",
+        "original_summary": "20240401-5299: IOC parse failed",
+        "obligation_level_effect": null
+      },
+      "audit_claim": {
+        "summary": "20240401-5299: IOC parse failed",
+        "audit_classification": "implementation/parser defect",
+        "audit_subtype": "UTF-8 BOM decoded as Latin-1",
+        "audit_irreducible_established": "False",
+        "audit_required_action": "Detect encoding and decode UTF-8-sig before CSV parsing; revalidate header and all record fields.",
+        "final_audit_classification": "unclaimed -- no workstream reported on this ID",
+        "empty_original_fields": {
+          "attempts_made": true,
+          "evidence": true,
+          "replacement_occurrence": true,
+          "obligation_level_effect": true,
+          "outstanding_action": true
+        }
+      },
+      "root_cause": "IOC bytes with a UTF-8 BOM were decoded through the wrong fallback before CSV/header validation.",
+      "current_repair_action": "Preserve the audited bounded BOM, preamble, UTF-16 and shifted-header branches. On Build A, assert this exact accession's native CID, filing occurrence, facts, canonical/revision status, observations and lineage, then write the result against this original ID.",
+      "current_candidate_state": "verified parser repair retained; per-ID candidate Build A/export disposition pending",
+      "current_audited_output": {
+        "audit_result": "verified",
+        "parsed_and_persisted": true,
+        "defect_category": "utf8_bom",
+        "expected_entity": "C000626",
+        "native_header_cid": "C000626",
+        "header_match": true,
+        "source_fact_count": 468,
+        "observation_count": 17,
+        "applied_to_observations": true,
+        "filing_is_canonical": 1,
+        "filing_version_status": "original",
+        "qualification": null
+      },
+      "targeted_test_gate": "Add an exact-byte regression for this accession using the audited encoding/header branch, attach its evidence to the original exception ID, and make the candidate exception-disposition check mandatory. Assert parsed source facts, native-header CID, filing identity and exact observation count.",
+      "disposition": "pending_build_a",
+      "residual_limitation": "The final audit verified this source-specific behavior in the audited database, but the original register was unclaimed. Current candidate code/test presence does not prove the unchanged candidate rebuild or its exception export.",
+      "evidence": [
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/EXCEPTION_RECONCILIATION_34.json",
+          "selector": "rows[blocker_id=blk-1fdc86170bf76cff]",
+          "bytes": 28183,
+          "sha256": "d3e400b5b111a19bb6b0c405539981fbb99e82514d1b90649d2d431527222f7a"
+        },
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/IOC_19_AND_ACCESS_5_RECONCILIATION.json",
+          "selector": "a14_parser_header_records[original_exception_id=blk-1fdc86170bf76cff]",
+          "bytes": 104756,
+          "sha256": "c7e3626ffa2d2d79333668f06dfb3f7aa23b8a84469653670293ecedf866c4ee"
+        },
+        {
+          "path": "adapters/ioc.py",
+          "bytes": 197363,
+          "sha256": "3654da8e6ac55d8bccf52196cc5efbae33231ab674117d02455d69fff9507522"
+        },
+        {
+          "path": "tests/test_ioc.py",
+          "bytes": 41892,
+          "sha256": "09243e3c502a8e157933f5f46b08ddd3cd6b15e67859349c9091d7d8b5a80402"
+        },
+        {
+          "path": "tests/test_ioc_lineage_codex.py",
+          "bytes": 16070,
+          "sha256": "0f61328db2331da55f753574a3326a09ca202ffaa7f8e00f7cced0f9c940c836"
+        },
+        {
+          "path": "implementation_logs/full_tests_pre_build_a_20260909.log",
+          "bytes": 64754,
+          "sha256": "fb6f1a673d959640a40484af84858125cb08b59ab3994da65411c24c85827c5f"
+        }
+      ]
+    },
+    {
+      "original_exception_id": "blk-05a8dedba157934e",
+      "related_original_issue_ids": [
+        "A14"
+      ],
+      "related_final_finding_ids": [
+        "R12-EXCEPTIONS-UNCLAIMED"
+      ],
+      "occurrence_or_obligation": {
+        "scope": "ioc:20240701-5096",
+        "accession_number": "20240701-5096",
+        "adapter": "ioc",
+        "kind": "source",
+        "original_summary": "20240701-5096: IOC parse failed",
+        "obligation_level_effect": null
+      },
+      "audit_claim": {
+        "summary": "20240701-5096: IOC parse failed",
+        "audit_classification": "implementation/parser defect",
+        "audit_subtype": "UTF-8 BOM decoded as Latin-1",
+        "audit_irreducible_established": "False",
+        "audit_required_action": "Detect encoding and decode UTF-8-sig before CSV parsing; revalidate header and all record fields.",
+        "final_audit_classification": "unclaimed -- no workstream reported on this ID",
+        "empty_original_fields": {
+          "attempts_made": true,
+          "evidence": true,
+          "replacement_occurrence": true,
+          "obligation_level_effect": true,
+          "outstanding_action": true
+        }
+      },
+      "root_cause": "IOC bytes with a UTF-8 BOM were decoded through the wrong fallback before CSV/header validation.",
+      "current_repair_action": "Preserve the audited bounded BOM, preamble, UTF-16 and shifted-header branches. On Build A, assert this exact accession's native CID, filing occurrence, facts, canonical/revision status, observations and lineage, then write the result against this original ID.",
+      "current_candidate_state": "verified parser repair retained; per-ID candidate Build A/export disposition pending",
+      "current_audited_output": {
+        "audit_result": "verified",
+        "parsed_and_persisted": true,
+        "defect_category": "utf8_bom",
+        "expected_entity": "C000626",
+        "native_header_cid": "C000626",
+        "header_match": true,
+        "source_fact_count": 488,
+        "observation_count": 17,
+        "applied_to_observations": true,
+        "filing_is_canonical": 1,
+        "filing_version_status": "original",
+        "qualification": null
+      },
+      "targeted_test_gate": "Add an exact-byte regression for this accession using the audited encoding/header branch, attach its evidence to the original exception ID, and make the candidate exception-disposition check mandatory. Assert parsed source facts, native-header CID, filing identity and exact observation count.",
+      "disposition": "pending_build_a",
+      "residual_limitation": "The final audit verified this source-specific behavior in the audited database, but the original register was unclaimed. Current candidate code/test presence does not prove the unchanged candidate rebuild or its exception export.",
+      "evidence": [
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/EXCEPTION_RECONCILIATION_34.json",
+          "selector": "rows[blocker_id=blk-05a8dedba157934e]",
+          "bytes": 28183,
+          "sha256": "d3e400b5b111a19bb6b0c405539981fbb99e82514d1b90649d2d431527222f7a"
+        },
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/IOC_19_AND_ACCESS_5_RECONCILIATION.json",
+          "selector": "a14_parser_header_records[original_exception_id=blk-05a8dedba157934e]",
+          "bytes": 104756,
+          "sha256": "c7e3626ffa2d2d79333668f06dfb3f7aa23b8a84469653670293ecedf866c4ee"
+        },
+        {
+          "path": "adapters/ioc.py",
+          "bytes": 197363,
+          "sha256": "3654da8e6ac55d8bccf52196cc5efbae33231ab674117d02455d69fff9507522"
+        },
+        {
+          "path": "tests/test_ioc.py",
+          "bytes": 41892,
+          "sha256": "09243e3c502a8e157933f5f46b08ddd3cd6b15e67859349c9091d7d8b5a80402"
+        },
+        {
+          "path": "tests/test_ioc_lineage_codex.py",
+          "bytes": 16070,
+          "sha256": "0f61328db2331da55f753574a3326a09ca202ffaa7f8e00f7cced0f9c940c836"
+        },
+        {
+          "path": "implementation_logs/full_tests_pre_build_a_20260909.log",
+          "bytes": 64754,
+          "sha256": "fb6f1a673d959640a40484af84858125cb08b59ab3994da65411c24c85827c5f"
+        }
+      ]
+    },
+    {
+      "original_exception_id": "blk-65725cb603ec902d",
+      "related_original_issue_ids": [
+        "A14"
+      ],
+      "related_final_finding_ids": [
+        "R12-EXCEPTIONS-UNCLAIMED"
+      ],
+      "occurrence_or_obligation": {
+        "scope": "ioc:20241001-5148",
+        "accession_number": "20241001-5148",
+        "adapter": "ioc",
+        "kind": "source",
+        "original_summary": "20241001-5148: IOC parse failed",
+        "obligation_level_effect": null
+      },
+      "audit_claim": {
+        "summary": "20241001-5148: IOC parse failed",
+        "audit_classification": "implementation/parser defect",
+        "audit_subtype": "UTF-8 BOM decoded as Latin-1",
+        "audit_irreducible_established": "False",
+        "audit_required_action": "Detect encoding and decode UTF-8-sig before CSV parsing; revalidate header and all record fields.",
+        "final_audit_classification": "unclaimed -- no workstream reported on this ID",
+        "empty_original_fields": {
+          "attempts_made": true,
+          "evidence": true,
+          "replacement_occurrence": true,
+          "obligation_level_effect": true,
+          "outstanding_action": true
+        }
+      },
+      "root_cause": "IOC bytes with a UTF-8 BOM were decoded through the wrong fallback before CSV/header validation.",
+      "current_repair_action": "Preserve the audited bounded BOM, preamble, UTF-16 and shifted-header branches. On Build A, assert this exact accession's native CID, filing occurrence, facts, canonical/revision status, observations and lineage, then write the result against this original ID.",
+      "current_candidate_state": "verified parser repair retained; per-ID candidate Build A/export disposition pending",
+      "current_audited_output": {
+        "audit_result": "verified",
+        "parsed_and_persisted": true,
+        "defect_category": "utf8_bom",
+        "expected_entity": "C000626",
+        "native_header_cid": "C000626",
+        "header_match": true,
+        "source_fact_count": 487,
+        "observation_count": 17,
+        "applied_to_observations": true,
+        "filing_is_canonical": 1,
+        "filing_version_status": "original",
+        "qualification": null
+      },
+      "targeted_test_gate": "Add an exact-byte regression for this accession using the audited encoding/header branch, attach its evidence to the original exception ID, and make the candidate exception-disposition check mandatory. Assert parsed source facts, native-header CID, filing identity and exact observation count.",
+      "disposition": "pending_build_a",
+      "residual_limitation": "The final audit verified this source-specific behavior in the audited database, but the original register was unclaimed. Current candidate code/test presence does not prove the unchanged candidate rebuild or its exception export.",
+      "evidence": [
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/EXCEPTION_RECONCILIATION_34.json",
+          "selector": "rows[blocker_id=blk-65725cb603ec902d]",
+          "bytes": 28183,
+          "sha256": "d3e400b5b111a19bb6b0c405539981fbb99e82514d1b90649d2d431527222f7a"
+        },
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/IOC_19_AND_ACCESS_5_RECONCILIATION.json",
+          "selector": "a14_parser_header_records[original_exception_id=blk-65725cb603ec902d]",
+          "bytes": 104756,
+          "sha256": "c7e3626ffa2d2d79333668f06dfb3f7aa23b8a84469653670293ecedf866c4ee"
+        },
+        {
+          "path": "adapters/ioc.py",
+          "bytes": 197363,
+          "sha256": "3654da8e6ac55d8bccf52196cc5efbae33231ab674117d02455d69fff9507522"
+        },
+        {
+          "path": "tests/test_ioc.py",
+          "bytes": 41892,
+          "sha256": "09243e3c502a8e157933f5f46b08ddd3cd6b15e67859349c9091d7d8b5a80402"
+        },
+        {
+          "path": "tests/test_ioc_lineage_codex.py",
+          "bytes": 16070,
+          "sha256": "0f61328db2331da55f753574a3326a09ca202ffaa7f8e00f7cced0f9c940c836"
+        },
+        {
+          "path": "implementation_logs/full_tests_pre_build_a_20260909.log",
+          "bytes": 64754,
+          "sha256": "fb6f1a673d959640a40484af84858125cb08b59ab3994da65411c24c85827c5f"
+        }
+      ]
+    },
+    {
+      "original_exception_id": "blk-eb9f11f46f600233",
+      "related_original_issue_ids": [
+        "A14"
+      ],
+      "related_final_finding_ids": [
+        "R12-EXCEPTIONS-UNCLAIMED"
+      ],
+      "occurrence_or_obligation": {
+        "scope": "ioc:20250102-5086",
+        "accession_number": "20250102-5086",
+        "adapter": "ioc",
+        "kind": "source",
+        "original_summary": "20250102-5086: IOC parse failed",
+        "obligation_level_effect": null
+      },
+      "audit_claim": {
+        "summary": "20250102-5086: IOC parse failed",
+        "audit_classification": "implementation/parser defect",
+        "audit_subtype": "UTF-8 BOM decoded as Latin-1",
+        "audit_irreducible_established": "False",
+        "audit_required_action": "Detect encoding and decode UTF-8-sig before CSV parsing; revalidate header and all record fields.",
+        "final_audit_classification": "unclaimed -- no workstream reported on this ID",
+        "empty_original_fields": {
+          "attempts_made": true,
+          "evidence": true,
+          "replacement_occurrence": true,
+          "obligation_level_effect": true,
+          "outstanding_action": true
+        }
+      },
+      "root_cause": "IOC bytes with a UTF-8 BOM were decoded through the wrong fallback before CSV/header validation.",
+      "current_repair_action": "Preserve the audited bounded BOM, preamble, UTF-16 and shifted-header branches. On Build A, assert this exact accession's native CID, filing occurrence, facts, canonical/revision status, observations and lineage, then write the result against this original ID.",
+      "current_candidate_state": "verified parser repair retained; per-ID candidate Build A/export disposition pending",
+      "current_audited_output": {
+        "audit_result": "verified",
+        "parsed_and_persisted": true,
+        "defect_category": "utf8_bom",
+        "expected_entity": "C000626",
+        "native_header_cid": "C000626",
+        "header_match": true,
+        "source_fact_count": 548,
+        "observation_count": 17,
+        "applied_to_observations": true,
+        "filing_is_canonical": 1,
+        "filing_version_status": "original",
+        "qualification": null
+      },
+      "targeted_test_gate": "Add an exact-byte regression for this accession using the audited encoding/header branch, attach its evidence to the original exception ID, and make the candidate exception-disposition check mandatory. Assert parsed source facts, native-header CID, filing identity and exact observation count.",
+      "disposition": "pending_build_a",
+      "residual_limitation": "The final audit verified this source-specific behavior in the audited database, but the original register was unclaimed. Current candidate code/test presence does not prove the unchanged candidate rebuild or its exception export.",
+      "evidence": [
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/EXCEPTION_RECONCILIATION_34.json",
+          "selector": "rows[blocker_id=blk-eb9f11f46f600233]",
+          "bytes": 28183,
+          "sha256": "d3e400b5b111a19bb6b0c405539981fbb99e82514d1b90649d2d431527222f7a"
+        },
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/IOC_19_AND_ACCESS_5_RECONCILIATION.json",
+          "selector": "a14_parser_header_records[original_exception_id=blk-eb9f11f46f600233]",
+          "bytes": 104756,
+          "sha256": "c7e3626ffa2d2d79333668f06dfb3f7aa23b8a84469653670293ecedf866c4ee"
+        },
+        {
+          "path": "adapters/ioc.py",
+          "bytes": 197363,
+          "sha256": "3654da8e6ac55d8bccf52196cc5efbae33231ab674117d02455d69fff9507522"
+        },
+        {
+          "path": "tests/test_ioc.py",
+          "bytes": 41892,
+          "sha256": "09243e3c502a8e157933f5f46b08ddd3cd6b15e67859349c9091d7d8b5a80402"
+        },
+        {
+          "path": "tests/test_ioc_lineage_codex.py",
+          "bytes": 16070,
+          "sha256": "0f61328db2331da55f753574a3326a09ca202ffaa7f8e00f7cced0f9c940c836"
+        },
+        {
+          "path": "implementation_logs/full_tests_pre_build_a_20260909.log",
+          "bytes": 64754,
+          "sha256": "fb6f1a673d959640a40484af84858125cb08b59ab3994da65411c24c85827c5f"
+        }
+      ]
+    },
+    {
+      "original_exception_id": "blk-75cce911464fd9f7",
+      "related_original_issue_ids": [
+        "A14"
+      ],
+      "related_final_finding_ids": [
+        "R12-EXCEPTIONS-UNCLAIMED"
+      ],
+      "occurrence_or_obligation": {
+        "scope": "ioc:20250401-5141",
+        "accession_number": "20250401-5141",
+        "adapter": "ioc",
+        "kind": "source",
+        "original_summary": "20250401-5141: IOC parse failed",
+        "obligation_level_effect": null
+      },
+      "audit_claim": {
+        "summary": "20250401-5141: IOC parse failed",
+        "audit_classification": "implementation/parser defect",
+        "audit_subtype": "UTF-8 BOM decoded as Latin-1",
+        "audit_irreducible_established": "False",
+        "audit_required_action": "Detect encoding and decode UTF-8-sig before CSV parsing; revalidate header and all record fields.",
+        "final_audit_classification": "unclaimed -- no workstream reported on this ID",
+        "empty_original_fields": {
+          "attempts_made": true,
+          "evidence": true,
+          "replacement_occurrence": true,
+          "obligation_level_effect": true,
+          "outstanding_action": true
+        }
+      },
+      "root_cause": "IOC bytes with a UTF-8 BOM were decoded through the wrong fallback before CSV/header validation.",
+      "current_repair_action": "Preserve the audited bounded BOM, preamble, UTF-16 and shifted-header branches. On Build A, assert this exact accession's native CID, filing occurrence, facts, canonical/revision status, observations and lineage, then write the result against this original ID.",
+      "current_candidate_state": "verified parser repair retained; per-ID candidate Build A/export disposition pending",
+      "current_audited_output": {
+        "audit_result": "verified",
+        "parsed_and_persisted": true,
+        "defect_category": "utf8_bom",
+        "expected_entity": "C000626",
+        "native_header_cid": "C000626",
+        "header_match": true,
+        "source_fact_count": 555,
+        "observation_count": 17,
+        "applied_to_observations": true,
+        "filing_is_canonical": 1,
+        "filing_version_status": "original",
+        "qualification": null
+      },
+      "targeted_test_gate": "Add an exact-byte regression for this accession using the audited encoding/header branch, attach its evidence to the original exception ID, and make the candidate exception-disposition check mandatory. Assert parsed source facts, native-header CID, filing identity and exact observation count.",
+      "disposition": "pending_build_a",
+      "residual_limitation": "The final audit verified this source-specific behavior in the audited database, but the original register was unclaimed. Current candidate code/test presence does not prove the unchanged candidate rebuild or its exception export.",
+      "evidence": [
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/EXCEPTION_RECONCILIATION_34.json",
+          "selector": "rows[blocker_id=blk-75cce911464fd9f7]",
+          "bytes": 28183,
+          "sha256": "d3e400b5b111a19bb6b0c405539981fbb99e82514d1b90649d2d431527222f7a"
+        },
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/IOC_19_AND_ACCESS_5_RECONCILIATION.json",
+          "selector": "a14_parser_header_records[original_exception_id=blk-75cce911464fd9f7]",
+          "bytes": 104756,
+          "sha256": "c7e3626ffa2d2d79333668f06dfb3f7aa23b8a84469653670293ecedf866c4ee"
+        },
+        {
+          "path": "adapters/ioc.py",
+          "bytes": 197363,
+          "sha256": "3654da8e6ac55d8bccf52196cc5efbae33231ab674117d02455d69fff9507522"
+        },
+        {
+          "path": "tests/test_ioc.py",
+          "bytes": 41892,
+          "sha256": "09243e3c502a8e157933f5f46b08ddd3cd6b15e67859349c9091d7d8b5a80402"
+        },
+        {
+          "path": "tests/test_ioc_lineage_codex.py",
+          "bytes": 16070,
+          "sha256": "0f61328db2331da55f753574a3326a09ca202ffaa7f8e00f7cced0f9c940c836"
+        },
+        {
+          "path": "implementation_logs/full_tests_pre_build_a_20260909.log",
+          "bytes": 64754,
+          "sha256": "fb6f1a673d959640a40484af84858125cb08b59ab3994da65411c24c85827c5f"
+        }
+      ]
+    },
+    {
+      "original_exception_id": "blk-acacbee7fb646a01",
+      "related_original_issue_ids": [
+        "A14"
+      ],
+      "related_final_finding_ids": [
+        "R12-EXCEPTIONS-UNCLAIMED"
+      ],
+      "occurrence_or_obligation": {
+        "scope": "ioc:20250701-5124",
+        "accession_number": "20250701-5124",
+        "adapter": "ioc",
+        "kind": "source",
+        "original_summary": "20250701-5124: IOC parse failed",
+        "obligation_level_effect": null
+      },
+      "audit_claim": {
+        "summary": "20250701-5124: IOC parse failed",
+        "audit_classification": "implementation/parser defect",
+        "audit_subtype": "UTF-8 BOM decoded as Latin-1",
+        "audit_irreducible_established": "False",
+        "audit_required_action": "Detect encoding and decode UTF-8-sig before CSV parsing; revalidate header and all record fields.",
+        "final_audit_classification": "unclaimed -- no workstream reported on this ID",
+        "empty_original_fields": {
+          "attempts_made": true,
+          "evidence": true,
+          "replacement_occurrence": true,
+          "obligation_level_effect": true,
+          "outstanding_action": true
+        }
+      },
+      "root_cause": "IOC bytes with a UTF-8 BOM were decoded through the wrong fallback before CSV/header validation.",
+      "current_repair_action": "Preserve the audited bounded BOM, preamble, UTF-16 and shifted-header branches. On Build A, assert this exact accession's native CID, filing occurrence, facts, canonical/revision status, observations and lineage, then write the result against this original ID.",
+      "current_candidate_state": "verified parser repair retained; per-ID candidate Build A/export disposition pending",
+      "current_audited_output": {
+        "audit_result": "verified",
+        "parsed_and_persisted": true,
+        "defect_category": "utf8_bom",
+        "expected_entity": "C000626",
+        "native_header_cid": "C000626",
+        "header_match": true,
+        "source_fact_count": 498,
+        "observation_count": 17,
+        "applied_to_observations": true,
+        "filing_is_canonical": 1,
+        "filing_version_status": "original",
+        "qualification": null
+      },
+      "targeted_test_gate": "Add an exact-byte regression for this accession using the audited encoding/header branch, attach its evidence to the original exception ID, and make the candidate exception-disposition check mandatory. Assert parsed source facts, native-header CID, filing identity and exact observation count.",
+      "disposition": "pending_build_a",
+      "residual_limitation": "The final audit verified this source-specific behavior in the audited database, but the original register was unclaimed. Current candidate code/test presence does not prove the unchanged candidate rebuild or its exception export.",
+      "evidence": [
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/EXCEPTION_RECONCILIATION_34.json",
+          "selector": "rows[blocker_id=blk-acacbee7fb646a01]",
+          "bytes": 28183,
+          "sha256": "d3e400b5b111a19bb6b0c405539981fbb99e82514d1b90649d2d431527222f7a"
+        },
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/IOC_19_AND_ACCESS_5_RECONCILIATION.json",
+          "selector": "a14_parser_header_records[original_exception_id=blk-acacbee7fb646a01]",
+          "bytes": 104756,
+          "sha256": "c7e3626ffa2d2d79333668f06dfb3f7aa23b8a84469653670293ecedf866c4ee"
+        },
+        {
+          "path": "adapters/ioc.py",
+          "bytes": 197363,
+          "sha256": "3654da8e6ac55d8bccf52196cc5efbae33231ab674117d02455d69fff9507522"
+        },
+        {
+          "path": "tests/test_ioc.py",
+          "bytes": 41892,
+          "sha256": "09243e3c502a8e157933f5f46b08ddd3cd6b15e67859349c9091d7d8b5a80402"
+        },
+        {
+          "path": "tests/test_ioc_lineage_codex.py",
+          "bytes": 16070,
+          "sha256": "0f61328db2331da55f753574a3326a09ca202ffaa7f8e00f7cced0f9c940c836"
+        },
+        {
+          "path": "implementation_logs/full_tests_pre_build_a_20260909.log",
+          "bytes": 64754,
+          "sha256": "fb6f1a673d959640a40484af84858125cb08b59ab3994da65411c24c85827c5f"
+        }
+      ]
+    },
+    {
+      "original_exception_id": "blk-23902889f085cfa0",
+      "related_original_issue_ids": [
+        "A14"
+      ],
+      "related_final_finding_ids": [
+        "R12-EXCEPTIONS-UNCLAIMED"
+      ],
+      "occurrence_or_obligation": {
+        "scope": "ioc:20251001-5109",
+        "accession_number": "20251001-5109",
+        "adapter": "ioc",
+        "kind": "source",
+        "original_summary": "20251001-5109: IOC parse failed",
+        "obligation_level_effect": null
+      },
+      "audit_claim": {
+        "summary": "20251001-5109: IOC parse failed",
+        "audit_classification": "implementation/parser defect",
+        "audit_subtype": "UTF-8 BOM decoded as Latin-1",
+        "audit_irreducible_established": "False",
+        "audit_required_action": "Detect encoding and decode UTF-8-sig before CSV parsing; revalidate header and all record fields.",
+        "final_audit_classification": "unclaimed -- no workstream reported on this ID",
+        "empty_original_fields": {
+          "attempts_made": true,
+          "evidence": true,
+          "replacement_occurrence": true,
+          "obligation_level_effect": true,
+          "outstanding_action": true
+        }
+      },
+      "root_cause": "IOC bytes with a UTF-8 BOM were decoded through the wrong fallback before CSV/header validation.",
+      "current_repair_action": "Preserve the audited bounded BOM, preamble, UTF-16 and shifted-header branches. On Build A, assert this exact accession's native CID, filing occurrence, facts, canonical/revision status, observations and lineage, then write the result against this original ID.",
+      "current_candidate_state": "verified parser repair retained; per-ID candidate Build A/export disposition pending",
+      "current_audited_output": {
+        "audit_result": "verified",
+        "parsed_and_persisted": true,
+        "defect_category": "utf8_bom",
+        "expected_entity": "C000626",
+        "native_header_cid": "C000626",
+        "header_match": true,
+        "source_fact_count": 499,
+        "observation_count": 17,
+        "applied_to_observations": true,
+        "filing_is_canonical": 1,
+        "filing_version_status": "original",
+        "qualification": null
+      },
+      "targeted_test_gate": "Add an exact-byte regression for this accession using the audited encoding/header branch, attach its evidence to the original exception ID, and make the candidate exception-disposition check mandatory. Assert parsed source facts, native-header CID, filing identity and exact observation count.",
+      "disposition": "pending_build_a",
+      "residual_limitation": "The final audit verified this source-specific behavior in the audited database, but the original register was unclaimed. Current candidate code/test presence does not prove the unchanged candidate rebuild or its exception export.",
+      "evidence": [
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/EXCEPTION_RECONCILIATION_34.json",
+          "selector": "rows[blocker_id=blk-23902889f085cfa0]",
+          "bytes": 28183,
+          "sha256": "d3e400b5b111a19bb6b0c405539981fbb99e82514d1b90649d2d431527222f7a"
+        },
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/IOC_19_AND_ACCESS_5_RECONCILIATION.json",
+          "selector": "a14_parser_header_records[original_exception_id=blk-23902889f085cfa0]",
+          "bytes": 104756,
+          "sha256": "c7e3626ffa2d2d79333668f06dfb3f7aa23b8a84469653670293ecedf866c4ee"
+        },
+        {
+          "path": "adapters/ioc.py",
+          "bytes": 197363,
+          "sha256": "3654da8e6ac55d8bccf52196cc5efbae33231ab674117d02455d69fff9507522"
+        },
+        {
+          "path": "tests/test_ioc.py",
+          "bytes": 41892,
+          "sha256": "09243e3c502a8e157933f5f46b08ddd3cd6b15e67859349c9091d7d8b5a80402"
+        },
+        {
+          "path": "tests/test_ioc_lineage_codex.py",
+          "bytes": 16070,
+          "sha256": "0f61328db2331da55f753574a3326a09ca202ffaa7f8e00f7cced0f9c940c836"
+        },
+        {
+          "path": "implementation_logs/full_tests_pre_build_a_20260909.log",
+          "bytes": 64754,
+          "sha256": "fb6f1a673d959640a40484af84858125cb08b59ab3994da65411c24c85827c5f"
+        }
+      ]
+    },
+    {
+      "original_exception_id": "blk-ccd4f5d8651f2179",
+      "related_original_issue_ids": [
+        "A14"
+      ],
+      "related_final_finding_ids": [
+        "R12-EXCEPTIONS-UNCLAIMED"
+      ],
+      "occurrence_or_obligation": {
+        "scope": "ioc:20260102-5087",
+        "accession_number": "20260102-5087",
+        "adapter": "ioc",
+        "kind": "source",
+        "original_summary": "20260102-5087: IOC parse failed",
+        "obligation_level_effect": null
+      },
+      "audit_claim": {
+        "summary": "20260102-5087: IOC parse failed",
+        "audit_classification": "implementation/parser defect",
+        "audit_subtype": "UTF-8 BOM decoded as Latin-1",
+        "audit_irreducible_established": "False",
+        "audit_required_action": "Detect encoding and decode UTF-8-sig before CSV parsing; revalidate header and all record fields.",
+        "final_audit_classification": "unclaimed -- no workstream reported on this ID",
+        "empty_original_fields": {
+          "attempts_made": true,
+          "evidence": true,
+          "replacement_occurrence": true,
+          "obligation_level_effect": true,
+          "outstanding_action": true
+        }
+      },
+      "root_cause": "IOC bytes with a UTF-8 BOM were decoded through the wrong fallback before CSV/header validation.",
+      "current_repair_action": "Preserve the audited bounded BOM, preamble, UTF-16 and shifted-header branches. On Build A, assert this exact accession's native CID, filing occurrence, facts, canonical/revision status, observations and lineage, then write the result against this original ID.",
+      "current_candidate_state": "verified parser repair retained; per-ID candidate Build A/export disposition pending",
+      "current_audited_output": {
+        "audit_result": "verified",
+        "parsed_and_persisted": true,
+        "defect_category": "utf8_bom",
+        "expected_entity": "C000626",
+        "native_header_cid": "C000626",
+        "header_match": true,
+        "source_fact_count": 619,
+        "observation_count": 17,
+        "applied_to_observations": true,
+        "filing_is_canonical": 1,
+        "filing_version_status": "original",
+        "qualification": null
+      },
+      "targeted_test_gate": "Add an exact-byte regression for this accession using the audited encoding/header branch, attach its evidence to the original exception ID, and make the candidate exception-disposition check mandatory. Assert parsed source facts, native-header CID, filing identity and exact observation count.",
+      "disposition": "pending_build_a",
+      "residual_limitation": "The final audit verified this source-specific behavior in the audited database, but the original register was unclaimed. Current candidate code/test presence does not prove the unchanged candidate rebuild or its exception export.",
+      "evidence": [
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/EXCEPTION_RECONCILIATION_34.json",
+          "selector": "rows[blocker_id=blk-ccd4f5d8651f2179]",
+          "bytes": 28183,
+          "sha256": "d3e400b5b111a19bb6b0c405539981fbb99e82514d1b90649d2d431527222f7a"
+        },
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/IOC_19_AND_ACCESS_5_RECONCILIATION.json",
+          "selector": "a14_parser_header_records[original_exception_id=blk-ccd4f5d8651f2179]",
+          "bytes": 104756,
+          "sha256": "c7e3626ffa2d2d79333668f06dfb3f7aa23b8a84469653670293ecedf866c4ee"
+        },
+        {
+          "path": "adapters/ioc.py",
+          "bytes": 197363,
+          "sha256": "3654da8e6ac55d8bccf52196cc5efbae33231ab674117d02455d69fff9507522"
+        },
+        {
+          "path": "tests/test_ioc.py",
+          "bytes": 41892,
+          "sha256": "09243e3c502a8e157933f5f46b08ddd3cd6b15e67859349c9091d7d8b5a80402"
+        },
+        {
+          "path": "tests/test_ioc_lineage_codex.py",
+          "bytes": 16070,
+          "sha256": "0f61328db2331da55f753574a3326a09ca202ffaa7f8e00f7cced0f9c940c836"
+        },
+        {
+          "path": "implementation_logs/full_tests_pre_build_a_20260909.log",
+          "bytes": 64754,
+          "sha256": "fb6f1a673d959640a40484af84858125cb08b59ab3994da65411c24c85827c5f"
+        }
+      ]
+    },
+    {
+      "original_exception_id": "blk-c0c35027d5a35025",
+      "related_original_issue_ids": [
+        "A14"
+      ],
+      "related_final_finding_ids": [
+        "R12-EXCEPTIONS-UNCLAIMED"
+      ],
+      "occurrence_or_obligation": {
+        "scope": "ioc:20260401-5124",
+        "accession_number": "20260401-5124",
+        "adapter": "ioc",
+        "kind": "source",
+        "original_summary": "20260401-5124: IOC parse failed",
+        "obligation_level_effect": null
+      },
+      "audit_claim": {
+        "summary": "20260401-5124: IOC parse failed",
+        "audit_classification": "implementation/parser defect",
+        "audit_subtype": "UTF-8 BOM decoded as Latin-1",
+        "audit_irreducible_established": "False",
+        "audit_required_action": "Detect encoding and decode UTF-8-sig before CSV parsing; revalidate header and all record fields.",
+        "final_audit_classification": "unclaimed -- no workstream reported on this ID",
+        "empty_original_fields": {
+          "attempts_made": true,
+          "evidence": true,
+          "replacement_occurrence": true,
+          "obligation_level_effect": true,
+          "outstanding_action": true
+        }
+      },
+      "root_cause": "IOC bytes with a UTF-8 BOM were decoded through the wrong fallback before CSV/header validation.",
+      "current_repair_action": "Preserve the audited bounded BOM, preamble, UTF-16 and shifted-header branches. On Build A, assert this exact accession's native CID, filing occurrence, facts, canonical/revision status, observations and lineage, then write the result against this original ID.",
+      "current_candidate_state": "verified parser repair retained; per-ID candidate Build A/export disposition pending",
+      "current_audited_output": {
+        "audit_result": "verified",
+        "parsed_and_persisted": true,
+        "defect_category": "utf8_bom",
+        "expected_entity": "C000626",
+        "native_header_cid": "C000626",
+        "header_match": true,
+        "source_fact_count": 552,
+        "observation_count": 17,
+        "applied_to_observations": true,
+        "filing_is_canonical": 1,
+        "filing_version_status": "original",
+        "qualification": null
+      },
+      "targeted_test_gate": "Add an exact-byte regression for this accession using the audited encoding/header branch, attach its evidence to the original exception ID, and make the candidate exception-disposition check mandatory. Assert parsed source facts, native-header CID, filing identity and exact observation count.",
+      "disposition": "pending_build_a",
+      "residual_limitation": "The final audit verified this source-specific behavior in the audited database, but the original register was unclaimed. Current candidate code/test presence does not prove the unchanged candidate rebuild or its exception export.",
+      "evidence": [
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/EXCEPTION_RECONCILIATION_34.json",
+          "selector": "rows[blocker_id=blk-c0c35027d5a35025]",
+          "bytes": 28183,
+          "sha256": "d3e400b5b111a19bb6b0c405539981fbb99e82514d1b90649d2d431527222f7a"
+        },
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/IOC_19_AND_ACCESS_5_RECONCILIATION.json",
+          "selector": "a14_parser_header_records[original_exception_id=blk-c0c35027d5a35025]",
+          "bytes": 104756,
+          "sha256": "c7e3626ffa2d2d79333668f06dfb3f7aa23b8a84469653670293ecedf866c4ee"
+        },
+        {
+          "path": "adapters/ioc.py",
+          "bytes": 197363,
+          "sha256": "3654da8e6ac55d8bccf52196cc5efbae33231ab674117d02455d69fff9507522"
+        },
+        {
+          "path": "tests/test_ioc.py",
+          "bytes": 41892,
+          "sha256": "09243e3c502a8e157933f5f46b08ddd3cd6b15e67859349c9091d7d8b5a80402"
+        },
+        {
+          "path": "tests/test_ioc_lineage_codex.py",
+          "bytes": 16070,
+          "sha256": "0f61328db2331da55f753574a3326a09ca202ffaa7f8e00f7cced0f9c940c836"
+        },
+        {
+          "path": "implementation_logs/full_tests_pre_build_a_20260909.log",
+          "bytes": 64754,
+          "sha256": "fb6f1a673d959640a40484af84858125cb08b59ab3994da65411c24c85827c5f"
+        }
+      ]
+    },
+    {
+      "original_exception_id": "blk-010f11ba7ab3f034",
+      "related_original_issue_ids": [
+        "A14"
+      ],
+      "related_final_finding_ids": [
+        "R12-EXCEPTIONS-UNCLAIMED"
+      ],
+      "occurrence_or_obligation": {
+        "scope": "ioc:20260701-5124",
+        "accession_number": "20260701-5124",
+        "adapter": "ioc",
+        "kind": "source",
+        "original_summary": "20260701-5124: IOC parse failed",
+        "obligation_level_effect": null
+      },
+      "audit_claim": {
+        "summary": "20260701-5124: IOC parse failed",
+        "audit_classification": "implementation/parser defect",
+        "audit_subtype": "UTF-8 BOM decoded as Latin-1",
+        "audit_irreducible_established": "False",
+        "audit_required_action": "Detect encoding and decode UTF-8-sig before CSV parsing; revalidate header and all record fields.",
+        "final_audit_classification": "unclaimed -- no workstream reported on this ID",
+        "empty_original_fields": {
+          "attempts_made": true,
+          "evidence": true,
+          "replacement_occurrence": true,
+          "obligation_level_effect": true,
+          "outstanding_action": true
+        }
+      },
+      "root_cause": "IOC bytes with a UTF-8 BOM were decoded through the wrong fallback before CSV/header validation.",
+      "current_repair_action": "Preserve the audited bounded BOM, preamble, UTF-16 and shifted-header branches. On Build A, assert this exact accession's native CID, filing occurrence, facts, canonical/revision status, observations and lineage, then write the result against this original ID.",
+      "current_candidate_state": "verified parser repair retained; per-ID candidate Build A/export disposition pending",
+      "current_audited_output": {
+        "audit_result": "verified",
+        "parsed_and_persisted": true,
+        "defect_category": "utf8_bom",
+        "expected_entity": "C000626",
+        "native_header_cid": "C000626",
+        "header_match": true,
+        "source_fact_count": 610,
+        "observation_count": 17,
+        "applied_to_observations": true,
+        "filing_is_canonical": 1,
+        "filing_version_status": "original",
+        "qualification": null
+      },
+      "targeted_test_gate": "Add an exact-byte regression for this accession using the audited encoding/header branch, attach its evidence to the original exception ID, and make the candidate exception-disposition check mandatory. Assert parsed source facts, native-header CID, filing identity and exact observation count.",
+      "disposition": "pending_build_a",
+      "residual_limitation": "The final audit verified this source-specific behavior in the audited database, but the original register was unclaimed. Current candidate code/test presence does not prove the unchanged candidate rebuild or its exception export.",
+      "evidence": [
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/EXCEPTION_RECONCILIATION_34.json",
+          "selector": "rows[blocker_id=blk-010f11ba7ab3f034]",
+          "bytes": 28183,
+          "sha256": "d3e400b5b111a19bb6b0c405539981fbb99e82514d1b90649d2d431527222f7a"
+        },
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/IOC_19_AND_ACCESS_5_RECONCILIATION.json",
+          "selector": "a14_parser_header_records[original_exception_id=blk-010f11ba7ab3f034]",
+          "bytes": 104756,
+          "sha256": "c7e3626ffa2d2d79333668f06dfb3f7aa23b8a84469653670293ecedf866c4ee"
+        },
+        {
+          "path": "adapters/ioc.py",
+          "bytes": 197363,
+          "sha256": "3654da8e6ac55d8bccf52196cc5efbae33231ab674117d02455d69fff9507522"
+        },
+        {
+          "path": "tests/test_ioc.py",
+          "bytes": 41892,
+          "sha256": "09243e3c502a8e157933f5f46b08ddd3cd6b15e67859349c9091d7d8b5a80402"
+        },
+        {
+          "path": "tests/test_ioc_lineage_codex.py",
+          "bytes": 16070,
+          "sha256": "0f61328db2331da55f753574a3326a09ca202ffaa7f8e00f7cced0f9c940c836"
+        },
+        {
+          "path": "implementation_logs/full_tests_pre_build_a_20260909.log",
+          "bytes": 64754,
+          "sha256": "fb6f1a673d959640a40484af84858125cb08b59ab3994da65411c24c85827c5f"
+        }
+      ]
+    },
+    {
+      "original_exception_id": "blk-813db4fdd559d280",
+      "related_original_issue_ids": [
+        "A14"
+      ],
+      "related_final_finding_ids": [
+        "R12-EXCEPTIONS-UNCLAIMED"
+      ],
+      "occurrence_or_obligation": {
+        "scope": "ioc:20250331-5099",
+        "accession_number": "20250331-5099",
+        "adapter": "ioc",
+        "kind": "source",
+        "original_summary": "20250331-5099: IOC parse failed",
+        "obligation_level_effect": null
+      },
+      "audit_claim": {
+        "summary": "20250331-5099: IOC parse failed",
+        "audit_classification": "implementation/parser defect",
+        "audit_subtype": "text preamble before valid H header",
+        "audit_irreducible_established": "False",
+        "audit_required_action": "Apply bounded preamble handling and validate header CID/date before accepting 7 D, 14 P and 1 F records.",
+        "final_audit_classification": "unclaimed -- no workstream reported on this ID",
+        "empty_original_fields": {
+          "attempts_made": true,
+          "evidence": true,
+          "replacement_occurrence": true,
+          "obligation_level_effect": true,
+          "outstanding_action": true
+        }
+      },
+      "root_cause": "IOC parser defect evidenced as preamble; no broader cause is inferred.",
+      "current_repair_action": "Preserve the audited bounded BOM, preamble, UTF-16 and shifted-header branches. On Build A, assert this exact accession's native CID, filing occurrence, facts, canonical/revision status, observations and lineage, then write the result against this original ID.",
+      "current_candidate_state": "verified parser repair retained; per-ID candidate Build A/export disposition pending",
+      "current_audited_output": {
+        "audit_result": "verified",
+        "parsed_and_persisted": true,
+        "defect_category": "preamble",
+        "expected_entity": "C000830",
+        "native_header_cid": "C000830",
+        "header_match": true,
+        "source_fact_count": 24,
+        "observation_count": 17,
+        "applied_to_observations": true,
+        "filing_is_canonical": 1,
+        "filing_version_status": "original",
+        "qualification": null
+      },
+      "targeted_test_gate": "Add an exact-byte regression for this accession using the audited encoding/header branch, attach its evidence to the original exception ID, and make the candidate exception-disposition check mandatory. Assert parsed source facts, native-header CID, filing identity and exact observation count.",
+      "disposition": "pending_build_a",
+      "residual_limitation": "The final audit verified this source-specific behavior in the audited database, but the original register was unclaimed. Current candidate code/test presence does not prove the unchanged candidate rebuild or its exception export.",
+      "evidence": [
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/EXCEPTION_RECONCILIATION_34.json",
+          "selector": "rows[blocker_id=blk-813db4fdd559d280]",
+          "bytes": 28183,
+          "sha256": "d3e400b5b111a19bb6b0c405539981fbb99e82514d1b90649d2d431527222f7a"
+        },
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/IOC_19_AND_ACCESS_5_RECONCILIATION.json",
+          "selector": "a14_parser_header_records[original_exception_id=blk-813db4fdd559d280]",
+          "bytes": 104756,
+          "sha256": "c7e3626ffa2d2d79333668f06dfb3f7aa23b8a84469653670293ecedf866c4ee"
+        },
+        {
+          "path": "adapters/ioc.py",
+          "bytes": 197363,
+          "sha256": "3654da8e6ac55d8bccf52196cc5efbae33231ab674117d02455d69fff9507522"
+        },
+        {
+          "path": "tests/test_ioc.py",
+          "bytes": 41892,
+          "sha256": "09243e3c502a8e157933f5f46b08ddd3cd6b15e67859349c9091d7d8b5a80402"
+        },
+        {
+          "path": "tests/test_ioc_lineage_codex.py",
+          "bytes": 16070,
+          "sha256": "0f61328db2331da55f753574a3326a09ca202ffaa7f8e00f7cced0f9c940c836"
+        },
+        {
+          "path": "implementation_logs/full_tests_pre_build_a_20260909.log",
+          "bytes": 64754,
+          "sha256": "fb6f1a673d959640a40484af84858125cb08b59ab3994da65411c24c85827c5f"
+        }
+      ]
+    },
+    {
+      "original_exception_id": "blk-283ff9fe93424302",
+      "related_original_issue_ids": [
+        "A14"
+      ],
+      "related_final_finding_ids": [
+        "R12-EXCEPTIONS-UNCLAIMED"
+      ],
+      "occurrence_or_obligation": {
+        "scope": "ioc:20240102-5281",
+        "accession_number": "20240102-5281",
+        "adapter": "ioc",
+        "kind": "source",
+        "original_summary": "20240102-5281: IOC parse failed",
+        "obligation_level_effect": null
+      },
+      "audit_claim": {
+        "summary": "20240102-5281: IOC parse failed",
+        "audit_classification": "malformed/unavailable source",
+        "audit_subtype": "recoverable Discovery H header with an extra empty field",
+        "audit_irreducible_established": "False",
+        "audit_required_action": "Retain original bytes, narrowly repair the shifted header under an audited rule, confirm CID/date/units; do not silently generalise the repair.",
+        "final_audit_classification": "unclaimed -- no workstream reported on this ID",
+        "empty_original_fields": {
+          "attempts_made": true,
+          "evidence": true,
+          "replacement_occurrence": true,
+          "obligation_level_effect": true,
+          "outstanding_action": true
+        }
+      },
+      "root_cause": "A Discovery IOC H record contains one extra empty field, shifting required CID/date positions; the repair must remain header-only and guarded.",
+      "current_repair_action": "Preserve the audited bounded BOM, preamble, UTF-16 and shifted-header branches. On Build A, assert this exact accession's native CID, filing occurrence, facts, canonical/revision status, observations and lineage, then write the result against this original ID.",
+      "current_candidate_state": "verified parser repair retained; per-ID candidate Build A/export disposition pending",
+      "current_audited_output": {
+        "audit_result": "verified",
+        "parsed_and_persisted": true,
+        "defect_category": "shifted_header",
+        "expected_entity": "C001031",
+        "native_header_cid": "C001031",
+        "header_match": true,
+        "source_fact_count": 307,
+        "observation_count": 16,
+        "applied_to_observations": true,
+        "filing_is_canonical": 1,
+        "filing_version_status": "original",
+        "qualification": null
+      },
+      "targeted_test_gate": "Add an exact-byte regression for this accession using the audited encoding/header branch, attach its evidence to the original exception ID, and make the candidate exception-disposition check mandatory. Assert parsed source facts, native-header CID, filing identity and exact observation count.",
+      "disposition": "pending_build_a",
+      "residual_limitation": "The final audit verified this source-specific behavior in the audited database, but the original register was unclaimed. Current candidate code/test presence does not prove the unchanged candidate rebuild or its exception export.",
+      "evidence": [
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/EXCEPTION_RECONCILIATION_34.json",
+          "selector": "rows[blocker_id=blk-283ff9fe93424302]",
+          "bytes": 28183,
+          "sha256": "d3e400b5b111a19bb6b0c405539981fbb99e82514d1b90649d2d431527222f7a"
+        },
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/IOC_19_AND_ACCESS_5_RECONCILIATION.json",
+          "selector": "a14_parser_header_records[original_exception_id=blk-283ff9fe93424302]",
+          "bytes": 104756,
+          "sha256": "c7e3626ffa2d2d79333668f06dfb3f7aa23b8a84469653670293ecedf866c4ee"
+        },
+        {
+          "path": "adapters/ioc.py",
+          "bytes": 197363,
+          "sha256": "3654da8e6ac55d8bccf52196cc5efbae33231ab674117d02455d69fff9507522"
+        },
+        {
+          "path": "tests/test_ioc.py",
+          "bytes": 41892,
+          "sha256": "09243e3c502a8e157933f5f46b08ddd3cd6b15e67859349c9091d7d8b5a80402"
+        },
+        {
+          "path": "tests/test_ioc_lineage_codex.py",
+          "bytes": 16070,
+          "sha256": "0f61328db2331da55f753574a3326a09ca202ffaa7f8e00f7cced0f9c940c836"
+        },
+        {
+          "path": "implementation_logs/full_tests_pre_build_a_20260909.log",
+          "bytes": 64754,
+          "sha256": "fb6f1a673d959640a40484af84858125cb08b59ab3994da65411c24c85827c5f"
+        }
+      ]
+    },
+    {
+      "original_exception_id": "blk-7a2d5583942ea884",
+      "related_original_issue_ids": [
+        "A14"
+      ],
+      "related_final_finding_ids": [
+        "R12-EXCEPTIONS-UNCLAIMED"
+      ],
+      "occurrence_or_obligation": {
+        "scope": "ioc:20240401-5372",
+        "accession_number": "20240401-5372",
+        "adapter": "ioc",
+        "kind": "source",
+        "original_summary": "20240401-5372: IOC parse failed",
+        "obligation_level_effect": null
+      },
+      "audit_claim": {
+        "summary": "20240401-5372: IOC parse failed",
+        "audit_classification": "malformed/unavailable source",
+        "audit_subtype": "recoverable Discovery H header with an extra empty field",
+        "audit_irreducible_established": "False",
+        "audit_required_action": "Retain original bytes, narrowly repair the shifted header under an audited rule, confirm CID/date/units; do not silently generalise the repair.",
+        "final_audit_classification": "unclaimed -- no workstream reported on this ID",
+        "empty_original_fields": {
+          "attempts_made": true,
+          "evidence": true,
+          "replacement_occurrence": true,
+          "obligation_level_effect": true,
+          "outstanding_action": true
+        }
+      },
+      "root_cause": "A Discovery IOC H record contains one extra empty field, shifting required CID/date positions; the repair must remain header-only and guarded.",
+      "current_repair_action": "Preserve the audited bounded BOM, preamble, UTF-16 and shifted-header branches. On Build A, assert this exact accession's native CID, filing occurrence, facts, canonical/revision status, observations and lineage, then write the result against this original ID.",
+      "current_candidate_state": "verified parser repair retained; per-ID candidate Build A/export disposition pending",
+      "current_audited_output": {
+        "audit_result": "verified",
+        "parsed_and_persisted": true,
+        "defect_category": "shifted_header",
+        "expected_entity": "C001031",
+        "native_header_cid": "C001031",
+        "header_match": true,
+        "source_fact_count": 308,
+        "observation_count": 17,
+        "applied_to_observations": true,
+        "filing_is_canonical": 1,
+        "filing_version_status": "original",
+        "qualification": null
+      },
+      "targeted_test_gate": "Add an exact-byte regression for this accession using the audited encoding/header branch, attach its evidence to the original exception ID, and make the candidate exception-disposition check mandatory. Assert parsed source facts, native-header CID, filing identity and exact observation count.",
+      "disposition": "pending_build_a",
+      "residual_limitation": "The final audit verified this source-specific behavior in the audited database, but the original register was unclaimed. Current candidate code/test presence does not prove the unchanged candidate rebuild or its exception export.",
+      "evidence": [
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/EXCEPTION_RECONCILIATION_34.json",
+          "selector": "rows[blocker_id=blk-7a2d5583942ea884]",
+          "bytes": 28183,
+          "sha256": "d3e400b5b111a19bb6b0c405539981fbb99e82514d1b90649d2d431527222f7a"
+        },
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/IOC_19_AND_ACCESS_5_RECONCILIATION.json",
+          "selector": "a14_parser_header_records[original_exception_id=blk-7a2d5583942ea884]",
+          "bytes": 104756,
+          "sha256": "c7e3626ffa2d2d79333668f06dfb3f7aa23b8a84469653670293ecedf866c4ee"
+        },
+        {
+          "path": "adapters/ioc.py",
+          "bytes": 197363,
+          "sha256": "3654da8e6ac55d8bccf52196cc5efbae33231ab674117d02455d69fff9507522"
+        },
+        {
+          "path": "tests/test_ioc.py",
+          "bytes": 41892,
+          "sha256": "09243e3c502a8e157933f5f46b08ddd3cd6b15e67859349c9091d7d8b5a80402"
+        },
+        {
+          "path": "tests/test_ioc_lineage_codex.py",
+          "bytes": 16070,
+          "sha256": "0f61328db2331da55f753574a3326a09ca202ffaa7f8e00f7cced0f9c940c836"
+        },
+        {
+          "path": "implementation_logs/full_tests_pre_build_a_20260909.log",
+          "bytes": 64754,
+          "sha256": "fb6f1a673d959640a40484af84858125cb08b59ab3994da65411c24c85827c5f"
+        }
+      ]
+    },
+    {
+      "original_exception_id": "blk-bcf7aaefcfb67a22",
+      "related_original_issue_ids": [
+        "A14"
+      ],
+      "related_final_finding_ids": [
+        "R12-EXCEPTIONS-UNCLAIMED"
+      ],
+      "occurrence_or_obligation": {
+        "scope": "ioc:20240701-5084",
+        "accession_number": "20240701-5084",
+        "adapter": "ioc",
+        "kind": "source",
+        "original_summary": "20240701-5084: IOC parse failed",
+        "obligation_level_effect": null
+      },
+      "audit_claim": {
+        "summary": "20240701-5084: IOC parse failed",
+        "audit_classification": "malformed/unavailable source",
+        "audit_subtype": "recoverable Discovery H header with an extra empty field",
+        "audit_irreducible_established": "False",
+        "audit_required_action": "Retain original bytes, narrowly repair the shifted header under an audited rule, confirm CID/date/units; do not silently generalise the repair.",
+        "final_audit_classification": "unclaimed -- no workstream reported on this ID",
+        "empty_original_fields": {
+          "attempts_made": true,
+          "evidence": true,
+          "replacement_occurrence": true,
+          "obligation_level_effect": true,
+          "outstanding_action": true
+        }
+      },
+      "root_cause": "A Discovery IOC H record contains one extra empty field, shifting required CID/date positions; the repair must remain header-only and guarded.",
+      "current_repair_action": "Preserve the audited bounded BOM, preamble, UTF-16 and shifted-header branches. On Build A, assert this exact accession's native CID, filing occurrence, facts, canonical/revision status, observations and lineage, then write the result against this original ID.",
+      "current_candidate_state": "verified parser repair retained; per-ID candidate Build A/export disposition pending",
+      "current_audited_output": {
+        "audit_result": "verified",
+        "parsed_and_persisted": true,
+        "defect_category": "shifted_header",
+        "expected_entity": "C001031",
+        "native_header_cid": "C001031",
+        "header_match": true,
+        "source_fact_count": 317,
+        "observation_count": 17,
+        "applied_to_observations": true,
+        "filing_is_canonical": 1,
+        "filing_version_status": "original",
+        "qualification": null
+      },
+      "targeted_test_gate": "Add an exact-byte regression for this accession using the audited encoding/header branch, attach its evidence to the original exception ID, and make the candidate exception-disposition check mandatory. Assert parsed source facts, native-header CID, filing identity and exact observation count.",
+      "disposition": "pending_build_a",
+      "residual_limitation": "The final audit verified this source-specific behavior in the audited database, but the original register was unclaimed. Current candidate code/test presence does not prove the unchanged candidate rebuild or its exception export.",
+      "evidence": [
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/EXCEPTION_RECONCILIATION_34.json",
+          "selector": "rows[blocker_id=blk-bcf7aaefcfb67a22]",
+          "bytes": 28183,
+          "sha256": "d3e400b5b111a19bb6b0c405539981fbb99e82514d1b90649d2d431527222f7a"
+        },
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/IOC_19_AND_ACCESS_5_RECONCILIATION.json",
+          "selector": "a14_parser_header_records[original_exception_id=blk-bcf7aaefcfb67a22]",
+          "bytes": 104756,
+          "sha256": "c7e3626ffa2d2d79333668f06dfb3f7aa23b8a84469653670293ecedf866c4ee"
+        },
+        {
+          "path": "adapters/ioc.py",
+          "bytes": 197363,
+          "sha256": "3654da8e6ac55d8bccf52196cc5efbae33231ab674117d02455d69fff9507522"
+        },
+        {
+          "path": "tests/test_ioc.py",
+          "bytes": 41892,
+          "sha256": "09243e3c502a8e157933f5f46b08ddd3cd6b15e67859349c9091d7d8b5a80402"
+        },
+        {
+          "path": "tests/test_ioc_lineage_codex.py",
+          "bytes": 16070,
+          "sha256": "0f61328db2331da55f753574a3326a09ca202ffaa7f8e00f7cced0f9c940c836"
+        },
+        {
+          "path": "implementation_logs/full_tests_pre_build_a_20260909.log",
+          "bytes": 64754,
+          "sha256": "fb6f1a673d959640a40484af84858125cb08b59ab3994da65411c24c85827c5f"
+        }
+      ]
+    },
+    {
+      "original_exception_id": "blk-951b30d9725b40b2",
+      "related_original_issue_ids": [
+        "A14"
+      ],
+      "related_final_finding_ids": [
+        "R12-EXCEPTIONS-UNCLAIMED"
+      ],
+      "occurrence_or_obligation": {
+        "scope": "ioc:20241001-5033",
+        "accession_number": "20241001-5033",
+        "adapter": "ioc",
+        "kind": "source",
+        "original_summary": "20241001-5033: IOC parse failed",
+        "obligation_level_effect": null
+      },
+      "audit_claim": {
+        "summary": "20241001-5033: IOC parse failed",
+        "audit_classification": "malformed/unavailable source",
+        "audit_subtype": "recoverable Discovery H header with an extra empty field",
+        "audit_irreducible_established": "False",
+        "audit_required_action": "Retain original bytes, narrowly repair the shifted header under an audited rule, confirm CID/date/units; do not silently generalise the repair.",
+        "final_audit_classification": "unclaimed -- no workstream reported on this ID",
+        "empty_original_fields": {
+          "attempts_made": true,
+          "evidence": true,
+          "replacement_occurrence": true,
+          "obligation_level_effect": true,
+          "outstanding_action": true
+        }
+      },
+      "root_cause": "A Discovery IOC H record contains one extra empty field, shifting required CID/date positions; the repair must remain header-only and guarded.",
+      "current_repair_action": "Preserve the audited bounded BOM, preamble, UTF-16 and shifted-header branches. On Build A, assert this exact accession's native CID, filing occurrence, facts, canonical/revision status, observations and lineage, then write the result against this original ID.",
+      "current_candidate_state": "verified parser repair retained; per-ID candidate Build A/export disposition pending",
+      "current_audited_output": {
+        "audit_result": "verified",
+        "parsed_and_persisted": true,
+        "defect_category": "shifted_header",
+        "expected_entity": "C001031",
+        "native_header_cid": "C001031",
+        "header_match": true,
+        "source_fact_count": 352,
+        "observation_count": 17,
+        "applied_to_observations": true,
+        "filing_is_canonical": 1,
+        "filing_version_status": "original",
+        "qualification": null
+      },
+      "targeted_test_gate": "Add an exact-byte regression for this accession using the audited encoding/header branch, attach its evidence to the original exception ID, and make the candidate exception-disposition check mandatory. Assert parsed source facts, native-header CID, filing identity and exact observation count.",
+      "disposition": "pending_build_a",
+      "residual_limitation": "The final audit verified this source-specific behavior in the audited database, but the original register was unclaimed. Current candidate code/test presence does not prove the unchanged candidate rebuild or its exception export.",
+      "evidence": [
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/EXCEPTION_RECONCILIATION_34.json",
+          "selector": "rows[blocker_id=blk-951b30d9725b40b2]",
+          "bytes": 28183,
+          "sha256": "d3e400b5b111a19bb6b0c405539981fbb99e82514d1b90649d2d431527222f7a"
+        },
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/IOC_19_AND_ACCESS_5_RECONCILIATION.json",
+          "selector": "a14_parser_header_records[original_exception_id=blk-951b30d9725b40b2]",
+          "bytes": 104756,
+          "sha256": "c7e3626ffa2d2d79333668f06dfb3f7aa23b8a84469653670293ecedf866c4ee"
+        },
+        {
+          "path": "adapters/ioc.py",
+          "bytes": 197363,
+          "sha256": "3654da8e6ac55d8bccf52196cc5efbae33231ab674117d02455d69fff9507522"
+        },
+        {
+          "path": "tests/test_ioc.py",
+          "bytes": 41892,
+          "sha256": "09243e3c502a8e157933f5f46b08ddd3cd6b15e67859349c9091d7d8b5a80402"
+        },
+        {
+          "path": "tests/test_ioc_lineage_codex.py",
+          "bytes": 16070,
+          "sha256": "0f61328db2331da55f753574a3326a09ca202ffaa7f8e00f7cced0f9c940c836"
+        },
+        {
+          "path": "implementation_logs/full_tests_pre_build_a_20260909.log",
+          "bytes": 64754,
+          "sha256": "fb6f1a673d959640a40484af84858125cb08b59ab3994da65411c24c85827c5f"
+        }
+      ]
+    },
+    {
+      "original_exception_id": "blk-3baeb084500d53e2",
+      "related_original_issue_ids": [
+        "A14"
+      ],
+      "related_final_finding_ids": [
+        "R12-EXCEPTIONS-UNCLAIMED"
+      ],
+      "occurrence_or_obligation": {
+        "scope": "ioc:20250102-5120",
+        "accession_number": "20250102-5120",
+        "adapter": "ioc",
+        "kind": "source",
+        "original_summary": "20250102-5120: IOC parse failed",
+        "obligation_level_effect": null
+      },
+      "audit_claim": {
+        "summary": "20250102-5120: IOC parse failed",
+        "audit_classification": "malformed/unavailable source",
+        "audit_subtype": "recoverable Discovery H header with an extra empty field",
+        "audit_irreducible_established": "False",
+        "audit_required_action": "Retain original bytes, narrowly repair the shifted header under an audited rule, confirm CID/date/units; do not silently generalise the repair.",
+        "final_audit_classification": "unclaimed -- no workstream reported on this ID",
+        "empty_original_fields": {
+          "attempts_made": true,
+          "evidence": true,
+          "replacement_occurrence": true,
+          "obligation_level_effect": true,
+          "outstanding_action": true
+        }
+      },
+      "root_cause": "A Discovery IOC H record contains one extra empty field, shifting required CID/date positions; the repair must remain header-only and guarded.",
+      "current_repair_action": "Preserve the audited bounded BOM, preamble, UTF-16 and shifted-header branches. On Build A, assert this exact accession's native CID, filing occurrence, facts, canonical/revision status, observations and lineage, then write the result against this original ID.",
+      "current_candidate_state": "verified parser repair retained; per-ID candidate Build A/export disposition pending",
+      "current_audited_output": {
+        "audit_result": "verified",
+        "parsed_and_persisted": true,
+        "defect_category": "shifted_header",
+        "expected_entity": "C001031",
+        "native_header_cid": "C001031",
+        "header_match": true,
+        "source_fact_count": 352,
+        "observation_count": 0,
+        "applied_to_observations": false,
+        "filing_is_canonical": 0,
+        "filing_version_status": "revised",
+        "qualification": "20250102-5120 is intentionally retained as a parsed noncanonical revised filing; its later revision 20250114-5047 supplies observations."
+      },
+      "targeted_test_gate": "Add an exact-byte regression for this accession using the audited encoding/header branch, attach its evidence to the original exception ID, and make the candidate exception-disposition check mandatory. Assert parsed source facts, native-header CID, filing identity and exact observation count. Assert that this filing remains parsed but noncanonical with zero current observations because 20250114-5047 is the later revision.",
+      "disposition": "pending_build_a",
+      "residual_limitation": "The final audit verified this source-specific behavior in the audited database, but the original register was unclaimed. Current candidate code/test presence does not prove the unchanged candidate rebuild or its exception export.",
+      "evidence": [
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/EXCEPTION_RECONCILIATION_34.json",
+          "selector": "rows[blocker_id=blk-3baeb084500d53e2]",
+          "bytes": 28183,
+          "sha256": "d3e400b5b111a19bb6b0c405539981fbb99e82514d1b90649d2d431527222f7a"
+        },
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/IOC_19_AND_ACCESS_5_RECONCILIATION.json",
+          "selector": "a14_parser_header_records[original_exception_id=blk-3baeb084500d53e2]",
+          "bytes": 104756,
+          "sha256": "c7e3626ffa2d2d79333668f06dfb3f7aa23b8a84469653670293ecedf866c4ee"
+        },
+        {
+          "path": "adapters/ioc.py",
+          "bytes": 197363,
+          "sha256": "3654da8e6ac55d8bccf52196cc5efbae33231ab674117d02455d69fff9507522"
+        },
+        {
+          "path": "tests/test_ioc.py",
+          "bytes": 41892,
+          "sha256": "09243e3c502a8e157933f5f46b08ddd3cd6b15e67859349c9091d7d8b5a80402"
+        },
+        {
+          "path": "tests/test_ioc_lineage_codex.py",
+          "bytes": 16070,
+          "sha256": "0f61328db2331da55f753574a3326a09ca202ffaa7f8e00f7cced0f9c940c836"
+        },
+        {
+          "path": "implementation_logs/full_tests_pre_build_a_20260909.log",
+          "bytes": 64754,
+          "sha256": "fb6f1a673d959640a40484af84858125cb08b59ab3994da65411c24c85827c5f"
+        }
+      ]
+    },
+    {
+      "original_exception_id": "blk-4e70dc991829dbe4",
+      "related_original_issue_ids": [
+        "A14"
+      ],
+      "related_final_finding_ids": [
+        "R12-EXCEPTIONS-UNCLAIMED"
+      ],
+      "occurrence_or_obligation": {
+        "scope": "ioc:20250114-5047",
+        "accession_number": "20250114-5047",
+        "adapter": "ioc",
+        "kind": "source",
+        "original_summary": "20250114-5047: IOC parse failed",
+        "obligation_level_effect": null
+      },
+      "audit_claim": {
+        "summary": "20250114-5047: IOC parse failed",
+        "audit_classification": "malformed/unavailable source",
+        "audit_subtype": "recoverable Discovery H header with an extra empty field",
+        "audit_irreducible_established": "False",
+        "audit_required_action": "Retain original bytes, narrowly repair the shifted header under an audited rule, confirm CID/date/units; do not silently generalise the repair.",
+        "final_audit_classification": "unclaimed -- no workstream reported on this ID",
+        "empty_original_fields": {
+          "attempts_made": true,
+          "evidence": true,
+          "replacement_occurrence": true,
+          "obligation_level_effect": true,
+          "outstanding_action": true
+        }
+      },
+      "root_cause": "A Discovery IOC H record contains one extra empty field, shifting required CID/date positions; the repair must remain header-only and guarded.",
+      "current_repair_action": "Preserve the audited bounded BOM, preamble, UTF-16 and shifted-header branches. On Build A, assert this exact accession's native CID, filing occurrence, facts, canonical/revision status, observations and lineage, then write the result against this original ID.",
+      "current_candidate_state": "verified parser repair retained; per-ID candidate Build A/export disposition pending",
+      "current_audited_output": {
+        "audit_result": "verified",
+        "parsed_and_persisted": true,
+        "defect_category": "shifted_header",
+        "expected_entity": "C001031",
+        "native_header_cid": "C001031",
+        "header_match": true,
+        "source_fact_count": 352,
+        "observation_count": 17,
+        "applied_to_observations": true,
+        "filing_is_canonical": 1,
+        "filing_version_status": "revised",
+        "qualification": null
+      },
+      "targeted_test_gate": "Add an exact-byte regression for this accession using the audited encoding/header branch, attach its evidence to the original exception ID, and make the candidate exception-disposition check mandatory. Assert parsed source facts, native-header CID, filing identity and exact observation count.",
+      "disposition": "pending_build_a",
+      "residual_limitation": "The final audit verified this source-specific behavior in the audited database, but the original register was unclaimed. Current candidate code/test presence does not prove the unchanged candidate rebuild or its exception export.",
+      "evidence": [
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/EXCEPTION_RECONCILIATION_34.json",
+          "selector": "rows[blocker_id=blk-4e70dc991829dbe4]",
+          "bytes": 28183,
+          "sha256": "d3e400b5b111a19bb6b0c405539981fbb99e82514d1b90649d2d431527222f7a"
+        },
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/IOC_19_AND_ACCESS_5_RECONCILIATION.json",
+          "selector": "a14_parser_header_records[original_exception_id=blk-4e70dc991829dbe4]",
+          "bytes": 104756,
+          "sha256": "c7e3626ffa2d2d79333668f06dfb3f7aa23b8a84469653670293ecedf866c4ee"
+        },
+        {
+          "path": "adapters/ioc.py",
+          "bytes": 197363,
+          "sha256": "3654da8e6ac55d8bccf52196cc5efbae33231ab674117d02455d69fff9507522"
+        },
+        {
+          "path": "tests/test_ioc.py",
+          "bytes": 41892,
+          "sha256": "09243e3c502a8e157933f5f46b08ddd3cd6b15e67859349c9091d7d8b5a80402"
+        },
+        {
+          "path": "tests/test_ioc_lineage_codex.py",
+          "bytes": 16070,
+          "sha256": "0f61328db2331da55f753574a3326a09ca202ffaa7f8e00f7cced0f9c940c836"
+        },
+        {
+          "path": "implementation_logs/full_tests_pre_build_a_20260909.log",
+          "bytes": 64754,
+          "sha256": "fb6f1a673d959640a40484af84858125cb08b59ab3994da65411c24c85827c5f"
+        }
+      ]
+    },
+    {
+      "original_exception_id": "blk-61aa163f18d6bf88",
+      "related_original_issue_ids": [
+        "A15",
+        "A20"
+      ],
+      "related_final_finding_ids": [
+        "R12-EXCEPTIONS-UNCLAIMED"
+      ],
+      "occurrence_or_obligation": {
+        "scope": "C000087:20250401-5093",
+        "entity_key": "C000087",
+        "accession_number": "20250401-5093",
+        "adapter": "ioc",
+        "kind": "access",
+        "original_summary": "C000087 20250401-5093: availCode N -- attachment enumerated but not public (DownloadP8File returns HTTP 401); recorded as nonpublic, not retried",
+        "obligation_level_effect": null
+      },
+      "audit_claim": {
+        "summary": "C000087 20250401-5093: availCode N -- attachment enumerated but not public (DownloadP8File returns HTTP 401); recorded as nonpublic, not retried",
+        "audit_classification": "malformed/unavailable source",
+        "audit_subtype": "erroneously filed occurrence; confidentiality/access restriction unconfirmed",
+        "audit_irreducible_established": "False",
+        "audit_required_action": "Link the corrected public occurrence where found; do not infer an obligation-level gap or observed HTTP 401 from availability code N.",
+        "final_audit_classification": "unclaimed -- no workstream reported on this ID",
+        "empty_original_fields": {
+          "attempts_made": true,
+          "evidence": true,
+          "replacement_occurrence": true,
+          "obligation_level_effect": true,
+          "outstanding_action": true
+        }
+      },
+      "root_cause": "eLibrary metadata availability code N was converted into an asserted HTTP 401/access restriction even though no HTTP request was attempted; replacement linking was incomplete.",
+      "current_repair_action": "Retain the metadata-N/no-request correction, replay official public accession 20250401-5098 from the candidate cache, link its occurrence and resulting facts/observations to both Gulfstream exception IDs, and keep the historical frozen-release absence explicit.",
+      "current_candidate_state": "public candidate bytes captured/imported post-audit; Build A replacement application pending",
+      "current_audited_output": {
+        "audit_result": "qualified",
+        "metadata_only_accession": "20250401-5093",
+        "metadata_status": "N",
+        "http_request_attempted": false,
+        "observed_http_status": null,
+        "access_restriction_established": false,
+        "replacement_or_candidate_accession": "20250401-5098",
+        "same_period_public_filing_applied": false,
+        "replacement_observation_count": 0,
+        "qualification": "Public candidate metadata is persisted, but its bytes are not in the frozen cache/database; the period remains unresolved and no access restriction is proved."
+      },
+      "targeted_test_gate": "Replay exact public accession 20250401-5098 from the declared cache, require native CID/period/filing identity and supported observations, link the replacement to both metadata-N source occurrences without inventing an HTTP result, and emit per-ID evidence in Build A and packaged reproduction.",
+      "disposition": "pending_build_a",
+      "residual_limitation": "The official public candidate is now captured and cached, but it has not yet been applied by clean Build A or reconciled to this original exception. Historical claims of HTTP 401/access restriction remain unsupported.",
+      "evidence": [
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/EXCEPTION_RECONCILIATION_34.json",
+          "selector": "rows[blocker_id=blk-61aa163f18d6bf88]",
+          "bytes": 28183,
+          "sha256": "d3e400b5b111a19bb6b0c405539981fbb99e82514d1b90649d2d431527222f7a"
+        },
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/IOC_19_AND_ACCESS_5_RECONCILIATION.json",
+          "selector": "a15_access_records[original_exception_id=blk-61aa163f18d6bf88]",
+          "bytes": 104756,
+          "sha256": "c7e3626ffa2d2d79333668f06dfb3f7aa23b8a84469653670293ecedf866c4ee"
+        },
+        {
+          "path": "ferclib/elibrary.py",
+          "bytes": 51687,
+          "sha256": "6e67223abf39cecbf4b58bef843b25064edf6d1c294d1d6fc9d08d75c6338340"
+        },
+        {
+          "path": "tests/test_elibrary_individual_fallback_codex.py",
+          "bytes": 5615,
+          "sha256": "35da1f151862363fcd70cc852a1a5b856643da33510b7e4671bff49db3c2a116"
+        },
+        {
+          "path": "implementation_logs/input_recovery/OFFICIAL_FERC_RECOVERY_RESULTS.json",
+          "bytes": 107877,
+          "sha256": "cc27ccb4fa2b210808ab7c89345b1fd1059f7d8b5138bb678f21a4125e144fdd",
+          "selector": "results[accession_number=20250401-5098]"
+        },
+        {
+          "path": "implementation_logs/input_recovery/cache_import_runs.jsonl",
+          "bytes": 24519,
+          "sha256": "6c2492549e0a7fd9db64c2f4a085bc95283f31f02fbc4b19a11eb0716799a81e",
+          "selector": "entries[accession=20250401-5098]"
+        }
+      ]
+    },
+    {
+      "original_exception_id": "blk-d5a42d025ee876fa",
+      "related_original_issue_ids": [
+        "A15",
+        "A20"
+      ],
+      "related_final_finding_ids": [
+        "R12-EXCEPTIONS-UNCLAIMED"
+      ],
+      "occurrence_or_obligation": {
+        "scope": "C000087:20250401-5205",
+        "entity_key": "C000087",
+        "accession_number": "20250401-5205",
+        "adapter": "ioc",
+        "kind": "access",
+        "original_summary": "C000087 20250401-5205: availCode N -- attachment enumerated but not public (DownloadP8File returns HTTP 401); recorded as nonpublic, not retried",
+        "obligation_level_effect": null
+      },
+      "audit_claim": {
+        "summary": "C000087 20250401-5205: availCode N -- attachment enumerated but not public (DownloadP8File returns HTTP 401); recorded as nonpublic, not retried",
+        "audit_classification": "malformed/unavailable source",
+        "audit_subtype": "erroneously filed occurrence; confidentiality/access restriction unconfirmed",
+        "audit_irreducible_established": "False",
+        "audit_required_action": "Link the corrected public occurrence where found; do not infer an obligation-level gap or observed HTTP 401 from availability code N.",
+        "final_audit_classification": "unclaimed -- no workstream reported on this ID",
+        "empty_original_fields": {
+          "attempts_made": true,
+          "evidence": true,
+          "replacement_occurrence": true,
+          "obligation_level_effect": true,
+          "outstanding_action": true
+        }
+      },
+      "root_cause": "eLibrary metadata availability code N was converted into an asserted HTTP 401/access restriction even though no HTTP request was attempted; replacement linking was incomplete.",
+      "current_repair_action": "Retain the metadata-N/no-request correction, replay official public accession 20250401-5098 from the candidate cache, link its occurrence and resulting facts/observations to both Gulfstream exception IDs, and keep the historical frozen-release absence explicit.",
+      "current_candidate_state": "public candidate bytes captured/imported post-audit; Build A replacement application pending",
+      "current_audited_output": {
+        "audit_result": "qualified",
+        "metadata_only_accession": "20250401-5205",
+        "metadata_status": "N",
+        "http_request_attempted": false,
+        "observed_http_status": null,
+        "access_restriction_established": false,
+        "replacement_or_candidate_accession": "20250401-5098",
+        "same_period_public_filing_applied": false,
+        "replacement_observation_count": 0,
+        "qualification": "Public candidate metadata is persisted, but its bytes are not in the frozen cache/database; the period remains unresolved and no access restriction is proved."
+      },
+      "targeted_test_gate": "Replay exact public accession 20250401-5098 from the declared cache, require native CID/period/filing identity and supported observations, link the replacement to both metadata-N source occurrences without inventing an HTTP result, and emit per-ID evidence in Build A and packaged reproduction.",
+      "disposition": "pending_build_a",
+      "residual_limitation": "The official public candidate is now captured and cached, but it has not yet been applied by clean Build A or reconciled to this original exception. Historical claims of HTTP 401/access restriction remain unsupported.",
+      "evidence": [
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/EXCEPTION_RECONCILIATION_34.json",
+          "selector": "rows[blocker_id=blk-d5a42d025ee876fa]",
+          "bytes": 28183,
+          "sha256": "d3e400b5b111a19bb6b0c405539981fbb99e82514d1b90649d2d431527222f7a"
+        },
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/IOC_19_AND_ACCESS_5_RECONCILIATION.json",
+          "selector": "a15_access_records[original_exception_id=blk-d5a42d025ee876fa]",
+          "bytes": 104756,
+          "sha256": "c7e3626ffa2d2d79333668f06dfb3f7aa23b8a84469653670293ecedf866c4ee"
+        },
+        {
+          "path": "ferclib/elibrary.py",
+          "bytes": 51687,
+          "sha256": "6e67223abf39cecbf4b58bef843b25064edf6d1c294d1d6fc9d08d75c6338340"
+        },
+        {
+          "path": "tests/test_elibrary_individual_fallback_codex.py",
+          "bytes": 5615,
+          "sha256": "35da1f151862363fcd70cc852a1a5b856643da33510b7e4671bff49db3c2a116"
+        },
+        {
+          "path": "implementation_logs/input_recovery/OFFICIAL_FERC_RECOVERY_RESULTS.json",
+          "bytes": 107877,
+          "sha256": "cc27ccb4fa2b210808ab7c89345b1fd1059f7d8b5138bb678f21a4125e144fdd",
+          "selector": "results[accession_number=20250401-5098]"
+        },
+        {
+          "path": "implementation_logs/input_recovery/cache_import_runs.jsonl",
+          "bytes": 24519,
+          "sha256": "6c2492549e0a7fd9db64c2f4a085bc95283f31f02fbc4b19a11eb0716799a81e",
+          "selector": "entries[accession=20250401-5098]"
+        }
+      ]
+    },
+    {
+      "original_exception_id": "blk-0e1bef5b42c6c2c8",
+      "related_original_issue_ids": [
+        "A14"
+      ],
+      "related_final_finding_ids": [
+        "R12-EXCEPTIONS-UNCLAIMED"
+      ],
+      "occurrence_or_obligation": {
+        "scope": "C000087",
+        "policy_scope": "C000087",
+        "adapter": "ioc",
+        "kind": "source",
+        "original_summary": "C000087: Error",
+        "obligation_level_effect": null
+      },
+      "audit_claim": {
+        "summary": "C000087: Error",
+        "audit_classification": "implementation/parser defect",
+        "audit_subtype": "Gulfstream UTF-16 IOC decoded incorrectly; CSV error halts entity task",
+        "audit_irreducible_established": "False",
+        "audit_required_action": "Replay accession 20241001-5327 with UTF-16 and newline-safe CSV: H=1,D=18,P=176,F=4; then resume the remaining Gulfstream periods.",
+        "final_audit_classification": "unclaimed -- no workstream reported on this ID",
+        "empty_original_fields": {
+          "attempts_made": true,
+          "evidence": true,
+          "replacement_occurrence": true,
+          "obligation_level_effect": true,
+          "outstanding_action": true
+        }
+      },
+      "root_cause": "IOC parser defect evidenced as utf16_le; no broader cause is inferred.",
+      "current_repair_action": "Preserve the audited bounded BOM, preamble, UTF-16 and shifted-header branches. On Build A, assert this exact accession's native CID, filing occurrence, facts, canonical/revision status, observations and lineage, then write the result against this original ID.",
+      "current_candidate_state": "verified parser repair retained; per-ID candidate Build A/export disposition pending",
+      "current_audited_output": {
+        "audit_result": "verified",
+        "parsed_and_persisted": true,
+        "defect_category": "utf16_le",
+        "expected_entity": "C000087",
+        "native_header_cid": "C000087",
+        "header_match": true,
+        "source_fact_count": 199,
+        "observation_count": 17,
+        "applied_to_observations": true,
+        "filing_is_canonical": 1,
+        "filing_version_status": "original",
+        "qualification": null
+      },
+      "targeted_test_gate": "Add an exact-byte regression for this accession using the audited encoding/header branch, attach its evidence to the original exception ID, and make the candidate exception-disposition check mandatory. Assert parsed source facts, native-header CID, filing identity and exact observation count.",
+      "disposition": "pending_build_a",
+      "residual_limitation": "The final audit verified this source-specific behavior in the audited database, but the original register was unclaimed. Current candidate code/test presence does not prove the unchanged candidate rebuild or its exception export.",
+      "evidence": [
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/EXCEPTION_RECONCILIATION_34.json",
+          "selector": "rows[blocker_id=blk-0e1bef5b42c6c2c8]",
+          "bytes": 28183,
+          "sha256": "d3e400b5b111a19bb6b0c405539981fbb99e82514d1b90649d2d431527222f7a"
+        },
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/IOC_19_AND_ACCESS_5_RECONCILIATION.json",
+          "selector": "a14_parser_header_records[original_exception_id=blk-0e1bef5b42c6c2c8]",
+          "bytes": 104756,
+          "sha256": "c7e3626ffa2d2d79333668f06dfb3f7aa23b8a84469653670293ecedf866c4ee"
+        },
+        {
+          "path": "adapters/ioc.py",
+          "bytes": 197363,
+          "sha256": "3654da8e6ac55d8bccf52196cc5efbae33231ab674117d02455d69fff9507522"
+        },
+        {
+          "path": "tests/test_ioc.py",
+          "bytes": 41892,
+          "sha256": "09243e3c502a8e157933f5f46b08ddd3cd6b15e67859349c9091d7d8b5a80402"
+        },
+        {
+          "path": "tests/test_ioc_lineage_codex.py",
+          "bytes": 16070,
+          "sha256": "0f61328db2331da55f753574a3326a09ca202ffaa7f8e00f7cced0f9c940c836"
+        },
+        {
+          "path": "implementation_logs/full_tests_pre_build_a_20260909.log",
+          "bytes": 64754,
+          "sha256": "fb6f1a673d959640a40484af84858125cb08b59ab3994da65411c24c85827c5f"
+        }
+      ]
+    },
+    {
+      "original_exception_id": "blk-dd6dc6d6d74b49c4",
+      "related_original_issue_ids": [
+        "A15",
+        "A20"
+      ],
+      "related_final_finding_ids": [
+        "R12-EXCEPTIONS-UNCLAIMED"
+      ],
+      "occurrence_or_obligation": {
+        "scope": "C001058:20260701-5096",
+        "entity_key": "C001058",
+        "accession_number": "20260701-5096",
+        "adapter": "ioc",
+        "kind": "access",
+        "original_summary": "C001058 20260701-5096: availCode N -- attachment enumerated but not public (DownloadP8File returns HTTP 401); recorded as nonpublic, not retried",
+        "obligation_level_effect": null
+      },
+      "audit_claim": {
+        "summary": "C001058 20260701-5096: availCode N -- attachment enumerated but not public (DownloadP8File returns HTTP 401); recorded as nonpublic, not retried",
+        "audit_classification": "malformed/unavailable source",
+        "audit_subtype": "erroneously filed occurrence; confidentiality/access restriction unconfirmed",
+        "audit_irreducible_established": "False",
+        "audit_required_action": "Link the corrected public occurrence where found; do not infer an obligation-level gap or observed HTTP 401 from availability code N.",
+        "final_audit_classification": "unclaimed -- no workstream reported on this ID",
+        "empty_original_fields": {
+          "attempts_made": true,
+          "evidence": true,
+          "replacement_occurrence": true,
+          "obligation_level_effect": true,
+          "outstanding_action": true
+        }
+      },
+      "root_cause": "eLibrary metadata availability code N was converted into an asserted HTTP 401/access restriction even though no HTTP request was attempted; replacement linking was incomplete.",
+      "current_repair_action": "Retain the metadata-N/no-request correction and the audited public replacement 20260701-5117; on Build A reassert occurrence identity, replacement observations and the absence of any invented HTTP status, then write the result against this original ID.",
+      "current_candidate_state": "audited public replacement applied; candidate Build A and per-ID disposition pending",
+      "current_audited_output": {
+        "audit_result": "verified",
+        "metadata_only_accession": "20260701-5096",
+        "metadata_status": "N",
+        "http_request_attempted": false,
+        "observed_http_status": null,
+        "access_restriction_established": false,
+        "replacement_or_candidate_accession": "20260701-5117",
+        "same_period_public_filing_applied": true,
+        "replacement_observation_count": 27,
+        "qualification": null
+      },
+      "targeted_test_gate": "Replace the false HTTP-401 narrative with metadata-N/no-request facts; link public accession 20260701-5117 and its applied observations to this original ID; add a record-level regression and only then disposition it.",
+      "disposition": "pending_build_a",
+      "residual_limitation": "The final audit verified the public replacement in the audited database, but the original register stayed unclaimed and the current candidate build/export has not yet been reconciled.",
+      "evidence": [
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/EXCEPTION_RECONCILIATION_34.json",
+          "selector": "rows[blocker_id=blk-dd6dc6d6d74b49c4]",
+          "bytes": 28183,
+          "sha256": "d3e400b5b111a19bb6b0c405539981fbb99e82514d1b90649d2d431527222f7a"
+        },
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/IOC_19_AND_ACCESS_5_RECONCILIATION.json",
+          "selector": "a15_access_records[original_exception_id=blk-dd6dc6d6d74b49c4]",
+          "bytes": 104756,
+          "sha256": "c7e3626ffa2d2d79333668f06dfb3f7aa23b8a84469653670293ecedf866c4ee"
+        },
+        {
+          "path": "adapters/ioc.py",
+          "bytes": 197363,
+          "sha256": "3654da8e6ac55d8bccf52196cc5efbae33231ab674117d02455d69fff9507522"
+        },
+        {
+          "path": "tests/test_ioc.py",
+          "bytes": 41892,
+          "sha256": "09243e3c502a8e157933f5f46b08ddd3cd6b15e67859349c9091d7d8b5a80402"
+        },
+        {
+          "path": "implementation_logs/full_tests_pre_build_a_20260909.log",
+          "bytes": 64754,
+          "sha256": "fb6f1a673d959640a40484af84858125cb08b59ab3994da65411c24c85827c5f"
+        }
+      ]
+    },
+    {
+      "original_exception_id": "blk-433ea58ae2a4a07c",
+      "related_original_issue_ids": [
+        "A17"
+      ],
+      "related_final_finding_ids": [
+        "R12-EXCEPTIONS-UNCLAIMED"
+      ],
+      "occurrence_or_obligation": {
+        "scope": "capacity:20240223-5073",
+        "accession_number": "20240223-5073",
+        "adapter": "capacity",
+        "kind": "source",
+        "original_summary": "20240223-5073: capacity PDF parse failed",
+        "obligation_level_effect": null
+      },
+      "audit_claim": {
+        "summary": "20240223-5073: capacity PDF parse failed",
+        "audit_classification": "implementation/parser defect",
+        "audit_subtype": "image-only PDF requires reviewed extraction capability",
+        "audit_irreducible_established": "False",
+        "audit_required_action": "Read and review the valid PDF page; retain qualifiers and distinguish physical peak-day delivery from storage space.",
+        "final_audit_classification": "unclaimed -- no workstream reported on this ID",
+        "empty_original_fields": {
+          "attempts_made": true,
+          "evidence": true,
+          "replacement_occurrence": true,
+          "obligation_level_effect": true,
+          "outstanding_action": true
+        }
+      },
+      "root_cause": "The official one-page PDF is image-only and the shipped test has no accepted unattended OCR/image extraction path; the current values came through manual visual review.",
+      "current_repair_action": "Implement or explicitly gate an unattended image/OCR path for the exact PDF, require the two reviewed values and every qualifier, and make absence of image support a failure rather than a skip.",
+      "current_candidate_state": "manual reviewed-page values retained; unattended image/OCR capability remains unimplemented",
+      "current_audited_output": {
+        "audit_result": "verified",
+        "method": "Rendered page 1 from each cached source object at 180 dpi with bundled Poppler pdftoppm, then independently inspected the complete page image.",
+        "source_identity": {
+          "source_object_sha256": "31f9219d3da5bc260392b6e2351cde0313ab38978ade4ee714f70308d7036d94",
+          "source_bytes": 337391,
+          "pages": 1,
+          "text_layer": false,
+          "render_sha256": "90764d4355daf325787e3270e2c82237e861a440f381522050c9b86cf5388fc8"
+        },
+        "visual_result": {
+          "estimated_peak_day_delivery_capacity": "approximately 420 MMcf/day",
+          "estimated_total_storage_capacity": "23.7 Bcf",
+          "qualifiers": [
+            "capacity associated with base-gas requirements is excluded from the capacity assigned or made available for firm service",
+            "estimated storage-capacity total excludes off-system capacity",
+            "the filing describes estimates under reasonably representative operating assumptions"
+          ]
+        },
+        "database_alignment": "Values, units, estimate language, base-gas warning, off-system warning, and operating-assumptions warning agree with the shipped observation text."
+      },
+      "targeted_test_gate": "From the exact official image-only PDF, an unattended declared runtime path must recover the reviewed value, unit, facility, approximate/estimated qualifier and caveats; disabling that capability must fail honestly rather than skip.",
+      "disposition": "open_capability_gap",
+      "residual_limitation": "Manual rendered-page evidence verifies the values but not an unattended capability; the delivered A17 image-path test still skips.",
+      "evidence": [
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/EXCEPTION_RECONCILIATION_34.json",
+          "selector": "rows[blocker_id=blk-433ea58ae2a4a07c]",
+          "bytes": 28183,
+          "sha256": "d3e400b5b111a19bb6b0c405539981fbb99e82514d1b90649d2d431527222f7a"
+        },
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/A17_VISUAL_VERIFICATION.json",
+          "selector": "sources[accession=20240223-5073]",
+          "bytes": 2578,
+          "sha256": "12e283d0b3eda344b6199e7b8298463a7f0cb5e8993c8509450a748566c6e548"
+        },
+        {
+          "path": "adapters/capacity.py",
+          "bytes": 111376,
+          "sha256": "7b3ece52d534905aa0384d2f709169160fae8caf34cfc4cf70911518b7e6fe85"
+        },
+        {
+          "path": "tests/test_documents.py",
+          "bytes": 78829,
+          "sha256": "c7079b55e5d6fff8e6ae1375ac4ea1b07bc82fce5dadaf5f901db3ee45f4d61b"
+        },
+        {
+          "path": "implementation_logs/frozen_runtime/test_ioc_a17.log",
+          "bytes": 827,
+          "sha256": "f7a3191605e8fc3a02cc249abd3c7450819b971c00bc6756be54796c29ab86ac"
+        }
+      ]
+    },
+    {
+      "original_exception_id": "blk-187aa7808a87cf34",
+      "related_original_issue_ids": [
+        "A17"
+      ],
+      "related_final_finding_ids": [
+        "R12-EXCEPTIONS-UNCLAIMED"
+      ],
+      "occurrence_or_obligation": {
+        "scope": "capacity:20240223-5075",
+        "accession_number": "20240223-5075",
+        "adapter": "capacity",
+        "kind": "source",
+        "original_summary": "20240223-5075: capacity PDF parse failed",
+        "obligation_level_effect": null
+      },
+      "audit_claim": {
+        "summary": "20240223-5075: capacity PDF parse failed",
+        "audit_classification": "implementation/parser defect",
+        "audit_subtype": "image-only PDF requires reviewed extraction capability",
+        "audit_irreducible_established": "False",
+        "audit_required_action": "Read and review the valid PDF page; retain qualifiers and distinguish physical peak-day delivery from storage space.",
+        "final_audit_classification": "unclaimed -- no workstream reported on this ID",
+        "empty_original_fields": {
+          "attempts_made": true,
+          "evidence": true,
+          "replacement_occurrence": true,
+          "obligation_level_effect": true,
+          "outstanding_action": true
+        }
+      },
+      "root_cause": "The official one-page PDF is image-only and the shipped test has no accepted unattended OCR/image extraction path; the current values came through manual visual review.",
+      "current_repair_action": "Implement or explicitly gate an unattended image/OCR path for the exact PDF, require the two reviewed values and every qualifier, and make absence of image support a failure rather than a skip.",
+      "current_candidate_state": "manual reviewed-page values retained; unattended image/OCR capability remains unimplemented",
+      "current_audited_output": {
+        "audit_result": "verified",
+        "method": "Rendered page 1 from each cached source object at 180 dpi with bundled Poppler pdftoppm, then independently inspected the complete page image.",
+        "source_identity": {
+          "source_object_sha256": "8e2069eeb07fdfdca7167b323b25cf91f0c34bbf91fd82a8bd82caf9826c0040",
+          "source_bytes": 339731,
+          "pages": 1,
+          "text_layer": false,
+          "render_sha256": "e4021bf93407f7bd906fa8a70db51a228937668834b203ef8de81db9bc1f8688"
+        },
+        "visual_result": {
+          "estimated_peak_day_delivery_capacity": "approximately 465 MMcf/day",
+          "estimated_total_storage_capacity": "11.96 Bcf",
+          "qualifiers": [
+            "capacity associated with base-gas requirements is excluded from the capacity assigned or made available for firm service",
+            "estimated storage-capacity total excludes off-system capacity",
+            "the filing describes estimates under reasonably representative operating assumptions"
+          ]
+        },
+        "database_alignment": "Values, units, estimate language, base-gas warning, off-system warning, and operating-assumptions warning agree with the shipped observation text."
+      },
+      "targeted_test_gate": "From the exact official image-only PDF, an unattended declared runtime path must recover the reviewed value, unit, facility, approximate/estimated qualifier and caveats; disabling that capability must fail honestly rather than skip.",
+      "disposition": "open_capability_gap",
+      "residual_limitation": "Manual rendered-page evidence verifies the values but not an unattended capability; the delivered A17 image-path test still skips.",
+      "evidence": [
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/EXCEPTION_RECONCILIATION_34.json",
+          "selector": "rows[blocker_id=blk-187aa7808a87cf34]",
+          "bytes": 28183,
+          "sha256": "d3e400b5b111a19bb6b0c405539981fbb99e82514d1b90649d2d431527222f7a"
+        },
+        {
+          "path": "/Users/nathanjones/Desktop/ferc_reaudit_handoff/codex_reaudit_20260909_aonXiE/audit_output/final_payload.nosync/A17_VISUAL_VERIFICATION.json",
+          "selector": "sources[accession=20240223-5075]",
+          "bytes": 2578,
+          "sha256": "12e283d0b3eda344b6199e7b8298463a7f0cb5e8993c8509450a748566c6e548"
+        },
+        {
+          "path": "adapters/capacity.py",
+          "bytes": 111376,
+          "sha256": "7b3ece52d534905aa0384d2f709169160fae8caf34cfc4cf70911518b7e6fe85"
+        },
+        {
+          "path": "tests/test_documents.py",
+          "bytes": 78829,
+          "sha256": "c7079b55e5d6fff8e6ae1375ac4ea1b07bc82fce5dadaf5f901db3ee45f4d61b"
+        },
+        {
+          "path": "implementation_logs/frozen_runtime/test_ioc_a17.log",
+          "bytes": 827,
+          "sha256": "f7a3191605e8fc3a02cc249abd3c7450819b971c00bc6756be54796c29ab86ac"
+        }
+      ]
+    }
+  ]
+}

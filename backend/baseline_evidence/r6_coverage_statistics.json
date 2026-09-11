@@ -1,0 +1,66 @@
+{
+ "all_in_review": 632,
+ "all_outcomes": {
+  "applicability_unknown": 4948,
+  "interpretation_blocked": 278,
+  "not_applicable": 948,
+  "not_implemented": 16031,
+  "not_required": 138,
+  "not_yet_due": 2056,
+  "parse_failed": 123,
+  "populated_review": 561,
+  "populated_validated": 4056,
+  "retrieval_failed": 170,
+  "source_blank": 149
+ },
+ "all_populated": 4617,
+ "all_refused_candidates": 261,
+ "all_source_matched": 4617,
+ "all_validated": 4056,
+ "core_due_populated": 4617,
+ "core_due_populated_pct": 20.4736,
+ "core_due_validated": 4056,
+ "core_due_validated_pct": 17.9859,
+ "core_in_review": 632,
+ "core_outcomes": {
+  "applicability_unknown": 251,
+  "interpretation_blocked": 278,
+  "not_applicable": 938,
+  "not_implemented": 16031,
+  "not_yet_due": 2056,
+  "parse_failed": 117,
+  "populated_review": 561,
+  "populated_validated": 4056,
+  "retrieval_failed": 170,
+  "source_blank": 149
+ },
+ "core_populated": 4617,
+ "core_populated_pct": 18.763,
+ "core_refused_candidates": 261,
+ "core_source_matched": 4617,
+ "core_validated": 4056,
+ "core_validated_pct": 16.4831,
+ "denominator_origin": {
+  "calendar": 28941,
+  "document_adapter_anchor": 457,
+  "regulatory_instrument_history": 60
+ },
+ "expected_core": 24607,
+ "expected_core_due": 22551,
+ "expected_not_required": 148,
+ "expected_optional": 0,
+ "expected_total": 29458,
+ "expected_unknown": 4703,
+ "slot_states": {
+  "applicability_unknown": 4703,
+  "due_and_open": 22580,
+  "future_not_yet_due": 2056,
+  "technical_failure": 119
+ },
+ "source_health": {
+  "health_not_recorded": 6459,
+  "not_retrieved": 1,
+  "ok": 22874,
+  "parse_failed": 124
+ }
+}

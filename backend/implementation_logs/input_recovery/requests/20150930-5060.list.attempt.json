@@ -1,0 +1,22 @@
+{
+  "accession": "20150930-5060",
+  "attempt_started_utc": "2026-09-09T16:29:19.331871+00:00",
+  "credentials_or_cookies_sent": false,
+  "outcome": "attempt_started; see response metadata/result ledger",
+  "request": {
+    "body_bytes": 0,
+    "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "headers": {
+      "Accept": "application/json",
+      "Connection": "close",
+      "Origin": "https://elibrary.ferc.gov",
+      "Referer": "https://elibrary.ferc.gov/eLibrary/filelist?accession_num=20150930-5060",
+      "User-Agent": "Codex-FERC-independent-audit-recovery/1.0"
+    },
+    "method": "GET",
+    "url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/GetFileListFromP8/20150930-5060"
+  },
+  "request_kind": "list",
+  "retry_policy": "one attempt only; no automatic or manual identical retry in this pass",
+  "schema": "official_ferc_http_attempt_v1"
+}

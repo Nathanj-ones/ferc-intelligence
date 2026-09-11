@@ -1,6 +1,7 @@
 # Local site and source refresh
 
-Run `npm run dev:live` in this directory, then open
+On a fresh clone, run `npm ci` and `npm run setup:backend`, copy `.env.example`
+to `.env`, and add your FERC key. Run `npm run dev:live`, then open
 [localhost:5173](http://localhost:5173/?view=assets).
 Keep the terminal running while using the site or refreshing data.
 
@@ -12,7 +13,9 @@ other tabs offer **Load refreshed snapshot**.
 
 ## What runs
 
-1. On first use, create a coherent SQLite backup of the reviewed backend and
+1. Setup downloads a checksum-pinned reviewed seed and source cache from the
+   private release attached to this same GitHub repository. On first refresh,
+   create a coherent SQLite backup of that repository-local backend seed and
    copy its source cache into the ignored, private `.ferc-local/working` directory.
    Allow several GB of disk space. The frozen backend and published files are
    not updated.
@@ -36,13 +39,14 @@ pull; the next start reports it as interrupted and offers a retry.
 
 ## Configuration and security
 
-- The server reads `FERC_API_KEY` from its environment, or from the existing
-  `/Users/nathanjones/Desktop/ferc/.env`. The key is not returned to the browser.
+- The server reads `FERC_API_KEY` from its environment or the repository-root
+  `.env` file. The key is not returned to the browser.
 - Optional server-only overrides: `FERC_LOCAL_ENV_FILE`, `FERC_LOCAL_BACKEND_ROOT`,
   and `FERC_LOCAL_PYTHON`. Configure the backend location before first use; do not
   reuse an existing working database with an unrelated backend.
-- Source code defaults to the reviewed 2026-09-10 handoff. Python defaults to
-  `/usr/bin/python3`; the backend requires Python 3.9 or newer.
+- Source code defaults to this repository's `backend/`. Python defaults to
+  `python3` on PATH; use Python 3.9–3.14. Full image-only capacity extraction
+  requires the existing macOS Vision/Swift and Poppler runtime; see the README.
 - Refresh requires a loopback connection, an exact same-origin request, and a
   custom request header. Working files are denied by the development file server.
 - This service exists only in `dev:live`. The deployed private site is unchanged

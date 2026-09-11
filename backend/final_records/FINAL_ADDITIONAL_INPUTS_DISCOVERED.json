@@ -1,0 +1,901 @@
+{
+  "counts": {
+    "acceptance_result": {
+      "accepted_as_repair_evidence_not_execution_prerequisite": 3,
+      "accepted_for_candidate": 2
+    },
+    "classification": {
+      "evidence required to reproduce existing assertion": 3,
+      "mandatory executable prerequisite": 2
+    },
+    "disposition": {
+      "captured_cache_bound_repair_evidence": 3,
+      "integrated_in_build_a": 2
+    },
+    "rows": 5
+  },
+  "draft": false,
+  "generated_at": "2026-09-09T18:02:08+00:00",
+  "population": 5,
+  "relationship_to_audited_inventory": "separate from, and does not renumber, the final audit's 13 absent inputs",
+  "rows": [
+    {
+      "acceptance_result": "accepted_for_candidate",
+      "adapter": "elibrary_docs",
+      "audit_claim": {
+        "relationship": "discovered_during_repair",
+        "repair_discovery": "The atomic v4 failure boundary identified exact cache keys for five AdvancedSearch responses and one file-list response; successful bounded replay then exposed and captured two additional file lists and three attachment downloads required to finish those same entity units.",
+        "status": "not_in_final_independent_audit"
+      },
+      "build_a_application": {
+        "accepted": true,
+        "units": [
+          {
+            "accepted": true,
+            "accepted_checkpoints": 1,
+            "checkpoints": [
+              {
+                "has_commit": 1,
+                "last_error": null,
+                "last_run_id": "run-20260910T090109-7c6060",
+                "run_status": "complete",
+                "scope_key": "2024-2026#473702d170c243a321212856d48b8f78",
+                "state": "done"
+              },
+              {
+                "has_commit": 0,
+                "last_error": null,
+                "last_run_id": "run-20260910T090109-7c6060",
+                "run_status": "complete",
+                "scope_key": "census:2015-01-01",
+                "state": "done"
+              },
+              {
+                "has_commit": 0,
+                "last_error": null,
+                "last_run_id": "run-20260910T090109-7c6060",
+                "run_status": "complete",
+                "scope_key": "doc:20260528-5027",
+                "state": "done"
+              },
+              {
+                "has_commit": 0,
+                "last_error": null,
+                "last_run_id": "run-20260910T090109-7c6060",
+                "run_status": "complete",
+                "scope_key": "docket:IS26-294",
+                "state": "done"
+              },
+              {
+                "has_commit": 0,
+                "last_error": null,
+                "last_run_id": "run-20260910T090109-7c6060",
+                "run_status": "complete",
+                "scope_key": "docket:IS26-390",
+                "state": "done"
+              },
+              {
+                "has_commit": 0,
+                "last_error": null,
+                "last_run_id": "run-20260910T090109-7c6060",
+                "run_status": "complete",
+                "scope_key": "news_baseline",
+                "state": "done"
+              }
+            ],
+            "dockets": [
+              {
+                "accepted": true,
+                "docket": "IS26-390",
+                "occurrences": [
+                  {
+                    "documents": 1,
+                    "entity_key": "C000630",
+                    "filing_id": "20260528-5027"
+                  }
+                ]
+              },
+              {
+                "accepted": true,
+                "docket": "IS26-294",
+                "occurrences": [
+                  {
+                    "documents": 1,
+                    "entity_key": "C000630",
+                    "filing_id": "20260522-5222"
+                  }
+                ]
+              }
+            ],
+            "entity_key": "C000630"
+          },
+          {
+            "accepted": true,
+            "accepted_checkpoints": 1,
+            "checkpoints": [
+              {
+                "has_commit": 1,
+                "last_error": null,
+                "last_run_id": "run-20260910T090109-7c6060",
+                "run_status": "complete",
+                "scope_key": "2024-2026#4a409e3b8a88d49275a77af5f55ecd85",
+                "state": "done"
+              },
+              {
+                "has_commit": 0,
+                "last_error": null,
+                "last_run_id": "run-20260910T090109-7c6060",
+                "run_status": "complete",
+                "scope_key": "census:2015-01-01",
+                "state": "done"
+              },
+              {
+                "has_commit": 0,
+                "last_error": null,
+                "last_run_id": "run-20260910T090109-7c6060",
+                "run_status": "complete",
+                "scope_key": "doc:20260304-3061",
+                "state": "done"
+              },
+              {
+                "has_commit": 0,
+                "last_error": null,
+                "last_run_id": "run-20260910T090109-7c6060",
+                "run_status": "complete",
+                "scope_key": "docket:RP26-1121",
+                "state": "done"
+              },
+              {
+                "has_commit": 0,
+                "last_error": null,
+                "last_run_id": "run-20260910T090109-7c6060",
+                "run_status": "complete",
+                "scope_key": "docket:RP26-488",
+                "state": "done"
+              },
+              {
+                "has_commit": 0,
+                "last_error": null,
+                "last_run_id": "run-20260910T090109-7c6060",
+                "run_status": "complete",
+                "scope_key": "interruption",
+                "state": "done"
+              },
+              {
+                "has_commit": 0,
+                "last_error": null,
+                "last_run_id": "run-20260910T090109-7c6060",
+                "run_status": "complete",
+                "scope_key": "news_baseline",
+                "state": "done"
+              }
+            ],
+            "dockets": [
+              {
+                "accepted": true,
+                "docket": "RP26-488",
+                "occurrences": [
+                  {
+                    "documents": 1,
+                    "entity_key": "C001031",
+                    "filing_id": "20260213-5149"
+                  },
+                  {
+                    "documents": 1,
+                    "entity_key": "C001031",
+                    "filing_id": "20260304-3061"
+                  }
+                ]
+              }
+            ],
+            "entity_key": "C001031"
+          },
+          {
+            "accepted": true,
+            "accepted_checkpoints": 1,
+            "checkpoints": [
+              {
+                "has_commit": 1,
+                "last_error": null,
+                "last_run_id": "run-20260910T090109-7c6060",
+                "run_status": "complete",
+                "scope_key": "2024-2026#31228d31b2764d9197aa0b0910123037",
+                "state": "done"
+              },
+              {
+                "has_commit": 0,
+                "last_error": null,
+                "last_run_id": "run-20260910T090109-7c6060",
+                "run_status": "complete",
+                "scope_key": "census:2015-01-01",
+                "state": "done"
+              },
+              {
+                "has_commit": 0,
+                "last_error": null,
+                "last_run_id": "run-20260910T090109-7c6060",
+                "run_status": "complete",
+                "scope_key": "doc:20250904-3005",
+                "state": "done"
+              },
+              {
+                "has_commit": 0,
+                "last_error": null,
+                "last_run_id": "run-20260910T090109-7c6060",
+                "run_status": "complete",
+                "scope_key": "docket:RP25-1075",
+                "state": "done"
+              },
+              {
+                "has_commit": 0,
+                "last_error": null,
+                "last_run_id": "run-20260910T090109-7c6060",
+                "run_status": "complete",
+                "scope_key": "docket:RP26-1100",
+                "state": "done"
+              },
+              {
+                "has_commit": 0,
+                "last_error": null,
+                "last_run_id": "run-20260910T090109-7c6060",
+                "run_status": "complete",
+                "scope_key": "interruption",
+                "state": "done"
+              },
+              {
+                "has_commit": 0,
+                "last_error": null,
+                "last_run_id": "run-20260910T090109-7c6060",
+                "run_status": "complete",
+                "scope_key": "news_baseline",
+                "state": "done"
+              }
+            ],
+            "dockets": [
+              {
+                "accepted": true,
+                "docket": "RP25-1075",
+                "occurrences": [
+                  {
+                    "documents": 1,
+                    "entity_key": "C001089",
+                    "filing_id": "20250819-5069"
+                  },
+                  {
+                    "documents": 1,
+                    "entity_key": "C001089",
+                    "filing_id": "20250904-3005"
+                  }
+                ]
+              }
+            ],
+            "entity_key": "C001089"
+          },
+          {
+            "accepted": true,
+            "accepted_checkpoints": 1,
+            "checkpoints": [
+              {
+                "has_commit": 1,
+                "last_error": null,
+                "last_run_id": "run-20260910T090109-7c6060",
+                "run_status": "complete",
+                "scope_key": "2024-2026#64c06595cd2d5b800f0e8acdbc7f1c8c",
+                "state": "done"
+              },
+              {
+                "has_commit": 0,
+                "last_error": null,
+                "last_run_id": "run-20260910T090109-7c6060",
+                "run_status": "complete",
+                "scope_key": "census:2015-01-01",
+                "state": "done"
+              },
+              {
+                "has_commit": 0,
+                "last_error": null,
+                "last_run_id": "run-20260910T090109-7c6060",
+                "run_status": "complete",
+                "scope_key": "docket:RP26-397",
+                "state": "done"
+              },
+              {
+                "has_commit": 0,
+                "last_error": null,
+                "last_run_id": "run-20260910T090109-7c6060",
+                "run_status": "complete",
+                "scope_key": "docket:RP26-674",
+                "state": "done"
+              },
+              {
+                "has_commit": 0,
+                "last_error": null,
+                "last_run_id": "run-20260910T090109-7c6060",
+                "run_status": "complete",
+                "scope_key": "interruption",
+                "state": "done"
+              },
+              {
+                "has_commit": 0,
+                "last_error": null,
+                "last_run_id": "run-20260910T090109-7c6060",
+                "run_status": "complete",
+                "scope_key": "news_baseline",
+                "state": "done"
+              }
+            ],
+            "dockets": [
+              {
+                "accepted": true,
+                "docket": "RP26-397",
+                "occurrences": [
+                  {
+                    "documents": 1,
+                    "entity_key": "C001506",
+                    "filing_id": "20260122-5059"
+                  },
+                  {
+                    "documents": 1,
+                    "entity_key": "C001506",
+                    "filing_id": "20260211-3054"
+                  }
+                ]
+              }
+            ],
+            "entity_key": "C001506"
+          }
+        ]
+      },
+      "cache_objects": {
+        "411c9822f87b93b2cd586ad84ec983d45109fcaa0e75ad9247c6cc65636c65ff": {
+          "bytes": 2427,
+          "cache_key": "411c9822f87b93b2cd586ad84ec983d45109fcaa0e75ad9247c6cc65636c65ff",
+          "kind": "elibrary_file_list_response",
+          "path": "source_cache/objects/40/4036a428db07e1200cb9049d39c63b3c77910b72b32d925068e23a28c7c83429",
+          "sha256": "4036a428db07e1200cb9049d39c63b3c77910b72b32d925068e23a28c7c83429",
+          "source_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/GetFileListFromP8/20260304-3061"
+        },
+        "5619c63b8d536314693a530a7a1941aeaf1370d978c047b3fa0235762d2aaeac": {
+          "bytes": 2326,
+          "cache_key": "5619c63b8d536314693a530a7a1941aeaf1370d978c047b3fa0235762d2aaeac",
+          "kind": "elibrary_file_list_response",
+          "path": "source_cache/objects/b3/b3528e267f5a5c7d6b0263fc7ba839262853c1c45bedf6adab20324b1f1af5dd",
+          "sha256": "b3528e267f5a5c7d6b0263fc7ba839262853c1c45bedf6adab20324b1f1af5dd",
+          "source_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/GetFileListFromP8/20250904-3005"
+        },
+        "6c0b164949e9265e8a20e3d4658b83f7741f7477641281bc434d5a34485f46f4": {
+          "bytes": 3434,
+          "cache_key": "6c0b164949e9265e8a20e3d4658b83f7741f7477641281bc434d5a34485f46f4",
+          "kind": "elibrary_advanced_search_response",
+          "path": "source_cache/objects/57/57f9137325162b55c837c6a68e5a3f5b61c9ab8ce2c71b5546338ee325c8a852",
+          "sha256": "57f9137325162b55c837c6a68e5a3f5b61c9ab8ce2c71b5546338ee325c8a852",
+          "source_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/Search/AdvancedSearch#body=4b024969cc74f5b2d34df5a268430091"
+        },
+        "71fdcc818ed9181aa5c2b58923456f9c2397f0e5c6b09e7ec1b05d7098a1bedd": {
+          "bytes": 1622,
+          "cache_key": "71fdcc818ed9181aa5c2b58923456f9c2397f0e5c6b09e7ec1b05d7098a1bedd",
+          "kind": "elibrary_advanced_search_response",
+          "path": "source_cache/objects/74/7467218c6291dfc9f39ef89dc1621ec85df6d0a37719a7f2ca3c1556d7b1c374",
+          "sha256": "7467218c6291dfc9f39ef89dc1621ec85df6d0a37719a7f2ca3c1556d7b1c374",
+          "source_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/Search/AdvancedSearch#body=c3bbe2c62591499f1d35628d1d14083f"
+        },
+        "748ffec6b707782e8053a8f8451ac8175ab3f6f7b6d2685885f5492313adeeac": {
+          "bytes": 2817,
+          "cache_key": "748ffec6b707782e8053a8f8451ac8175ab3f6f7b6d2685885f5492313adeeac",
+          "kind": "elibrary_advanced_search_response",
+          "path": "source_cache/objects/72/7240d1408646c7c444009297d716f52f69ba424d72b2aeae004e5bb0ec56e4d3",
+          "sha256": "7240d1408646c7c444009297d716f52f69ba424d72b2aeae004e5bb0ec56e4d3",
+          "source_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/Search/AdvancedSearch#body=79e1f707dd7e43bf7ab5d05d589aa4a5"
+        },
+        "a24fdb560b600d43e7fc6ff55ff0c5004d6119beb2d1ae91aa2cfede9fdbf47e": {
+          "bytes": 41577,
+          "cache_key": "a24fdb560b600d43e7fc6ff55ff0c5004d6119beb2d1ae91aa2cfede9fdbf47e",
+          "kind": "elibrary_attachment_response",
+          "path": "source_cache/objects/2d/2defaa728dc928c9e448f1803cd0113609b5e839c72d443ba68e7e378834ee5d",
+          "sha256": "2defaa728dc928c9e448f1803cd0113609b5e839c72d443ba68e7e378834ee5d",
+          "source_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/DownloadP8File#body=a2c38a24b2322db1e94bd00613ad1908"
+        },
+        "a8334f9d453643b6fa7780b1d6afabea74c6fd5e2eff99d1a4f4fa0642c27f5e": {
+          "bytes": 41351,
+          "cache_key": "a8334f9d453643b6fa7780b1d6afabea74c6fd5e2eff99d1a4f4fa0642c27f5e",
+          "kind": "elibrary_attachment_response",
+          "path": "source_cache/objects/3a/3ad906b23f02247ff496f00d64d6ba6ae5a5c9c316b4d4fdad999b7d67979893",
+          "sha256": "3ad906b23f02247ff496f00d64d6ba6ae5a5c9c316b4d4fdad999b7d67979893",
+          "source_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/DownloadP8File#body=1833f6a6a72c53a945199e0ac8c92283"
+        },
+        "c541c54409fc50b935f14bd79c2d8d6840c07aef7f251501bba8ca8220300e2b": {
+          "bytes": 1626,
+          "cache_key": "c541c54409fc50b935f14bd79c2d8d6840c07aef7f251501bba8ca8220300e2b",
+          "kind": "elibrary_advanced_search_response",
+          "path": "source_cache/objects/ff/ff36e10342891df9f7c6fbe3501321086c813b71116bf30842816428c6722789",
+          "sha256": "ff36e10342891df9f7c6fbe3501321086c813b71116bf30842816428c6722789",
+          "source_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/Search/AdvancedSearch#body=424e3a310b490047d793f369064b1fa0"
+        },
+        "c9ea653e67b0d6dec2d7c064f6862b6e86608b5857fa3fd82c3616a89b7333f8": {
+          "bytes": 3098,
+          "cache_key": "c9ea653e67b0d6dec2d7c064f6862b6e86608b5857fa3fd82c3616a89b7333f8",
+          "kind": "elibrary_advanced_search_response",
+          "path": "source_cache/objects/f9/f9f37be56b19219f1203b036da6d54d335791c9b4f10419fc87e5f168091899b",
+          "sha256": "f9f37be56b19219f1203b036da6d54d335791c9b4f10419fc87e5f168091899b",
+          "source_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/Search/AdvancedSearch#body=8a9a5dd0871ea89ad9600904b13b5bc8"
+        },
+        "e5074dae6b431031b2252c591c8fff25843dbb08b88c226865ddf9431e688d6a": {
+          "bytes": 4609,
+          "cache_key": "e5074dae6b431031b2252c591c8fff25843dbb08b88c226865ddf9431e688d6a",
+          "kind": "elibrary_file_list_response",
+          "path": "source_cache/objects/20/206bf238b518ed077c49eeb5e790a7d337c7e447c2ef4d10eb68e5457d52aa56",
+          "sha256": "206bf238b518ed077c49eeb5e790a7d337c7e447c2ef4d10eb68e5457d52aa56",
+          "source_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/GetFileListFromP8/20260528-5027"
+        },
+        "f6a43779c07bfaf821435b8fadc8e37082a7c4ab65a0b8ea973386e417a24828": {
+          "bytes": 872302,
+          "cache_key": "f6a43779c07bfaf821435b8fadc8e37082a7c4ab65a0b8ea973386e417a24828",
+          "kind": "elibrary_attachment_response",
+          "path": "source_cache/objects/37/37cfa72921ad6f1aad779f6a1b71690355a02aa3d766755e2cd5a935a6d82788",
+          "sha256": "37cfa72921ad6f1aad779f6a1b71690355a02aa3d766755e2cd5a935a6d82788",
+          "source_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/DownloadP8File#body=5da1317e59656042362fc19b1417cea5"
+        }
+      },
+      "capture": {
+        "cache_after": {
+          "bytes": 2027708,
+          "entries": 3620,
+          "sha256": "0616e59e6d05f380f7c1e4003fccaeec98fdadfc0da1b5275bd2ee2935b09bfe"
+        },
+        "cache_before": {
+          "bytes": 2021573,
+          "entries": 3609,
+          "sha256": "f9237d7bb1d93a922b5b5d5498f5ed01b100887410762c778ff576f6b40d15f6"
+        },
+        "capture_log": {
+          "bytes": 2369,
+          "path": "implementation_logs/input_recovery/build_a_v4_dependency_capture.log",
+          "sha256": "5036e6617c1aaef62f0b6cc464954b676aaf758f9bafa942ff48c2957d3e3812"
+        },
+        "manifest": {
+          "bytes": 35145,
+          "path": "inputs/official_ferc_elibrary_dependency_recovery_20260910/CAPTURE.json",
+          "sha256": "d1a7ca569482214743fbde305be60cb43dec5ecdc0536392d61481f3bf737df8"
+        },
+        "new_entries": 11,
+        "pre_capture_index": {
+          "bytes": 2021573,
+          "path": "inputs/official_ferc_elibrary_dependency_recovery_20260910/source_cache_index_before.json",
+          "sha256": "f9237d7bb1d93a922b5b5d5498f5ed01b100887410762c778ff576f6b40d15f6"
+        },
+        "required_failed_build_keys": [
+          "6c0b164949e9265e8a20e3d4658b83f7741f7477641281bc434d5a34485f46f4",
+          "71fdcc818ed9181aa5c2b58923456f9c2397f0e5c6b09e7ec1b05d7098a1bedd",
+          "748ffec6b707782e8053a8f8451ac8175ab3f6f7b6d2685885f5492313adeeac",
+          "c541c54409fc50b935f14bd79c2d8d6840c07aef7f251501bba8ca8220300e2b",
+          "c9ea653e67b0d6dec2d7c064f6862b6e86608b5857fa3fd82c3616a89b7333f8",
+          "e5074dae6b431031b2252c591c8fff25843dbb08b88c226865ddf9431e688d6a"
+        ],
+        "run_plan_consuming_steps": [
+          "build_current_universe"
+        ],
+        "run_plan_declarations": {
+          "implementation_logs/input_recovery/build_a_v4_dependency_capture.log": {
+            "bytes": 2369,
+            "path": "implementation_logs/input_recovery/build_a_v4_dependency_capture.log",
+            "sha256": "5036e6617c1aaef62f0b6cc464954b676aaf758f9bafa942ff48c2957d3e3812",
+            "why": "Complete bounded production-adapter capture log for the four affected entities; it records 37 observations, four completed units and no failed requests without exposing credentials."
+          },
+          "inputs/official_ferc_elibrary_dependency_recovery_20260910/CAPTURE.json": {
+            "bytes": 35145,
+            "path": "inputs/official_ferc_elibrary_dependency_recovery_20260910/CAPTURE.json",
+            "sha256": "d1a7ca569482214743fbde305be60cb43dec5ecdc0536392d61481f3bf737df8",
+            "why": "Immutable manifest for the 11 bounded official eLibrary responses discovered by failed clean Build A v4, including the six exact missing request keys, five transitive replay dependencies, request bodies, accessions, file-list/download bindings, ZIP members and before/after cache identities."
+          },
+          "inputs/official_ferc_elibrary_dependency_recovery_20260910/source_cache_index_before.json": {
+            "bytes": 2021573,
+            "path": "inputs/official_ferc_elibrary_dependency_recovery_20260910/source_cache_index_before.json",
+            "sha256": "f9237d7bb1d93a922b5b5d5498f5ed01b100887410762c778ff576f6b40d15f6",
+            "why": "Preserved pre-capture cache index used to independently prove that the bounded recovery appended exactly 11 entries and changed or removed none of the prior 3,609 URL identities."
+          }
+        }
+      },
+      "classification": "mandatory executable prerequisite",
+      "classification_basis": "Clean offline Build A v4 exercised the final declared current-universe plan and failed on six exact uncaptured eLibrary requests across four entity units. A bounded credential-free production-adapter capture added those six prerequisites and five directly dependent file-list/download responses without changing or removing any prior cache entry.",
+      "consumers": [
+        "elibrary_docs current-universe retrieval",
+        "filing and document archive",
+        "source facts, observations and lineage",
+        "coverage and source-linked exports",
+        "offline Build B"
+      ],
+      "disposition": "integrated_in_build_a",
+      "entities": [
+        {
+          "entity_key": "C000630",
+          "entity_name": "Products (SE) Pipe Line Corporation"
+        },
+        {
+          "entity_key": "C001031",
+          "entity_name": "Discovery Gas Transmission LLC"
+        },
+        {
+          "entity_key": "C001089",
+          "entity_name": "White River Hub, LLC"
+        },
+        {
+          "entity_key": "C001506",
+          "entity_name": "Cheniere Creole Trail Pipeline, L.P."
+        }
+      ],
+      "evidence": [
+        "inputs/official_ferc_elibrary_dependency_recovery_20260910/CAPTURE.json",
+        "inputs/official_ferc_elibrary_dependency_recovery_20260910/source_cache_index_before.json",
+        "implementation_logs/input_recovery/build_a_v4_dependency_capture.log"
+      ],
+      "input_id": "elibrary-dependency-capture:build-a-v4:20260910",
+      "input_kind": "elibrary_dependency_capture_bundle",
+      "residual_limitation": "The capture resolves the deterministic executable dependency for this candidate only. It does not prove the audited frozen release had these bytes, and final acceptance still requires the unchanged clean Build A and offline clean-extraction Build B to apply the four units successfully.",
+      "source_system": "FERC eLibrary Web API"
+    },
+    {
+      "acceptance_result": "accepted_as_repair_evidence_not_execution_prerequisite",
+      "adapter": "elibrary_docs",
+      "audit_claim": {
+        "relationship": "discovered_during_repair",
+        "repair_discovery": "Clean Build A v1 selected IS26-587 only after its hidden proceeding seed was omitted, exposing an uncaptured exact AdvancedSearch request.",
+        "status": "not_in_final_independent_audit"
+      },
+      "build_a_application": {
+        "accepted": true,
+        "mode": "repair_diagnostic_evidence_not_selected_final_seed_input",
+        "occurrences": [
+          {
+            "accepted": true,
+            "accession_number": "20260731-5000",
+            "as_of_relation": "on_or_before_as_of",
+            "documents": 1,
+            "filing_dockets": [
+              "IS26-587-000"
+            ],
+            "owners": [
+              "C001049"
+            ]
+          }
+        ],
+        "run_plan_boundary": {
+          "accepted": true,
+          "boundary": "diagnostic response retained as evidence but not consumed by replay; the production as-of filter remains exercised by its mapped test",
+          "selected_diagnostic_search_inputs": [],
+          "selected_proceeding_seed": "inputs/official_ferc/elibrary/rate_proceedings_v1.csv"
+        },
+        "selected_docket_checkpoints": []
+      },
+      "cache_objects": {
+        "search_response": {
+          "bytes": 1778,
+          "cache_key": "28b07c9c4df4098f19304183ff6469f1f8584105fdb38ba5b7d71235d30b2dd8",
+          "path": "source_cache/objects/2b/2bb46982d886dab57e12ecaebb1787aa4fedc02dcd18046fdce163da0ca84b6b",
+          "sha256": "2bb46982d886dab57e12ecaebb1787aa4fedc02dcd18046fdce163da0ca84b6b",
+          "source_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/Search/AdvancedSearch#body=44205e596cb7cb8201a3bcfe63eaa6d0"
+        }
+      },
+      "capture": {
+        "http_status": 200,
+        "http_status_basis": "bounded_capture_v1_successful_response_contract",
+        "raw_identity": {
+          "bytes": 1778,
+          "path": "inputs/official_ferc_elibrary_search_recovery_20260909/source_cache/objects/2b/2bb46982d886dab57e12ecaebb1787aa4fedc02dcd18046fdce163da0ca84b6b",
+          "sha256": "2bb46982d886dab57e12ecaebb1787aa4fedc02dcd18046fdce163da0ca84b6b"
+        },
+        "request_method": "POST",
+        "request_payload_sha256": "44205e596cb7cb8201a3bcfe63eaa6d0178a6c3a97c6e35e0a6d126dd1686db1"
+      },
+      "classification": "evidence required to reproduce existing assertion",
+      "classification_basis": "This exact official response reproduces the undeclared docket request exposed by failed clean Build A v1 and independently preserves the valid pre-as-of occurrence returned for IS26-587; the corrected final plan uses the versioned proceeding seed instead.",
+      "consumers": [
+        "repair diagnosis",
+        "eLibrary point-in-time occurrence check"
+      ],
+      "disposition": "captured_cache_bound_repair_evidence",
+      "docket": "IS26-587",
+      "entities": [
+        {
+          "entity_key": "C001049"
+        }
+      ],
+      "evidence": [
+        "inputs/official_ferc_elibrary_search_recovery_20260909/CAPTURE.json",
+        "implementation_logs/input_recovery/bounded_elibrary_search_import_runs.jsonl",
+        "verification/build_failures/build_a_v1/replay.log"
+      ],
+      "input_id": "elibrary-search:IS26-587:44205e596cb7cb8201a3bcfe63eaa6d0178a6c3a97c6e35e0a6d126dd1686db1",
+      "input_kind": "elibrary_advanced_search_response",
+      "residual_limitation": "This response explains failed Build A v1 but is not selected by the corrected seed-driven final plan and is not represented as a mandatory executable input.",
+      "source_system": "FERC eLibrary Web API"
+    },
+    {
+      "acceptance_result": "accepted_as_repair_evidence_not_execution_prerequisite",
+      "adapter": "elibrary_docs",
+      "audit_claim": {
+        "relationship": "discovered_during_repair",
+        "repair_discovery": "The response contains valid accession 20260825-5125 and later accession 20260909-5053 in the same public result population.",
+        "status": "not_in_final_independent_audit"
+      },
+      "build_a_application": {
+        "accepted": true,
+        "mode": "repair_diagnostic_evidence_not_selected_final_seed_input",
+        "occurrences": [
+          {
+            "accepted": true,
+            "accession_number": "20260909-5053",
+            "as_of_relation": "after_as_of",
+            "exclusion_evidence": "diagnostic_response_not_selected_by_run_plan",
+            "exclusion_warning_rows": 0,
+            "persisted_population": {
+              "documents": 0,
+              "events": 0,
+              "filing_dockets": 0,
+              "filings": 0,
+              "lineage_populations": 0,
+              "observations": 0,
+              "run_input_inventory": 0,
+              "source_facts": 0
+            }
+          },
+          {
+            "accepted": true,
+            "accession_number": "20260825-5125",
+            "as_of_relation": "on_or_before_as_of",
+            "documents": 1,
+            "filing_dockets": [
+              "RP26-1091-000"
+            ],
+            "owners": [
+              "C000654"
+            ]
+          }
+        ],
+        "run_plan_boundary": {
+          "accepted": true,
+          "boundary": "diagnostic response retained as evidence but not consumed by replay; the production as-of filter remains exercised by its mapped test",
+          "selected_diagnostic_search_inputs": [],
+          "selected_proceeding_seed": "inputs/official_ferc/elibrary/rate_proceedings_v1.csv"
+        },
+        "selected_docket_checkpoints": []
+      },
+      "cache_objects": {
+        "search_response": {
+          "bytes": 4371,
+          "cache_key": "6d88f0c43265fea6adef3ca9990940eac29afeea2dbf5dd1c174e70d420bbd4a",
+          "path": "source_cache/objects/e0/e084af687cb7e44210ca12ba9fac107f20b0b990f607d8cca39c64bd5e732fad",
+          "sha256": "e084af687cb7e44210ca12ba9fac107f20b0b990f607d8cca39c64bd5e732fad",
+          "source_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/Search/AdvancedSearch#body=2280cc641139baafaf01d5f47c1cf7b4"
+        }
+      },
+      "capture": {
+        "http_status": 200,
+        "http_status_basis": "bounded_capture_v1_successful_response_contract",
+        "raw_identity": {
+          "bytes": 4371,
+          "path": "inputs/official_ferc_elibrary_search_recovery_20260909/source_cache/objects/e0/e084af687cb7e44210ca12ba9fac107f20b0b990f607d8cca39c64bd5e732fad",
+          "sha256": "e084af687cb7e44210ca12ba9fac107f20b0b990f607d8cca39c64bd5e732fad"
+        },
+        "request_method": "POST",
+        "request_payload_sha256": "2280cc641139baafaf01d5f47c1cf7b404c6e2938c8dbe7fd84f98eda7205005"
+      },
+      "classification": "evidence required to reproduce existing assertion",
+      "classification_basis": "This exact official response both reproduces the missing request exposed by failed clean Build A v1 and proves why a reporting-year-end query must enforce the independent 2026-09-07 as-of boundary before persistence.",
+      "consumers": [
+        "repair diagnosis",
+        "eLibrary point-in-time occurrence check"
+      ],
+      "disposition": "captured_cache_bound_repair_evidence",
+      "docket": "RP26-1091",
+      "entities": [
+        {
+          "entity_key": "C000654"
+        }
+      ],
+      "evidence": [
+        "inputs/official_ferc_elibrary_search_recovery_20260909/CAPTURE.json",
+        "implementation_logs/input_recovery/bounded_elibrary_search_import_runs.jsonl",
+        "tests/test_refund_boundary_codex.py"
+      ],
+      "input_id": "elibrary-search:RP26-1091:2280cc641139baafaf01d5f47c1cf7b404c6e2938c8dbe7fd84f98eda7205005",
+      "input_kind": "elibrary_advanced_search_response",
+      "residual_limitation": "The response was captured after the independent audit; the candidate can prove its filter and resulting state, not prior frozen-release completeness.",
+      "source_system": "FERC eLibrary Web API"
+    },
+    {
+      "acceptance_result": "accepted_as_repair_evidence_not_execution_prerequisite",
+      "adapter": "elibrary_docs",
+      "audit_claim": {
+        "relationship": "discovered_during_repair",
+        "repair_discovery": "Clean Build A v1 selected RP26-981 after its hidden proceeding seed was omitted, exposing an uncaptured exact AdvancedSearch request.",
+        "status": "not_in_final_independent_audit"
+      },
+      "build_a_application": {
+        "accepted": true,
+        "mode": "repair_diagnostic_evidence_not_selected_final_seed_input",
+        "occurrences": [
+          {
+            "accepted": true,
+            "accession_number": "20260721-5070",
+            "as_of_relation": "on_or_before_as_of",
+            "documents": 1,
+            "filing_dockets": [
+              "RP26-981-000"
+            ],
+            "owners": [
+              "C000654"
+            ]
+          }
+        ],
+        "run_plan_boundary": {
+          "accepted": true,
+          "boundary": "diagnostic response retained as evidence but not consumed by replay; the production as-of filter remains exercised by its mapped test",
+          "selected_diagnostic_search_inputs": [],
+          "selected_proceeding_seed": "inputs/official_ferc/elibrary/rate_proceedings_v1.csv"
+        },
+        "selected_docket_checkpoints": []
+      },
+      "cache_objects": {
+        "search_response": {
+          "bytes": 2005,
+          "cache_key": "d4a5a8bc13c750b5ef0992043923b0dbff3ded8672e1af916f176c2595a91e59",
+          "path": "source_cache/objects/79/79eb4eb2b984f550ba534704fd2bf74c39e71c629bd091d314631a9aaa1d85c3",
+          "sha256": "79eb4eb2b984f550ba534704fd2bf74c39e71c629bd091d314631a9aaa1d85c3",
+          "source_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/Search/AdvancedSearch#body=15d2a70f0df065e0b787634f1d90a289"
+        }
+      },
+      "capture": {
+        "http_status": 200,
+        "http_status_basis": "bounded_capture_v1_successful_response_contract",
+        "raw_identity": {
+          "bytes": 2005,
+          "path": "inputs/official_ferc_elibrary_search_recovery_20260909/source_cache/objects/79/79eb4eb2b984f550ba534704fd2bf74c39e71c629bd091d314631a9aaa1d85c3",
+          "sha256": "79eb4eb2b984f550ba534704fd2bf74c39e71c629bd091d314631a9aaa1d85c3"
+        },
+        "request_method": "POST",
+        "request_payload_sha256": "15d2a70f0df065e0b787634f1d90a289f55e63f857b76c94e04b93b28445c7ee"
+      },
+      "classification": "evidence required to reproduce existing assertion",
+      "classification_basis": "This exact official response reproduces the second undeclared Transco docket request exposed by failed clean Build A v1; the corrected final plan uses the versioned proceeding seed instead.",
+      "consumers": [
+        "repair diagnosis",
+        "eLibrary point-in-time occurrence check"
+      ],
+      "disposition": "captured_cache_bound_repair_evidence",
+      "docket": "RP26-981",
+      "entities": [
+        {
+          "entity_key": "C000654"
+        }
+      ],
+      "evidence": [
+        "inputs/official_ferc_elibrary_search_recovery_20260909/CAPTURE.json",
+        "implementation_logs/input_recovery/bounded_elibrary_search_import_runs.jsonl",
+        "verification/build_failures/build_a_v1/replay.log"
+      ],
+      "input_id": "elibrary-search:RP26-981:15d2a70f0df065e0b787634f1d90a289f55e63f857b76c94e04b93b28445c7ee",
+      "input_kind": "elibrary_advanced_search_response",
+      "residual_limitation": "This response explains failed Build A v1 but is not selected by the corrected seed-driven final plan and is not represented as a mandatory executable input.",
+      "source_system": "FERC eLibrary Web API"
+    },
+    {
+      "acceptance_result": "accepted_for_candidate",
+      "accession_number": "20260226-5162",
+      "adapter": "capacity",
+      "audit_claim": {
+        "relationship": "discovered_during_repair",
+        "repair_discovery": "Corrected legal-filer matching rejected MountainWest Overthrust results and revealed that the revised MountainWest Pipeline 2024 filing bytes were absent.",
+        "status": "not_in_final_independent_audit"
+      },
+      "build_a_application": {
+        "coverage_slots": 2,
+        "documents": 1,
+        "events": 0,
+        "filings": 1,
+        "lineage_edges": 1,
+        "missing_required_populations": [],
+        "observations": 10,
+        "required_populations": [
+          "coverage_slots",
+          "documents",
+          "filings",
+          "lineage_edges",
+          "observations",
+          "source_facts"
+        ],
+        "source_facts": 50
+      },
+      "cache_objects": {
+        "attachment": {
+          "bytes": 173287,
+          "cache_key": "9c16fdb89758f0e33565d0c0d6f04edc05b876ce63d6a52f1dafb0048645946c",
+          "path": "source_cache/objects/98/983e6a1c12a2f15934d99a2149c7a18e3dbbedf145f0848b9844dc4467dac5eb",
+          "sha256": "983e6a1c12a2f15934d99a2149c7a18e3dbbedf145f0848b9844dc4467dac5eb",
+          "source_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/DownloadP8File#body=5cbdf764071370d4d42599158922ca68"
+        },
+        "list": {
+          "bytes": 2234,
+          "cache_key": "474945ff656a9e915ed885c130aebf8900c8791c9c1803a6040bcad404a45c4a",
+          "path": "source_cache/objects/40/40b887b783567bf031bba63c82562daa455092bb4c02d3a9adf1a28c814f6a88",
+          "sha256": "40b887b783567bf031bba63c82562daa455092bb4c02d3a9adf1a28c814f6a88",
+          "source_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/GetFileListFromP8/20260226-5162"
+        }
+      },
+      "capture": {
+        "attachment": {
+          "bytes": 173287,
+          "cache_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/DownloadP8File#body=5cbdf764071370d4d42599158922ca68",
+          "official_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/DownloadP8File",
+          "raw_path": "inputs/official_ferc_capacity_20260226_5162/attachment_response.body",
+          "request_payload_sha256": "5cbdf764071370d4d42599158922ca683665d0b29b31a39290cb0e15a2e5bf3b",
+          "retrieval_method": "single public attachment-ID request after exact list validation",
+          "retrieved_utc": "2026-09-09T21:43:11.214461+00:00",
+          "selected_attachment_id": "92064CA7-EE7A-C2DC-9CF5-9C9B20600000",
+          "sha256": "983e6a1c12a2f15934d99a2149c7a18e3dbbedf145f0848b9844dc4467dac5eb"
+        },
+        "list": {
+          "attachment_ids": [
+            "92064CA7-EE7A-C2DC-9CF5-9C9B20600000"
+          ],
+          "bytes": 2234,
+          "http_status": 200,
+          "retrieved_utc": "2026-09-09T21:43:10.455310+00:00",
+          "sha256": "40b887b783567bf031bba63c82562daa455092bb4c02d3a9adf1a28c814f6a88",
+          "url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/GetFileListFromP8/20260226-5162"
+        },
+        "raw_identity": {
+          "bytes": 173287,
+          "path": "inputs/official_ferc_capacity_20260226_5162/attachment_response.body",
+          "sha256": "983e6a1c12a2f15934d99a2149c7a18e3dbbedf145f0848b9844dc4467dac5eb"
+        }
+      },
+      "classification": "mandatory executable prerequisite",
+      "classification_basis": "The exact-filer repair made the revised 2024 MountainWest Pipeline capacity filing a mandatory input for correct owner-specific replay, lineage, coverage and exports; it was discovered after and is not a member of the audit's final absent-13 population.",
+      "consumers": [
+        "capacity adapter observations",
+        "source facts/observations/lineage",
+        "document/filing archive",
+        "coverage and source-linked exports"
+      ],
+      "disposition": "integrated_in_build_a",
+      "entities": [
+        {
+          "entity_key": "C001088",
+          "entity_name": "MountainWest Pipeline, LLC"
+        }
+      ],
+      "evidence": [
+        {
+          "bytes": 6120,
+          "path": "implementation_logs/input_recovery/capacity_20260226_5162/OFFICIAL_FERC_CAPACITY_20260226_5162_RESULTS.json",
+          "selector": "results[accession_number=20260226-5162]",
+          "sha256": "32e0e37e7b24b9079f98794d317dbb42f37d262b2195dcd1c564d6877b3619d6"
+        },
+        {
+          "bytes": 1852,
+          "path": "implementation_logs/input_recovery/capacity_20260226_5162/OFFICIAL_FERC_CAPACITY_20260226_5162_HASHES.json",
+          "sha256": "998423f51a667b0a1ec5ce96347926537d4cc0bb13eccb69069ac29b100aadee"
+        },
+        {
+          "bytes": 26862,
+          "path": "implementation_logs/input_recovery/cache_import_runs.jsonl",
+          "selector": "entries[accession=20260226-5162]",
+          "sha256": "fd8ac93a2e00c528d8d57f2e990e8cd46ed3b88fe2349d0c3a6a77a0eeb225d4"
+        }
+      ],
+      "input_id": "elibrary:20260226-5162",
+      "input_kind": "accession_package",
+      "residual_limitation": "Captured after the independent audit; proves this candidate's reproduction, not the frozen audited release's prior completeness.",
+      "source_system": "FERC eLibrary Web API"
+    }
+  ],
+  "schema": "ferc-final-additional-inputs-discovered-v1",
+  "source_drafts": [
+    {
+      "bytes": 18629,
+      "path": "implementation/ADDITIONAL_INPUTS_DISCOVERED_DRAFT.json",
+      "sha256": "80cb43e7308f99d1467f45b854e49b8a80c436c7a50060317d47d93ceabbc96a"
+    }
+  ],
+  "state": "build_a_candidate"
+}

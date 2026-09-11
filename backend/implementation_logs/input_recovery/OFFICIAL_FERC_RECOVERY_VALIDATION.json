@@ -1,0 +1,48 @@
+{
+  "assertions": {
+    "all_consumer_replay_pending": true,
+    "all_implementation_status_pending": true,
+    "all_raw_evidence_immutable": true,
+    "historical_absence_distinguished": true,
+    "json_csv_exact_field_parity": true,
+    "thirteen_exact_rows_and_urls": true,
+    "twenty_six_unique_one_pass_markers": true
+  },
+  "checks": {
+    "attachment_attempt_markers": 13,
+    "capture_status": {
+      "captured_new_official_attachment_bytes": 12,
+      "official_list_metadata_only_attachment_http_failure": 1
+    },
+    "consumer_replay_false": 13,
+    "csv_rows": 13,
+    "historical_absence_preserved": 13,
+    "implementation_status_pending": 13,
+    "inventory_rows": 13,
+    "json_csv_parity_errors": [],
+    "list_attempt_markers": 13,
+    "raw_files_mode_0444": 52,
+    "raw_response_files": 52,
+    "request_markers": 26,
+    "unique_accessions": 13,
+    "unique_exact_urls": 13
+  },
+  "postupdate_csv": {
+    "bytes": 132773,
+    "mode": "-rw-r--r--",
+    "path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/evidence/repair_records/MISSING_INPUT_INVENTORY_13.csv",
+    "sha256": "ee2494fb59f5fb9faae6918d2039f1595552e172ca15021c27c4863ba696ea41"
+  },
+  "postupdate_inventory": {
+    "bytes": 174155,
+    "mode": "-rw-r--r--",
+    "path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/evidence/repair_records/MISSING_INPUT_INVENTORY_13.json",
+    "sha256": "1f00208fccb0beb4cfc4d323a0dc13389900e7895f457aa12839c3c95ecd642c"
+  },
+  "preupdate_inventory": {
+    "bytes": 50851,
+    "sha256": "d78bc51bde259ff0058775a3e7ffe4a8e18fc6ad849e4dfb46ba901ace337d4f"
+  },
+  "schema": "official_ferc_recovery_validation_v1",
+  "valid": true
+}

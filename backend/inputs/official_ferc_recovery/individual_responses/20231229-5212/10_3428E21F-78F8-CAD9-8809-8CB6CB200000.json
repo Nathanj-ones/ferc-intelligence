@@ -1,0 +1,36 @@
+{
+ "accession_number": "20231229-5212",
+ "attachment_id": "3428E21F-78F8-CAD9-8809-8CB6CB200000",
+ "attachment_order": 10,
+ "availability_mode": "P",
+ "evidence_lane": "new official-FERC evidence after the independent audit",
+ "file_name": "FERC GENERATED TARIFF FILING.rtf",
+ "listed_bytes": 56017,
+ "listed_media_type": "application/octet-stream",
+ "request": {
+  "cache_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/DownloadP8File#body=0626e4bf6157623d22d7e81892229a2f",
+  "credentials_or_cookies_sent": false,
+  "method": "POST",
+  "official_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/DownloadP8File",
+  "payload_bytes": 150,
+  "payload_sha256": "0626e4bf6157623d22d7e81892229a2fd33e293e5db4352daa7eef0af7953948",
+  "retry_count": 0
+ },
+ "response": {
+  "body_path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/individual_responses/20231229-5212/10_3428E21F-78F8-CAD9-8809-8CB6CB200000.body",
+  "bytes": 61,
+  "complete_body": true,
+  "ended_utc": "2026-09-09T17:24:15.629301+00:00",
+  "headers": {
+   "content-length": "61",
+   "content-type": "application/json; charset=utf-8",
+   "date": "Wed, 09 Sep 2026 17:24:15 GMT"
+  },
+  "http_reason": "Internal Server Error",
+  "http_status": 500,
+  "network_error": null,
+  "sha256": "e081cde7589ce317c72b9c017743982b29b8b5825e79dc5ce01da787253fc7b9",
+  "started_utc": "2026-09-09T17:24:07.662589+00:00"
+ },
+ "schema": "official_ferc_individual_response_v1"
+}

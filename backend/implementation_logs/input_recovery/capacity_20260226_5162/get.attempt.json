@@ -1,0 +1,15 @@
+{
+  "accession": "20260226-5162",
+  "attempt_started_utc": "2026-09-09T21:43:09.801112+00:00",
+  "credentials_or_cookies_sent": false,
+  "outcome": "attempt_started; see immutable result ledger",
+  "request": {
+    "body_bytes": 0,
+    "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "method": "GET",
+    "url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/GetFileListFromP8/20260226-5162"
+  },
+  "request_kind": "list",
+  "retry_policy": "one attempt only; no redirect and no retry",
+  "schema": "official_ferc_http_attempt_v1"
+}

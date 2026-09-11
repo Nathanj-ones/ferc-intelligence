@@ -1,0 +1,1585 @@
+{
+  "authority": "The govinfo PDF is the authoritative electronic Federal Register artifact. The FederalRegister.gov metadata and text are retained for identity and deterministic extraction checks; they do not replace the official PDF.",
+  "bundle_version": "oil-index-official-sources-2026-09-09-v1",
+  "capture_tool": "tools/capture_oil_index_sources.py",
+  "captured_at": "2026-09-09T20:54:48+00:00",
+  "documents": [
+    {
+      "asserted_values": {
+        "effective_from": "1997-07-01",
+        "factor": "1.016583",
+        "index_change": "0.016583",
+        "interval_end": "1998-06-30",
+        "interval_start": "1997-07-01"
+      },
+      "consumer": {
+        "adapter": "oil_index",
+        "metrics": [
+          "liq_oil_pipeline_index_factor",
+          "liq_oil_pipeline_index_change"
+        ],
+        "source_table_version": "oil-index-table-2026-09-09-v1"
+      },
+      "docket": "RM93-11-000",
+      "extraction_text": {
+        "bytes": 5348,
+        "content_type": "text/plain",
+        "final_url": "https://www.federalregister.gov/documents/full_text/text/1997/05/23/97-13604.txt",
+        "http_status": 200,
+        "path": "documents/97-13604/federalregister_text.txt",
+        "request_url": "https://www.federalregister.gov/documents/full_text/text/1997/05/23/97-13604.txt",
+        "requested_at": "2026-09-09T20:54:49+00:00",
+        "sha256": "33c347eb783f6e6475202fdb97359282f3dc3c0308eb02e1bbc5addccf858a1d"
+      },
+      "federal_register_citation": "62 FR 28464",
+      "fr_document": "97-13604",
+      "metadata": {
+        "bytes": 2924,
+        "content_type": "application/json; charset=utf-8",
+        "final_url": "https://www.federalregister.gov/api/v1/documents/97-13604.json",
+        "http_status": 200,
+        "path": "documents/97-13604/federalregister_metadata.json",
+        "request_url": "https://www.federalregister.gov/api/v1/documents/97-13604.json",
+        "requested_at": "2026-09-09T20:54:48+00:00",
+        "sha256": "634cf00e925e669249a1b4dd4fc08d389c129741ff7b9a02fc161ad006371530"
+      },
+      "official_pdf": {
+        "bytes": 165989,
+        "content_type": "application/pdf",
+        "final_url": "https://www.govinfo.gov/content/pkg/FR-1997-05-23/pdf/97-13604.pdf",
+        "http_status": 200,
+        "path": "documents/97-13604/official_govinfo.pdf",
+        "request_url": "https://www.govinfo.gov/content/pkg/FR-1997-05-23/pdf/97-13604.pdf",
+        "requested_at": "2026-09-09T20:54:49+00:00",
+        "sha256": "7c96fdd4f1c7c322af073d6566a778bb1eb5788c90a86a975b21fd1d1c4a6431"
+      },
+      "publication_date": "1997-05-23"
+    },
+    {
+      "asserted_values": {
+        "effective_from": "1998-07-01",
+        "factor": "0.993808",
+        "index_change": "",
+        "interval_end": "1999-06-30",
+        "interval_start": "1998-07-01"
+      },
+      "consumer": {
+        "adapter": "oil_index",
+        "metrics": [
+          "liq_oil_pipeline_index_factor"
+        ],
+        "source_table_version": "oil-index-table-2026-09-09-v1"
+      },
+      "docket": "RM93-11-000",
+      "extraction_text": {
+        "bytes": 3373,
+        "content_type": "text/plain",
+        "final_url": "https://www.federalregister.gov/documents/full_text/text/1998/05/15/98-12930.txt",
+        "http_status": 200,
+        "path": "documents/98-12930/federalregister_text.txt",
+        "request_url": "https://www.federalregister.gov/documents/full_text/text/1998/05/15/98-12930.txt",
+        "requested_at": "2026-09-09T20:54:50+00:00",
+        "sha256": "8a7d4885cecaafa355b39ab80eae9989dfb2d0cbc98db7eee866aa298bb4b26a"
+      },
+      "federal_register_citation": "63 FR 27081",
+      "fr_document": "98-12930",
+      "metadata": {
+        "bytes": 2395,
+        "content_type": "application/json; charset=utf-8",
+        "final_url": "https://www.federalregister.gov/api/v1/documents/98-12930.json",
+        "http_status": 200,
+        "path": "documents/98-12930/federalregister_metadata.json",
+        "request_url": "https://www.federalregister.gov/api/v1/documents/98-12930.json",
+        "requested_at": "2026-09-09T20:54:49+00:00",
+        "sha256": "a51ba5c3e2256b6ca2cb1a97196443a660e99ce980ef0a73ee4127e694b1619c"
+      },
+      "official_pdf": {
+        "bytes": 158550,
+        "content_type": "application/pdf",
+        "final_url": "https://www.govinfo.gov/content/pkg/FR-1998-05-15/pdf/98-12930.pdf",
+        "http_status": 200,
+        "path": "documents/98-12930/official_govinfo.pdf",
+        "request_url": "https://www.govinfo.gov/content/pkg/FR-1998-05-15/pdf/98-12930.pdf",
+        "requested_at": "2026-09-09T20:54:50+00:00",
+        "sha256": "4067db5aaf5afb5cdcabbcd0c2ce42d245be36110509a254873ebb764dee7def"
+      },
+      "publication_date": "1998-05-15"
+    },
+    {
+      "asserted_values": {
+        "effective_from": "1999-07-01",
+        "factor": "0.981654",
+        "index_change": "",
+        "interval_end": "2000-06-30",
+        "interval_start": "1999-07-01"
+      },
+      "consumer": {
+        "adapter": "oil_index",
+        "metrics": [
+          "liq_oil_pipeline_index_factor"
+        ],
+        "source_table_version": "oil-index-table-2026-09-09-v1"
+      },
+      "docket": "RM93-11-000",
+      "extraction_text": {
+        "bytes": 7146,
+        "content_type": "text/plain",
+        "final_url": "https://www.federalregister.gov/documents/full_text/text/1999/05/26/99-13121.txt",
+        "http_status": 200,
+        "path": "documents/99-13121/federalregister_text.txt",
+        "request_url": "https://www.federalregister.gov/documents/full_text/text/1999/05/26/99-13121.txt",
+        "requested_at": "2026-09-09T20:54:51+00:00",
+        "sha256": "b6d728143a729788705c10fcdea85a8005a484bda8e69791d91358d53d19249f"
+      },
+      "federal_register_citation": "64 FR 28468",
+      "fr_document": "99-13121",
+      "metadata": {
+        "bytes": 2989,
+        "content_type": "application/json; charset=utf-8",
+        "final_url": "https://www.federalregister.gov/api/v1/documents/99-13121.json",
+        "http_status": 200,
+        "path": "documents/99-13121/federalregister_metadata.json",
+        "request_url": "https://www.federalregister.gov/api/v1/documents/99-13121.json",
+        "requested_at": "2026-09-09T20:54:50+00:00",
+        "sha256": "9bd1ea601e4415ebb4590e85534980d3c9f5c33b80aebb01e5900f4d97b2ff56"
+      },
+      "official_pdf": {
+        "bytes": 167700,
+        "content_type": "application/pdf",
+        "final_url": "https://www.govinfo.gov/content/pkg/FR-1999-05-26/pdf/99-13121.pdf",
+        "http_status": 200,
+        "path": "documents/99-13121/official_govinfo.pdf",
+        "request_url": "https://www.govinfo.gov/content/pkg/FR-1999-05-26/pdf/99-13121.pdf",
+        "requested_at": "2026-09-09T20:54:51+00:00",
+        "sha256": "64648b1cdd4b3308d9a6b895b97b3c3b61c94e4d50175d2806887c7de0519a40"
+      },
+      "publication_date": "1999-05-26"
+    },
+    {
+      "asserted_values": {
+        "effective_from": "2000-07-01",
+        "factor": "1.007598",
+        "index_change": "",
+        "interval_end": "2001-06-30",
+        "interval_start": "2000-07-01"
+      },
+      "consumer": {
+        "adapter": "oil_index",
+        "metrics": [
+          "liq_oil_pipeline_index_factor"
+        ],
+        "source_table_version": "oil-index-table-2026-09-09-v1"
+      },
+      "docket": "RM93-11-000",
+      "extraction_text": {
+        "bytes": 7486,
+        "content_type": "text/plain",
+        "final_url": "https://www.federalregister.gov/documents/full_text/text/2000/05/25/00-13115.txt",
+        "http_status": 200,
+        "path": "documents/00-13115/federalregister_text.txt",
+        "request_url": "https://www.federalregister.gov/documents/full_text/text/2000/05/25/00-13115.txt",
+        "requested_at": "2026-09-09T20:54:52+00:00",
+        "sha256": "1a0e5adb06f0e1376880724c6234b422265c0c26915be77851dddcd65c389efb"
+      },
+      "federal_register_citation": "65 FR 33816",
+      "fr_document": "00-13115",
+      "metadata": {
+        "bytes": 3090,
+        "content_type": "application/json; charset=utf-8",
+        "final_url": "https://www.federalregister.gov/api/v1/documents/00-13115.json",
+        "http_status": 200,
+        "path": "documents/00-13115/federalregister_metadata.json",
+        "request_url": "https://www.federalregister.gov/api/v1/documents/00-13115.json",
+        "requested_at": "2026-09-09T20:54:52+00:00",
+        "sha256": "ee511d3923a33743d7d1d684bc33e96c0314a8165c0a563a986df6d736a0306d"
+      },
+      "official_pdf": {
+        "bytes": 215803,
+        "content_type": "application/pdf",
+        "final_url": "https://www.govinfo.gov/content/pkg/FR-2000-05-25/pdf/00-13115.pdf",
+        "http_status": 200,
+        "path": "documents/00-13115/official_govinfo.pdf",
+        "request_url": "https://www.govinfo.gov/content/pkg/FR-2000-05-25/pdf/00-13115.pdf",
+        "requested_at": "2026-09-09T20:54:52+00:00",
+        "sha256": "67e767f0d7a0e8a5d4f62367f6582a6927fa5e468d9661d3f5a789fe185c9af0"
+      },
+      "publication_date": "2000-05-25"
+    },
+    {
+      "asserted_values": {
+        "effective_from": "2001-07-01",
+        "factor": "1.027594",
+        "index_change": "",
+        "interval_end": "2002-06-30",
+        "interval_start": "2001-07-01"
+      },
+      "consumer": {
+        "adapter": "oil_index",
+        "metrics": [
+          "liq_oil_pipeline_index_factor"
+        ],
+        "source_table_version": "oil-index-table-2026-09-09-v1"
+      },
+      "docket": "RM93-11-000",
+      "extraction_text": {
+        "bytes": 6523,
+        "content_type": "text/plain",
+        "final_url": "https://www.federalregister.gov/documents/full_text/text/2001/05/24/01-13093.txt",
+        "http_status": 200,
+        "path": "documents/01-13093/federalregister_text.txt",
+        "request_url": "https://www.federalregister.gov/documents/full_text/text/2001/05/24/01-13093.txt",
+        "requested_at": "2026-09-09T20:54:53+00:00",
+        "sha256": "8c737bd7144dd1ba94881a8d2ec1130358165ac47c96f97eae3cc547cd15d091"
+      },
+      "federal_register_citation": "66 FR 28748",
+      "fr_document": "01-13093",
+      "metadata": {
+        "bytes": 3069,
+        "content_type": "application/json; charset=utf-8",
+        "final_url": "https://www.federalregister.gov/api/v1/documents/01-13093.json",
+        "http_status": 200,
+        "path": "documents/01-13093/federalregister_metadata.json",
+        "request_url": "https://www.federalregister.gov/api/v1/documents/01-13093.json",
+        "requested_at": "2026-09-09T20:54:53+00:00",
+        "sha256": "96bfad5248dc86c01281c9f17a8be8198bc5aba57ebc2c0c12efb7828c4fff86"
+      },
+      "official_pdf": {
+        "bytes": 135050,
+        "content_type": "application/pdf",
+        "final_url": "https://www.govinfo.gov/content/pkg/FR-2001-05-24/pdf/01-13093.pdf",
+        "http_status": 200,
+        "path": "documents/01-13093/official_govinfo.pdf",
+        "request_url": "https://www.govinfo.gov/content/pkg/FR-2001-05-24/pdf/01-13093.pdf",
+        "requested_at": "2026-09-09T20:54:53+00:00",
+        "sha256": "8ea266005f737d2ea3505c04df3d411776c8f0b16d181fa1530234ae1f0e078e"
+      },
+      "publication_date": "2001-05-24"
+    },
+    {
+      "asserted_values": {
+        "effective_from": "2002-07-01",
+        "factor": "1.009565",
+        "index_change": "",
+        "interval_end": "2003-06-30",
+        "interval_start": "2002-07-01"
+      },
+      "consumer": {
+        "adapter": "oil_index",
+        "metrics": [
+          "liq_oil_pipeline_index_factor"
+        ],
+        "source_table_version": "oil-index-table-2026-09-09-v1"
+      },
+      "docket": "RM93-11-000",
+      "extraction_text": {
+        "bytes": 6625,
+        "content_type": "text/plain",
+        "final_url": "https://www.federalregister.gov/documents/full_text/text/2002/05/22/02-12748.txt",
+        "http_status": 200,
+        "path": "documents/02-12748/federalregister_text.txt",
+        "request_url": "https://www.federalregister.gov/documents/full_text/text/2002/05/22/02-12748.txt",
+        "requested_at": "2026-09-09T20:54:54+00:00",
+        "sha256": "94651967121e4856193c04ac2ee114394a380c3847b23db8613680c3709d7bb2"
+      },
+      "federal_register_citation": "67 FR 35989",
+      "fr_document": "02-12748",
+      "metadata": {
+        "bytes": 3148,
+        "content_type": "application/json; charset=utf-8",
+        "final_url": "https://www.federalregister.gov/api/v1/documents/02-12748.json",
+        "http_status": 200,
+        "path": "documents/02-12748/federalregister_metadata.json",
+        "request_url": "https://www.federalregister.gov/api/v1/documents/02-12748.json",
+        "requested_at": "2026-09-09T20:54:54+00:00",
+        "sha256": "6490b4a46e3aa2b60c4a7f09787d250ee6b92484e0babcf8eb3651407ed97bbd"
+      },
+      "official_pdf": {
+        "bytes": 137972,
+        "content_type": "application/pdf",
+        "final_url": "https://www.govinfo.gov/content/pkg/FR-2002-05-22/pdf/02-12748.pdf",
+        "http_status": 200,
+        "path": "documents/02-12748/official_govinfo.pdf",
+        "request_url": "https://www.govinfo.gov/content/pkg/FR-2002-05-22/pdf/02-12748.pdf",
+        "requested_at": "2026-09-09T20:54:54+00:00",
+        "sha256": "6a9a92b2d1834f3eb58078134a93f46d4b81494d72b9ae87f652834282f578bb"
+      },
+      "publication_date": "2002-05-22"
+    },
+    {
+      "asserted_values": {
+        "effective_from": "2003-07-01",
+        "factor": "0.987207",
+        "index_change": "-0.012793",
+        "interval_end": "2004-06-30",
+        "interval_start": "2003-07-01"
+      },
+      "consumer": {
+        "adapter": "oil_index",
+        "metrics": [
+          "liq_oil_pipeline_index_factor",
+          "liq_oil_pipeline_index_change"
+        ],
+        "source_table_version": "oil-index-table-2026-09-09-v1"
+      },
+      "docket": "RM93-11-000",
+      "extraction_text": {
+        "bytes": 5407,
+        "content_type": "text/plain",
+        "final_url": "https://www.federalregister.gov/documents/full_text/text/2003/05/23/03-12949.txt",
+        "http_status": 200,
+        "path": "documents/03-12949/federalregister_text.txt",
+        "request_url": "https://www.federalregister.gov/documents/full_text/text/2003/05/23/03-12949.txt",
+        "requested_at": "2026-09-09T20:54:55+00:00",
+        "sha256": "fe9ebfa8a00680e0cdf651f2819b64e455ce57b751a58e72b1a0895f9e88a1ed"
+      },
+      "federal_register_citation": "68 FR 28211",
+      "fr_document": "03-12949",
+      "metadata": {
+        "bytes": 2463,
+        "content_type": "application/json; charset=utf-8",
+        "final_url": "https://www.federalregister.gov/api/v1/documents/03-12949.json",
+        "http_status": 200,
+        "path": "documents/03-12949/federalregister_metadata.json",
+        "request_url": "https://www.federalregister.gov/api/v1/documents/03-12949.json",
+        "requested_at": "2026-09-09T20:54:55+00:00",
+        "sha256": "e3c8c843eb57bfc256a467baa4d603bb65d9c1bfab7cde6ac526a7bd2f5d1bb5"
+      },
+      "official_pdf": {
+        "bytes": 130826,
+        "content_type": "application/pdf",
+        "final_url": "https://www.govinfo.gov/content/pkg/FR-2003-05-23/pdf/03-12949.pdf",
+        "http_status": 200,
+        "path": "documents/03-12949/official_govinfo.pdf",
+        "request_url": "https://www.govinfo.gov/content/pkg/FR-2003-05-23/pdf/03-12949.pdf",
+        "requested_at": "2026-09-09T20:54:55+00:00",
+        "sha256": "ff34993423230e9422bd1f4b1c78551afb6b1df23403c33a8ac1303e0166c0fa"
+      },
+      "publication_date": "2003-05-23"
+    },
+    {
+      "asserted_values": {
+        "effective_from": "2004-07-01",
+        "factor": "1.031677",
+        "index_change": "",
+        "interval_end": "2005-06-30",
+        "interval_start": "2004-07-01"
+      },
+      "consumer": {
+        "adapter": "oil_index",
+        "metrics": [
+          "liq_oil_pipeline_index_factor"
+        ],
+        "source_table_version": "oil-index-table-2026-09-09-v1"
+      },
+      "docket": "RM93-11-000",
+      "extraction_text": {
+        "bytes": 5173,
+        "content_type": "text/plain",
+        "final_url": "https://www.federalregister.gov/documents/full_text/text/2004/05/24/E4-1200.txt",
+        "http_status": 200,
+        "path": "documents/E4-1200/federalregister_text.txt",
+        "request_url": "https://www.federalregister.gov/documents/full_text/text/2004/05/24/E4-1200.txt",
+        "requested_at": "2026-09-09T20:54:56+00:00",
+        "sha256": "a600ac31f0909f1a8f8329208d06cd0abf564745efc48b5d9459591f908933fb"
+      },
+      "federal_register_citation": "69 FR 29532",
+      "fr_document": "E4-1200",
+      "metadata": {
+        "bytes": 2509,
+        "content_type": "application/json; charset=utf-8",
+        "final_url": "https://www.federalregister.gov/api/v1/documents/E4-1200.json",
+        "http_status": 200,
+        "path": "documents/E4-1200/federalregister_metadata.json",
+        "request_url": "https://www.federalregister.gov/api/v1/documents/E4-1200.json",
+        "requested_at": "2026-09-09T20:54:56+00:00",
+        "sha256": "117ce10dcb9d2262f4884156b9c9a4603613573777d8c5922b79a8e1e65999cc"
+      },
+      "official_pdf": {
+        "bytes": 152950,
+        "content_type": "application/pdf",
+        "final_url": "https://www.govinfo.gov/content/pkg/FR-2004-05-24/pdf/E4-1200.pdf",
+        "http_status": 200,
+        "path": "documents/E4-1200/official_govinfo.pdf",
+        "request_url": "https://www.govinfo.gov/content/pkg/FR-2004-05-24/pdf/E4-1200.pdf",
+        "requested_at": "2026-09-09T20:54:56+00:00",
+        "sha256": "98948c683752d089c87b995aaeb95e4f8a39c24da7afe305115319a78e4408a6"
+      },
+      "publication_date": "2004-05-24"
+    },
+    {
+      "asserted_values": {
+        "effective_from": "2005-07-01",
+        "factor": "1.036288",
+        "index_change": "",
+        "interval_end": "2006-06-30",
+        "interval_start": "2005-07-01"
+      },
+      "consumer": {
+        "adapter": "oil_index",
+        "metrics": [
+          "liq_oil_pipeline_index_factor"
+        ],
+        "source_table_version": "oil-index-table-2026-09-09-v1"
+      },
+      "docket": "RM93-11-000",
+      "extraction_text": {
+        "bytes": 5035,
+        "content_type": "text/plain",
+        "final_url": "https://www.federalregister.gov/documents/full_text/text/2005/05/25/E5-2623.txt",
+        "http_status": 200,
+        "path": "documents/E5-2623/federalregister_text.txt",
+        "request_url": "https://www.federalregister.gov/documents/full_text/text/2005/05/25/E5-2623.txt",
+        "requested_at": "2026-09-09T20:54:58+00:00",
+        "sha256": "6813dc81f7a320678975d1ba95912ea010125e04f8e889e4ffdbb577fb1a3ad5"
+      },
+      "federal_register_citation": "70 FR 30104",
+      "fr_document": "E5-2623",
+      "metadata": {
+        "bytes": 2508,
+        "content_type": "application/json; charset=utf-8",
+        "final_url": "https://www.federalregister.gov/api/v1/documents/E5-2623.json",
+        "http_status": 200,
+        "path": "documents/E5-2623/federalregister_metadata.json",
+        "request_url": "https://www.federalregister.gov/api/v1/documents/E5-2623.json",
+        "requested_at": "2026-09-09T20:54:57+00:00",
+        "sha256": "24902cfdd862ab488696d4f40b2cc1b0ce0f30668a7dcfe25337098950769b69"
+      },
+      "official_pdf": {
+        "bytes": 143776,
+        "content_type": "application/pdf",
+        "final_url": "https://www.govinfo.gov/content/pkg/FR-2005-05-25/pdf/E5-2623.pdf",
+        "http_status": 200,
+        "path": "documents/E5-2623/official_govinfo.pdf",
+        "request_url": "https://www.govinfo.gov/content/pkg/FR-2005-05-25/pdf/E5-2623.pdf",
+        "requested_at": "2026-09-09T20:54:57+00:00",
+        "sha256": "e7a9ac2d6c4fe50f1c4b1ad593db38f9722004884255cd779348be78702a0ad7"
+      },
+      "publication_date": "2005-05-25"
+    },
+    {
+      "asserted_values": {
+        "effective_from": "2006-07-01",
+        "factor": "1.061485",
+        "index_change": "",
+        "interval_end": "2007-06-30",
+        "interval_start": "2006-07-01"
+      },
+      "consumer": {
+        "adapter": "oil_index",
+        "metrics": [
+          "liq_oil_pipeline_index_factor"
+        ],
+        "source_table_version": "oil-index-table-2026-09-09-v1"
+      },
+      "docket": "RM93-11-000",
+      "extraction_text": {
+        "bytes": 5274,
+        "content_type": "text/plain",
+        "final_url": "https://www.federalregister.gov/documents/full_text/text/2006/05/24/E6-7963.txt",
+        "http_status": 200,
+        "path": "documents/E6-7963/federalregister_text.txt",
+        "request_url": "https://www.federalregister.gov/documents/full_text/text/2006/05/24/E6-7963.txt",
+        "requested_at": "2026-09-09T20:54:58+00:00",
+        "sha256": "f721bd6371544a84854c99dbb64878e2a7f8080ceb930b0b5f3762bb69836fd8"
+      },
+      "federal_register_citation": "71 FR 29951",
+      "fr_document": "E6-7963",
+      "metadata": {
+        "bytes": 2510,
+        "content_type": "application/json; charset=utf-8",
+        "final_url": "https://www.federalregister.gov/api/v1/documents/E6-7963.json",
+        "http_status": 200,
+        "path": "documents/E6-7963/federalregister_metadata.json",
+        "request_url": "https://www.federalregister.gov/api/v1/documents/E6-7963.json",
+        "requested_at": "2026-09-09T20:54:58+00:00",
+        "sha256": "e6d880201ca8daa8b13e171d1776d974d187c14cf1c418256f91193d33cca332"
+      },
+      "official_pdf": {
+        "bytes": 146283,
+        "content_type": "application/pdf",
+        "final_url": "https://www.govinfo.gov/content/pkg/FR-2006-05-24/pdf/E6-7963.pdf",
+        "http_status": 200,
+        "path": "documents/E6-7963/official_govinfo.pdf",
+        "request_url": "https://www.govinfo.gov/content/pkg/FR-2006-05-24/pdf/E6-7963.pdf",
+        "requested_at": "2026-09-09T20:54:58+00:00",
+        "sha256": "78fb7aec1f6780b54551174572d7f096897f1d0839b6db8bdf3a29fa33ae0978"
+      },
+      "publication_date": "2006-05-24"
+    },
+    {
+      "asserted_values": {
+        "effective_from": "2007-07-01",
+        "factor": "1.043186",
+        "index_change": "",
+        "interval_end": "2008-06-30",
+        "interval_start": "2007-07-01"
+      },
+      "consumer": {
+        "adapter": "oil_index",
+        "metrics": [
+          "liq_oil_pipeline_index_factor"
+        ],
+        "source_table_version": "oil-index-table-2026-09-09-v1"
+      },
+      "docket": "RM93-11-000",
+      "extraction_text": {
+        "bytes": 5314,
+        "content_type": "text/plain",
+        "final_url": "https://www.federalregister.gov/documents/full_text/text/2007/06/25/E7-12192.txt",
+        "http_status": 200,
+        "path": "documents/E7-12192/federalregister_text.txt",
+        "request_url": "https://www.federalregister.gov/documents/full_text/text/2007/06/25/E7-12192.txt",
+        "requested_at": "2026-09-09T20:55:00+00:00",
+        "sha256": "ef524a53d5970cc63179c23fb7ea276ff4902859cf5a4ea7f471125abb8d4b26"
+      },
+      "federal_register_citation": "72 FR 34678",
+      "fr_document": "E7-12192",
+      "metadata": {
+        "bytes": 2518,
+        "content_type": "application/json; charset=utf-8",
+        "final_url": "https://www.federalregister.gov/api/v1/documents/E7-12192.json",
+        "http_status": 200,
+        "path": "documents/E7-12192/federalregister_metadata.json",
+        "request_url": "https://www.federalregister.gov/api/v1/documents/E7-12192.json",
+        "requested_at": "2026-09-09T20:54:59+00:00",
+        "sha256": "9c8b029b119a116716bae232626fbb339ae0097c72dbf2b8612d01443e9b3f3e"
+      },
+      "official_pdf": {
+        "bytes": 149125,
+        "content_type": "application/pdf",
+        "final_url": "https://www.govinfo.gov/content/pkg/FR-2007-06-25/pdf/E7-12192.pdf",
+        "http_status": 200,
+        "path": "documents/E7-12192/official_govinfo.pdf",
+        "request_url": "https://www.govinfo.gov/content/pkg/FR-2007-06-25/pdf/E7-12192.pdf",
+        "requested_at": "2026-09-09T20:54:59+00:00",
+        "sha256": "b0b7c6f0a336d81543b2258126783c4ee0f69cb275aa9cbbe36ced186ec011e5"
+      },
+      "publication_date": "2007-06-25"
+    },
+    {
+      "asserted_values": {
+        "effective_from": "2008-07-01",
+        "factor": "1.051653",
+        "index_change": "",
+        "interval_end": "2009-06-30",
+        "interval_start": "2008-07-01"
+      },
+      "consumer": {
+        "adapter": "oil_index",
+        "metrics": [
+          "liq_oil_pipeline_index_factor"
+        ],
+        "source_table_version": "oil-index-table-2026-09-09-v1"
+      },
+      "docket": "RM93-11-000",
+      "extraction_text": {
+        "bytes": 5310,
+        "content_type": "text/plain",
+        "final_url": "https://www.federalregister.gov/documents/full_text/text/2008/05/29/E8-11912.txt",
+        "http_status": 200,
+        "path": "documents/E8-11912/federalregister_text.txt",
+        "request_url": "https://www.federalregister.gov/documents/full_text/text/2008/05/29/E8-11912.txt",
+        "requested_at": "2026-09-09T20:55:01+00:00",
+        "sha256": "6bff37e691a206119f6f18f06cbd0b23a1c399160efb24fe3b9aca6bde734b53"
+      },
+      "federal_register_citation": "73 FR 30912",
+      "fr_document": "E8-11912",
+      "metadata": {
+        "bytes": 2511,
+        "content_type": "application/json; charset=utf-8",
+        "final_url": "https://www.federalregister.gov/api/v1/documents/E8-11912.json",
+        "http_status": 200,
+        "path": "documents/E8-11912/federalregister_metadata.json",
+        "request_url": "https://www.federalregister.gov/api/v1/documents/E8-11912.json",
+        "requested_at": "2026-09-09T20:55:00+00:00",
+        "sha256": "bdc93a631a97bbd7189e540511e46c15e35d37e942bb793c1e8f4728c959d589"
+      },
+      "official_pdf": {
+        "bytes": 143090,
+        "content_type": "application/pdf",
+        "final_url": "https://www.govinfo.gov/content/pkg/FR-2008-05-29/pdf/E8-11912.pdf",
+        "http_status": 200,
+        "path": "documents/E8-11912/official_govinfo.pdf",
+        "request_url": "https://www.govinfo.gov/content/pkg/FR-2008-05-29/pdf/E8-11912.pdf",
+        "requested_at": "2026-09-09T20:55:00+00:00",
+        "sha256": "d3c85125f7066f9cc65809f668853aec748130c19f134f6620c67cafd04d997c"
+      },
+      "publication_date": "2008-05-29"
+    },
+    {
+      "asserted_values": {
+        "effective_from": "2009-07-01",
+        "factor": "1.076025",
+        "index_change": "",
+        "interval_end": "2010-06-30",
+        "interval_start": "2009-07-01"
+      },
+      "consumer": {
+        "adapter": "oil_index",
+        "metrics": [
+          "liq_oil_pipeline_index_factor"
+        ],
+        "source_table_version": "oil-index-table-2026-09-09-v1"
+      },
+      "docket": "RM93-11-000",
+      "extraction_text": {
+        "bytes": 5399,
+        "content_type": "text/plain",
+        "final_url": "https://www.federalregister.gov/documents/full_text/text/2009/05/21/E9-11794.txt",
+        "http_status": 200,
+        "path": "documents/E9-11794/federalregister_text.txt",
+        "request_url": "https://www.federalregister.gov/documents/full_text/text/2009/05/21/E9-11794.txt",
+        "requested_at": "2026-09-09T20:55:02+00:00",
+        "sha256": "792e0d460cb2ddd1495d4980421d61b06dfefe6101b791089ee1a8d1b86752a0"
+      },
+      "federal_register_citation": "74 FR 23846",
+      "fr_document": "E9-11794",
+      "metadata": {
+        "bytes": 2498,
+        "content_type": "application/json; charset=utf-8",
+        "final_url": "https://www.federalregister.gov/api/v1/documents/E9-11794.json",
+        "http_status": 200,
+        "path": "documents/E9-11794/federalregister_metadata.json",
+        "request_url": "https://www.federalregister.gov/api/v1/documents/E9-11794.json",
+        "requested_at": "2026-09-09T20:55:02+00:00",
+        "sha256": "34803f1ea5a39c80504a867e24495bcdcfc6cb2af1ceb36f45aec734d0b6574e"
+      },
+      "official_pdf": {
+        "bytes": 147424,
+        "content_type": "application/pdf",
+        "final_url": "https://www.govinfo.gov/content/pkg/FR-2009-05-21/pdf/E9-11794.pdf",
+        "http_status": 200,
+        "path": "documents/E9-11794/official_govinfo.pdf",
+        "request_url": "https://www.govinfo.gov/content/pkg/FR-2009-05-21/pdf/E9-11794.pdf",
+        "requested_at": "2026-09-09T20:55:02+00:00",
+        "sha256": "c889d1ad10c162938f711806d785786478647998e4d9b5109aee3a782cb6715f"
+      },
+      "publication_date": "2009-05-21"
+    },
+    {
+      "asserted_values": {
+        "effective_from": "2010-07-01",
+        "factor": "0.987026",
+        "index_change": "",
+        "interval_end": "2011-06-30",
+        "interval_start": "2010-07-01"
+      },
+      "consumer": {
+        "adapter": "oil_index",
+        "metrics": [
+          "liq_oil_pipeline_index_factor"
+        ],
+        "source_table_version": "oil-index-table-2026-09-09-v1"
+      },
+      "docket": "RM93-11-000",
+      "extraction_text": {
+        "bytes": 5335,
+        "content_type": "text/plain",
+        "final_url": "https://www.federalregister.gov/documents/full_text/text/2010/05/26/2010-12622.txt",
+        "http_status": 200,
+        "path": "documents/2010-12622/federalregister_text.txt",
+        "request_url": "https://www.federalregister.gov/documents/full_text/text/2010/05/26/2010-12622.txt",
+        "requested_at": "2026-09-09T20:55:03+00:00",
+        "sha256": "a939c975b492b5df61ecf78998a0c3b13cc8138b33a6cd7f8468f03197f9d4b4"
+      },
+      "federal_register_citation": "75 FR 29526",
+      "fr_document": "2010-12622",
+      "metadata": {
+        "bytes": 2570,
+        "content_type": "application/json; charset=utf-8",
+        "final_url": "https://www.federalregister.gov/api/v1/documents/2010-12622.json",
+        "http_status": 200,
+        "path": "documents/2010-12622/federalregister_metadata.json",
+        "request_url": "https://www.federalregister.gov/api/v1/documents/2010-12622.json",
+        "requested_at": "2026-09-09T20:55:03+00:00",
+        "sha256": "56941ea9218e72fd3c58871bfd3bfd9a365a404e3f53d4b9bcc7afa63eea01dc"
+      },
+      "official_pdf": {
+        "bytes": 141961,
+        "content_type": "application/pdf",
+        "final_url": "https://www.govinfo.gov/content/pkg/FR-2010-05-26/pdf/2010-12622.pdf",
+        "http_status": 200,
+        "path": "documents/2010-12622/official_govinfo.pdf",
+        "request_url": "https://www.govinfo.gov/content/pkg/FR-2010-05-26/pdf/2010-12622.pdf",
+        "requested_at": "2026-09-09T20:55:03+00:00",
+        "sha256": "f6562674f2a4e3b1d095085bf4f4ff7fac7b68af1d9de327d126f419cfaa4512"
+      },
+      "publication_date": "2010-05-26"
+    },
+    {
+      "asserted_values": {
+        "effective_from": "2011-07-01",
+        "factor": "1.068819",
+        "index_change": "",
+        "interval_end": "2012-06-30",
+        "interval_start": "2011-07-01"
+      },
+      "consumer": {
+        "adapter": "oil_index",
+        "metrics": [
+          "liq_oil_pipeline_index_factor"
+        ],
+        "source_table_version": "oil-index-table-2026-09-09-v1"
+      },
+      "docket": "RM93-11-000",
+      "extraction_text": {
+        "bytes": 5514,
+        "content_type": "text/plain",
+        "final_url": "https://www.federalregister.gov/documents/full_text/text/2011/05/19/2011-12303.txt",
+        "http_status": 200,
+        "path": "documents/2011-12303/federalregister_text.txt",
+        "request_url": "https://www.federalregister.gov/documents/full_text/text/2011/05/19/2011-12303.txt",
+        "requested_at": "2026-09-09T20:55:04+00:00",
+        "sha256": "efb487d5f7f33406a35a653a4688fec86b58db0308aeff324ec01a1ef3f247cc"
+      },
+      "federal_register_citation": "76 FR 28966",
+      "fr_document": "2011-12303",
+      "metadata": {
+        "bytes": 2528,
+        "content_type": "application/json; charset=utf-8",
+        "final_url": "https://www.federalregister.gov/api/v1/documents/2011-12303.json",
+        "http_status": 200,
+        "path": "documents/2011-12303/federalregister_metadata.json",
+        "request_url": "https://www.federalregister.gov/api/v1/documents/2011-12303.json",
+        "requested_at": "2026-09-09T20:55:04+00:00",
+        "sha256": "5a49d3fb187f34b72b899c767afff1b53d5af4117c86b4427576c71013008260"
+      },
+      "official_pdf": {
+        "bytes": 149918,
+        "content_type": "application/pdf",
+        "final_url": "https://www.govinfo.gov/content/pkg/FR-2011-05-19/pdf/2011-12303.pdf",
+        "http_status": 200,
+        "path": "documents/2011-12303/official_govinfo.pdf",
+        "request_url": "https://www.govinfo.gov/content/pkg/FR-2011-05-19/pdf/2011-12303.pdf",
+        "requested_at": "2026-09-09T20:55:04+00:00",
+        "sha256": "59f47e1f931d386733ff373dd531e0ecb878bc7aae9b44cddb289291a0ea5a72"
+      },
+      "publication_date": "2011-05-19"
+    },
+    {
+      "asserted_values": {
+        "effective_from": "2012-07-01",
+        "factor": "1.086011",
+        "index_change": "",
+        "interval_end": "2013-06-30",
+        "interval_start": "2012-07-01"
+      },
+      "consumer": {
+        "adapter": "oil_index",
+        "metrics": [
+          "liq_oil_pipeline_index_factor"
+        ],
+        "source_table_version": "oil-index-table-2026-09-09-v1"
+      },
+      "docket": "RM93-11-000",
+      "extraction_text": {
+        "bytes": 5440,
+        "content_type": "text/plain",
+        "final_url": "https://www.federalregister.gov/documents/full_text/text/2012/05/21/2012-12198.txt",
+        "http_status": 200,
+        "path": "documents/2012-12198/federalregister_text.txt",
+        "request_url": "https://www.federalregister.gov/documents/full_text/text/2012/05/21/2012-12198.txt",
+        "requested_at": "2026-09-09T20:55:06+00:00",
+        "sha256": "7ed430fb9839fa80f4d3262d1db497b6ae90a30e6e88d7522e746424d310b643"
+      },
+      "federal_register_citation": "77 FR 29997",
+      "fr_document": "2012-12198",
+      "metadata": {
+        "bytes": 2975,
+        "content_type": "application/json; charset=utf-8",
+        "final_url": "https://www.federalregister.gov/api/v1/documents/2012-12198.json",
+        "http_status": 200,
+        "path": "documents/2012-12198/federalregister_metadata.json",
+        "request_url": "https://www.federalregister.gov/api/v1/documents/2012-12198.json",
+        "requested_at": "2026-09-09T20:55:05+00:00",
+        "sha256": "c3d00bd04ad60db91f70c13b0997ee5c8ace93c2975bb5e654da2fda79b50b35"
+      },
+      "official_pdf": {
+        "bytes": 221062,
+        "content_type": "application/pdf",
+        "final_url": "https://www.govinfo.gov/content/pkg/FR-2012-05-21/pdf/2012-12198.pdf",
+        "http_status": 200,
+        "path": "documents/2012-12198/official_govinfo.pdf",
+        "request_url": "https://www.govinfo.gov/content/pkg/FR-2012-05-21/pdf/2012-12198.pdf",
+        "requested_at": "2026-09-09T20:55:05+00:00",
+        "sha256": "b41dd2d94e58c8d7a0f11ed7994bfec848af0941c4fae66e399173f59fa27f74"
+      },
+      "publication_date": "2012-05-21"
+    },
+    {
+      "asserted_values": {
+        "effective_from": "2013-07-01",
+        "factor": "1.045923",
+        "index_change": "",
+        "interval_end": "2014-06-30",
+        "interval_start": "2013-07-01"
+      },
+      "consumer": {
+        "adapter": "oil_index",
+        "metrics": [
+          "liq_oil_pipeline_index_factor"
+        ],
+        "source_table_version": "oil-index-table-2026-09-09-v1"
+      },
+      "docket": "RM93-11-000",
+      "extraction_text": {
+        "bytes": 5446,
+        "content_type": "text/plain",
+        "final_url": "https://www.federalregister.gov/documents/full_text/text/2013/05/22/2013-12128.txt",
+        "http_status": 200,
+        "path": "documents/2013-12128/federalregister_text.txt",
+        "request_url": "https://www.federalregister.gov/documents/full_text/text/2013/05/22/2013-12128.txt",
+        "requested_at": "2026-09-09T20:55:07+00:00",
+        "sha256": "3afe2b2b1cded8fb6c81740c7ef052f8075bbe1ade2a0d7e19008540415eb964"
+      },
+      "federal_register_citation": "78 FR 30296",
+      "fr_document": "2013-12128",
+      "metadata": {
+        "bytes": 2891,
+        "content_type": "application/json; charset=utf-8",
+        "final_url": "https://www.federalregister.gov/api/v1/documents/2013-12128.json",
+        "http_status": 200,
+        "path": "documents/2013-12128/federalregister_metadata.json",
+        "request_url": "https://www.federalregister.gov/api/v1/documents/2013-12128.json",
+        "requested_at": "2026-09-09T20:55:06+00:00",
+        "sha256": "4e831ce510abfc8d8d2974067c4d89487897a3be20fc3db75cc0e228d5d71afe"
+      },
+      "official_pdf": {
+        "bytes": 200619,
+        "content_type": "application/pdf",
+        "final_url": "https://www.govinfo.gov/content/pkg/FR-2013-05-22/pdf/2013-12128.pdf",
+        "http_status": 200,
+        "path": "documents/2013-12128/official_govinfo.pdf",
+        "request_url": "https://www.govinfo.gov/content/pkg/FR-2013-05-22/pdf/2013-12128.pdf",
+        "requested_at": "2026-09-09T20:55:06+00:00",
+        "sha256": "541ae33965cf66567a45688a7738b382d197597810c0b5b45b299503a477d0ce"
+      },
+      "publication_date": "2013-05-22"
+    },
+    {
+      "asserted_values": {
+        "effective_from": "2014-07-01",
+        "factor": "1.038858",
+        "index_change": "",
+        "interval_end": "2015-06-30",
+        "interval_start": "2014-07-01"
+      },
+      "consumer": {
+        "adapter": "oil_index",
+        "metrics": [
+          "liq_oil_pipeline_index_factor"
+        ],
+        "source_table_version": "oil-index-table-2026-09-09-v1"
+      },
+      "docket": "RM93-11-000",
+      "extraction_text": {
+        "bytes": 5403,
+        "content_type": "text/plain",
+        "final_url": "https://www.federalregister.gov/documents/full_text/text/2014/05/21/2014-11717.txt",
+        "http_status": 200,
+        "path": "documents/2014-11717/federalregister_text.txt",
+        "request_url": "https://www.federalregister.gov/documents/full_text/text/2014/05/21/2014-11717.txt",
+        "requested_at": "2026-09-09T20:55:08+00:00",
+        "sha256": "fb837f989ae6f52d3a3cc48da4adaf00a7e76586ad7a84c04359d6cfb7323155"
+      },
+      "federal_register_citation": "79 FR 29184",
+      "fr_document": "2014-11717",
+      "metadata": {
+        "bytes": 2576,
+        "content_type": "application/json; charset=utf-8",
+        "final_url": "https://www.federalregister.gov/api/v1/documents/2014-11717.json",
+        "http_status": 200,
+        "path": "documents/2014-11717/federalregister_metadata.json",
+        "request_url": "https://www.federalregister.gov/api/v1/documents/2014-11717.json",
+        "requested_at": "2026-09-09T20:55:07+00:00",
+        "sha256": "466659bbabc5def510bb94961f15c3d5ecbdb358aa37f8eccd242dc6f4a9df3e"
+      },
+      "official_pdf": {
+        "bytes": 196962,
+        "content_type": "application/pdf",
+        "final_url": "https://www.govinfo.gov/content/pkg/FR-2014-05-21/pdf/2014-11717.pdf",
+        "http_status": 200,
+        "path": "documents/2014-11717/official_govinfo.pdf",
+        "request_url": "https://www.govinfo.gov/content/pkg/FR-2014-05-21/pdf/2014-11717.pdf",
+        "requested_at": "2026-09-09T20:55:07+00:00",
+        "sha256": "617ba280fdf3f69d339beed180b12c843af8ada4fc0ef7af1ef907ccc8a0012d"
+      },
+      "publication_date": "2014-05-21"
+    },
+    {
+      "asserted_values": {
+        "effective_from": "2015-07-01",
+        "factor": "1.045829",
+        "index_change": "",
+        "interval_end": "2016-06-30",
+        "interval_start": "2015-07-01"
+      },
+      "consumer": {
+        "adapter": "oil_index",
+        "metrics": [
+          "liq_oil_pipeline_index_factor"
+        ],
+        "source_table_version": "oil-index-table-2026-09-09-v1"
+      },
+      "docket": "RM93-11-000",
+      "extraction_text": {
+        "bytes": 5417,
+        "content_type": "text/plain",
+        "final_url": "https://www.federalregister.gov/documents/full_text/text/2015/05/20/2015-12182.txt",
+        "http_status": 200,
+        "path": "documents/2015-12182/federalregister_text.txt",
+        "request_url": "https://www.federalregister.gov/documents/full_text/text/2015/05/20/2015-12182.txt",
+        "requested_at": "2026-09-09T20:55:09+00:00",
+        "sha256": "dc08a40df723129bad670a75db3296a0e316be408205db32bfd25e72e674b9a3"
+      },
+      "federal_register_citation": "80 FR 28993",
+      "fr_document": "2015-12182",
+      "metadata": {
+        "bytes": 2576,
+        "content_type": "application/json; charset=utf-8",
+        "final_url": "https://www.federalregister.gov/api/v1/documents/2015-12182.json",
+        "http_status": 200,
+        "path": "documents/2015-12182/federalregister_metadata.json",
+        "request_url": "https://www.federalregister.gov/api/v1/documents/2015-12182.json",
+        "requested_at": "2026-09-09T20:55:08+00:00",
+        "sha256": "371c9a99b5fff195f7b9e52dbbcfe152e845b0811f161ec4a0282d647aedba47"
+      },
+      "official_pdf": {
+        "bytes": 176998,
+        "content_type": "application/pdf",
+        "final_url": "https://www.govinfo.gov/content/pkg/FR-2015-05-20/pdf/2015-12182.pdf",
+        "http_status": 200,
+        "path": "documents/2015-12182/official_govinfo.pdf",
+        "request_url": "https://www.govinfo.gov/content/pkg/FR-2015-05-20/pdf/2015-12182.pdf",
+        "requested_at": "2026-09-09T20:55:09+00:00",
+        "sha256": "62f58a77dce274d377cb8c7ef3a1f214fcc531d32120c56a5e50e0616c07bd13"
+      },
+      "publication_date": "2015-05-20"
+    },
+    {
+      "asserted_values": {
+        "effective_from": "2016-07-01",
+        "factor": "0.979865",
+        "index_change": "-0.020135",
+        "interval_end": "2017-06-30",
+        "interval_start": "2016-07-01"
+      },
+      "consumer": {
+        "adapter": "oil_index",
+        "metrics": [
+          "liq_oil_pipeline_index_factor",
+          "liq_oil_pipeline_index_change"
+        ],
+        "source_table_version": "oil-index-table-2026-09-09-v1"
+      },
+      "docket": "RM93-11-000",
+      "extraction_text": {
+        "bytes": 5398,
+        "content_type": "text/plain",
+        "final_url": "https://www.federalregister.gov/documents/full_text/text/2016/05/26/2016-12423.txt",
+        "http_status": 200,
+        "path": "documents/2016-12423/federalregister_text.txt",
+        "request_url": "https://www.federalregister.gov/documents/full_text/text/2016/05/26/2016-12423.txt",
+        "requested_at": "2026-09-09T20:55:10+00:00",
+        "sha256": "67f43ae2ee0349b6f199085528fdbd7c94c072a04ec9760dce98ab41dea63fd8"
+      },
+      "federal_register_citation": "81 FR 33521",
+      "fr_document": "2016-12423",
+      "metadata": {
+        "bytes": 2597,
+        "content_type": "application/json; charset=utf-8",
+        "final_url": "https://www.federalregister.gov/api/v1/documents/2016-12423.json",
+        "http_status": 200,
+        "path": "documents/2016-12423/federalregister_metadata.json",
+        "request_url": "https://www.federalregister.gov/api/v1/documents/2016-12423.json",
+        "requested_at": "2026-09-09T20:55:09+00:00",
+        "sha256": "0c71c38d820e7593ed8ee42fd46f2734c74898b7978b657202406b0e22f9c95d"
+      },
+      "official_pdf": {
+        "bytes": 199483,
+        "content_type": "application/pdf",
+        "final_url": "https://www.govinfo.gov/content/pkg/FR-2016-05-26/pdf/2016-12423.pdf",
+        "http_status": 200,
+        "path": "documents/2016-12423/official_govinfo.pdf",
+        "request_url": "https://www.govinfo.gov/content/pkg/FR-2016-05-26/pdf/2016-12423.pdf",
+        "requested_at": "2026-09-09T20:55:10+00:00",
+        "sha256": "20be804659291765c47b3083e03768c13bc445ee9d814df31321688dc240c60b"
+      },
+      "publication_date": "2016-05-26"
+    },
+    {
+      "asserted_values": {
+        "effective_from": "2017-07-01",
+        "factor": "1.001985",
+        "index_change": "",
+        "interval_end": "2018-06-30",
+        "interval_start": "2017-07-01"
+      },
+      "consumer": {
+        "adapter": "oil_index",
+        "metrics": [
+          "liq_oil_pipeline_index_factor"
+        ],
+        "source_table_version": "oil-index-table-2026-09-09-v1"
+      },
+      "docket": "RM93-11-000",
+      "extraction_text": {
+        "bytes": 5343,
+        "content_type": "text/plain",
+        "final_url": "https://www.federalregister.gov/documents/full_text/text/2017/05/19/2017-10125.txt",
+        "http_status": 200,
+        "path": "documents/2017-10125/federalregister_text.txt",
+        "request_url": "https://www.federalregister.gov/documents/full_text/text/2017/05/19/2017-10125.txt",
+        "requested_at": "2026-09-09T20:55:11+00:00",
+        "sha256": "eacfcd3da2b5faa2f629b712ad842ac457fe19ec0184725b78776ca307de0a42"
+      },
+      "federal_register_citation": "82 FR 22995",
+      "fr_document": "2017-10125",
+      "metadata": {
+        "bytes": 2597,
+        "content_type": "application/json; charset=utf-8",
+        "final_url": "https://www.federalregister.gov/api/v1/documents/2017-10125.json",
+        "http_status": 200,
+        "path": "documents/2017-10125/federalregister_metadata.json",
+        "request_url": "https://www.federalregister.gov/api/v1/documents/2017-10125.json",
+        "requested_at": "2026-09-09T20:55:11+00:00",
+        "sha256": "41d7f2102f8cc237ede903683c6d756e5a870a2de5835223689a46d52ff20e01"
+      },
+      "official_pdf": {
+        "bytes": 212479,
+        "content_type": "application/pdf",
+        "final_url": "https://www.govinfo.gov/content/pkg/FR-2017-05-19/pdf/2017-10125.pdf",
+        "http_status": 200,
+        "path": "documents/2017-10125/official_govinfo.pdf",
+        "request_url": "https://www.govinfo.gov/content/pkg/FR-2017-05-19/pdf/2017-10125.pdf",
+        "requested_at": "2026-09-09T20:55:11+00:00",
+        "sha256": "3684d8d5548c6491fa74370b625d3a2c10af483572f66493dfe5d56aafdbfec6"
+      },
+      "publication_date": "2017-05-19"
+    },
+    {
+      "asserted_values": {
+        "effective_from": "2018-07-01",
+        "factor": "1.044087",
+        "index_change": "",
+        "interval_end": "2019-06-30",
+        "interval_start": "2018-07-01"
+      },
+      "consumer": {
+        "adapter": "oil_index",
+        "metrics": [
+          "liq_oil_pipeline_index_factor"
+        ],
+        "source_table_version": "oil-index-table-2026-09-09-v1"
+      },
+      "docket": "RM93-11-000",
+      "extraction_text": {
+        "bytes": 5348,
+        "content_type": "text/plain",
+        "final_url": "https://www.federalregister.gov/documents/full_text/text/2018/05/21/2018-10756.txt",
+        "http_status": 200,
+        "path": "documents/2018-10756/federalregister_text.txt",
+        "request_url": "https://www.federalregister.gov/documents/full_text/text/2018/05/21/2018-10756.txt",
+        "requested_at": "2026-09-09T20:55:13+00:00",
+        "sha256": "5ef9012f765e37996a3fa9b42f5273a238427282aa621fd7009e861c654910a7"
+      },
+      "federal_register_citation": "83 FR 23450",
+      "fr_document": "2018-10756",
+      "metadata": {
+        "bytes": 2598,
+        "content_type": "application/json; charset=utf-8",
+        "final_url": "https://www.federalregister.gov/api/v1/documents/2018-10756.json",
+        "http_status": 200,
+        "path": "documents/2018-10756/federalregister_metadata.json",
+        "request_url": "https://www.federalregister.gov/api/v1/documents/2018-10756.json",
+        "requested_at": "2026-09-09T20:55:12+00:00",
+        "sha256": "2b584bd7907da168c5e494a3d60cafe9e892db6e6b6b3a48661a114b50df5b46"
+      },
+      "official_pdf": {
+        "bytes": 221140,
+        "content_type": "application/pdf",
+        "final_url": "https://www.govinfo.gov/content/pkg/FR-2018-05-21/pdf/2018-10756.pdf",
+        "http_status": 200,
+        "path": "documents/2018-10756/official_govinfo.pdf",
+        "request_url": "https://www.govinfo.gov/content/pkg/FR-2018-05-21/pdf/2018-10756.pdf",
+        "requested_at": "2026-09-09T20:55:12+00:00",
+        "sha256": "f46a84df4cc3dc800d7035b513b518b0e3590b354059dd752865b93ce50acffb"
+      },
+      "publication_date": "2018-05-21"
+    },
+    {
+      "asserted_values": {
+        "effective_from": "2019-07-01",
+        "factor": "1.043108",
+        "index_change": "",
+        "interval_end": "2020-06-30",
+        "interval_start": "2019-07-01"
+      },
+      "consumer": {
+        "adapter": "oil_index",
+        "metrics": [
+          "liq_oil_pipeline_index_factor"
+        ],
+        "source_table_version": "oil-index-table-2026-09-09-v1"
+      },
+      "docket": "RM93-11-000",
+      "extraction_text": {
+        "bytes": 5321,
+        "content_type": "text/plain",
+        "final_url": "https://www.federalregister.gov/documents/full_text/text/2019/05/17/2019-10297.txt",
+        "http_status": 200,
+        "path": "documents/2019-10297/federalregister_text.txt",
+        "request_url": "https://www.federalregister.gov/documents/full_text/text/2019/05/17/2019-10297.txt",
+        "requested_at": "2026-09-09T20:55:14+00:00",
+        "sha256": "df7a0660c23d46f9bd39bff4b8d5c00d66fed6b7f9f0b213d455a2b3d4c0216e"
+      },
+      "federal_register_citation": "84 FR 22482",
+      "fr_document": "2019-10297",
+      "metadata": {
+        "bytes": 2676,
+        "content_type": "application/json; charset=utf-8",
+        "final_url": "https://www.federalregister.gov/api/v1/documents/2019-10297.json",
+        "http_status": 200,
+        "path": "documents/2019-10297/federalregister_metadata.json",
+        "request_url": "https://www.federalregister.gov/api/v1/documents/2019-10297.json",
+        "requested_at": "2026-09-09T20:55:13+00:00",
+        "sha256": "ae66895a4001a9777db6bcb66ec1ce00e79cef8699ac2c758d9a83ed819a7fc1"
+      },
+      "official_pdf": {
+        "bytes": 195426,
+        "content_type": "application/pdf",
+        "final_url": "https://www.govinfo.gov/content/pkg/FR-2019-05-17/pdf/2019-10297.pdf",
+        "http_status": 200,
+        "path": "documents/2019-10297/official_govinfo.pdf",
+        "request_url": "https://www.govinfo.gov/content/pkg/FR-2019-05-17/pdf/2019-10297.pdf",
+        "requested_at": "2026-09-09T20:55:13+00:00",
+        "sha256": "6870e86d017b7c89104d560bba2a8e7b6200c3012fb74aedfe8b4b75deb3d89f"
+      },
+      "publication_date": "2019-05-17"
+    },
+    {
+      "asserted_values": {
+        "effective_from": "2020-07-01",
+        "factor": "1.020139",
+        "index_change": "",
+        "interval_end": "2021-06-30",
+        "interval_start": "2020-07-01"
+      },
+      "consumer": {
+        "adapter": "oil_index",
+        "metrics": [
+          "liq_oil_pipeline_index_factor"
+        ],
+        "source_table_version": "oil-index-table-2026-09-09-v1"
+      },
+      "docket": "RM93-11-000",
+      "extraction_text": {
+        "bytes": 5438,
+        "content_type": "text/plain",
+        "final_url": "https://www.federalregister.gov/documents/full_text/text/2020/05/21/2020-10968.txt",
+        "http_status": 200,
+        "path": "documents/2020-10968/federalregister_text.txt",
+        "request_url": "https://www.federalregister.gov/documents/full_text/text/2020/05/21/2020-10968.txt",
+        "requested_at": "2026-09-09T20:55:15+00:00",
+        "sha256": "5868cf843d34a8dbf586e098e47561206eb7d93b07ea31a20e7299d5b2fcb202"
+      },
+      "federal_register_citation": "85 FR 30951",
+      "fr_document": "2020-10968",
+      "metadata": {
+        "bytes": 2541,
+        "content_type": "application/json; charset=utf-8",
+        "final_url": "https://www.federalregister.gov/api/v1/documents/2020-10968.json",
+        "http_status": 200,
+        "path": "documents/2020-10968/federalregister_metadata.json",
+        "request_url": "https://www.federalregister.gov/api/v1/documents/2020-10968.json",
+        "requested_at": "2026-09-09T20:55:14+00:00",
+        "sha256": "9bb4b6b0963c09a09342132f9ce1cfa903e3bb70b384c86da95b073942feef78"
+      },
+      "official_pdf": {
+        "bytes": 194358,
+        "content_type": "application/pdf",
+        "final_url": "https://www.govinfo.gov/content/pkg/FR-2020-05-21/pdf/2020-10968.pdf",
+        "http_status": 200,
+        "path": "documents/2020-10968/official_govinfo.pdf",
+        "request_url": "https://www.govinfo.gov/content/pkg/FR-2020-05-21/pdf/2020-10968.pdf",
+        "requested_at": "2026-09-09T20:55:14+00:00",
+        "sha256": "0d07078cf0e6aeff235f88c9dba6b2982c1a8f4e8a0913f50cbad46fff7ce31c"
+      },
+      "publication_date": "2020-05-21"
+    },
+    {
+      "asserted_values": {
+        "effective_from": "2021-07-01",
+        "factor": "0.994188",
+        "index_change": "",
+        "interval_end": "2022-06-30",
+        "interval_start": "2021-07-01"
+      },
+      "consumer": {
+        "adapter": "oil_index",
+        "metrics": [
+          "liq_oil_pipeline_index_factor"
+        ],
+        "source_table_version": "oil-index-table-2026-09-09-v1"
+      },
+      "docket": "RM93-11-000",
+      "extraction_text": {
+        "bytes": 5455,
+        "content_type": "text/plain",
+        "final_url": "https://www.federalregister.gov/documents/full_text/text/2021/05/24/2021-10860.txt",
+        "http_status": 200,
+        "path": "documents/2021-10860/federalregister_text.txt",
+        "request_url": "https://www.federalregister.gov/documents/full_text/text/2021/05/24/2021-10860.txt",
+        "requested_at": "2026-09-09T20:55:16+00:00",
+        "sha256": "a7ed97efa83c120538927810157810bcca7431ed884ff12775c9ade0a067402e"
+      },
+      "federal_register_citation": "86 FR 27847",
+      "fr_document": "2021-10860",
+      "metadata": {
+        "bytes": 2753,
+        "content_type": "application/json; charset=utf-8",
+        "final_url": "https://www.federalregister.gov/api/v1/documents/2021-10860.json",
+        "http_status": 200,
+        "path": "documents/2021-10860/federalregister_metadata.json",
+        "request_url": "https://www.federalregister.gov/api/v1/documents/2021-10860.json",
+        "requested_at": "2026-09-09T20:55:15+00:00",
+        "sha256": "d279e504fc65e7c5c7706dd2bd711ca4a905ed5f1385a3ef82fa59922ebef8c9"
+      },
+      "official_pdf": {
+        "bytes": 207745,
+        "content_type": "application/pdf",
+        "final_url": "https://www.govinfo.gov/content/pkg/FR-2021-05-24/pdf/2021-10860.pdf",
+        "http_status": 200,
+        "path": "documents/2021-10860/official_govinfo.pdf",
+        "request_url": "https://www.govinfo.gov/content/pkg/FR-2021-05-24/pdf/2021-10860.pdf",
+        "requested_at": "2026-09-09T20:55:16+00:00",
+        "sha256": "b5242d0862f5cf363927e9cb5a149e5794a207407e9511d1e6d4dac9b289ce37"
+      },
+      "publication_date": "2021-05-24"
+    },
+    {
+      "asserted_values": {
+        "effective_from": "2022-03-01",
+        "factor": "0.984288",
+        "index_change": "-0.015712",
+        "interval_end": "2022-06-30",
+        "interval_start": "2021-07-01"
+      },
+      "consumer": {
+        "adapter": "oil_index",
+        "metrics": [
+          "liq_oil_pipeline_index_factor",
+          "liq_oil_pipeline_index_change"
+        ],
+        "source_table_version": "oil-index-table-2026-09-09-v1"
+      },
+      "docket": "RM93-11-000",
+      "extraction_text": {
+        "bytes": 4720,
+        "content_type": "text/plain",
+        "final_url": "https://www.federalregister.gov/documents/full_text/text/2022/01/26/2022-01521.txt",
+        "http_status": 200,
+        "path": "documents/2022-01521/federalregister_text.txt",
+        "request_url": "https://www.federalregister.gov/documents/full_text/text/2022/01/26/2022-01521.txt",
+        "requested_at": "2026-09-09T20:55:17+00:00",
+        "sha256": "1119b01bad0459a623c7894013df8d78781a2633111d5332a0a8d1e6e9e4ef13"
+      },
+      "federal_register_citation": "87 FR 4008",
+      "fr_document": "2022-01521",
+      "metadata": {
+        "bytes": 2630,
+        "content_type": "application/json; charset=utf-8",
+        "final_url": "https://www.federalregister.gov/api/v1/documents/2022-01521.json",
+        "http_status": 200,
+        "path": "documents/2022-01521/federalregister_metadata.json",
+        "request_url": "https://www.federalregister.gov/api/v1/documents/2022-01521.json",
+        "requested_at": "2026-09-09T20:55:16+00:00",
+        "sha256": "824b9d794b7b043b806c5254437d25ebec93ab74814d258804cf977d22d93e6c"
+      },
+      "official_pdf": {
+        "bytes": 212052,
+        "content_type": "application/pdf",
+        "final_url": "https://www.govinfo.gov/content/pkg/FR-2022-01-26/pdf/2022-01521.pdf",
+        "http_status": 200,
+        "path": "documents/2022-01521/official_govinfo.pdf",
+        "request_url": "https://www.govinfo.gov/content/pkg/FR-2022-01-26/pdf/2022-01521.pdf",
+        "requested_at": "2026-09-09T20:55:17+00:00",
+        "sha256": "51f175c07b6921d52518c1f7048ea80e9e93ba8399904afbbfb8379570dabc50"
+      },
+      "publication_date": "2022-01-26"
+    },
+    {
+      "asserted_values": {
+        "effective_from": "2022-07-01",
+        "factor": "1.087107",
+        "index_change": "0.087107",
+        "interval_end": "2023-06-30",
+        "interval_start": "2022-07-01"
+      },
+      "consumer": {
+        "adapter": "oil_index",
+        "metrics": [
+          "liq_oil_pipeline_index_factor",
+          "liq_oil_pipeline_index_change"
+        ],
+        "source_table_version": "oil-index-table-2026-09-09-v1"
+      },
+      "docket": "RM93-11-000",
+      "extraction_text": {
+        "bytes": 5584,
+        "content_type": "text/plain",
+        "final_url": "https://www.federalregister.gov/documents/full_text/text/2022/05/23/2022-11037.txt",
+        "http_status": 200,
+        "path": "documents/2022-11037/federalregister_text.txt",
+        "request_url": "https://www.federalregister.gov/documents/full_text/text/2022/05/23/2022-11037.txt",
+        "requested_at": "2026-09-09T20:55:19+00:00",
+        "sha256": "9b63d042abd9bb0eafb451bc54d2716840382d9fb3270ec008421c31fd31bf99"
+      },
+      "federal_register_citation": "87 FR 31232",
+      "fr_document": "2022-11037",
+      "metadata": {
+        "bytes": 2752,
+        "content_type": "application/json; charset=utf-8",
+        "final_url": "https://www.federalregister.gov/api/v1/documents/2022-11037.json",
+        "http_status": 200,
+        "path": "documents/2022-11037/federalregister_metadata.json",
+        "request_url": "https://www.federalregister.gov/api/v1/documents/2022-11037.json",
+        "requested_at": "2026-09-09T20:55:18+00:00",
+        "sha256": "8694e53783993de9797e37aebf406cfdd57fc80a2d48b5e4b2127fa819315077"
+      },
+      "official_pdf": {
+        "bytes": 211754,
+        "content_type": "application/pdf",
+        "final_url": "https://www.govinfo.gov/content/pkg/FR-2022-05-23/pdf/2022-11037.pdf",
+        "http_status": 200,
+        "path": "documents/2022-11037/official_govinfo.pdf",
+        "request_url": "https://www.govinfo.gov/content/pkg/FR-2022-05-23/pdf/2022-11037.pdf",
+        "requested_at": "2026-09-09T20:55:18+00:00",
+        "sha256": "87acb14f265b6a524c2df5e8203db9386a40539a428efab073138da8669262e6"
+      },
+      "publication_date": "2022-05-23"
+    },
+    {
+      "asserted_values": {
+        "effective_from": "2023-07-01",
+        "factor": "1.133194",
+        "index_change": "0.133194",
+        "interval_end": "2024-06-30",
+        "interval_start": "2023-07-01"
+      },
+      "consumer": {
+        "adapter": "oil_index",
+        "metrics": [
+          "liq_oil_pipeline_index_factor",
+          "liq_oil_pipeline_index_change"
+        ],
+        "source_table_version": "oil-index-table-2026-09-09-v1"
+      },
+      "docket": "RM93-11-000",
+      "extraction_text": {
+        "bytes": 5531,
+        "content_type": "text/plain",
+        "final_url": "https://www.federalregister.gov/documents/full_text/text/2023/05/22/2023-10832.txt",
+        "http_status": 200,
+        "path": "documents/2023-10832/federalregister_text.txt",
+        "request_url": "https://www.federalregister.gov/documents/full_text/text/2023/05/22/2023-10832.txt",
+        "requested_at": "2026-09-09T20:55:21+00:00",
+        "sha256": "e78ac88bc79f5276e83ad370ab9ad9c4aa0116e3a3fdeffe9d966ffff974b24f"
+      },
+      "federal_register_citation": "88 FR 32765",
+      "fr_document": "2023-10832",
+      "metadata": {
+        "bytes": 2731,
+        "content_type": "application/json; charset=utf-8",
+        "final_url": "https://www.federalregister.gov/api/v1/documents/2023-10832.json",
+        "http_status": 200,
+        "path": "documents/2023-10832/federalregister_metadata.json",
+        "request_url": "https://www.federalregister.gov/api/v1/documents/2023-10832.json",
+        "requested_at": "2026-09-09T20:55:19+00:00",
+        "sha256": "b15007ffd1c28922f8ebd6abc346779386250a12427b3b6ae6cd1ad3ebbca356"
+      },
+      "official_pdf": {
+        "bytes": 195151,
+        "content_type": "application/pdf",
+        "final_url": "https://www.govinfo.gov/content/pkg/FR-2023-05-22/pdf/2023-10832.pdf",
+        "http_status": 200,
+        "path": "documents/2023-10832/official_govinfo.pdf",
+        "request_url": "https://www.govinfo.gov/content/pkg/FR-2023-05-22/pdf/2023-10832.pdf",
+        "requested_at": "2026-09-09T20:55:19+00:00",
+        "sha256": "fabb9ac94f49c5fc6a7c1c1003e491bdcfe61a5e49403dde407964eb366c9e4a"
+      },
+      "publication_date": "2023-05-22"
+    },
+    {
+      "asserted_values": {
+        "effective_from": "2024-07-01",
+        "factor": "1.012647",
+        "index_change": "",
+        "interval_end": "2025-06-30",
+        "interval_start": "2024-07-01"
+      },
+      "consumer": {
+        "adapter": "oil_index",
+        "metrics": [
+          "liq_oil_pipeline_index_factor"
+        ],
+        "source_table_version": "oil-index-table-2026-09-09-v1"
+      },
+      "docket": "RM93-11-000",
+      "extraction_text": {
+        "bytes": 5448,
+        "content_type": "text/plain",
+        "final_url": "https://www.federalregister.gov/documents/full_text/text/2024/05/21/2024-11147.txt",
+        "http_status": 200,
+        "path": "documents/2024-11147/federalregister_text.txt",
+        "request_url": "https://www.federalregister.gov/documents/full_text/text/2024/05/21/2024-11147.txt",
+        "requested_at": "2026-09-09T20:55:22+00:00",
+        "sha256": "d7f31da79cbc530bd642c7922c8b74cec6c5015ae11a042bcf638acea6680574"
+      },
+      "federal_register_citation": "89 FR 44670",
+      "fr_document": "2024-11147",
+      "metadata": {
+        "bytes": 2672,
+        "content_type": "application/json; charset=utf-8",
+        "final_url": "https://www.federalregister.gov/api/v1/documents/2024-11147.json",
+        "http_status": 200,
+        "path": "documents/2024-11147/federalregister_metadata.json",
+        "request_url": "https://www.federalregister.gov/api/v1/documents/2024-11147.json",
+        "requested_at": "2026-09-09T20:55:21+00:00",
+        "sha256": "5b9b0c01289197b2c5d12a8cf1138c5cb40ca07d1557b8ee00712b16bd77c790"
+      },
+      "official_pdf": {
+        "bytes": 194110,
+        "content_type": "application/pdf",
+        "final_url": "https://www.govinfo.gov/content/pkg/FR-2024-05-21/pdf/2024-11147.pdf",
+        "http_status": 200,
+        "path": "documents/2024-11147/official_govinfo.pdf",
+        "request_url": "https://www.govinfo.gov/content/pkg/FR-2024-05-21/pdf/2024-11147.pdf",
+        "requested_at": "2026-09-09T20:55:21+00:00",
+        "sha256": "cb9f35aff8b6341e2b0a82036ee704e58ce1c21a831fc6366fe4b3a4b7d05bab"
+      },
+      "publication_date": "2024-05-21"
+    },
+    {
+      "asserted_values": {
+        "effective_from": "2025-07-01",
+        "factor": "1.019976",
+        "index_change": "0.019976",
+        "interval_end": "2026-06-30",
+        "interval_start": "2025-07-01"
+      },
+      "consumer": {
+        "adapter": "oil_index",
+        "metrics": [
+          "liq_oil_pipeline_index_factor",
+          "liq_oil_pipeline_index_change"
+        ],
+        "source_table_version": "oil-index-table-2026-09-09-v1"
+      },
+      "docket": "RM93-11-000",
+      "extraction_text": {
+        "bytes": 5206,
+        "content_type": "text/plain",
+        "final_url": "https://www.federalregister.gov/documents/full_text/text/2025/05/22/2025-09243.txt",
+        "http_status": 200,
+        "path": "documents/2025-09243/federalregister_text.txt",
+        "request_url": "https://www.federalregister.gov/documents/full_text/text/2025/05/22/2025-09243.txt",
+        "requested_at": "2026-09-09T20:55:23+00:00",
+        "sha256": "415b412f8803732d471f3c78f0b0fc8881b24b9fd3930daa623e8beb0169440e"
+      },
+      "federal_register_citation": "90 FR 21917",
+      "fr_document": "2025-09243",
+      "metadata": {
+        "bytes": 2748,
+        "content_type": "application/json; charset=utf-8",
+        "final_url": "https://www.federalregister.gov/api/v1/documents/2025-09243.json",
+        "http_status": 200,
+        "path": "documents/2025-09243/federalregister_metadata.json",
+        "request_url": "https://www.federalregister.gov/api/v1/documents/2025-09243.json",
+        "requested_at": "2026-09-09T20:55:22+00:00",
+        "sha256": "f978ee94cd36d906f081ce4b166d7761e6795daeb7f9e9a2fac4d030ad5f8df6"
+      },
+      "official_pdf": {
+        "bytes": 196544,
+        "content_type": "application/pdf",
+        "final_url": "https://www.govinfo.gov/content/pkg/FR-2025-05-22/pdf/2025-09243.pdf",
+        "http_status": 200,
+        "path": "documents/2025-09243/official_govinfo.pdf",
+        "request_url": "https://www.govinfo.gov/content/pkg/FR-2025-05-22/pdf/2025-09243.pdf",
+        "requested_at": "2026-09-09T20:55:22+00:00",
+        "sha256": "abf152a622440675438964d4cde0d2ec8c996cbc2aaaef77371fc8536bdb4dc8"
+      },
+      "publication_date": "2025-05-22"
+    },
+    {
+      "asserted_values": {
+        "effective_from": "2026-07-01",
+        "factor": "1.014290",
+        "index_change": "0.014290",
+        "interval_end": "2027-06-30",
+        "interval_start": "2026-07-01"
+      },
+      "consumer": {
+        "adapter": "oil_index",
+        "metrics": [
+          "liq_oil_pipeline_index_factor",
+          "liq_oil_pipeline_index_change"
+        ],
+        "source_table_version": "oil-index-table-2026-09-09-v1"
+      },
+      "docket": "RM93-11-000",
+      "extraction_text": {
+        "bytes": 5028,
+        "content_type": "text/plain",
+        "final_url": "https://www.federalregister.gov/documents/full_text/text/2026/05/19/2026-09998.txt",
+        "http_status": 200,
+        "path": "documents/2026-09998/federalregister_text.txt",
+        "request_url": "https://www.federalregister.gov/documents/full_text/text/2026/05/19/2026-09998.txt",
+        "requested_at": "2026-09-09T20:55:24+00:00",
+        "sha256": "3fec076891c33ec1cae8fd2d727e86b67e82ece64318915587229f99d7cfb05e"
+      },
+      "federal_register_citation": "91 FR 29125",
+      "fr_document": "2026-09998",
+      "metadata": {
+        "bytes": 2743,
+        "content_type": "application/json; charset=utf-8",
+        "final_url": "https://www.federalregister.gov/api/v1/documents/2026-09998.json",
+        "http_status": 200,
+        "path": "documents/2026-09998/federalregister_metadata.json",
+        "request_url": "https://www.federalregister.gov/api/v1/documents/2026-09998.json",
+        "requested_at": "2026-09-09T20:55:23+00:00",
+        "sha256": "0511571fcb4944bd93dd2decaba4a5032ef3467a0c5df3e910957ddb78032775"
+      },
+      "official_pdf": {
+        "bytes": 210450,
+        "content_type": "application/pdf",
+        "final_url": "https://www.govinfo.gov/content/pkg/FR-2026-05-19/pdf/2026-09998.pdf",
+        "http_status": 200,
+        "path": "documents/2026-09998/official_govinfo.pdf",
+        "request_url": "https://www.govinfo.gov/content/pkg/FR-2026-05-19/pdf/2026-09998.pdf",
+        "requested_at": "2026-09-09T20:55:24+00:00",
+        "sha256": "21d257f173b55a41ba1ba6fddd92144f1e618df968b1594f0bac9cd9f8f12810"
+      },
+      "publication_date": "2026-05-19"
+    }
+  ],
+  "manifest_version": 1,
+  "runtime_network_required": false,
+  "supplemental_attempts": [
+    {
+      "attempted": true,
+      "bytes": 5608,
+      "classification": "host_access_blocked_by_publisher",
+      "content_type": "text/html; charset=UTF-8",
+      "explicitly_not": "This is not a FERC outage and is not evidence that the official notices are unavailable. The summary page is a non-authoritative convenience source and no value depends on it.",
+      "final_url": "https://www.ferc.gov/general-information-1/oil-pipeline-index",
+      "http_status": 403,
+      "path": "supplemental/ferc_summary_http_403.html",
+      "purpose": "Bounded diagnostic probe of FERC's convenience summary page; response body retained, transient response headers and Set-Cookie excluded.",
+      "request_url": "https://www.ferc.gov/general-information-1/oil-pipeline-index",
+      "requested_at": "2026-09-09T20:57:38+00:00",
+      "sha256": "9f295b04ebbbe30406f6b99b6a776fce00498d1595e999d2a8b0d4be9dc36e67"
+    }
+  ],
+  "source_scope": "Federal Register publication occurrences used by the FERC Oil Pipeline Index adapter; official electronic PDFs are from GPO govinfo and text renditions are from the Office of the Federal Register/GPO service."
+}

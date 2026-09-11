@@ -1,0 +1,82 @@
+[
+  {
+    "name": "Date",
+    "value": "Wed, 09 Sep 2026 16:29:03 GMT"
+  },
+  {
+    "name": "Content-Type",
+    "value": "application/octet-stream"
+  },
+  {
+    "name": "Content-Length",
+    "value": "115618"
+  },
+  {
+    "name": "Connection",
+    "value": "close"
+  },
+  {
+    "name": "Cache-Control",
+    "value": "no-cache"
+  },
+  {
+    "name": "Pragma",
+    "value": "no-cache"
+  },
+  {
+    "name": "Expires",
+    "value": "-1"
+  },
+  {
+    "name": "Access-Control-Allow-Origin",
+    "value": "https://elibrary.ferc.gov"
+  },
+  {
+    "name": "Access-Control-Allow-Credentials",
+    "value": "true"
+  },
+  {
+    "name": "Content-Disposition",
+    "value": "attachment; filename=20260401-5141_134334449434169445.zip"
+  },
+  {
+    "name": "Access-Control-Expose-Headers",
+    "value": "Content-Disposition"
+  },
+  {
+    "name": "Strict-Transport-Security",
+    "value": "max-age=31536000; includeSubDomains"
+  },
+  {
+    "name": "X-Content-Type-Options",
+    "value": "nosniff"
+  },
+  {
+    "name": "X-Frame-Options",
+    "value": "SAMEORIGIN"
+  },
+  {
+    "name": "X-XSS-Protection",
+    "value": "1; mode=block"
+  },
+  {
+    "name": "Set-Cookie",
+    "value": "TS015bc54f=018004090cc7b9dd3533b34c5f60efacfe19dc0075914eb81e265ebc442e09319596d7537aaa4a7594bf4214ecae820e5e34cad9f2; Path=/; Domain=.elibrary.ferc.gov"
+  },
+  {
+    "name": "set-cookie",
+    "value": "__cf_bm=JWHBivfxJAdSD0cZccQIs2Qs.00kVABWQNmJwhOHo5A-1788971343.3392494-1.0.1.1-tJfF7.SClpOJz.c3Z.Ix3Ke67IxxK5rCljxRXVYvuydB4.xeSOlM3cpCUl4OhEO8FBhDc.wgHcI.mBCOxahZMEfnbsCo.hh5fdro5H9sTh_3yxyK3Da.GTdBsizZEfq_; HttpOnly; SameSite=None; Secure; Path=/; Domain=ferc.gov; Expires=Wed, 09 Sep 2026 16:59:03 GMT"
+  },
+  {
+    "name": "cf-cache-status",
+    "value": "DYNAMIC"
+  },
+  {
+    "name": "Server",
+    "value": "cloudflare"
+  },
+  {
+    "name": "CF-RAY",
+    "value": "a38791cfda9d42bd-EWR"
+  }
+]

@@ -1,0 +1,24 @@
+{
+  "schema": "ferc_backend_bootstrap_v1",
+  "repository": "Nathanj-ones/ferc-intelligence",
+  "release": "backend-data-2026-09-10-v1",
+  "asset": "ferc-backend-data-2026-09-10-v1.zip",
+  "sha256": "c1e965c7b99cf23f552a73633aa758c7c3da344749815edcb4401b9fbe6e5fc8",
+  "bytes": 773149391,
+  "unpackedBytes": 2015381016,
+  "files": 3591,
+  "databaseCounts": {
+    "assets": 109,
+    "entities": 105,
+    "observations": 33282,
+    "reviewed_source_annotations": 7
+  },
+  "sourceGeneration": "0dccbd426f15372f1330737537f9aac58bc9547a2eaf81ef6f4b655f10cf2824",
+  "publicationAsset": {
+    "asset": "ferc-backend-publication-2026-09-10-v1.zip",
+    "bytes": 26053773,
+    "sha256": "3d71d10d056afed01fa5dca1fb333d402ab9733b70af6f89e3c7acb20171c629",
+    "unpackedBytes": 335428121,
+    "files": 259
+  }
+}

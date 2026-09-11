@@ -1,0 +1,131 @@
+<html>
+<head>
+<title>Federal Register, Volume 67 Issue 99 (Wednesday, May 22, 2002)</title>
+</head>
+<body><pre>
+[Federal Register Volume 67, Number 99 (Wednesday, May 22, 2002)]
+[Notices]
+[Pages 35989-35990]
+From the Federal Register Online via the Government Publishing Office [<a href="http://www.gpo.gov">www.gpo.gov</a>]
+[FR Doc No: 02-12748]
+
+
+-----------------------------------------------------------------------
+
+DEPARTMENT OF ENERGY
+
+Federal Energy Regulatory Commission
+
+[Docket No. RM93-11-000]
+
+
+Revisions to Oil Pipeline Regulations Pursuant to the Energy 
+Policy Act of 1992; Annual Change in Producer Price Index for Finished 
+Goods
+
+May 15, 2002.
+AGENCY: Federal Energy Regulatory Commission, Department of Energy.
+
+ACTION: Notice of annual change in the producer price index for 
+finished goods, minus one percent.
+
+-----------------------------------------------------------------------
+
+SUMMARY: The Commission is issuing the index that oil pipelines must 
+apply to their July 1, 2001--June 30, 2002 index ceiling levels to 
+compute their index ceiling levels for the period July 1, 2002 through 
+June 30, 2003, in accordance with 18 CFR 342.3(d). This index, which is 
+the percent change (expressed as a decimal) in the annual average 
+Producer Price Index for Finished Goods from 2000 to 2001, minus one 
+percent, is 0.009565. Oil pipelines must multiply their July 1, 2001--
+June 30, 2002 index ceiling levels by 1.009565 to compute their index 
+ceiling levels for the period July 1, 2002 through June 30, 2003.
+
+FOR FURTHER INFORMATION CONTACT: David Ulevich, Division of Tariffs and 
+Rates Central, Central Group 4, Federal Energy Regulatory Commission, 
+888 First Street, NE., Washington, DC 20426, (202) 208-0678.
+
+SUPPLEMENTARY INFORMATION: 
+
+Notice of Annual Change in the Producer Price Index for Finished Goods, 
+Minus One Percent
+
+May 15, 2002.
+    The Commission's regulations include a methodology for oil 
+pipelines to change their rates through use of an index system that 
+establishes ceiling levels for such rates. The index system as set 
+forth at 18 CFR 342.3 is based on the annual change in the Producer 
+Price Index for Finished Goods (PPI-FG), minus one percent. The 
+regulations provide that each year the Commission will publish an index 
+reflecting the final change in the PPI-FG, minus one percent, after the 
+final PPI-FG is made available by the Bureau of Labor Statistics in May 
+of each calendar year.
+    The annual average PPI-FG index figure for 2000 was 138.0 and the 
+annual average PPI-FG index figure for
+
+[[Page 35990]]
+
+2001 was 140.7.\1\ Thus, the percent change (expressed as a decimal) in 
+the annual average PPI-FG from 2000 to 2001, minus one percent, is 
+0.009565.\2\ Oil pipelines must multiply their July 1, 2001--June 30, 
+2002 index ceiling levels by 1.009565 \3\ to compute their index 
+ceiling levels for the period July 1, 2002, through June 30, 2003, in 
+accordance with 18 CFR 342.3(d). For guidance in calculating the 
+ceiling levels for each period beginning January 1, 1995,\4\ see 
+Explorer Pipeline Company, 71 FERC 61,416 at n.6 (1995).
+---------------------------------------------------------------------------
+
+    \1\ The final figure for the annual average PPI-FG is published 
+by the Bureau of Labor Statistics in mid-May of each year. This 
+figure is publicly available from the Division of Industrial Prices 
+and Price Indexes of the Bureau of Labor Statistics, at (202) 691-
+7705, and is available in print in August in Table 1 of the annual 
+data supplement to the BLS publication Producer Price Indexes. The 
+PPI data are also available via the Internet. The Internet address 
+is [<a href="http://www.bls.gov/ppi">http://www.bls.gov/ppi</a>]. To obtain the BLS data, click on Get 
+Detailed Statistics, then click on Commodity Data under the Create 
+Customized Tables (one screen) heading. At step 1, scroll all the 
+way to the bottom and choose SOP. At step 2, scroll and choose 
+SOP3000. At step 3, check the Not Seasonally Adjusted box and then 
+click on Get Data at step 4.
+    \2\ [140.7-138.0]/138.0 = 0.019565-.01 = 0.009565.
+    \3\ 1 + 0.009565 = 1.009565.
+    \4\ For a listing of all prior multipliers issued by the 
+Commission, see the Commission's website, <a href="http://www.ferc.gov">www.ferc.gov</a>. The table of 
+multipliers can be found under the headings ``Oil'' and ``Index''.
+---------------------------------------------------------------------------
+
+Document Availability
+
+    In addition to publishing the full text of this document in the 
+Federal Register, the Commission also provides all interested persons 
+an opportunity to inspect or copy the contents of this document during 
+normal business hours in the Public Reference Room at 888 First Street, 
+NE, Room 2A, Washington, DC 20426.
+    The Commission Issuance Posting System (CIPS) provides access to 
+the texts of formal documents issued by the Commission from November 
+14, 1994, to the present. CIPS can be accessed via Internet through 
+FERC's Home Page (<a href="http://www.ferc.gov">http://www.ferc.gov</a>) on CIPS in ASCII and WordPerfect 
+6.1. User assistance is available at 202-208-2222 or by E-mail to 
+<a href="/cdn-cgi/l/email-protection#32515b42411c5f534146574072545740511c555d44"><span class="__cf_email__" data-cfemail="dab9b3aaa9f4b7bba9aebfa89abcbfa8b9f4bdb5ac">[email&#160;protected]</span></a>.
+    This document is also available through the Commission's Records 
+and Information Management System (RIMS), an electronic storage and 
+retrieval system of documents submitted to and issued by the Commission 
+after November 16, 1981. Documents from November 1995 to the present 
+can be viewed and printed. RIMS is available in the Public Reference 
+Room or remotely via Internet through FERC's Home Page using the RIMS 
+link or the Energy Information online icon. User assistance is 
+available at 202-208-2222, or by E-mail to <a href="/cdn-cgi/l/email-protection#dba9b2b6a8b6baa8afbea99bbdbea9b8f5bcb4ad"><span class="__cf_email__" data-cfemail="89fbe0e4fae4e8fafdecfbc9efecfbeaa7eee6ff">[email&#160;protected]</span></a>.
+    Finally, the complete text on diskette in WordPerfect format may be 
+purchased from the Commission's copy contract; American Electronic 
+Imaging Company, Inc. American Electronic Imaging Company, Inc., is 
+located at 888 First Street, NE., Suite 2A-16, Washington, DC 20426.
+
+Magalie R. Salas
+Secretary
+[FR Doc. 02-12748 Filed 5-21-02; 8:45 am]
+BILLING CODE 6717-01-P
+
+
+</pre><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

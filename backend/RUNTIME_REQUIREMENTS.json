@@ -1,0 +1,287 @@
+{
+  "schema_version": "1.0.0",
+  "component": "FERC operating-assets pipeline",
+  "scope": {
+    "source_globs": [
+      "*.py",
+      "ferclib/**/*.py",
+      "adapters/**/*.py",
+      "migrations/**/*.py",
+      "tools/**/*.py",
+      "tools/**/*.swift",
+      "implementation/**/*.py",
+      "acceptance/**/*.py",
+      "tests/**/*.py"
+    ],
+    "excluded_from_static_import_inventory": [
+      "evidence/**",
+      "implementation_logs/**",
+      "inputs/**",
+      "source_cache/**",
+      "staging/**",
+      "work/**",
+      "**/__pycache__/**"
+    ],
+    "exclusion_reason": "Frozen evidence, prior execution logs, captured inputs, caches and generated databases are not the candidate runtime. The executable production, migration, acceptance and test code is included."
+  },
+  "python": {
+    "implementation": "CPython",
+    "minimum_version": "3.9.0",
+    "maximum_version_exclusive": "3.15.0",
+    "tested_runtimes": [
+      {
+        "executable": "/usr/bin/python3",
+        "python_version": "3.9.6",
+        "sqlite_version": "3.43.2",
+        "tls_library": "LibreSSL 2.8.3",
+        "platform": "macOS arm64"
+      },
+      {
+        "executable": "/opt/homebrew/bin/python3.14",
+        "python_version": "3.14.7",
+        "sqlite_version": "3.53.4",
+        "tls_library": "OpenSSL 3.6.3 9 Jun 2026",
+        "platform": "macOS arm64"
+      }
+    ],
+    "third_party_packages": [],
+    "dependency_install_command": null,
+    "permitted_dynamic_import_prefixes": [
+      "acceptance.",
+      "adapters."
+    ],
+    "stdlib_modules_imported": [
+      "argparse",
+      "ast",
+      "base64",
+      "codecs",
+      "collections",
+      "contextlib",
+      "copy",
+      "csv",
+      "dataclasses",
+      "datetime",
+      "decimal",
+      "fcntl",
+      "hashlib",
+      "importlib",
+      "inspect",
+      "io",
+      "itertools",
+      "json",
+      "os",
+      "pathlib",
+      "re",
+      "shlex",
+      "shutil",
+      "socket",
+      "sqlite3",
+      "ssl",
+      "stat",
+      "statistics",
+      "struct",
+      "subprocess",
+      "sys",
+      "tempfile",
+      "textwrap",
+      "threading",
+      "time",
+      "tokenize",
+      "traceback",
+      "types",
+      "typing",
+      "unittest",
+      "urllib",
+      "uuid",
+      "warnings",
+      "xml",
+      "zipfile",
+      "zlib"
+    ],
+    "platform_limitations": [
+      {
+        "capability": "tools/import_official_recovery.py and implementation/import_bounded_elibrary_search_capture.py",
+        "requirement": "POSIX fcntl advisory locking",
+        "impact": "The two one-time captured-input importers are not supported unchanged on Windows. Core collection, replay, validation and export do not import fcntl."
+      },
+      {
+        "capability": "image-only capacity extraction",
+        "requirement": "macOS Vision framework exposed through /usr/bin/swift plus Poppler pdftoppm",
+        "impact": "A full replay that encounters the two reviewed image-only capacity PDFs requires macOS Vision and Swift. Text-layer adapters remain portable across the declared CPython runtimes."
+      }
+    ]
+  },
+  "sqlite": {
+    "minimum_library_version": "3.24.0",
+    "minimum_reason": "ferclib.staging uses INSERT ... ON CONFLICT ... DO UPDATE (SQLite UPSERT, introduced in 3.24.0).",
+    "required_capabilities": [
+      "foreign key enforcement",
+      "WAL journal mode for file-backed staging databases",
+      "BEGIN IMMEDIATE transactions",
+      "URI read-only connections",
+      "UPSERT"
+    ],
+    "external_sqlite3_cli_required": false,
+    "binding": "Python stdlib sqlite3 module"
+  },
+  "external_executables": [
+    {
+      "name": "CPython interpreter",
+      "required_for": "all commands",
+      "mandatory": true,
+      "invocation_policy": "Entry points use /usr/bin/env python3; child Python processes use sys.executable. Replay normalizes python and python3 steps to sys.executable.",
+      "host_observation": "Both /usr/bin/python3 3.9.6 and /opt/homebrew/bin/python3.14 3.14.7 were available for compatibility tests."
+    },
+    {
+      "name": "pdftoppm",
+      "required_for": "image-only capacity extraction and the fail-closed A17 gate in the declared full replay and release acceptance suite",
+      "mandatory": true,
+      "mandatory_for_full_release_acceptance": true,
+      "invoked_by_candidate_code": true,
+      "source_literals": [
+        "adapters/capacity.py",
+        "ferclib/image_ocr.py",
+        "implementation/build_final_release_records.py",
+        "implementation/run_build_b_acceptance.py",
+        "tests/test_reviewed_image_gate_codex.py",
+        "tools/verify_reviewed_image_sources.py"
+      ],
+      "host_observation": "/opt/homebrew/bin/pdftoppm 26.08.0 was available.",
+      "limitation": "The exact page render is both hash-verified acceptance evidence and the input to local macOS Vision OCR."
+    },
+    {
+      "name": "Swift + macOS Vision",
+      "required_for": "pixel-to-text extraction of reviewed image-only capacity PDFs",
+      "mandatory": true,
+      "mandatory_for_full_release_acceptance": true,
+      "invoked_by_candidate_code": true,
+      "source_literals": [
+        "adapters/capacity.py",
+        "ferclib/image_ocr.py",
+        "implementation/run_build_b_acceptance.py",
+        "tools/vision_ocr.swift",
+        "tools/verify_reviewed_image_sources.py",
+        "tests/test_reviewed_image_gate_codex.py"
+      ],
+      "host_observation": "/usr/bin/swift and the macOS Vision framework successfully recovered both A17 page populations; tesseract was not installed or used.",
+      "limitation": "OCR output is never accepted by itself. The ordinary capacity selector must recover the subject/value/unit/qualifier/caveat signature and exactly match the independent source-hash-bound manual review; disagreement publishes nothing."
+    },
+    {
+      "name": "zip/unzip CLI",
+      "required_for": "none",
+      "mandatory": false,
+      "invoked_by_candidate_code": false,
+      "host_observation": "Not tested because archive read/write uses Python zipfile."
+    },
+    {
+      "name": "sqlite3 CLI",
+      "required_for": "none",
+      "mandatory": false,
+      "invoked_by_candidate_code": false,
+      "host_observation": "/usr/bin/sqlite3 3.43.2 was available, but application commands use Python sqlite3."
+    }
+  ],
+  "subprocess_policy": {
+    "callers": [
+      "acceptance/test_a13_release_contract.py",
+      "acceptance/test_a21_release_identity.py",
+      "build_release.py",
+      "ferclib/image_ocr.py",
+      "implementation/materialize_declared_cache.py",
+      "implementation/run_build_b_acceptance.py",
+      "run.py",
+      "run_regressions.py",
+      "tests/test_acceptance_suite_bridge_codex.py",
+      "tests/test_abrupt_recovery_codex.py",
+      "tests/test_build_test_run_manifest_codex.py",
+      "tests/test_retrieval_failure_atomicity_codex.py",
+      "tools/verify_reviewed_image_sources.py"
+    ],
+    "permitted_children": [
+      "the current CPython interpreter for replay, test and packaging subprocesses",
+      "pdftoppm inside ferclib/image_ocr.py and tools/verify_reviewed_image_sources.py with shell=False and bounded render arguments",
+      "/usr/bin/swift executing only the shipped tools/vision_ocr.swift source against a temporary rendered page, with shell=False and a credential-free environment"
+    ],
+    "shell_execution_permitted": false,
+    "run_plan_program_tokens": [
+      "run.py",
+      "python",
+      "python3"
+    ],
+    "note": "run.py executes run.py steps in-process and rewrites python/python3 to sys.executable. The declared run plan must not name an arbitrary executable."
+  },
+  "capabilities": [
+    {
+      "name": "offline replay/build/validation/export",
+      "status": "mandatory",
+      "requirements": [
+        "CPython and its declared standard library modules",
+        "Python sqlite3 linked to SQLite >=3.24.0",
+        "read access to frozen inputs and source cache",
+        "write access and atomic rename within the output filesystem"
+      ],
+      "network": false,
+      "credential": false
+    },
+    {
+      "name": "live official-FERC retrieval",
+      "status": "optional for an offline release replay; required for refresh",
+      "requirements": [
+        "outbound HTTPS with working certificate trust",
+        "urllib.request",
+        "FERC_API_KEY only for Data.FERC API requests"
+      ],
+      "network": true,
+      "credential": "FERC_API_KEY for Data.FERC; eLibrary/eCollection retrieval paths do not require that credential"
+    },
+    {
+      "name": "archive packaging",
+      "status": "mandatory when cutting a release",
+      "requirements": [
+        "Python zipfile and zlib",
+        "sufficient local disk for the archive and clean extraction"
+      ],
+      "network": false,
+      "credential": false
+    },
+    {
+      "name": "reviewed page-image replay",
+      "status": "mandatory release gate; supported from actual page pixels with independent review cross-check",
+      "requirements": [
+        "the hash-matched reviewed transcription bundled with the release",
+        "pdftoppm to reproduce the two pinned page-1 render identities",
+        "/usr/bin/swift with the local macOS Vision framework",
+        "the shipped tools/vision_ocr.swift source"
+      ],
+      "network": false,
+      "credential": false
+    },
+    {
+      "name": "fresh page rendering or OCR",
+      "status": "supported but review-gated",
+      "requirements": [
+        "pdftoppm plus macOS Vision OCR",
+        "an independent hash-bound review before OCR-derived values can be published"
+      ],
+      "network": false,
+      "credential": false
+    }
+  ],
+  "non_requirements": [
+    "pip",
+    "requests",
+    "lxml",
+    "pandas",
+    "numpy",
+    "openpyxl",
+    "Pillow",
+    "tesseract",
+    "an external zip utility",
+    "an external sqlite3 utility"
+  ],
+  "verification": {
+    "test_file": "tests/test_runtime_requirements_codex.py",
+    "method": "AST import and subprocess inventory, command-token checks, source compilation, and live SQLite capability probes",
+    "network_used": false
+  }
+}

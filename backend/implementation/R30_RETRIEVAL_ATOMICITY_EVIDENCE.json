@@ -1,0 +1,38 @@
+{
+  "schema": "ferc-repair-discovery-evidence-v1",
+  "finding_id": "R30-RETRIEVAL-UNIT-PARTIAL-ROW-LEAKAGE",
+  "relationship_to_audit": "related defect discovered while repairing R28/R29",
+  "state": "pre-repair disposable production-path reproduction",
+  "reproduced_at_local": "2026-09-10T00:30:00+01:00",
+  "command_summary": "FERC_OFFLINE=1 python3.14 -B run.py backfill --adapter lng --offline --as-of 2026-09-07 --built-at 2026-09-09T18:02:08+00:00 --year-from 2000 --year-to 2026, with every state/cache/config path redirected to /private/tmp/ferc_lng_assoc_probe_20260910_root or the frozen candidate cache",
+  "trigger": "The cache captured the declared 2024-2026 request shapes, while the diagnostic deliberately requested 2000-2026; all seven LNG units reached the real incomplete-retrieval gate.",
+  "observed_result": {
+    "adapter_units_failed": 7,
+    "database_bytes": 602112,
+    "database_sha256": "beba73a1d8429b8b937743e0c5a45ab79122c7667d1021fb630d7a285618715c",
+    "task_ledger_bytes": 6385,
+    "task_ledger_sha256": "a405cd9fe9d1f5fb6fdb7b5e9e9aa18fb48fcabba131c5ceb12dfa8b57e92b29",
+    "table_counts": {
+      "filings": 52,
+      "documents": 53,
+      "observations": 0,
+      "run_input_inventory": 61,
+      "unit_commits": 0
+    },
+    "run_unit_status_states": {
+      "in_progress": 7,
+      "failed": 7
+    }
+  },
+  "independent_interpretation": "Retrieval helpers committed partial raw evidence and purported complete input rows before the unit completeness decision. Canonical observations and unit markers correctly remained absent, so the database mixed a rejected refresh prefix with failed unit state.",
+  "implemented_boundary": "Retrieval-time database writes, the complete input inventory, expected rows, canonical swap, dependency invalidation and unit marker now share one outer transaction with nested savepoints. Failed prefixes and their incomplete inventory roll back; exact child failure detail is re-emitted as durable status-only evidence. Successful and unchanged inventories remain append-only. Cache bytes are immutable external inputs and may survive for retry.",
+  "acceptance_evidence": [
+    "run.py:_retrieve_and_commit_unit",
+    "ferclib/staging.py:StagingDB.transaction",
+    "tests/test_retrieval_failure_atomicity_codex.py",
+    "tests/test_abrupt_recovery_codex.py",
+    "hash-bound CPython 3.14 and 3.9 complete-suite logs",
+    "Build A and clean offline Build B publication receipts"
+  ],
+  "limitations": "This is implementation-owner reproduction evidence, not a new independent audit. The disposable pre-repair database is excluded from the payload."
+}

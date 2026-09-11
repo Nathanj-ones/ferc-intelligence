@@ -1,0 +1,89 @@
+<html>
+<head>
+<title>Federal Register, Volume 87 Issue 17 (Wednesday, January 26, 2022)</title>
+</head>
+<body><pre>
+[Federal Register Volume 87, Number 17 (Wednesday, January 26, 2022)]
+[Notices]
+[Page 4008]
+From the Federal Register Online via the Government Publishing Office [<a href="http://www.gpo.gov">www.gpo.gov</a>]
+[FR Doc No: 2022-01521]
+
+
+=======================================================================
+-----------------------------------------------------------------------
+
+DEPARTMENT OF ENERGY
+
+Federal Energy Regulatory Commission
+
+[Docket No. RM93-11-000]
+
+
+Revisions to Oil Pipeline Regulations Pursuant to the Energy 
+Policy Act of 1992; Notice of Change in Oil Pipeline Index Figure
+
+    On January 20, 2022, the Commission determined that the appropriate 
+oil pricing index factor for pipelines to use for the current five-year 
+period is Producer Price Index for Finished Goods minus point two one 
+percent (PPI-FG-0.21%).\1\
+---------------------------------------------------------------------------
+
+    \1\ Five-Year Review of the Oil Pipeline Index, 178 FERC ] 
+61,023, at P 105 (2022) (Order on Rehearing).
+---------------------------------------------------------------------------
+
+    In accordance with the Order on Rehearing, oil pipelines must 
+multiply their July 1, 2020 through June 30, 2021 index ceiling levels 
+by positive 0.984288 to recompute their July 1, 2021 through June 30, 
+2022 index ceiling levels, to be effective March 1, 2022. The index 
+figure published by the Commission reflects the final change in the 
+PPI-FG published by the Bureau of Labor Statistics. The annual average 
+PPI-FG index figures were 205.7 for 2019 and 202.9 for 2020.\2\ Thus, 
+the percent change (expressed as a decimal) in the annual average PPI-
+FG from 2019 to 2020, minus 0.21%, is negative 0.015712.\3\ 
+Accordingly, the index multiplier is 0.984288.\4\
+---------------------------------------------------------------------------
+
+    \2\ Bureau of Labor Statistics (BLS) publishes the final figure 
+in mid-May of each year. This figure is publicly available from the 
+Division of Industrial Prices and Price Indexes of the BLS, at 202-
+691-7705, and in print in August in Table 1 of the annual data 
+supplement to the BLS publication Producer Price Indexes via the 
+internet at <a href="http://www.bls.gov/ppi/home.htm">http://www.bls.gov/ppi/home.htm</a>. To obtain the BLS data, 
+scroll down to ``PPI Databases'' and click on ``Top Picks'' of the 
+Commodity Data including ``headline'' FD-ID indexes (Producer Price 
+Index--PPI). At the next screen, under the heading ``PPI Commodity 
+Data,'' select the box, ``Finished goods--WPUFD49207,'' then scroll 
+to the bottom of this screen and click on Retrieve data.
+    \3\ [202.9-205.7]/205.7 = (-0.013612)--0.0021 = (-0.015712).
+    \4\ 1-0.015712 = 0.984288.
+---------------------------------------------------------------------------
+
+    In addition to publishing the full text of this Notice in the 
+Federal Register, the Commission provides all interested persons an 
+opportunity to view and/or print this Notice via the internet through 
+FERC's Home Page (<a href="http://www.ferc.gov">http://www.ferc.gov</a>) using the eLibrary link. To 
+access this document in eLibrary, type the docket number excluding the 
+last three digits of this document in the docket number field and 
+follow other directions on the search page. At this time, the 
+Commission has suspended access to the Commission's Public Reference 
+Room due to the proclamation declaring a National Emergency concerning 
+the Novel Coronavirus Disease (COVID-19) issued by the President on 
+March 13, 2020.
+    User assistance is available for eLibrary and other aspects of 
+FERC's website during normal business hours. For assistance, please 
+contact the Commission's Online Support at 1-866-208-3676 (toll free) 
+or 202-502-6652 (email at <a href="/cdn-cgi/l/email-protection#1e585b4c5d51707277707b4d6b6e6e716c6a5e787b6c7d30797168"><span class="__cf_email__" data-cfemail="65232037262a0b090c0b00361015150a171125030017064b020a13">[email&#160;protected]</span></a>), or the Public 
+Reference Room at 202-502-8371, TTY 202-502-8659. E-Mail the Public 
+Reference Room at <a href="/cdn-cgi/l/email-protection#04747166686d672a7661626176616a6761766b6b6944626176672a636b72"><span class="__cf_email__" data-cfemail="8dfdf8efe1e4eea3ffe8ebe8ffe8e3eee8ffe2e2e0cdebe8ffeea3eae2fb">[email&#160;protected]</span></a>.
+
+    Dated: January 20, 2022.
+Kimberly D. Bose,
+Secretary.
+[FR Doc. 2022-01521 Filed 1-25-22; 8:45 am]
+BILLING CODE 6717-01-P
+
+
+</pre><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

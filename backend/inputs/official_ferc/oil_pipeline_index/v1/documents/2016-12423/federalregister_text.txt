@@ -1,0 +1,102 @@
+<html>
+<head>
+<title>Federal Register, Volume 81 Issue 102 (Thursday, May 26, 2016)</title>
+</head>
+<body><pre>
+[Federal Register Volume 81, Number 102 (Thursday, May 26, 2016)]
+[Notices]
+[Pages 33521-33522]
+From the Federal Register Online via the Government Publishing Office [<a href="http://www.gpo.gov">www.gpo.gov</a>]
+[FR Doc No: 2016-12423]
+
+
+-----------------------------------------------------------------------
+
+DEPARTMENT OF ENERGY
+
+Federal Energy Regulatory Commission
+
+[Docket No. RM93-11-000]
+
+
+Revisions to Oil Pipeline Regulations Pursuant to the Energy 
+Policy Act of 1992; Notice of Annual Change in the Producer Price Index 
+for Finished Goods
+
+    The Commission's regulations include a methodology for oil 
+pipelines to change their rates through use of an index system that 
+establishes ceiling levels for such rates. The Commission bases the 
+index system, found at 18 CFR 342.3, on the annual change in the 
+Producer Price Index for Finished Goods (PPI-FG), plus one point two 
+three percent (PPI-FG + 1.23). The Commission determined in an Order 
+Establishing Index Level,\1\ issued December 17, 2015, that PPI-FG + 
+1.23 is the appropriate oil pricing index factor for pipelines to use 
+for the five-year period commencing July 1, 2016.
+---------------------------------------------------------------------------
+
+    \1\ 153 FERC ] 61,312 at P 52 (2015).
+---------------------------------------------------------------------------
+
+    The regulations provide that the Commission will publish annually, 
+an index figure reflecting the final change in the PPI-FG, after the 
+Bureau of Labor Statistics publishes the final PPI-FG in May of each 
+calendar year. The annual average PPI-FG index figures were 200.4 for 
+2014 and 193.9 for 2015.\2\ Thus, the percent change (expressed as a 
+decimal) in the annual average PPI-FG from 2014 to 2015, plus 1.23 
+percent, is negative 0.020135.\3\ Oil pipelines must multiply their 
+July 1, 2015, through June 30, 2016, index ceiling levels by positive 
+0.979865 \4\ to compute their index ceiling levels for July 1, 2016, 
+through June 30, 2017, in accordance with 18 CFR 342.3(d). For guidance 
+in calculating the ceiling levels for each 12-month period beginning 
+January 1, l995,\5\ see Explorer Pipeline Company, 71 FERC ] 61,416 at 
+n.6 (1995).
+---------------------------------------------------------------------------
+
+    \2\ Bureau of Labor Statistics (BLS) publishes the final figure 
+in mid-May of each year. This figure is publicly available from the 
+Division of Industrial Prices and Price Indexes of the BLS, at 202-
+691-7705, and in print in August in Table 1 of the annual data 
+supplement to the BLS publication Producer Price Indexes via the 
+Internet at <a href="http://www.bls.gov/ppi/home.htm">http://www.bls.gov/ppi/home.htm</a>. To obtain the BLS data, 
+scroll down to ``PPI Databases'' and click on ``Top Picks'' of the 
+Commodity Data including ``headline'' FD-ID indexes (Producer Price 
+Index--PPI). At the next screen, under the heading ``Producer Price 
+Index Commodity Data,'' select the box, ``Finished goods--
+WPUFD49207,'' then scroll to the bottom of this screen and click on 
+Retrieve data.
+    \3\ [193.9 - 200.4]/200.4 =-0.032435 + 0.0123 = -0.020135.
+    \4\ 1-0.020135 = 0.979865.
+    \5\ For a listing of all prior multipliers issued by the 
+Commission, see the Commission's Web site, <a href="http://www.ferc.gov/industries/oil/gen-info/pipeline-index.asp">http://www.ferc.gov/industries/oil/gen-info/pipeline-index.asp</a>.
+---------------------------------------------------------------------------
+
+    In addition to publishing the full text of this Notice in the 
+Federal Register, the Commission provides all interested persons an 
+opportunity to view and/or print this Notice via the Internet through 
+FERC's Home Page (<a href="http://www.ferc.gov">http://www.ferc.gov</a>) and in FERC's Public Reference 
+Room during normal business hours (8:30 a.m. to 5:00 p.m. Eastern time) 
+at 888 First Street NE., Room 2A, Washington, DC 20426. The full text 
+of this Notice is available on FERC's Home Page at the eLibrary link. 
+To access this document in eLibrary, type the docket number excluding 
+the last three digits of this document in the docket number field and 
+follow other directions on the search page.
+    User assistance is available for eLibrary and other aspects of 
+FERC's
+
+[[Page 33522]]
+
+Web site during normal business hours. For assistance, please contact 
+the Commission's Online Support at 1-866-208-3676 (toll free) or 202-
+502-6652 (email at <a href="/cdn-cgi/l/email-protection#5f191a0d1c10313336313a0c2a2f2f302d2b1f393a2d3c71383029"><span class="__cf_email__" data-cfemail="1e585b4c5d51707277707b4d6b6e6e716c6a5e787b6c7d30797168">[email&#160;protected]</span></a>), or the Public Reference 
+Room at 202-502-8371, TTY 202-502-8659. E-Mail the Public Reference 
+Room at <a href="/cdn-cgi/l/email-protection#9fefeafdf3f6fcb1edfaf9faedfaf1fcfaedf0f0f2dff9faedfcb1f8f0e9"><span class="__cf_email__" data-cfemail="334346515f5a501d4156555641565d5056415c5c5e73555641501d545c45">[email&#160;protected]</span></a>.
+
+    Dated: May 19, 2016.
+Kimberly D. Bose,
+Secretary.
+[FR Doc. 2016-12423 Filed 5-25-16; 8:45 am]
+ BILLING CODE 6717-01-P
+
+
+</pre><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

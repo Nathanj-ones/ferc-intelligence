@@ -1,0 +1,50 @@
+{
+  "files": {
+    "FINAL_ADDITIONAL_INPUTS_DISCOVERED.csv": {
+      "bytes": 29596,
+      "sha256": "568d69617868229585de09bdc3a57f96185b4ebad55339ade7d9e5c5796381a3"
+    },
+    "FINAL_ADDITIONAL_INPUTS_DISCOVERED.json": {
+      "bytes": 41003,
+      "sha256": "3745fe78a74bd2a2a3ca95c77a4f15c6e4aed3ae56370335b9e8503b7a89582e"
+    },
+    "FINAL_EXCEPTION_DISPOSITIONS_34.csv": {
+      "bytes": 216959,
+      "sha256": "72708241ba5d0f74fa4f16c0b2a9f496a8ffe8a4a09d6daf9db1b1eff21dfb7a"
+    },
+    "FINAL_EXCEPTION_DISPOSITIONS_34.json": {
+      "bytes": 281835,
+      "sha256": "64bd29de32384bb128b84e1a137c692fa2611adb6e6365367c9d3666a3125cb3"
+    },
+    "FINAL_INPUT_INVENTORY_13.csv": {
+      "bytes": 83792,
+      "sha256": "6cce6b72d8cbbf92fa604f5011d0dd1770ecb32458b8bddfe181624ce4b03364"
+    },
+    "FINAL_INPUT_INVENTORY_13.json": {
+      "bytes": 112574,
+      "sha256": "93e3d0ef4af3726ea2e45be408d22a18d269259e74e35fa28bc47c69cac20c26"
+    },
+    "FINAL_REPAIR_LEDGER.csv": {
+      "bytes": 616270,
+      "sha256": "aaa3d15ca069c9e8dea2366b1e0fcb1e8eb662a3633f0d86c54dbc16531a90f6"
+    },
+    "FINAL_REPAIR_LEDGER.json": {
+      "bytes": 820331,
+      "sha256": "aaf962dd304df0e1cceafc2d68ad563b6c93413640060e87f85dca7da5ad2696"
+    },
+    "FINAL_TEST_EVIDENCE_INDEX.json": {
+      "bytes": 369877,
+      "sha256": "f67b868110597b68c45a9dc73eca015c6bb87d69afb7e5893c66e6a94da69040"
+    },
+    "INTEGRATED_REPAIR_REPORT.md": {
+      "bytes": 5386,
+      "sha256": "6a4942471b1ac56083f00413ae42607ce157fcbeb495c389f2a0975be53ddff6"
+    }
+  },
+  "generated_at": "2026-09-09T18:02:08+00:00",
+  "generation_id": "6ab6a2b2e86a46af3472aefb4cef6388bf6deaacb5a27046b917fc3cb79cd226",
+  "generation_path": ".final_records/6ab6a2b2e86a46af3472aefb4cef6388bf6deaacb5a27046b917fc3cb79cd226",
+  "kind": "final_implementation_records",
+  "schema": "ferc-final-records-receipt-v1",
+  "status": "published"
+}

@@ -1,0 +1,15 @@
+{
+  "accession": "20260226-5162",
+  "attempt_started_utc": "2026-09-09T21:43:10.456491+00:00",
+  "credentials_or_cookies_sent": false,
+  "outcome": "attempt_started; see immutable result ledger",
+  "request": {
+    "body_bytes": 150,
+    "body_sha256": "5cbdf764071370d4d42599158922ca683665d0b29b31a39290cb0e15a2e5bf3b",
+    "method": "POST",
+    "url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/DownloadP8File"
+  },
+  "request_kind": "attachment",
+  "retry_policy": "one attempt only; no redirect and no retry",
+  "schema": "official_ferc_http_attempt_v1"
+}

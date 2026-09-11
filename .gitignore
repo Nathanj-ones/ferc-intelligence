@@ -29,6 +29,7 @@ yarn-error.log*
 
 # local environment
 .env*
+!.env.example
 
 # deployment and generated files
 .vercel
@@ -38,3 +39,15 @@ next-env.d.ts
 /outputs/
 /work/
 /.ferc-local/
+/.sites-runtime/
+__pycache__/
+*.py[cod]
+.venv/
+/backend/staging/
+/backend/source_cache/
+/backend/exports/
+/backend/.generations/
+/backend/verification/
+/backend/work/
+/backend/task_ledger.json
+/backend/publication_receipt.json

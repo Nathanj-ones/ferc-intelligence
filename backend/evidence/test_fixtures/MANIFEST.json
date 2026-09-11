@@ -1,0 +1,15 @@
+{
+  "schema": "ferc-acceptance-fixture-manifest-v1",
+  "hash_algorithm": "sha256",
+  "path_policy": "release-relative regular files only; symlinks forbidden",
+  "files": {
+    "README.md": {"bytes":1852,"sha256":"048573e7e79b16b097c33dae79bf0c6a5bc4d7d5b59753ecbc60db032889974e"},
+    "form549d_historical_semantic_exceptions.json": {"bytes":3198,"sha256":"de83f01f0e6df3bac734ef3de1f5e21efddc34fbb272d5fcc4ff4df10cf7c981"},
+    "historical_document_regressions.json": {"bytes":10094,"sha256":"c36754abaf634a3522dce6d251a18659046bbfe7b367b550e7d0444605b98864"},
+    "historical_ioc_identity.json": {"bytes":1113,"sha256":"a948b1fee086c5eca40af5d3a88ed4bb0266c4fff8d3583007d16919c58cd88b"},
+    "historical_release_identity.json": {"bytes":1500,"sha256":"389fd0b8c5341ac3e8556cda54248e87c835dfbf642d586842c32436c85684f0"},
+    "pre_repair_schema.json": {"bytes":2680,"sha256":"8141ba2c21396d3abf8fa3f1646e09bf359cb881a8ae5295aaf235eb4e404572"},
+    "reviewed_image_sources.json": {"bytes":2448,"sha256":"278c32b6a1ad5590d9b13dc26cfbe0ac4c217d8588fb0861a405d3a884edc4e9"},
+    "runtime_seed_observation.json": {"bytes":2100,"sha256":"01c1eeaa89ee173e0dd066158a93732c60f441d233431be95cc136e87feb000f"}
+  }
+}

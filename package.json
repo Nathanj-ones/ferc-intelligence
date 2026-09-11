@@ -8,11 +8,16 @@
   "scripts": {
     "dev": "vinext dev",
     "dev:live": "FERC_LOCAL_REFRESH=1 vinext dev --host 127.0.0.1 --port 5173",
+    "setup:backend": "node scripts/backend.mjs setup",
+    "backend": "node scripts/backend.mjs run",
+    "backend:check": "node scripts/backend.mjs check",
+    "backend:verify": "node scripts/backend.mjs verify",
+    "backend:test": "node scripts/backend.mjs test",
     "sync:ferc": "node scripts/sync-ferc-backend.mjs",
     "prebuild": "node scripts/check-backend-snapshot.mjs",
     "build": "vinext build",
     "start": "wrangler dev --config dist/server/wrangler.json",
-    "test": "node scripts/check-contracts.mjs && node scripts/check-backend-snapshot.mjs && node scripts/check-audit-regressions.mjs && node --test scripts/check-local-refresh.mjs",
+    "test": "node scripts/check-contracts.mjs && node scripts/check-backend-snapshot.mjs && node scripts/check-audit-regressions.mjs && node --test scripts/check-local-refresh.mjs scripts/check-backend-integration.mjs",
     "lint": "oxlint app components/ferc lib scripts components/ui/chart.tsx components/ui/sheet.tsx",
     "lint:all": "oxlint",
     "format": "oxfmt"

@@ -1,0 +1,193 @@
+{
+  "schema": "ferc_operating_assets_run_plan_v2",
+  "plan_id": "all_regimes_integrated_repair_release_replay",
+  "plan_version": "2.5.2",
+  "purpose": "Deterministic, cache-only reconstruction of the scoped operating-assets database and one coherently published consumer generation. Every step declares inputs, dependencies and verifiable outputs. Resume revalidates those identities instead of trusting a prior success flag.",
+  "as_of": "2026-09-07",
+  "built_at": "2026-09-09T18:02:08+00:00",
+  "date_policy": "The source question is pinned to 2026-09-07, the date represented by the original universe cache. Later, narrowly recovered official-FERC objects retain their own retrieval timestamps. A reporting-year-end eLibrary response may contain occurrences posted after the as-of boundary; those raw bytes remain captured but such occurrences are excluded before persistence with an append-only warning. Generated coverage metadata is pinned separately by --built-at. Retrieval time, regulatory effective date, reporting period and build time are never substituted for one another.",
+  "cache_only": true,
+  "cache_only_note": "--offline is enforced in ferclib/http.py. Replay preflight hash-verifies every unique object declared by source_cache/index.json before opening the output database; an uncaptured request remains an explicit offline source limitation and never opens a socket.",
+  "windows": [
+    {
+      "label": "current_universe",
+      "year_from": 2024,
+      "year_to": 2026,
+      "adapters": "all",
+      "entities": "all eligible operating entities",
+      "why": "Current operating window for every implemented regime."
+    },
+    {
+      "label": "gas_xbrl_history_2016_2023",
+      "year_from": 2016,
+      "year_to": 2023,
+      "adapters": ["gas_xbrl"],
+      "entities": ["C000020", "C000654"],
+      "why": "Required older Tennessee Gas Pipeline and Transcontinental Gas Pipe Line history; it is not replaced by the current window."
+    },
+    {
+      "label": "oil_index_history_1997_2026",
+      "year_from": 1997,
+      "year_to": 2026,
+      "adapters": ["oil_index"],
+      "entities": ["FERC-OIL-INDEX"],
+      "why": "Complete official FERC Oil Pipeline Index interval history, published once under the industry-wide regulatory-instrument identity rather than once per carrier."
+    }
+  ],
+  "required_inputs": [
+    {"path": "config/universe.csv", "sha256": "0544203a20a804cbad2e3d4757acc1bf77e88ec345aa2744857a2aeaae276f20", "why": "Frozen 120-row post-COD roster, including the 109 included assets and 104 filing entities."},
+    {"path": "config/annotations/MANIFEST.json", "sha256": "7e9498d36be3ed9d333dada87dc2fb36fb70f9988198ac97ee3c3c0d12349475", "why": "Declares the required seven reviewed annotations and their row/hash contract."},
+    {"path": "config/annotations/reviewed_source_annotations.json", "sha256": "a564bfa78da7bf07025276edcf5aa1dc195edaf95380ef053447383e0155aa96", "why": "Seven reviewed annotations, including all four Fayetteville 999999 warnings."},
+    {"path": "evidence/test_fixtures/reviewed_image_sources.json", "sha256": "278c32b6a1ad5590d9b13dc26cfbe0ac4c217d8588fb0861a405d3a884edc4e9", "why": "Independent hash-bound manual-review contract for the two image-only FERC capacity filings. Actual pixel-to-text OCR is performed separately and must agree before publication."},
+    {"path": "source_cache/index.json", "bytes": 2027708, "sha256": "0616e59e6d05f380f7c1e4003fccaeec98fdadfc0da1b5275bd2ee2935b09bfe", "why": "URL-to-content identity for the frozen cache plus explicitly recorded post-audit official-FERC recoveries; all 3,620 URL entries resolving to 3,587 unique resident objects and 1,198,822,748 unique bytes are independently hash-verified at plan preflight."},
+    {"path": "inputs/official_ferc_elibrary_dependency_recovery_20260910/CAPTURE.json", "bytes": 35145, "sha256": "d1a7ca569482214743fbde305be60cb43dec5ecdc0536392d61481f3bf737df8", "why": "Immutable manifest for the 11 bounded official eLibrary responses discovered by failed clean Build A v4, including the six exact missing request keys, five transitive replay dependencies, request bodies, accessions, file-list/download bindings, ZIP members and before/after cache identities."},
+    {"path": "inputs/official_ferc_elibrary_dependency_recovery_20260910/source_cache_index_before.json", "bytes": 2021573, "sha256": "f9237d7bb1d93a922b5b5d5498f5ed01b100887410762c778ff576f6b40d15f6", "why": "Preserved pre-capture cache index used to independently prove that the bounded recovery appended exactly 11 entries and changed or removed none of the prior 3,609 URL identities."},
+    {"path": "implementation_logs/input_recovery/build_a_v4_dependency_capture.log", "bytes": 2369, "sha256": "5036e6617c1aaef62f0b6cc464954b676aaf758f9bafa942ff48c2957d3e3812", "why": "Complete bounded production-adapter capture log for the four affected entities; it records 37 observations, four completed units and no failed requests without exposing credentials."},
+    {"path": "inputs/official_ferc/elibrary/rate_proceedings_v1.csv", "bytes": 25939, "sha256": "b4e767d3906ed096a5404aeff8db6c1f3504994c2b71db8fac5e36d1baff6032", "why": "Versioned 62-row FERC-derived proceeding seed used to preserve the intended Transco/TGP and liquids histories. Its prior location under excluded discovery scratch changed docket selection without changing resume identity; the adapter now fails if this declared file is absent."},
+    {"path": "inputs/official_ferc/elibrary/lng_facility_sources_v1.csv", "bytes": 36275, "sha256": "1d3bce4f7d9ecc0b0c40ad5d93f6aaf22b8eea2dcea0eb9da0fe64e285cc2e00", "why": "Versioned 64-row reviewed FERC-derived LNG routing/source index. It selects accession evidence and supports the 44-row facility authority map but never substitutes for the official occurrence/document bytes each row names. Missing or changed bytes fail before replay."},
+    {"path": "inputs/official_ferc_elibrary_search_recovery_20260909/CAPTURE.json", "bytes": 7437, "sha256": "7d9ceb0becf33c9ad529288e1cffa19f9fcf207f861dffd162d4d2dd1fe7962a", "why": "Immutable record of three bounded, public, credential-free official eLibrary searches exposed by failed Build A v1. These are repair evidence rather than selected final-plan docket inputs."},
+    {"path": "inputs/official_ferc_elibrary_search_recovery_20260909/source_cache/index.json", "bytes": 1688, "sha256": "885ea26a36bb77f4c984ec59fbbbe7b79d3ecdd309dc953824d55d1cd845ac4f", "why": "Exact source-cache identities for the three recovered search bodies; their v1 successful-response status basis is retained without pretending an explicit HTTP-status field was captured."},
+    {"path": "implementation_logs/input_recovery/bounded_elibrary_search_import_runs.jsonl", "bytes": 3809, "sha256": "d72e0bd94c7d5be1e40a93158c986dabf0673e71085865269f79866208fff527", "why": "Append-only import receipt linking the immutable three-response capture to the final cache index, including before/after identities and idempotency status."},
+    {"path": "implementation/import_bounded_elibrary_search_capture.py", "bytes": 37476, "sha256": "927cca96e2e03fee856f63f3db81267514fdcf8df737e7d400d1b471861c9683", "why": "Runnable fail-closed importer for the separately preserved bounded search capture; validates paths, schemas, request shapes, response bytes, conflicts and complete target-cache state before atomic publication."},
+    {"path": "ferclib/schema.sql", "sha256": "de2cdac2bfd854c76076941677da0f2936ec7535c3b20799c85c2e4b530ddd48", "why": "Empty-database schema and fixed publication/coverage/provenance contract."},
+    {"path": "config/taxonomy_pins.json", "sha256": "6d8e2db6ad2468c32bc2b1a2adbb2c1b76faa2fb45a9b6535c4a6c4896043e9a", "why": "Form/year taxonomy entry points pinned to exact frozen cache objects and the current append-only cache-index identity."},
+    {"path": "config/metric_registry.csv", "sha256": "8a6114ae86a8a405918b4dbe9db48816d75bcaf199e2ffa029c689c2a4cefd99", "why": "Machine-readable 120-metric registry generated from the candidate registry."},
+    {"path": "adapters/oil_index.py", "sha256": "a12e4ca338160b61d10a1a5448e8fb25df2e8ecbba9f37c161a7d3c3a140d75a", "why": "Versioned official-FERC Oil Pipeline Index interval table, global-instrument routing identity, source occurrences, lineage and independent expected-slot generator."},
+    {"path": "inputs/official_ferc/oil_pipeline_index/v1/manifest.json", "sha256": "3eb482c66e10c5a7440af615c29ec028b4bd41ddd0c94690485f1c724de293a2", "why": "Versioned manifest for 31 official notices and 93 successful official publication artefacts; the adapter hash-checks every selected object and retains the bounded FERC-host 403 observation separately."},
+    {"path": "inputs/day3/FERC_operating_assets_metric_decision_matrix.csv", "sha256": "7a5396f040e053594c0706d58d6b977a4bfca68e3b4d754d56f97e08e17aece3", "why": "Required source for the requirements crosswalk."},
+    {"path": "inputs/day3/FERC_operating_assets_current_vs_target_gap.csv", "sha256": "70cd484c0c49a4194092b5f520fe3cf7d87aa90364871d7d40568e65c4386175", "why": "Required source for the requirements crosswalk."},
+    {"path": "inputs/audit_baseline/field_status_all_166_audited.csv", "sha256": "ec4b9a9d9ad143bd261e9d84c5ff6e427a46a78240b34a220156d83da4016c10", "why": "The original 166-field baseline reconciled by the generated field crosswalk."},
+    {"path": "inputs/audit_baseline/exceptions_34.json", "sha256": "3e0c9584690469df611bbcce30993cdd5b0ebb0269d2b2b1a1da6f55e667e35f", "why": "All 34 original exception identities; final dispositions must reconcile to this population."},
+    {"path": "inputs/reference_regressions/transco/transco_canonical_metrics_2016_2026.csv", "sha256": "3e8bd5ed737f1eb9d42896cb707a37694633582f4c66db005adb35ac7a6504c0", "why": "Unchanged supplied Transco canonical reference values and occurrence-specific source-fact identities for 2016-2026 regression comparison."},
+    {"path": "inputs/reference_regressions/tgp/tgp_canonical_metrics_2016_2026.csv", "sha256": "ccc95bd7abb8ff64713b340d9e83bcad5a2f3fc48e3cb5ab8b20e2fba4b129be", "why": "Unchanged supplied repaired-TGP canonical reference values and occurrence-specific source-fact identities for 2016-2026 regression comparison."},
+    {"path": "implementation_logs/input_recovery/OFFICIAL_FERC_RECOVERY_RESULTS.json", "sha256": "cc27ccb4fa2b210808ab7c89345b1fd1059f7d8b5138bb678f21a4125e144fdd", "why": "Request parameters, HTTP observations and identities for the 13 narrowly attempted official-FERC recoveries."},
+    {"path": "implementation_logs/input_recovery/OFFICIAL_FERC_RECOVERY_HASHES.json", "sha256": "6b0c767579c1b61f612482cdd7026356049ea54ef333aab4fc86dc198d5fff5a", "why": "Hash evidence for the preserved recovery responses and records."},
+    {"path": "implementation_logs/input_recovery/OFFICIAL_FERC_INDIVIDUAL_20231229-5212.json", "sha256": "54acae8440cff3e9547e643b19e3b723f0113387f0ee114517123a482fefd43f", "why": "Pinned one-ID request evidence for accession 20231229-5212; exactly one public request returned the complete ten-member accession ZIP and nine non-200 observations remain retained."},
+    {"path": "implementation_logs/input_recovery/capacity_20260226_5162/OFFICIAL_FERC_CAPACITY_20260226_5162_RESULTS.json", "sha256": "32e0e37e7b24b9079f98794d317dbb42f37d262b2195dcd1c564d6877b3619d6", "why": "One-shot official-FERC request/response record for the repair-discovered revised MountainWest Pipeline capacity filing; this is explicitly separate from the audit's original 13 inputs."},
+    {"path": "implementation_logs/input_recovery/capacity_20260226_5162/OFFICIAL_FERC_CAPACITY_20260226_5162_HASHES.json", "sha256": "998423f51a667b0a1ec5ce96347926537d4cc0bb13eccb69069ac29b100aadee", "why": "Hash index for the immutable list and 173,287-byte PDF responses for accession 20260226-5162."},
+    {"path": "implementation_logs/input_recovery/cache_import_runs.jsonl", "sha256": "fd8ac93a2e00c528d8d57f2e990e8cd46ed3b88fe2349d0c3a6a77a0eeb225d4", "why": "Append-only import record linking the original 13-input recoveries, the separately verified complete one-ID accession ZIP and the repair-discovered MountainWest capacity filing to the frozen candidate cache."},
+    {"path": "RUNTIME_REQUIREMENTS.json", "sha256": "8241b0d6773b11164918a8ca4300ad3297adee7db4d6b236053a05045b2f99fa", "why": "Tested Python, SQLite, dependency, subprocess, network, captured-input importer portability and required A17/Build-B release-gate contract. Monorepo correction: bind the actual unchanged runtime document supplied in the reviewed backend-ready handoff, whose earlier checksum was stale."},
+    {"path": "ferclib/image_ocr.py", "sha256": "fd3f1b6de3630820ec79c636c952e57538aab54b675707c65fbbbf63057308f4", "why": "Credential-free, bounded production wrapper for the declared page renderer and macOS Vision helper."},
+    {"path": "tools/vision_ocr.swift", "sha256": "5c39b5958562f4248a0ae49a6e8eb7e6f6cf02e8c8724b7f05c900ba7c751e5e", "why": "Shipped local pixel-to-text implementation used by the mandatory image-only capacity gate."},
+    {"path": "tools/verify_reviewed_image_sources.py", "sha256": "305fe901fbf265d94a8e585c4022a2e6f3e9db2a2f99c8ff1d8d59de1a708519", "why": "Fail-closed gate that verifies source/render identities and OCR/manual-review semantic agreement."},
+    {"path": "adapters/capacity.py", "sha256": "61c98a6fa5aee9c4590121be9ed4631c713b458706c8fe9eaa0e793edadf27c6", "why": "Production capacity selector; image-only values originate in the exact OCR value rows and publish only after review-signature agreement, exact machine-generated filer names prevent MountainWest/Overthrust cross-assignment, every extraction route removes binary glyph controls from derived text while retaining code metadata and classifying a complete-but-ambiguous source as interpretation_blocked rather than unknown applicability, and document retrieval time is preserved from the frozen cache entry rather than the replay clock."}
+  ],
+  "optional_inputs": [],
+  "steps": [
+    {
+      "id": "verify_reviewed_image_sources",
+      "argv": ["python3", "tools/verify_reviewed_image_sources.py", "--output", "@output/verification/a17_reviewed_image_gate.json"],
+      "inputs": ["source_cache/index.json", "evidence/test_fixtures/reviewed_image_sources.json", "adapters/capacity.py", "ferclib/image_ocr.py", "tools/vision_ocr.swift", "tools/verify_reviewed_image_sources.py", "RUNTIME_REQUIREMENTS.json"],
+      "depends_on": [],
+      "outputs": [
+        {"name": "A17 reviewed-image release gate", "path": "@output/verification/a17_reviewed_image_gate.json"}
+      ],
+      "why": "Render both exact image-only FERC PDFs, run local pixel OCR, parse with the production selector and fail closed unless subject/value/unit/qualifier/caveats agree with the independent hash-bound review. Missing pdftoppm, Swift or Vision support is a failure, not a skip."
+    },
+    {
+      "id": "load_review_annotations",
+      "argv": ["run.py", "annotations", "--offline", "--as-of", "2026-09-07"],
+      "inputs": ["config/annotations/MANIFEST.json", "config/annotations/reviewed_source_annotations.json"],
+      "depends_on": ["verify_reviewed_image_sources"],
+      "outputs": [
+        {"name": "seven reviewed annotation records", "sqlite_query": {"database": "@staging_db", "sql": "SELECT entity_key,filing_id,metric_id,review_status,rationale,evidence_hash FROM reviewed_source_annotations ORDER BY entity_key,filing_id,metric_id", "minimum_rows": 7}}
+      ],
+      "why": "Load and verify annotations before any adapter canonicalises source values."
+    },
+    {
+      "id": "build_current_universe",
+      "argv": ["run.py", "universe", "--offline", "--as-of", "2026-09-07", "--year-from", "2024", "--year-to", "2026"],
+      "inputs": ["config/universe.csv", "source_cache/index.json", "config/metric_registry.csv", "inputs/official_ferc/elibrary/rate_proceedings_v1.csv", "inputs/official_ferc/elibrary/lng_facility_sources_v1.csv", "inputs/official_ferc_elibrary_dependency_recovery_20260910/CAPTURE.json"],
+      "depends_on": ["load_review_annotations"],
+      "outputs": [
+        {"name": "current-window observation populations", "sqlite_query": {"database": "@staging_db", "sql": "SELECT source_regime,COUNT(*) AS observations,COUNT(DISTINCT entity_key) AS entities FROM observations WHERE reporting_year BETWEEN 2024 AND 2026 OR reporting_year IS NULL GROUP BY source_regime ORDER BY source_regime", "minimum_rows": 5}}
+      ],
+      "why": "Build every current operating regime from captured inputs; any failed unit has an honest non-zero exit."
+    },
+    {
+      "id": "build_required_gas_history",
+      "argv": ["run.py", "backfill", "--adapter", "gas_xbrl", "--entity", "C000020", "--entity", "C000654", "--offline", "--as-of", "2026-09-07", "--year-from", "2016", "--year-to", "2023"],
+      "inputs": ["config/universe.csv", "source_cache/index.json", "config/metric_registry.csv"],
+      "depends_on": ["build_current_universe"],
+      "outputs": [
+        {"name": "Transco and TGP older history", "sqlite_query": {"database": "@staging_db", "sql": "SELECT entity_key,reporting_year,COUNT(*) AS observations FROM observations WHERE entity_key IN ('C000020','C000654') AND reporting_year BETWEEN 2016 AND 2023 GROUP BY entity_key,reporting_year ORDER BY entity_key,reporting_year", "minimum_rows": 16}}
+      ],
+      "why": "Preserve the declared older history in addition to, not instead of, the current window."
+    },
+    {
+      "id": "build_oil_index_history",
+      "argv": ["run.py", "backfill", "--adapter", "oil_index", "--offline", "--as-of", "2026-09-07", "--built-at", "2026-09-09T18:02:08+00:00", "--year-from", "1997", "--year-to", "2026"],
+      "inputs": ["adapters/oil_index.py", "config/metric_registry.csv", "inputs/official_ferc/oil_pipeline_index/v1/manifest.json"],
+      "depends_on": ["build_required_gas_history"],
+      "outputs": [
+        {"name": "industry-wide Oil Pipeline Index history", "sqlite_query": {"database": "@staging_db", "sql": "SELECT metric_id,COUNT(*) AS observations,MIN(period_start) AS first_interval,MAX(period_end) AS last_interval,COUNT(DISTINCT entity_key) AS entity_keys FROM observations WHERE entity_key='FERC-OIL-INDEX' AND source_regime='FERC Oil Pipeline Index' GROUP BY metric_id ORDER BY metric_id", "minimum_rows": 2}}
+      ],
+      "why": "Persist all 31 official notice occurrences and the 30 factor / 30 explicitly published change observations exactly once under the global regulatory-instrument identity; 52 observations validate and eight remain review-gated for four source-anomaly notices."
+    },
+    {
+      "id": "build_requirements_crosswalk",
+      "argv": ["python3", "build_crosswalk.py", "--matrix", "inputs/day3/FERC_operating_assets_metric_decision_matrix.csv", "--gap", "inputs/day3/FERC_operating_assets_current_vs_target_gap.csv", "--audited-fields", "inputs/audit_baseline/field_status_all_166_audited.csv", "--out", "@output/config/requirements_crosswalk.csv", "--summary-out", "@output/config/requirements_crosswalk_summary.json", "--field-out", "@output/config/field_crosswalk_166.csv", "--receipt", "@output/config/crosswalk_publication.json", "--db", "@staging_db"],
+      "inputs": ["inputs/day3/FERC_operating_assets_metric_decision_matrix.csv", "inputs/day3/FERC_operating_assets_current_vs_target_gap.csv", "inputs/audit_baseline/field_status_all_166_audited.csv"],
+      "depends_on": ["build_oil_index_history"],
+      "outputs": [
+        {"name": "requirements crosswalk", "path": "@output/config/requirements_crosswalk.csv"},
+        {"name": "requirements crosswalk summary", "path": "@output/config/requirements_crosswalk_summary.json"},
+        {"name": "166-field reconciliation", "path": "@output/config/field_crosswalk_166.csv"},
+        {"name": "crosswalk publication boundary", "publication_receipt": {"base": "@output/config", "path": "@output/config/crosswalk_publication.json", "compatibility_root": "@output/config"}},
+        {"name": "persisted crosswalk", "sqlite_query": {"database": "@staging_db", "sql": "SELECT source_doc,source_row,disposition,metric_id,template FROM requirements_crosswalk ORDER BY source_doc,source_row", "minimum_rows": 146}}
+      ],
+      "why": "Generate every crosswalk in memory, validate, publish atomically, then replace the database table."
+    },
+    {
+      "id": "generate_and_measure_coverage",
+      "argv": ["run.py", "coverage", "--offline", "--as-of", "2026-09-07", "--built-at", "2026-09-09T18:02:08+00:00", "--year-from", "2024", "--year-to", "2026"],
+      "inputs": ["config/universe.csv", "config/taxonomy_pins.json", "source_cache/index.json", "config/metric_registry.csv", "adapters/oil_index.py", "inputs/official_ferc/oil_pipeline_index/v1/manifest.json"],
+      "depends_on": ["build_requirements_crosswalk"],
+      "outputs": [
+        {"name": "coverage generation evidence", "path": "@output/verification/coverage_generation.json"},
+        {"name": "coverage expected/measured pair", "sqlite_query": {"database": "@staging_db", "sql": "SELECT e.requirement,e.slot_state,e.source_health,COUNT(*) AS slots,SUM(m.populated) AS populated,SUM(m.source_matched) AS source_matched,SUM(m.validated) AS validated,SUM(m.in_review) AS in_review FROM coverage_expected e JOIN coverage_measured m USING(slot_id) GROUP BY e.requirement,e.slot_state,e.source_health ORDER BY e.requirement,e.slot_state,e.source_health", "minimum_rows": 1}}
+      ],
+      "why": "Build expectations from eligibility, pinned form/taxonomy applicability and due rules independently of successful ingestion, then measure with strict unit/period/scope/version/lineage gates."
+    },
+    {
+      "id": "build_field_readiness",
+      "argv": ["python3", "build_field_status.py", "--db", "@staging_db", "--out", "@output/exports", "--field-crosswalk", "@output/config/field_crosswalk_166.csv"],
+      "inputs": ["config/metric_registry.csv", "@output/config/field_crosswalk_166.csv", "@output/verification/coverage_generation.json"],
+      "depends_on": ["generate_and_measure_coverage"],
+      "outputs": [
+        {"name": "field status export", "path": "@output/exports/field_status.csv"},
+        {"name": "field status summary", "path": "@output/exports/field_status_summary.json"},
+        {"name": "persisted field readiness", "sqlite_query": {"database": "@staging_db", "sql": "SELECT template,field_id,outcome,adapter_implemented,has_data_in_template,validated_in_template FROM field_status ORDER BY template,field_id", "minimum_rows": 168}}
+      ],
+      "why": "Compute each field within its own template from the integrated measured grid."
+    },
+    {
+      "id": "publish_consumer_generation",
+      "argv": ["run.py", "export", "--offline", "--as-of", "2026-09-07"],
+      "inputs": ["@output/config/requirements_crosswalk.csv", "@output/config/field_crosswalk_166.csv", "@output/config/crosswalk_publication.json", "@output/verification/coverage_generation.json", "@output/exports/field_status.csv"],
+      "depends_on": ["build_field_readiness"],
+      "outputs": [
+        {"name": "complete consumer publication boundary", "publication_receipt": {"base": "@output", "path": "@output/publication_receipt.json", "compatibility_root": "@output/exports"}},
+        {"name": "canonical observations export", "path": "@output/exports/canonical_observations.csv"},
+        {"name": "coverage slot export", "path": "@output/exports/coverage_by_slot.csv"},
+        {"name": "review annotations export", "path": "@output/exports/reviewed_source_annotations.csv"},
+        {"name": "published database generation", "sqlite_query": {"database": "@staging_db", "sql": "SELECT generation_id,code_snapshot,input_snapshot,database_identity,status FROM publication_generations WHERE status='published' ORDER BY published_at,generation_id", "minimum_rows": 1}}
+      ],
+      "why": "Publish one validated generation so consumers cannot silently combine a new database with old CSV/JSON outputs."
+    },
+    {
+      "id": "validate_integrated_generation",
+      "argv": ["run.py", "validate", "--offline", "--as-of", "2026-09-07"],
+      "inputs": ["@output/publication_receipt.json"],
+      "depends_on": ["publish_consumer_generation"],
+      "outputs": [
+        {"name": "complete validation results", "path": "@output/verification/validation_results.json"}
+      ],
+      "why": "Run database, semantic, provenance, annotation and publication-boundary checks; failures remain non-zero."
+    }
+  ],
+  "known_external_limitations": [
+    {"accession": "20231229-5212", "status": "captured from the official public endpoint by a one-ID request that returned the complete ten-member accession ZIP; exact ZIP/member identities verified and imported", "policy": "The failed all-ID request and nine non-200 one-ID observations remain preserved as retrieval observations, not source-unavailability claims. Offline replay uses only the verified successful cache object."},
+    {"capability": "image-only capacity OCR portability", "status": "implemented and mandatory on the declared macOS build host; not portable unchanged to non-macOS hosts", "policy": "The release gate reads actual page pixels through local macOS Vision, retains raw OCR/confidence and bounded corrections, and requires exact semantic agreement with an independent source-hash-bound review. It never uses network access or forwards credentials."}
+  ]
+}

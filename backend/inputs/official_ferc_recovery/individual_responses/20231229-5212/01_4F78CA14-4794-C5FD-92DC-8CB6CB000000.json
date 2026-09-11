@@ -1,0 +1,36 @@
+{
+ "accession_number": "20231229-5212",
+ "attachment_id": "4F78CA14-4794-C5FD-92DC-8CB6CB000000",
+ "attachment_order": 1,
+ "availability_mode": "P",
+ "evidence_lane": "new official-FERC evidence after the independent audit",
+ "file_name": "Transmittal Letter.pdf",
+ "listed_bytes": 366636,
+ "listed_media_type": "application/pdf",
+ "request": {
+  "cache_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/DownloadP8File#body=6b31335d4bf5202e45444c9abbf48c33",
+  "credentials_or_cookies_sent": false,
+  "method": "POST",
+  "official_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/DownloadP8File",
+  "payload_bytes": 150,
+  "payload_sha256": "6b31335d4bf5202e45444c9abbf48c332f27206af5af117d3477e9c7715b60ac",
+  "retry_count": 0
+ },
+ "response": {
+  "body_path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/individual_responses/20231229-5212/01_4F78CA14-4794-C5FD-92DC-8CB6CB000000.body",
+  "bytes": 7349,
+  "complete_body": true,
+  "ended_utc": "2026-09-09T17:22:42.043213+00:00",
+  "headers": {
+   "content-length": "7349",
+   "content-type": "text/html; charset=UTF-8",
+   "date": "Wed, 09 Sep 2026 17:22:42 GMT"
+  },
+  "http_reason": "<none>",
+  "http_status": 520,
+  "network_error": null,
+  "sha256": "27361afc8356543d4c59ee722e2c560d4ef8e81d25592d2099142cb7dce73435",
+  "started_utc": "2026-09-09T17:22:41.648988+00:00"
+ },
+ "schema": "official_ferc_individual_response_v1"
+}

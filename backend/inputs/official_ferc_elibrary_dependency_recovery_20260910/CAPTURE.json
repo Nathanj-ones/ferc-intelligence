@@ -1,0 +1,1085 @@
+{
+  "as_of_date": "2026-09-07",
+  "capture_log": {
+    "bytes": 2369,
+    "path": "implementation_logs/input_recovery/build_a_v4_dependency_capture.log",
+    "sha256": "5036e6617c1aaef62f0b6cc464954b676aaf758f9bafa942ff48c2957d3e3812"
+  },
+  "consumers": [
+    "elibrary_docs retrieval",
+    "filing/document archive",
+    "events",
+    "lineage",
+    "coverage",
+    "source-linked exports",
+    "offline Build B"
+  ],
+  "entities": [
+    {
+      "entity_key": "C000630",
+      "entity_name": "Products (SE) Pipe Line Corporation"
+    },
+    {
+      "entity_key": "C001031",
+      "entity_name": "Discovery Gas Transmission LLC"
+    },
+    {
+      "entity_key": "C001089",
+      "entity_name": "White River Hub, LLC"
+    },
+    {
+      "entity_key": "C001506",
+      "entity_name": "Cheniere Creole Trail Pipeline, L.P."
+    }
+  ],
+  "evidence_lane": "new official-FERC evidence collected after the independent audit",
+  "limitation": "These are new source versions captured on 2026-09-10; they do not retroactively prove that the audited frozen release contained the bytes.",
+  "mandatory_clean_retry_keys": [
+    "411c9822f87b93b2cd586ad84ec983d45109fcaa0e75ad9247c6cc65636c65ff",
+    "5619c63b8d536314693a530a7a1941aeaf1370d978c047b3fa0235762d2aaeac",
+    "6c0b164949e9265e8a20e3d4658b83f7741f7477641281bc434d5a34485f46f4",
+    "71fdcc818ed9181aa5c2b58923456f9c2397f0e5c6b09e7ec1b05d7098a1bedd",
+    "748ffec6b707782e8053a8f8451ac8175ab3f6f7b6d2685885f5492313adeeac",
+    "a24fdb560b600d43e7fc6ff55ff0c5004d6119beb2d1ae91aa2cfede9fdbf47e",
+    "a8334f9d453643b6fa7780b1d6afabea74c6fd5e2eff99d1a4f4fa0642c27f5e",
+    "c541c54409fc50b935f14bd79c2d8d6840c07aef7f251501bba8ca8220300e2b",
+    "c9ea653e67b0d6dec2d7c064f6862b6e86608b5857fa3fd82c3616a89b7333f8",
+    "e5074dae6b431031b2252c591c8fff25843dbb08b88c226865ddf9431e688d6a",
+    "f6a43779c07bfaf821435b8fadc8e37082a7c4ab65a0b8ea973386e417a24828"
+  ],
+  "new_entries": 11,
+  "preexisting_entries_changed": 0,
+  "preexisting_entries_removed": 0,
+  "required_failed_build_keys": [
+    "6c0b164949e9265e8a20e3d4658b83f7741f7477641281bc434d5a34485f46f4",
+    "71fdcc818ed9181aa5c2b58923456f9c2397f0e5c6b09e7ec1b05d7098a1bedd",
+    "748ffec6b707782e8053a8f8451ac8175ab3f6f7b6d2685885f5492313adeeac",
+    "c541c54409fc50b935f14bd79c2d8d6840c07aef7f251501bba8ca8220300e2b",
+    "c9ea653e67b0d6dec2d7c064f6862b6e86608b5857fa3fd82c3616a89b7333f8",
+    "e5074dae6b431031b2252c591c8fff25843dbb08b88c226865ddf9431e688d6a"
+  ],
+  "retrieval_method": "production elibrary_docs adapter with a bounded four-entity filter",
+  "retrieval_window": {
+    "docket_search_end": "2026-12-31",
+    "docket_search_start": "2015-01-01",
+    "year_from": 2024,
+    "year_to": 2026
+  },
+  "rows": [
+    {
+      "accession_number": "20260304-3061",
+      "cache_key": "411c9822f87b93b2cd586ad84ec983d45109fcaa0e75ad9247c6cc65636c65ff",
+      "dependency_role": "transitive_replay_dependency",
+      "download_cache_key": "a8334f9d453643b6fa7780b1d6afabea74c6fd5e2eff99d1a4f4fa0642c27f5e",
+      "error_list": [],
+      "kind": "elibrary_file_list_response",
+      "listed_files": 1,
+      "mandatory_for_clean_retry": true,
+      "media_type": "application/json",
+      "method": "GET",
+      "public_attachment_ids": [
+        "2686ECFA-4D39-C9EA-94D1-9CBA1B400000"
+      ],
+      "request": {
+        "body": null,
+        "bytes": 0,
+        "sha256": null
+      },
+      "required_by_failed_build": false,
+      "response": {
+        "bytes": 2427,
+        "cache_path": "source_cache/objects/40/4036a428db07e1200cb9049d39c63b3c77910b72b32d925068e23a28c7c83429",
+        "sha256": "4036a428db07e1200cb9049d39c63b3c77910b72b32d925068e23a28c7c83429"
+      },
+      "retrieved_utc": "2026-09-10T00:14:00+00:00",
+      "source_system": "eLibrary",
+      "source_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/GetFileListFromP8/20260304-3061"
+    },
+    {
+      "accession_number": "20250904-3005",
+      "cache_key": "5619c63b8d536314693a530a7a1941aeaf1370d978c047b3fa0235762d2aaeac",
+      "dependency_role": "transitive_replay_dependency",
+      "download_cache_key": "a24fdb560b600d43e7fc6ff55ff0c5004d6119beb2d1ae91aa2cfede9fdbf47e",
+      "error_list": [],
+      "kind": "elibrary_file_list_response",
+      "listed_files": 1,
+      "mandatory_for_clean_retry": true,
+      "media_type": "application/json",
+      "method": "GET",
+      "public_attachment_ids": [
+        "139CDB32-35DA-CAA3-92B5-9914A7400000"
+      ],
+      "request": {
+        "body": null,
+        "bytes": 0,
+        "sha256": null
+      },
+      "required_by_failed_build": false,
+      "response": {
+        "bytes": 2326,
+        "cache_path": "source_cache/objects/b3/b3528e267f5a5c7d6b0263fc7ba839262853c1c45bedf6adab20324b1f1af5dd",
+        "sha256": "b3528e267f5a5c7d6b0263fc7ba839262853c1c45bedf6adab20324b1f1af5dd"
+      },
+      "retrieved_utc": "2026-09-10T00:14:09+00:00",
+      "source_system": "eLibrary",
+      "source_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/GetFileListFromP8/20250904-3005"
+    },
+    {
+      "cache_key": "6c0b164949e9265e8a20e3d4658b83f7741f7477641281bc434d5a34485f46f4",
+      "dependency_role": "direct_v4_failure",
+      "docket": "RP26-488",
+      "entity_key": "C001031",
+      "entity_name": "Discovery Gas Transmission LLC",
+      "kind": "elibrary_advanced_search_response",
+      "mandatory_for_clean_retry": true,
+      "media_type": "application/json",
+      "method": "POST",
+      "request": {
+        "body": {
+          "accessionNumber": null,
+          "affiliations": [],
+          "allDates": false,
+          "availability": null,
+          "categories": [],
+          "classTypes": [
+            {
+              "documentClass": "Order/Opinion",
+              "documentType": "Commission Order/Opinion"
+            },
+            {
+              "documentClass": "Order/Opinion",
+              "documentType": "Delegated Order"
+            },
+            {
+              "documentClass": "ALJ Issuance",
+              "documentType": "Certification of Settlement"
+            },
+            {
+              "documentClass": "ALJ Issuance",
+              "documentType": "Report to the Commission"
+            },
+            {
+              "documentClass": "Pleading/Motion",
+              "documentType": "Petition for Review"
+            },
+            {
+              "documentClass": "Application/Petition/Request",
+              "documentType": "Tariff Filing"
+            },
+            {
+              "documentClass": "Application/Petition/Request",
+              "documentType": "Complaints"
+            }
+          ],
+          "curPage": 0,
+          "dateSearches": [
+            {
+              "dateType": "filed_date",
+              "endDate": "2026-12-31",
+              "startDate": "2015-01-01"
+            }
+          ],
+          "docketSearches": [
+            {
+              "docketNumber": "RP26-488",
+              "subDocketNumbers": []
+            }
+          ],
+          "eFiling": false,
+          "groupBy": "NONE",
+          "idolResultID": "",
+          "libraries": [],
+          "resultsPerPage": 100,
+          "searchDescription": false,
+          "searchFullText": false,
+          "searchText": "",
+          "sortBy": ""
+        },
+        "bytes": 1042,
+        "content_type": "application/json",
+        "sha256": "4b024969cc74f5b2d34df5a2684300911e97ede1ad28ffd88408a1b68cacb684"
+      },
+      "required_by_failed_build": true,
+      "response": {
+        "bytes": 3434,
+        "cache_path": "source_cache/objects/57/57f9137325162b55c837c6a68e5a3f5b61c9ab8ce2c71b5546338ee325c8a852",
+        "sha256": "57f9137325162b55c837c6a68e5a3f5b61c9ab8ce2c71b5546338ee325c8a852"
+      },
+      "response_accessions": [
+        "20260213-5149",
+        "20260304-3061"
+      ],
+      "retrieved_utc": "2026-09-10T00:13:59+00:00",
+      "source_system": "eLibrary",
+      "source_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/Search/AdvancedSearch#body=4b024969cc74f5b2d34df5a268430091"
+    },
+    {
+      "cache_key": "71fdcc818ed9181aa5c2b58923456f9c2397f0e5c6b09e7ec1b05d7098a1bedd",
+      "dependency_role": "direct_v4_failure",
+      "docket": "IS26-390",
+      "entity_key": "C000630",
+      "entity_name": "Products (SE) Pipe Line Corporation",
+      "kind": "elibrary_advanced_search_response",
+      "mandatory_for_clean_retry": true,
+      "media_type": "application/json",
+      "method": "POST",
+      "request": {
+        "body": {
+          "accessionNumber": null,
+          "affiliations": [],
+          "allDates": false,
+          "availability": null,
+          "categories": [],
+          "classTypes": [
+            {
+              "documentClass": "Order/Opinion",
+              "documentType": "Commission Order/Opinion"
+            },
+            {
+              "documentClass": "Order/Opinion",
+              "documentType": "Delegated Order"
+            },
+            {
+              "documentClass": "ALJ Issuance",
+              "documentType": "Certification of Settlement"
+            },
+            {
+              "documentClass": "ALJ Issuance",
+              "documentType": "Report to the Commission"
+            },
+            {
+              "documentClass": "Pleading/Motion",
+              "documentType": "Petition for Review"
+            },
+            {
+              "documentClass": "Application/Petition/Request",
+              "documentType": "Tariff Filing"
+            },
+            {
+              "documentClass": "Application/Petition/Request",
+              "documentType": "Complaints"
+            }
+          ],
+          "curPage": 0,
+          "dateSearches": [
+            {
+              "dateType": "filed_date",
+              "endDate": "2026-12-31",
+              "startDate": "2015-01-01"
+            }
+          ],
+          "docketSearches": [
+            {
+              "docketNumber": "IS26-390",
+              "subDocketNumbers": []
+            }
+          ],
+          "eFiling": false,
+          "groupBy": "NONE",
+          "idolResultID": "",
+          "libraries": [],
+          "resultsPerPage": 100,
+          "searchDescription": false,
+          "searchFullText": false,
+          "searchText": "",
+          "sortBy": ""
+        },
+        "bytes": 1042,
+        "content_type": "application/json",
+        "sha256": "c3bbe2c62591499f1d35628d1d14083f2af5627f53fca55df4c6bc2a26849117"
+      },
+      "required_by_failed_build": true,
+      "response": {
+        "bytes": 1622,
+        "cache_path": "source_cache/objects/74/7467218c6291dfc9f39ef89dc1621ec85df6d0a37719a7f2ca3c1556d7b1c374",
+        "sha256": "7467218c6291dfc9f39ef89dc1621ec85df6d0a37719a7f2ca3c1556d7b1c374"
+      },
+      "response_accessions": [
+        "20260528-5027"
+      ],
+      "retrieved_utc": "2026-09-10T00:13:37+00:00",
+      "source_system": "eLibrary",
+      "source_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/Search/AdvancedSearch#body=c3bbe2c62591499f1d35628d1d14083f"
+    },
+    {
+      "cache_key": "748ffec6b707782e8053a8f8451ac8175ab3f6f7b6d2685885f5492313adeeac",
+      "dependency_role": "direct_v4_failure",
+      "docket": "RP26-397",
+      "entity_key": "C001506",
+      "entity_name": "Cheniere Creole Trail Pipeline, L.P.",
+      "kind": "elibrary_advanced_search_response",
+      "mandatory_for_clean_retry": true,
+      "media_type": "application/json",
+      "method": "POST",
+      "request": {
+        "body": {
+          "accessionNumber": null,
+          "affiliations": [],
+          "allDates": false,
+          "availability": null,
+          "categories": [],
+          "classTypes": [
+            {
+              "documentClass": "Order/Opinion",
+              "documentType": "Commission Order/Opinion"
+            },
+            {
+              "documentClass": "Order/Opinion",
+              "documentType": "Delegated Order"
+            },
+            {
+              "documentClass": "ALJ Issuance",
+              "documentType": "Certification of Settlement"
+            },
+            {
+              "documentClass": "ALJ Issuance",
+              "documentType": "Report to the Commission"
+            },
+            {
+              "documentClass": "Pleading/Motion",
+              "documentType": "Petition for Review"
+            },
+            {
+              "documentClass": "Application/Petition/Request",
+              "documentType": "Tariff Filing"
+            },
+            {
+              "documentClass": "Application/Petition/Request",
+              "documentType": "Complaints"
+            }
+          ],
+          "curPage": 0,
+          "dateSearches": [
+            {
+              "dateType": "filed_date",
+              "endDate": "2026-12-31",
+              "startDate": "2015-01-01"
+            }
+          ],
+          "docketSearches": [
+            {
+              "docketNumber": "RP26-397",
+              "subDocketNumbers": []
+            }
+          ],
+          "eFiling": false,
+          "groupBy": "NONE",
+          "idolResultID": "",
+          "libraries": [],
+          "resultsPerPage": 100,
+          "searchDescription": false,
+          "searchFullText": false,
+          "searchText": "",
+          "sortBy": ""
+        },
+        "bytes": 1042,
+        "content_type": "application/json",
+        "sha256": "79e1f707dd7e43bf7ab5d05d589aa4a525442187dc81a0856ea74b15cdd61727"
+      },
+      "required_by_failed_build": true,
+      "response": {
+        "bytes": 2817,
+        "cache_path": "source_cache/objects/72/7240d1408646c7c444009297d716f52f69ba424d72b2aeae004e5bb0ec56e4d3",
+        "sha256": "7240d1408646c7c444009297d716f52f69ba424d72b2aeae004e5bb0ec56e4d3"
+      },
+      "response_accessions": [
+        "20260211-3054",
+        "20260122-5059"
+      ],
+      "retrieved_utc": "2026-09-10T00:13:56+00:00",
+      "source_system": "eLibrary",
+      "source_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/Search/AdvancedSearch#body=79e1f707dd7e43bf7ab5d05d589aa4a5"
+    },
+    {
+      "accession_number": "20250904-3005",
+      "attachment_ids": [
+        "139CDB32-35DA-CAA3-92B5-9914A7400000"
+      ],
+      "cache_key": "a24fdb560b600d43e7fc6ff55ff0c5004d6119beb2d1ae91aa2cfede9fdbf47e",
+      "dependency_role": "transitive_replay_dependency",
+      "kind": "elibrary_attachment_response",
+      "mandatory_for_clean_retry": true,
+      "media_type": "application/octet-stream",
+      "method": "POST",
+      "request": {
+        "body": {
+          "FileIDAll": "",
+          "FileType": "",
+          "Islegacy": false,
+          "accession": "20250904-3005",
+          "fileid": 0,
+          "fileidLst": [
+            "139CDB32-35DA-CAA3-92B5-9914A7400000"
+          ]
+        },
+        "bytes": 150,
+        "content_type": "application/json",
+        "sha256": "a2c38a24b2322db1e94bd00613ad1908ac601b3aece7f8e03fd50d358738f63c"
+      },
+      "request_strategy": "all_public_ids",
+      "required_by_failed_build": false,
+      "response": {
+        "bytes": 41577,
+        "cache_path": "source_cache/objects/2d/2defaa728dc928c9e448f1803cd0113609b5e839c72d443ba68e7e378834ee5d",
+        "sha256": "2defaa728dc928c9e448f1803cd0113609b5e839c72d443ba68e7e378834ee5d"
+      },
+      "response_container": {
+        "container": "zip",
+        "crc_clean": true,
+        "members": [
+          {
+            "bytes": 2750,
+            "crc32": "1a031b6c",
+            "name": "[Content_Types].xml"
+          },
+          {
+            "bytes": 737,
+            "crc32": "057e5599",
+            "name": "_rels/.rels"
+          },
+          {
+            "bytes": 11348,
+            "crc32": "30af85b5",
+            "name": "word/document.xml"
+          },
+          {
+            "bytes": 2186,
+            "crc32": "89210418",
+            "name": "word/_rels/document.xml.rels"
+          },
+          {
+            "bytes": 5392,
+            "crc32": "50305126",
+            "name": "word/footnotes.xml"
+          },
+          {
+            "bytes": 3012,
+            "crc32": "bd0886c3",
+            "name": "word/endnotes.xml"
+          },
+          {
+            "bytes": 3557,
+            "crc32": "7ef68d4c",
+            "name": "word/header1.xml"
+          },
+          {
+            "bytes": 2811,
+            "crc32": "e43fc082",
+            "name": "word/header2.xml"
+          },
+          {
+            "bytes": 1017,
+            "crc32": "fcca7076",
+            "name": "word/_rels/footnotes.xml.rels"
+          },
+          {
+            "bytes": 7076,
+            "crc32": "2943dd30",
+            "name": "word/theme/theme1.xml"
+          },
+          {
+            "bytes": 35612,
+            "crc32": "ff41426d",
+            "name": "word/settings.xml"
+          },
+          {
+            "bytes": 8080,
+            "crc32": "c3994cba",
+            "name": "customXml/item1.xml"
+          },
+          {
+            "bytes": 201,
+            "crc32": "93227198",
+            "name": "customXml/itemProps1.xml"
+          },
+          {
+            "bytes": 568,
+            "crc32": "c54eab68",
+            "name": "customXml/item2.xml"
+          },
+          {
+            "bytes": 1021,
+            "crc32": "d56a68d5",
+            "name": "customXml/itemProps2.xml"
+          },
+          {
+            "bytes": 219,
+            "crc32": "236284bd",
+            "name": "customXml/item3.xml"
+          },
+          {
+            "bytes": 335,
+            "crc32": "7a7ca82c",
+            "name": "customXml/itemProps3.xml"
+          },
+          {
+            "bytes": 270,
+            "crc32": "24aef1b7",
+            "name": "customXml/item4.xml"
+          },
+          {
+            "bytes": 341,
+            "crc32": "3b065cbc",
+            "name": "customXml/itemProps4.xml"
+          },
+          {
+            "bytes": 31765,
+            "crc32": "c3bf4bdd",
+            "name": "word/numbering.xml"
+          },
+          {
+            "bytes": 76356,
+            "crc32": "ccf03fcc",
+            "name": "word/styles.xml"
+          },
+          {
+            "bytes": 6669,
+            "crc32": "022c7f3f",
+            "name": "word/webSettings.xml"
+          },
+          {
+            "bytes": 3762,
+            "crc32": "971c3f6b",
+            "name": "word/fontTable.xml"
+          },
+          {
+            "bytes": 631,
+            "crc32": "872073c0",
+            "name": "docProps/core.xml"
+          },
+          {
+            "bytes": 1160,
+            "crc32": "0d75f60c",
+            "name": "docProps/app.xml"
+          },
+          {
+            "bytes": 238,
+            "crc32": "58ba13d8",
+            "name": "docProps/custom.xml"
+          },
+          {
+            "bytes": 296,
+            "crc32": "7a393f74",
+            "name": "customXml/_rels/item1.xml.rels"
+          },
+          {
+            "bytes": 296,
+            "crc32": "2227965c",
+            "name": "customXml/_rels/item2.xml.rels"
+          },
+          {
+            "bytes": 296,
+            "crc32": "a302f37b",
+            "name": "customXml/_rels/item3.xml.rels"
+          },
+          {
+            "bytes": 296,
+            "crc32": "921ac40c",
+            "name": "customXml/_rels/item4.xml.rels"
+          },
+          {
+            "bytes": 186,
+            "crc32": "e8bcc4f9",
+            "name": "customXml/item5.xml"
+          },
+          {
+            "bytes": 201,
+            "crc32": "73ac4277",
+            "name": "customXml/itemProps5.xml"
+          },
+          {
+            "bytes": 296,
+            "crc32": "133fa12b",
+            "name": "customXml/_rels/item5.xml.rels"
+          }
+        ]
+      },
+      "retrieved_utc": "2026-09-10T00:14:10+00:00",
+      "source_system": "eLibrary",
+      "source_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/DownloadP8File#body=a2c38a24b2322db1e94bd00613ad1908"
+    },
+    {
+      "accession_number": "20260304-3061",
+      "attachment_ids": [
+        "2686ECFA-4D39-C9EA-94D1-9CBA1B400000"
+      ],
+      "cache_key": "a8334f9d453643b6fa7780b1d6afabea74c6fd5e2eff99d1a4f4fa0642c27f5e",
+      "dependency_role": "transitive_replay_dependency",
+      "kind": "elibrary_attachment_response",
+      "mandatory_for_clean_retry": true,
+      "media_type": "application/octet-stream",
+      "method": "POST",
+      "request": {
+        "body": {
+          "FileIDAll": "",
+          "FileType": "",
+          "Islegacy": false,
+          "accession": "20260304-3061",
+          "fileid": 0,
+          "fileidLst": [
+            "2686ECFA-4D39-C9EA-94D1-9CBA1B400000"
+          ]
+        },
+        "bytes": 150,
+        "content_type": "application/json",
+        "sha256": "1833f6a6a72c53a945199e0ac8c9228356e0e71c4409251c5f791f827cd846a1"
+      },
+      "request_strategy": "all_public_ids",
+      "required_by_failed_build": false,
+      "response": {
+        "bytes": 41351,
+        "cache_path": "source_cache/objects/3a/3ad906b23f02247ff496f00d64d6ba6ae5a5c9c316b4d4fdad999b7d67979893",
+        "sha256": "3ad906b23f02247ff496f00d64d6ba6ae5a5c9c316b4d4fdad999b7d67979893"
+      },
+      "response_container": {
+        "container": "zip",
+        "crc_clean": true,
+        "members": [
+          {
+            "bytes": 2750,
+            "crc32": "1a031b6c",
+            "name": "[Content_Types].xml"
+          },
+          {
+            "bytes": 737,
+            "crc32": "057e5599",
+            "name": "_rels/.rels"
+          },
+          {
+            "bytes": 12474,
+            "crc32": "32b5eda2",
+            "name": "word/document.xml"
+          },
+          {
+            "bytes": 2186,
+            "crc32": "89210418",
+            "name": "word/_rels/document.xml.rels"
+          },
+          {
+            "bytes": 4316,
+            "crc32": "f082dfd2",
+            "name": "word/footnotes.xml"
+          },
+          {
+            "bytes": 3012,
+            "crc32": "cc367c2c",
+            "name": "word/endnotes.xml"
+          },
+          {
+            "bytes": 3309,
+            "crc32": "feb03e89",
+            "name": "word/header1.xml"
+          },
+          {
+            "bytes": 2811,
+            "crc32": "e43fc082",
+            "name": "word/header2.xml"
+          },
+          {
+            "bytes": 372,
+            "crc32": "edfcbba5",
+            "name": "word/_rels/footnotes.xml.rels"
+          },
+          {
+            "bytes": 7076,
+            "crc32": "2943dd30",
+            "name": "word/theme/theme1.xml"
+          },
+          {
+            "bytes": 35613,
+            "crc32": "7f490c04",
+            "name": "word/settings.xml"
+          },
+          {
+            "bytes": 270,
+            "crc32": "24aef1b7",
+            "name": "customXml/item1.xml"
+          },
+          {
+            "bytes": 341,
+            "crc32": "3b065cbc",
+            "name": "customXml/itemProps1.xml"
+          },
+          {
+            "bytes": 219,
+            "crc32": "236284bd",
+            "name": "customXml/item2.xml"
+          },
+          {
+            "bytes": 335,
+            "crc32": "7a7ca82c",
+            "name": "customXml/itemProps2.xml"
+          },
+          {
+            "bytes": 568,
+            "crc32": "c54eab68",
+            "name": "customXml/item3.xml"
+          },
+          {
+            "bytes": 553,
+            "crc32": "ee901e0f",
+            "name": "customXml/itemProps3.xml"
+          },
+          {
+            "bytes": 8080,
+            "crc32": "c3994cba",
+            "name": "customXml/item4.xml"
+          },
+          {
+            "bytes": 201,
+            "crc32": "c76d2017",
+            "name": "customXml/itemProps4.xml"
+          },
+          {
+            "bytes": 31770,
+            "crc32": "d0a7b907",
+            "name": "word/numbering.xml"
+          },
+          {
+            "bytes": 76356,
+            "crc32": "28f3e11d",
+            "name": "word/styles.xml"
+          },
+          {
+            "bytes": 6669,
+            "crc32": "022c7f3f",
+            "name": "word/webSettings.xml"
+          },
+          {
+            "bytes": 3762,
+            "crc32": "971c3f6b",
+            "name": "word/fontTable.xml"
+          },
+          {
+            "bytes": 631,
+            "crc32": "22f9821d",
+            "name": "docProps/core.xml"
+          },
+          {
+            "bytes": 1160,
+            "crc32": "7c365929",
+            "name": "docProps/app.xml"
+          },
+          {
+            "bytes": 238,
+            "crc32": "58ba13d8",
+            "name": "docProps/custom.xml"
+          },
+          {
+            "bytes": 296,
+            "crc32": "7a393f74",
+            "name": "customXml/_rels/item1.xml.rels"
+          },
+          {
+            "bytes": 296,
+            "crc32": "2227965c",
+            "name": "customXml/_rels/item2.xml.rels"
+          },
+          {
+            "bytes": 296,
+            "crc32": "a302f37b",
+            "name": "customXml/_rels/item3.xml.rels"
+          },
+          {
+            "bytes": 296,
+            "crc32": "921ac40c",
+            "name": "customXml/_rels/item4.xml.rels"
+          },
+          {
+            "bytes": 186,
+            "crc32": "e8bcc4f9",
+            "name": "customXml/item5.xml"
+          },
+          {
+            "bytes": 201,
+            "crc32": "53000548",
+            "name": "customXml/itemProps5.xml"
+          },
+          {
+            "bytes": 296,
+            "crc32": "133fa12b",
+            "name": "customXml/_rels/item5.xml.rels"
+          }
+        ]
+      },
+      "retrieved_utc": "2026-09-10T00:14:01+00:00",
+      "source_system": "eLibrary",
+      "source_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/DownloadP8File#body=1833f6a6a72c53a945199e0ac8c92283"
+    },
+    {
+      "cache_key": "c541c54409fc50b935f14bd79c2d8d6840c07aef7f251501bba8ca8220300e2b",
+      "dependency_role": "direct_v4_failure",
+      "docket": "IS26-294",
+      "entity_key": "C000630",
+      "entity_name": "Products (SE) Pipe Line Corporation",
+      "kind": "elibrary_advanced_search_response",
+      "mandatory_for_clean_retry": true,
+      "media_type": "application/json",
+      "method": "POST",
+      "request": {
+        "body": {
+          "accessionNumber": null,
+          "affiliations": [],
+          "allDates": false,
+          "availability": null,
+          "categories": [],
+          "classTypes": [
+            {
+              "documentClass": "Order/Opinion",
+              "documentType": "Commission Order/Opinion"
+            },
+            {
+              "documentClass": "Order/Opinion",
+              "documentType": "Delegated Order"
+            },
+            {
+              "documentClass": "ALJ Issuance",
+              "documentType": "Certification of Settlement"
+            },
+            {
+              "documentClass": "ALJ Issuance",
+              "documentType": "Report to the Commission"
+            },
+            {
+              "documentClass": "Pleading/Motion",
+              "documentType": "Petition for Review"
+            },
+            {
+              "documentClass": "Application/Petition/Request",
+              "documentType": "Tariff Filing"
+            },
+            {
+              "documentClass": "Application/Petition/Request",
+              "documentType": "Complaints"
+            }
+          ],
+          "curPage": 0,
+          "dateSearches": [
+            {
+              "dateType": "filed_date",
+              "endDate": "2026-12-31",
+              "startDate": "2015-01-01"
+            }
+          ],
+          "docketSearches": [
+            {
+              "docketNumber": "IS26-294",
+              "subDocketNumbers": []
+            }
+          ],
+          "eFiling": false,
+          "groupBy": "NONE",
+          "idolResultID": "",
+          "libraries": [],
+          "resultsPerPage": 100,
+          "searchDescription": false,
+          "searchFullText": false,
+          "searchText": "",
+          "sortBy": ""
+        },
+        "bytes": 1042,
+        "content_type": "application/json",
+        "sha256": "424e3a310b490047d793f369064b1fa023d439599bd1dfffa36442a0a307950e"
+      },
+      "required_by_failed_build": true,
+      "response": {
+        "bytes": 1626,
+        "cache_path": "source_cache/objects/ff/ff36e10342891df9f7c6fbe3501321086c813b71116bf30842816428c6722789",
+        "sha256": "ff36e10342891df9f7c6fbe3501321086c813b71116bf30842816428c6722789"
+      },
+      "response_accessions": [
+        "20260522-5222"
+      ],
+      "retrieved_utc": "2026-09-10T00:13:41+00:00",
+      "source_system": "eLibrary",
+      "source_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/Search/AdvancedSearch#body=424e3a310b490047d793f369064b1fa0"
+    },
+    {
+      "cache_key": "c9ea653e67b0d6dec2d7c064f6862b6e86608b5857fa3fd82c3616a89b7333f8",
+      "dependency_role": "direct_v4_failure",
+      "docket": "RP25-1075",
+      "entity_key": "C001089",
+      "entity_name": "White River Hub, LLC",
+      "kind": "elibrary_advanced_search_response",
+      "mandatory_for_clean_retry": true,
+      "media_type": "application/json",
+      "method": "POST",
+      "request": {
+        "body": {
+          "accessionNumber": null,
+          "affiliations": [],
+          "allDates": false,
+          "availability": null,
+          "categories": [],
+          "classTypes": [
+            {
+              "documentClass": "Order/Opinion",
+              "documentType": "Commission Order/Opinion"
+            },
+            {
+              "documentClass": "Order/Opinion",
+              "documentType": "Delegated Order"
+            },
+            {
+              "documentClass": "ALJ Issuance",
+              "documentType": "Certification of Settlement"
+            },
+            {
+              "documentClass": "ALJ Issuance",
+              "documentType": "Report to the Commission"
+            },
+            {
+              "documentClass": "Pleading/Motion",
+              "documentType": "Petition for Review"
+            },
+            {
+              "documentClass": "Application/Petition/Request",
+              "documentType": "Tariff Filing"
+            },
+            {
+              "documentClass": "Application/Petition/Request",
+              "documentType": "Complaints"
+            }
+          ],
+          "curPage": 0,
+          "dateSearches": [
+            {
+              "dateType": "filed_date",
+              "endDate": "2026-12-31",
+              "startDate": "2015-01-01"
+            }
+          ],
+          "docketSearches": [
+            {
+              "docketNumber": "RP25-1075",
+              "subDocketNumbers": []
+            }
+          ],
+          "eFiling": false,
+          "groupBy": "NONE",
+          "idolResultID": "",
+          "libraries": [],
+          "resultsPerPage": 100,
+          "searchDescription": false,
+          "searchFullText": false,
+          "searchText": "",
+          "sortBy": ""
+        },
+        "bytes": 1043,
+        "content_type": "application/json",
+        "sha256": "8a9a5dd0871ea89ad9600904b13b5bc8b5ad287b986d73907d711a9cc4d71e95"
+      },
+      "required_by_failed_build": true,
+      "response": {
+        "bytes": 3098,
+        "cache_path": "source_cache/objects/f9/f9f37be56b19219f1203b036da6d54d335791c9b4f10419fc87e5f168091899b",
+        "sha256": "f9f37be56b19219f1203b036da6d54d335791c9b4f10419fc87e5f168091899b"
+      },
+      "response_accessions": [
+        "20250819-5069",
+        "20250904-3005"
+      ],
+      "retrieved_utc": "2026-09-10T00:14:05+00:00",
+      "source_system": "eLibrary",
+      "source_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/Search/AdvancedSearch#body=8a9a5dd0871ea89ad9600904b13b5bc8"
+    },
+    {
+      "accession_number": "20260528-5027",
+      "cache_key": "e5074dae6b431031b2252c591c8fff25843dbb08b88c226865ddf9431e688d6a",
+      "dependency_role": "direct_v4_failure",
+      "download_cache_key": "f6a43779c07bfaf821435b8fadc8e37082a7c4ab65a0b8ea973386e417a24828",
+      "entity_key": "C000630",
+      "entity_name": "Products (SE) Pipe Line Corporation",
+      "error_list": [],
+      "kind": "elibrary_file_list_response",
+      "listed_files": 2,
+      "mandatory_for_clean_retry": true,
+      "media_type": "application/json",
+      "method": "GET",
+      "public_attachment_ids": [
+        "AB0D8AC5-8B53-C3DE-9DC8-9E6EC8100000",
+        "EEC0D51E-545E-C453-A72A-9E6EC8100000"
+      ],
+      "request": {
+        "body": null,
+        "bytes": 0,
+        "sha256": null
+      },
+      "required_by_failed_build": true,
+      "response": {
+        "bytes": 4609,
+        "cache_path": "source_cache/objects/20/206bf238b518ed077c49eeb5e790a7d337c7e447c2ef4d10eb68e5457d52aa56",
+        "sha256": "206bf238b518ed077c49eeb5e790a7d337c7e447c2ef4d10eb68e5457d52aa56"
+      },
+      "retrieved_utc": "2026-09-10T00:13:49+00:00",
+      "source_system": "eLibrary",
+      "source_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/GetFileListFromP8/20260528-5027"
+    },
+    {
+      "accession_number": "20260528-5027",
+      "attachment_ids": [
+        "AB0D8AC5-8B53-C3DE-9DC8-9E6EC8100000",
+        "EEC0D51E-545E-C453-A72A-9E6EC8100000"
+      ],
+      "cache_key": "f6a43779c07bfaf821435b8fadc8e37082a7c4ab65a0b8ea973386e417a24828",
+      "dependency_role": "transitive_replay_dependency",
+      "kind": "elibrary_attachment_response",
+      "mandatory_for_clean_retry": true,
+      "media_type": "application/octet-stream",
+      "method": "POST",
+      "request": {
+        "body": {
+          "FileIDAll": "",
+          "FileType": "",
+          "Islegacy": false,
+          "accession": "20260528-5027",
+          "fileid": 0,
+          "fileidLst": [
+            "AB0D8AC5-8B53-C3DE-9DC8-9E6EC8100000",
+            "EEC0D51E-545E-C453-A72A-9E6EC8100000"
+          ]
+        },
+        "bytes": 190,
+        "content_type": "application/json",
+        "sha256": "5da1317e59656042362fc19b1417cea5e93e8c5fd0cb825dd9072142f5862481"
+      },
+      "request_strategy": "all_public_ids",
+      "required_by_failed_build": false,
+      "response": {
+        "bytes": 872302,
+        "cache_path": "source_cache/objects/37/37cfa72921ad6f1aad779f6a1b71690355a02aa3d766755e2cd5a935a6d82788",
+        "sha256": "37cfa72921ad6f1aad779f6a1b71690355a02aa3d766755e2cd5a935a6d82788"
+      },
+      "response_container": {
+        "container": "zip",
+        "crc_clean": true,
+        "members": [
+          {
+            "bytes": 467163,
+            "crc32": "61caeb88",
+            "name": "20260528-5027_PPL Transmittal FERC Nos. 155.49.0, 156.29.0, 159.10.0.pdf"
+          },
+          {
+            "bytes": 467434,
+            "crc32": "5662ec17",
+            "name": "20260528-5027_FERC GENERATED TARIFF FILING.PDF"
+          }
+        ]
+      },
+      "retrieved_utc": "2026-09-10T00:13:52+00:00",
+      "source_system": "eLibrary",
+      "source_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/DownloadP8File#body=5da1317e59656042362fc19b1417cea5"
+    }
+  ],
+  "schema": "official_ferc_elibrary_dependency_capture_v1",
+  "source_cache_after": {
+    "bytes": 2027708,
+    "entries": 3620,
+    "sha256": "0616e59e6d05f380f7c1e4003fccaeec98fdadfc0da1b5275bd2ee2935b09bfe"
+  },
+  "source_cache_before": {
+    "bytes": 2021573,
+    "entries": 3609,
+    "sha256": "f9237d7bb1d93a922b5b5d5498f5ed01b100887410762c778ff576f6b40d15f6"
+  }
+}

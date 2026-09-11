@@ -1,0 +1,18 @@
+{
+ "annotation_set_version": "1.1.0",
+ "evidence_hash_algorithm": "sha256 canonical JSON (sorted keys, compact separators) over source_system, entity_key, filing_id, source_fact_id, metric_id, filed_text",
+ "files": [
+  {
+   "entities": [
+    "C000654",
+    "C001012"
+   ],
+   "path": "reviewed_source_annotations.json",
+   "row_count": 7,
+   "sha256": "a564bfa78da7bf07025276edcf5aa1dc195edaf95380ef053447383e0155aa96"
+  }
+ ],
+ "generated_at": "2026-09-09T00:00:00+00:00",
+ "required": true,
+ "why_required": "Without these rows a rebuild reverts reviewed observations from source_anomaly_review to pass, which is a quality upgrade with no evidence behind it. run.py treats a missing or altered file as fatal."
+}

@@ -1,0 +1,23 @@
+{
+  "schema": "ferc-historical-release-identity-v1",
+  "provenance": {
+    "source": "FERC_Independent_Audit_2026-09-08/evidence/reports/baseline.json",
+    "source_member_sha256": "c3a0079a99084487eedc07b3433493eac382130b54abed62dd0d42672a111b47",
+    "finding": "A21",
+    "note": "The original audit found three stale entries. This compact evidence fixture preserves their identities and observed before/after hashes without pretending to be the full historical manifest."
+  },
+  "manifest_files": {
+    "IMPLEMENTATION_ACCEPTANCE.md": {"sha256":"0607d46da5ce834de588829e30267df3ed5b187bb4e680f29f10b534c7f22827","bytes":12918},
+    "release_receipt.json": {"sha256":"44ec1c2af7c0c8f57bdf4206f6d8bef31a70a931cb3fa7454121b9be3ff52499","bytes":1012},
+    "staging/operating_assets.sqlite": {"sha256":"72cd3d312d7259693e65342e2cf16876e2a33f999a85f29754c37c54b22449b1","bytes":730103808}
+  },
+  "observed_after_manifest": {
+    "IMPLEMENTATION_ACCEPTANCE.md": {"sha256":"8838ad389cf86c1bc5239ea61c72ee76ea581af0678e0291eaf3ab20e6c44fe4","bytes":12918},
+    "release_receipt.json": {"sha256":"036424fc2bdd7cefaec108f53013ff2414d821c34499a5d9da9f04e1c987bd97","bytes":981},
+    "staging/operating_assets.sqlite": {"sha256":"a19f10bd7b1a082c9033a3f75e5e7674940a7542f899b8a76f3931330994ad0a","bytes":707710976}
+  },
+  "expected_contract_violations": [
+    {"kind":"STALE_BY_CONSTRUCTION","path":"release_receipt.json"},
+    {"kind":"MUTABLE_AFTER_MANIFEST","path":"staging/operating_assets.sqlite"}
+  ]
+}

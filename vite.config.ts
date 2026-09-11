@@ -48,9 +48,24 @@ export default defineConfig(async () => {
   return {
     css: { postcss: { plugins: [tailwindcss()] } },
     server: {
-      fs: { deny: ['.env', '.env.*', '*.{crt,pem}', '**/.git/**', '**/.ferc-local/**'] },
+      fs: {
+        deny: [
+          '.env',
+          '.env.*',
+          '*.{crt,pem}',
+          '**/.git/**',
+          '**/.ferc-local/**',
+          '**/backend/**',
+        ],
+      },
       ...(isCodexSeatbeltSandbox
-        ? { watch: { useFsEvents: false, usePolling: true, ignored: ['**/.ferc-local/**'] } }
+        ? {
+            watch: {
+              useFsEvents: false,
+              usePolling: true,
+              ignored: ['**/.ferc-local/**'],
+            },
+          }
         : { watch: { ignored: ['**/.ferc-local/**'] } }),
     },
     plugins: [

@@ -1,0 +1,43 @@
+{
+  "schema": "official_ferc_recovery_execution_v1",
+  "scope": "one non-retrying pass for the 13 exact accession URLs in the candidate inventory",
+  "evidence_lane": "new official-FERC evidence collected after the audit; not historical bundled evidence",
+  "workdir": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery",
+  "command": "/usr/bin/python3 -B /Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/recover_official_ferc.py",
+  "interpreter": {
+    "path": "/usr/bin/python3",
+    "version": "Python 3.9.6"
+  },
+  "helper_inspection_before_execution": {
+    "ast_parse": "ok",
+    "bytes": 17046,
+    "sha256": "bc47a846e6daa5b0e510ea39ca505415faa8c9db3e95a5aff2404d78c1a4140e",
+    "project_imports": 0,
+    "subprocesses": 0,
+    "network_host_allowlist": [
+      "elibrary.ferc.gov"
+    ],
+    "write_roots": [
+      "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery",
+      "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery"
+    ],
+    "prior_attempt_markers": 0
+  },
+  "network_policy": "public official FERC eLibrary endpoints only; no credentials, cookies, bypass or identical retries",
+  "request_started_utc": "2026-09-09T16:28:50.934014+00:00",
+  "request_ended_utc": "2026-09-09T16:29:56.813972+00:00",
+  "process_exit_code": 0,
+  "result": {
+    "accessions": 13,
+    "list_requests_attempted": 13,
+    "list_http_200": 13,
+    "attachment_requests_attempted": 13,
+    "attachment_http_200": 12,
+    "attachment_http_500": 1,
+    "network_errors": 0,
+    "results_path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/OFFICIAL_FERC_RECOVERY_RESULTS.json",
+    "results_bytes": 107877,
+    "results_sha256": "cc27ccb4fa2b210808ab7c89345b1fd1059f7d8b5138bb678f21a4125e144fdd"
+  },
+  "limitation": "No consumer replay, database application, export regeneration or implementation status promotion was performed."
+}

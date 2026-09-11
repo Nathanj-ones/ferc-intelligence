@@ -1,0 +1,105 @@
+<html>
+<head>
+<title>Federal Register, Volume 68 Issue 100 (Friday, May 23, 2003)</title>
+</head>
+<body><pre>
+[Federal Register Volume 68, Number 100 (Friday, May 23, 2003)]
+[Notices]
+[Page 28211]
+From the Federal Register Online via the Government Publishing Office [<a href="http://www.gpo.gov">www.gpo.gov</a>]
+[FR Doc No: 03-12949]
+
+
+-----------------------------------------------------------------------
+
+DEPARTMENT OF ENERGY
+
+Federal Energy Regulatory Commission
+
+[Docket No RM93-11-000]
+
+
+Revisions to Oil Pipeline Regulations Pursuant to the Energy 
+Policy Act of 1992; Notice of Annual Change in the Producer Price Index 
+for Finished Goods
+
+May 19, 2003.
+    The Commission's regulations include a methodology for oil 
+pipelines to change their rates through use of an index system that 
+establishes ceiling levels for such rates. The index system as set 
+forth at 18 CFR 342.3 is based on the annual change in the Producer 
+Price Index for Finished Goods (PPI-FG). 19 CFR 342.3(d)(2) provides 
+that the oil pricing index to be used is PPI-FG minus 1 percent. 
+However, on February 24, 2003, the Commission issued an Order on Remand 
+of its Five-Year Review of Oil Pricing Index in Docket Nos. RM00-11-000 
+and -001 which determined that the appropriate oil pricing index should 
+be PPI without the minus 1 per cent adjustment.\1\ The regulations 
+provide that each year the Commission will publish an index reflecting 
+the final change in the PPI-FG, after the final PPI-FG is made 
+available by the Bureau of Labor Statistics in May of each calendar 
+year.
+---------------------------------------------------------------------------
+
+    \1\ 102 FERC ] 61,195 at P 1 (2003).
+---------------------------------------------------------------------------
+
+    The annual average PPI-FG index figure for 2001 was 140.7 and the 
+annual average PPI-FG index figure for 2002 was 138.9.\2\ Thus, the 
+percent change (expressed as a decimal) in the annual average PPI-FG 
+from 2001 to 2002 is negative 0.012793.\3\ Oil pipelines must multiply 
+their July 1, 2002--June 30, 2003, index ceiling levels by negative 
+0.987207\4\ to compute their index ceiling levels for the period July 
+1, 2003, through June 30, 2004, in accordance with 18 CFR 342.3(d). For 
+guidance in calculating the ceiling levels for each period beginning 
+January 1, l995,\5\ see Explorer Pipeline Company, 71 FERC 61,416 at 
+n.6 (1995).
+---------------------------------------------------------------------------
+
+    \2\ The final figure for the annual average PPI-FG is published 
+by the Bureau of Labor Statistics (BLS) in mid-May of each year. 
+This figure is publicly available from the Division of Industrial 
+Prices and Price Indexes of the BLS, at (202) 691-7705, and in print 
+in August in Table 1 of the annual data supplement to the BLS 
+publication Producer Price Indexes via the Internet at <a href="http://www.bls.gov/ppi">http://www.bls.gov/ppi</a>. To obtain the BLS data, click on Get Detailed 
+Statistics, then click on Commodity Data under the Most Requested 
+Statistics heading. At the next screen, Producer Price Index--
+Commodity, select the first box, Finished goods--WPUSOP3000, then 
+scroll all the way to the bottom of this screen and click on 
+Retrieve data.
+    \3\ [138.9--140.7] / 140.7 =--0.012793
+    \4\ 1 + (-0.012793) =--0.987207
+    \5\ For a listing of all prior multipliers issued by the 
+Commission, see the Commission's website,<a href="http://www.ferc.gov">http://www.ferc.gov</a>. The 
+table of multipliers can be found under the headings ``Oil'' and 
+``Index''.
+---------------------------------------------------------------------------
+
+Document Availability
+
+    In addition to publishing the full text of this document in the 
+Federal Register, the Commission provides all interested persons an 
+opportunity to view or print the contents of this document via the 
+Internet through FERC's home page (<a href="http://www.ferc.gov">http://www.ferc.gov</a>) and in FERC's 
+Public Reference Room during normal business hours (8:30 a.m. to 5 p.m. 
+eastern time) at 888 First Street, NE., Room 2A, Washington, DC 20426.
+    From FERC's home page on the Internet, this information is 
+available in the Federal Energy Regulatory Records Information System 
+(FERRIS). The full text of this document is available on FERRIS in PDF 
+and WordPerfect format for viewing, printing, or downloading. To access 
+this document in FERRIS, type the docket number excluding the last 
+three digits of this document in the docket number field.
+    This document is available for review at the Commission or may be 
+viewed on the Commission's Web site at <a href="http://www.ferc.gov">http://www.ferc.gov</a>, using the 
+``FERRIS'' link. Enter the docket number excluding the last three 
+digits in the docket number field to access the document. For 
+assistance, contact FERC Online Support at <a href="/cdn-cgi/l/email-protection#ecaaa9beafa38280858289bf999c9c839e98ac8a899e8fc28b839a"><span class="__cf_email__" data-cfemail="783e3d2a3b37161411161d2b0d0808170a0c381e1d0a1b561f170e">[email&#160;protected]</span></a> 
+or toll-free at (866)208-3676, or for TTY, contact (202)502-8659.
+
+Magalie R. Salas,
+Secretary.
+[FR Doc. 03-12949 Filed 5-22-03; 8:45 am]
+BILLING CODE 6717-01-P
+
+
+</pre><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

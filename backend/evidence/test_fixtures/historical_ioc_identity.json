@@ -1,0 +1,22 @@
+{
+  "schema": "ferc-historical-ioc-identity-v1",
+  "provenance": {
+    "source": "M31_BASELINE_REPAIRED_COMPARISON.json",
+    "source_sha256": "483e874e4b8d070063e2fd04300b1c54c2a92b40d83cfb97d6b6aa70189fcdc7",
+    "method": "Read-only SQL against the preserved 707710976-byte pre-repair database",
+    "historical_database_sha256": "2fcc750b694fbad6deec6b5ab08f25162f81b4fa48a5e2b4a4cb37d423a1dd3b"
+  },
+  "entities": [
+    {"entity_key":"C001087","legal_name":"MountainWest Overthrust Pipeline, LLC"},
+    {"entity_key":"C001088","legal_name":"MountainWest Pipeline, LLC"}
+  ],
+  "historical_header_assignment": [
+    {"assigned_entity":"C001088","header_cid":"C001087","filings":12,"mismatches":12,"canonical":9},
+    {"assigned_entity":"C001088","header_cid":"C001088","filings":14,"mismatches":0,"canonical":3}
+  ],
+  "historical_observation_header_assignment": [
+    {"observation_entity":"C001087","header_cid":"C001087","observations":186},
+    {"observation_entity":"C001088","header_cid":"C001087","observations":153},
+    {"observation_entity":"C001088","header_cid":"C001088","observations":83}
+  ]
+}

@@ -1,0 +1,73 @@
+<html>
+<head>
+<title>Federal Register, Volume 63 Issue 94 (Friday, May 15, 1998)</title>
+</head>
+<body><pre>[Federal Register Volume 63, Number 94 (Friday, May 15, 1998)]
+[Notices]
+[Page 27081]
+From the Federal Register Online via the Government Publishing Office [<a href="http://www.gpo.gov">www.gpo.gov</a>]
+[FR Doc No: 98-12930]
+
+
+-----------------------------------------------------------------------
+
+DEPARTMENT OF ENERGY
+
+Federal Energy Regulatory Commission
+[Docket No. RM93-11-000]
+
+
+Revisions to Oil Pipeline Regulations Pursuant to the Energy 
+Policy Act of 1992; Notice of Annual Change in the Producer Price Index 
+for Finished Goods, Minus One Percent
+
+May 11, 1998.
+    The Commission's regulations include a methodology for oil 
+pipelines to change their rates through use of an index system that 
+establishes ceiling levels for such rates. The index system as set 
+forth at 18 CFR 342.3 is based on the annual change in the Producer 
+Price Index for Finished Goods (PPI-FG), minus one percent. The 
+regulations provide that each year the Commission will publish an index 
+reflecting the final change in the PPI-FG, minus one percent, after the 
+final PPI-FG is made available by the Bureau of Labor Statistics in May 
+of each calendar year.
+    The annual average PPI-FG index figure for 1996 was 131.3 and the 
+annual average PPI-FG index figure for 1997 was 131.8.\1\ Thus, the 
+percent change (expressed as a decimal) in the annual average PPI-FG 
+from 1996 to 1997, minus one percent, is a negative .006192.\2\ Oil 
+pipelines must multiply their July 1, 1997--June 30, 1998 rate ceiling 
+levels by 0.993808 to compute their rate ceiling levels for the period 
+July 1, 1998, through June 30, 1999, in accordance with 18 CFR 
+342.3(d).
+---------------------------------------------------------------------------
+
+    \1\ The final figures for the annual average PPI-FG is published 
+by the Bureau of Labor Statistics in mid-May of each year. This 
+figure is publicly available from the Division of Industrial Prices 
+and Prices Indexes of the Bureau of Labor Statistics, at (202) 606-
+7705, and is available in print in August in Table 1 of the annual 
+data supplement to the BLS publication Producer Price Indexes.
+    \2\ [131.8--131.3]/131.3=.003808-.01=-.006192.
+---------------------------------------------------------------------------
+
+    To obtain July 1, 1998--June 30, 1999 ceiling levels, pipelines 
+must first calculate their ceiling levels for the January 1, 1995--June 
+30, 1995 index period, by multiplying their December 31, 1994 rates by 
+1.002175. Pipelines must then multiply those ceiling levels by 0.996415 
+to obtain the July 1, 1995--June 30, 1996 ceiling levels, multiply the 
+July 1, 1995--June 30, 1996 ceiling levels by 1.009124 to obtain the 
+July 1, 1996--June 30, 1997 ceiling levels and multiply the July 1, 
+1996-June 30, 1997 ceiling levels by 1.016583 to obtain the July 1, 
+1997--June 30, 1998 ceiling levels. Finally, pipelines must multiply 
+the July 1, 1997--June 30, 1998 ceiling levels by 0.993808 to obtain 
+the July 1, 1998--June 30, 1999 ceiling levels. See Explorer Pipeline 
+Company, 71 FERC para. 61,416 at n.6 (1995) for an explanation of how 
+ceiling levels must be calculated.
+David P. Boergers,
+Acting Secretary.
+[FR Doc. 98-12930 Filed 5-14-98; 8:45 am]
+BILLING CODE 6717-01-M
+
+
+</pre></body>
+</html>

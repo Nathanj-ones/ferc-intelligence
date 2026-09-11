@@ -1,0 +1,36 @@
+{
+ "accession_number": "20231229-5212",
+ "attachment_id": "3C44D08A-94D2-C98C-A144-8CB6CB000000",
+ "attachment_order": 3,
+ "availability_mode": "P",
+ "evidence_lane": "new official-FERC evidence after the independent audit",
+ "file_name": "Appendix A-2 - Primary Case Tariff Records Marked.pdf",
+ "listed_bytes": 359834,
+ "listed_media_type": "application/pdf",
+ "request": {
+  "cache_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/DownloadP8File#body=1b14a7e6f4c207b44ecf5797645b6481",
+  "credentials_or_cookies_sent": false,
+  "method": "POST",
+  "official_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/DownloadP8File",
+  "payload_bytes": 150,
+  "payload_sha256": "1b14a7e6f4c207b44ecf5797645b6481bd2957075bbe59f428f46533b9631105",
+  "retry_count": 0
+ },
+ "response": {
+  "body_path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/individual_responses/20231229-5212/03_3C44D08A-94D2-C98C-A144-8CB6CB000000.body",
+  "bytes": 61,
+  "complete_body": true,
+  "ended_utc": "2026-09-09T17:22:59.775085+00:00",
+  "headers": {
+   "content-length": "61",
+   "content-type": "application/json; charset=utf-8",
+   "date": "Wed, 09 Sep 2026 17:22:59 GMT"
+  },
+  "http_reason": "Internal Server Error",
+  "http_status": 500,
+  "network_error": null,
+  "sha256": "e081cde7589ce317c72b9c017743982b29b8b5825e79dc5ce01da787253fc7b9",
+  "started_utc": "2026-09-09T17:22:51.579515+00:00"
+ },
+ "schema": "official_ferc_individual_response_v1"
+}

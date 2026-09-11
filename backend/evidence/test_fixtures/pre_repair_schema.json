@@ -1,0 +1,43 @@
+{
+  "schema": "ferc-pre-repair-schema-v1",
+  "provenance": {
+    "source": "FERC_Independent_Audit_2026-09-08/evidence/reports/baseline.json",
+    "source_member_sha256": "c3a0079a99084487eedc07b3433493eac382130b54abed62dd0d42672a111b47",
+    "historical_database_sha256": "2fcc750b694fbad6deec6b5ab08f25162f81b4fa48a5e2b4a4cb37d423a1dd3b",
+    "note": "Only table and column identities used by migrations/001_repair_2026_09_08.py are retained; no reference answer was generated from the implementation under test."
+  },
+  "tables": {
+    "coverage_expected": ["slot_id","entity_key","asset_id","template","metric_id","source_regime","period_basis","period_start","period_end","instant_date","reporting_year","reporting_period","scope","unit_rule","requirement","requirement_evidence","applicability_version","frozen_at","frozen_run_id"],
+    "coverage_measured": ["slot_id","run_id","observation_id","outcome","populated","source_matched","validated","in_review","reason","evidence","measured_at"],
+    "lineage_edges": ["observation_id","input_order","input_role","operator_sign","coefficient","input_source_system","input_filing_id","input_source_fact_id","input_observation_id","input_context_id","input_concept","input_period","input_value","input_unit","input_version_status"],
+    "field_status": ["template","field_id","metric_id","adapter","implementation","outcome","evidence","blocker","note"]
+  },
+  "absent_tables": ["lineage_populations","observation_versions"],
+  "expected_missing_columns": [
+    ["coverage_expected","due_date"],
+    ["coverage_expected","slot_state"],
+    ["coverage_expected","obligation_form"],
+    ["coverage_expected","obligation_authority"],
+    ["coverage_expected","obligation_evidence_kind"],
+    ["coverage_expected","source_health"],
+    ["coverage_expected","source_health_detail"],
+    ["coverage_expected","denominator_origin"],
+    ["coverage_expected","docket"],
+    ["coverage_expected","facility"],
+    ["coverage_expected","shipped_requirement"],
+    ["coverage_measured","candidates_refused"],
+    ["coverage_measured","refusal_gates"],
+    ["lineage_edges","input_population_id"],
+    ["field_status","adapter_implemented"],
+    ["field_status","has_data_in_template"],
+    ["field_status","validated_in_template"],
+    ["field_status","within_template_observations"],
+    ["field_status","within_template_present"],
+    ["field_status","within_template_present_pass"],
+    ["field_status","within_template_entities"],
+    ["field_status","within_template_regimes"],
+    ["field_status","selector_failures_in_template"],
+    ["field_status","core_slots_in_template"],
+    ["field_status","cross_template_present_pass"]
+  ]
+}

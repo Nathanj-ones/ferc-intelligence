@@ -1,0 +1,46 @@
+{
+  "schema": "ferc-reviewed-image-sources-v1",
+  "provenance": {
+    "source": "CODEX re-audit A17 visual verification",
+    "source_evidence": "A17_VISUAL_VERIFICATION.json",
+    "source_evidence_sha256": "12e283d0b3eda344b6199e7b8298463a7f0cb5e8993c8509450a748566c6e548",
+    "method": "Rendered page 1 from each cached source object at 180 dpi with bundled Poppler, then independently inspected the complete page image.",
+    "audit_date": "2026-09-09",
+    "lane": "A_frozen_release",
+    "limitation": "This compact fixture pins the independently reviewed source identities, render identities and expected transcriptions. The large source PDFs and rendered PNGs are not duplicated here; the regression exercises the shipped reviewed-page transcription path and must not be described as a fresh visual review."
+  },
+  "sources": [
+    {
+      "accession": "20240223-5073",
+      "entity": "Cadeville Gas Storage LLC",
+      "source_object_sha256": "31f9219d3da5bc260392b6e2351cde0313ab38978ade4ee714f70308d7036d94",
+      "source_bytes": 337391,
+      "pages": 1,
+      "text_layer": false,
+      "render_sha256": "90764d4355daf325787e3270e2c82237e861a440f381522050c9b86cf5388fc8",
+      "reviewed_by": "independent visual review",
+      "ocr_used": false,
+      "expected": [
+        {"kind":"estimated_peak_day_delivery_capacity","value_text":"420","unit":"MMcf/day","qualifier":"approximately"},
+        {"kind":"estimated_total_storage_capacity","value_text":"23.7","unit":"Bcf","qualifier":"estimated"}
+      ],
+      "required_qualifiers": ["BASE GAS", "OFF-SYSTEM", "reasonably representative operating assumptions"]
+    },
+    {
+      "accession": "20240223-5075",
+      "entity": "Monroe Gas Storage Company, LLC",
+      "source_object_sha256": "8e2069eeb07fdfdca7167b323b25cf91f0c34bbf91fd82a8bd82caf9826c0040",
+      "source_bytes": 339731,
+      "pages": 1,
+      "text_layer": false,
+      "render_sha256": "e4021bf93407f7bd906fa8a70db51a228937668834b203ef8de81db9bc1f8688",
+      "reviewed_by": "independent visual review",
+      "ocr_used": false,
+      "expected": [
+        {"kind":"estimated_peak_day_delivery_capacity","value_text":"465","unit":"MMcf/day","qualifier":"approximately"},
+        {"kind":"estimated_total_storage_capacity","value_text":"11.96","unit":"Bcf","qualifier":"estimated"}
+      ],
+      "required_qualifiers": ["BASE GAS", "OFF-SYSTEM", "reasonably representative operating assumptions"]
+    }
+  ]
+}

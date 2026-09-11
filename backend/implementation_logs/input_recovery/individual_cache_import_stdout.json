@@ -1,0 +1,14 @@
+{
+  "already_present_identical": 0,
+  "complete_zip": {
+    "bytes": 109287608,
+    "path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/individual_responses/20231229-5212/07_F19520DA-2360-C302-8619-8CB6CB100000.body",
+    "sha256": "dae325d243bb7ecb3ac6db58c7163e197ffcc593b73e583330372f0fe03c400b"
+  },
+  "imported": 1,
+  "member_count": 10,
+  "retained_non_200_observations": 9,
+  "run_id": "b955f38c-6247-471a-b6db-597e6d0e49d4",
+  "run_inventory": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/implementation_logs/input_recovery/cache_import_runs.jsonl",
+  "status": "complete"
+}

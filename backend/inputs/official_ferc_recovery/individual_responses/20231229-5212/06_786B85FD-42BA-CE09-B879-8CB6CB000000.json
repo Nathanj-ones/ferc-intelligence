@@ -1,0 +1,36 @@
+{
+ "accession_number": "20231229-5212",
+ "attachment_id": "786B85FD-42BA-CE09-B879-8CB6CB000000",
+ "attachment_order": 6,
+ "availability_mode": "P",
+ "evidence_lane": "new official-FERC evidence after the independent audit",
+ "file_name": "COS-1.xlsx",
+ "listed_bytes": 31254258,
+ "listed_media_type": "application/msexcel",
+ "request": {
+  "cache_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/DownloadP8File#body=7e975ec5d9b510c4579d2d022f2e0cb8",
+  "credentials_or_cookies_sent": false,
+  "method": "POST",
+  "official_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/DownloadP8File",
+  "payload_bytes": 150,
+  "payload_sha256": "7e975ec5d9b510c4579d2d022f2e0cb8b746cf2b78630af5205e8ba307a63f19",
+  "retry_count": 0
+ },
+ "response": {
+  "body_path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/individual_responses/20231229-5212/06_786B85FD-42BA-CE09-B879-8CB6CB000000.body",
+  "bytes": 61,
+  "complete_body": true,
+  "ended_utc": "2026-09-09T17:23:08.740827+00:00",
+  "headers": {
+   "content-length": "61",
+   "content-type": "application/json; charset=utf-8",
+   "date": "Wed, 09 Sep 2026 17:23:08 GMT"
+  },
+  "http_reason": "Internal Server Error",
+  "http_status": 500,
+  "network_error": null,
+  "sha256": "e081cde7589ce317c72b9c017743982b29b8b5825e79dc5ce01da787253fc7b9",
+  "started_utc": "2026-09-09T17:23:00.520113+00:00"
+ },
+ "schema": "official_ferc_individual_response_v1"
+}

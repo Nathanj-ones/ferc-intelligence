@@ -1,0 +1,22 @@
+^D[01:13:33] info  universe: 4 asset rows, 4 filing entities (universe, as-of 2026-09-07)
+[01:13:33] info  identity seeded: 4 entities, 4 assets, 4 asset-entity mappings
+[01:13:33] info  reviewed source annotations loaded: 7 rows, set version 1.1.0 (2 entities)
+[01:13:33] info  === elibrary_docs: 4 eligible entities (universe) ===
+[01:13:52] info  20260528-5027: 2 member(s); best '20260528-5027_PPL Transmittal FERC Nos. 155.49.0, 156.29.0, 159.10.0.pdf' (pdf_flate_text_span, text_layer=yes, 32,022 chars)
+[01:13:52] info  C000630: 33 hits -> 31 distinct filings, 0 availability twins; proceedings reported for ['IS26-390', 'IS26-294'] (of 29 located)
+[01:13:52] info  C000630: 4 observations, 12 document facts, 2 events, 0 proceeding(s)
+[01:13:52] info  [1/4] C000630 Products (SE) Pipe Line Corporation: 31 filings, 4 slots, 4 observations, 0 pruned, 0 out-of-window retained
+[01:13:56] info  C001506: 64 hits -> 62 distinct filings, 0 availability twins; proceedings reported for ['RP26-674', 'RP26-397'] (of 27 located)
+[01:13:56] info  C001506: 11 observations, 29 document facts, 31 events, 2 proceeding(s)
+[01:13:56] info  [2/4] C001506 Cheniere Creole Trail Pipeline, L.P.: 62 filings, 6 slots, 11 observations, 0 pruned, 0 out-of-window retained
+[01:14:01] info  20260304-3061: 1 member(s); best '20260304-3061.bin' (docx_xml_text_span, text_layer=yes, 1,734 chars)
+[01:14:01] info  C001031: 72 hits -> 70 distinct filings, 0 availability twins; proceedings reported for ['RP26-1121', 'RP26-488'] (of 39 located)
+[01:14:01] info  C001031: 11 observations, 26 document facts, 27 events, 2 proceeding(s)
+[01:14:01] info  [3/4] C001031 Discovery Gas Transmission LLC: 70 filings, 6 slots, 11 observations, 0 pruned, 0 out-of-window retained
+[01:14:10] info  20250904-3005: 1 member(s); best '20250904-3005.bin' (docx_xml_text_span, text_layer=yes, 1,741 chars)
+[01:14:10] info  C001089: 60 hits -> 58 distinct filings, 0 availability twins; proceedings reported for ['RP26-1100', 'RP25-1075'] (of 31 located)
+[01:14:10] info  C001089: 11 observations, 25 document facts, 26 events, 2 proceeding(s)
+[01:14:10] info  [4/4] C001089 White River Hub, LLC: 58 filings, 6 slots, 11 observations, 0 pruned, 0 out-of-window retained
+  elibrary_docs  entities=   4 observations=    37 ok=   4 failed=  0 unchanged=   0 ok
+
+run status: complete

@@ -1,0 +1,27 @@
+{
+  "accession": "20231229-5212",
+  "attempt_started_utc": "2026-09-09T16:29:07.452398+00:00",
+  "credentials_or_cookies_sent": false,
+  "outcome": "attempt_started; see response metadata/result ledger",
+  "request": {
+    "body_bytes": 490,
+    "body_sha256": "b35e866fc4e35a8970afd2af44390dc2f194eb57c40c3436867a637d80ad4b28",
+    "headers": {
+      "Accept": "application/octet-stream,*/*",
+      "Connection": "close",
+      "Content-Type": "application/json",
+      "Origin": "https://elibrary.ferc.gov",
+      "Referer": "https://elibrary.ferc.gov/eLibrary/filelist?accession_num=20231229-5212",
+      "User-Agent": "Codex-FERC-independent-audit-recovery/1.0"
+    },
+    "method": "POST",
+    "payload_shape": {
+      "accession": "20231229-5212",
+      "attachment_id_count": 10
+    },
+    "url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/DownloadP8File"
+  },
+  "request_kind": "attachment",
+  "retry_policy": "one attempt only; no automatic or manual identical retry in this pass",
+  "schema": "official_ferc_http_attempt_v1"
+}

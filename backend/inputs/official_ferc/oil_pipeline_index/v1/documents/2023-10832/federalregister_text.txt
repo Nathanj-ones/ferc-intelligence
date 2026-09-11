@@ -1,0 +1,101 @@
+<html>
+<head>
+<title>Federal Register, Volume 88 Issue 98 (Monday, May 22, 2023)</title>
+</head>
+<body><pre>
+[Federal Register Volume 88, Number 98 (Monday, May 22, 2023)]
+[Notices]
+[Page 32765]
+From the Federal Register Online via the Government Publishing Office [<a href="http://www.gpo.gov">www.gpo.gov</a>]
+[FR Doc No: 2023-10832]
+
+
+-----------------------------------------------------------------------
+
+DEPARTMENT OF ENERGY
+
+Federal Energy Regulatory Commission
+
+[Docket No. RM93-11-000]
+
+
+Revisions to Oil Pipeline Regulations Pursuant to the Energy 
+Policy Act of 1992; Notice of Annual Change in the Producer Price Index 
+for Finished Goods
+
+    The Commission's regulations include a methodology for oil 
+pipelines to change their rates through use of an index system that 
+establishes ceiling levels for such rates. The Commission bases the 
+index system, found at 18 CFR 342.3, on the annual change in the 
+Producer Price Index for Finished Goods (PPI-FG), minus point two one 
+percent (PPI-FG--0.21%). The Commission determined in the January 2022 
+Order \1\ that PPI-FG--0.21% is the appropriate oil pricing index 
+factor for pipelines to use for this period.
+---------------------------------------------------------------------------
+
+    \1\ Five-Year Rev. of the Oil Pipeline Index, 178 FERC ] 61,023, 
+at P 105 (January 2022 Order), reh'g denied, 179 FERC ] 61,100 
+(2022).
+---------------------------------------------------------------------------
+
+    The regulations provide that the Commission will publish annually 
+an index figure reflecting the final change in the PPI-FG after the 
+Bureau of Labor Statistics publishes the final PPI-FG in May of each 
+calendar year. The annual average PPI-FG index figures were 221.0 for 
+2021 and 250.9 for 2022.\2\ Thus, the percent change (expressed as a 
+decimal) in the annual average PPI-FG from 2021 to 2022, minus 0.21 
+percent, is positive 0.133194.\3\ Oil pipelines must multiply their 
+July 1, 2022, through June 30, 2023, index ceiling levels \4\ by 
+positive 1.133194 \5\ to compute their index ceiling levels for July 1, 
+2023, through June 30, 2024, in accordance with 18 CFR 342.3(d). For 
+guidance in calculating the ceiling levels for each 12-month period 
+beginning January 1, 1995,\6\ see Explorer Pipeline Company, 71 FERC ] 
+61,416, at n.6 (1995).
+---------------------------------------------------------------------------
+
+    \2\ Bureau of Labor Statistics (BLS) publishes the final figure 
+in mid-May of each year. This figure is publicly available from the 
+Division of Industrial Prices and Price Indexes of the BLS, at 202-
+691-7705, and in print in August in Table 1 of the annual data 
+supplement to the BLS publication Producer Price Indexes via the 
+internet at <a href="http://www.bls.gov/ppi/home.htm">http://www.bls.gov/ppi/home.htm</a>. To obtain the BLS data, 
+scroll down to ``PPI Databases'' and click on ``Top Picks'' of the 
+Commodity Data including ``headline'' FD-ID indexes (Producer Price 
+Index--PPI). At the next screen, under the heading ``PPI Commodity 
+Data,'' select the box, ``Finished goods--WPUFD49207,'' then scroll 
+to the bottom of this screen and click on Retrieve data.
+    \3\ [250.9-221.0]/221.0 = 0.135294-0.0021 = 0.133194.
+    \4\ See January 2022 Order, 178 FERC ] 61,023 at P 106 
+(directing oil pipelines to recompute their July 1, 2021 through 
+June 30, 2022 index ceiling levels to be effective March 1, 2022), 
+reh'g denied, 179 FERC ] 61,100 at P 8; see also Revisions to Oil 
+Pipeline Reguls. Pursuant to the Energy Pol'y Act of 1992, 178 FERC 
+] 61,046 (2022).
+    \5\ 1 + 0.133194 = 1.133194.
+    \6\ For a listing of all prior multipliers issued by the 
+Commission, see the Commission's website, <a href="https://www.ferc.gov/industries-data/oil/general-information/oil-pipeline-index">https://www.ferc.gov/industries-data/oil/general-information/oil-pipeline-index</a>.
+---------------------------------------------------------------------------
+
+    In addition to publishing the full text of this Notice in the 
+Federal Register, the Commission provides all interested persons an 
+opportunity to view and/or print this Notice via the internet through 
+FERC's Home Page (<a href="http://www.ferc.gov">http://www.ferc.gov</a>) using the eLibrary link. To 
+access this document in eLibrary, type the docket number excluding the 
+last three digits of this document in the docket number field and 
+follow other directions on the search page.
+    User assistance is available for eLibrary and other aspects of 
+FERC's website during normal business hours. For assistance, please 
+contact the Commission's Online Support at 1-866-208-3676 (toll free) 
+or 202-502-6652 (email at <a href="/cdn-cgi/l/email-protection#de989b8c9d91b0b2b7b0bb8dabaeaeb1acaa9eb8bbacbdf0b9b1a8"><span class="__cf_email__" data-cfemail="4e080b1c0d01202227202b1d3b3e3e213c3a0e282b3c2d60292138">[email&#160;protected]</span></a>), or the Public 
+Reference Room at 202-502-8371, TTY 202-502-8659. Email the Public 
+Reference Room at <a href="/cdn-cgi/l/email-protection#c1b1b4a3ada8a2efb3a4a7a4b3a4afa2a4b3aeaeac81a7a4b3a2efa6aeb7"><span class="__cf_email__" data-cfemail="09797c6b65606a277b6c6f6c7b6c676a6c7b666664496f6c7b6a276e667f">[email&#160;protected]</span></a>.
+
+    Dated: May 16, 2023.
+Kimberly D. Bose,
+Secretary.
+[FR Doc. 2023-10832 Filed 5-19-23; 8:45 am]
+BILLING CODE 6717-01-P
+
+
+</pre><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

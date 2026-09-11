@@ -1,0 +1,61 @@
+{
+  "schema": "ferc-historical-document-regressions-v1",
+  "provenance": {
+    "source_database_sha256": "2fcc750b694fbad6deec6b5ab08f25162f81b4fa48a5e2b4a4cb37d423a1dd3b",
+    "source_database_bytes": 707710976,
+    "source_description": "Read-only queries against the preserved pre-repair operating-assets database audited on 2026-09-08.",
+    "independent_report": "FERC_Independent_Audit_2026-09-08/audit.md",
+    "extracted_at": "2026-09-09"
+  },
+  "lng_request_documents": [
+    {"filing_id":"20251120-5164","title":"Elba Liquefaction Company, L.L.C. et al. submit Implementation Plan Part IV Volume No. 105 and request for return to service the MMLS 05 associated with the Elba Liquefaction Optimization Project unde","class_type":"Report/Form::Certificate of Compliance Report"},
+    {"filing_id":"20251120-5165","title":"Elba Liquefaction Company, L.L.C. et al. submit Implementation Plan Part IV Volume No. 105 and request for return to service the MMLS 05 associated with the Elba Liquefaction Optimization Project unde","class_type":"Report/Form::Certificate of Compliance Report"},
+    {"filing_id":"20260213-5032","title":"Elba Liquefaction Company, L.L.C. et al. submit request for authorization to place into service and commence service activities for the Condensate Plant re the Elba Liquefaction Optimization Project u","class_type":"Report/Form::Certificate of Compliance Report"},
+    {"filing_id":"20260213-5033","title":"Elba Liquefaction Company, L.L.C. et al. submit request for authorization to place into service and commence service activities for the Condensate Plant re the Elba Liquefaction Optimization Project u","class_type":"Report/Form::Certificate of Compliance Report"},
+    {"filing_id":"20260413-5165","title":"Elba Liquefaction Company, L.L.C. et al. submit request for return to service of the MMLS 07 associated with the Elba Liquefaction Optimization Project under CP23-375.","class_type":"Report/Form::Certificate of Compliance Report"},
+    {"filing_id":"20260413-5166","title":"Elba Liquefaction Company, L.L.C. et al. submit request for return to service of the MMLS 07 associated with the Elba Liquefaction Optimization Project under CP23-375.","class_type":"Report/Form::Certificate of Compliance Report"},
+    {"filing_id":"20260527-5119","title":"Elba Liquefaction Company, L.L.C. et al. submit request for commencement of service/return to service activities for the MMLS 10 of the Elba Liquefaction Optimization Project under CP23-375.","class_type":"Report/Form::Certificate of Compliance Report"},
+    {"filing_id":"20260527-5120","title":"Elba Liquefaction Company, L.L.C. et al. submit request for commencement of service/return to service activities for the MMLS 10 of the Elba Liquefaction Optimization Project under CP23-375.","class_type":"Report/Form::Certificate of Compliance Report"},
+    {"filing_id":"20260602-5154","title":"Elba Liquefaction Company, L.L.C. et al. submit request for commencement of service/return to service activities for the MMLS 09 of the Elba Liquefaction Optimization Project under CP23-375.","class_type":"Report/Form::Certificate of Compliance Report"},
+    {"filing_id":"20260602-5155","title":"Elba Liquefaction Company, L.L.C. et al. submit request for commencement of service/return to service activities for the MMLS 09 of the Elba Liquefaction Optimization Project under CP23-375.","class_type":"Report/Form::Certificate of Compliance Report"},
+    {"filing_id":"20260727-5320","title":"Elba Liquefaction Company, L.L.C. et al. submit request for commencement of service/return to service activities for the MMLS 06 of the Elba Liquefaction Optimization Project under CP23-375.","class_type":"Report/Form::Certificate of Compliance Report"},
+    {"filing_id":"20260727-5321","title":"Elba Liquefaction Company, L.L.C. et al. submit request for commencement of service/return to service activities for the MMLS 06 of the Elba Liquefaction Optimization Project under CP23-375.","class_type":"Report/Form::Certificate of Compliance Report"},
+    {"filing_id":"20260729-5129","title":"Elba Liquefaction Company, L.L.C. et al. submit request for commencement of service/return to service activities for the MMLS 06 of the Elba Liquefaction Optimization Project under CP23-375.","class_type":"Report/Form::Certificate of Compliance Report"},
+    {"filing_id":"20260729-5130","title":"Elba Liquefaction Company, L.L.C. et al. submit request for commencement of service/return to service activities for the MMLS 06 of the Elba Liquefaction Optimization Project under CP23-375.","class_type":"Report/Form::Certificate of Compliance Report"},
+    {"filing_id":"20260818-5060","title":"Elba Liquefaction Company, L.L.C. et al. submit request for commencement of service/return to service activities for the  MMLS 02 of the Elba Liquefaction Optimization Project under CP23-375.","class_type":"Report/Form::Certificate of Compliance Report"},
+    {"filing_id":"20260818-5061","title":"Elba Liquefaction Company, L.L.C. et al. submit request for commencement of service/return to service activities for the  MMLS 02 of the Elba Liquefaction Optimization Project under CP23-375.","class_type":"Report/Form::Certificate of Compliance Report"}
+  ],
+  "lng_hazardous_fluid_documents": [
+    {"filing_id":"20200618-3040","title":"Letter order granting Corpus Christi Liquefaction, LLC's 06/05/2020 request to introduce hazardous fluids and commence service of East Jetty facilities under CP12-507","class_type":"Order/Opinion::Delegated Order"},
+    {"filing_id":"20240724-3089","title":"Letter to Corpus Christi Liquefaction, LLC granting the 06/20/2024 request to introduce hazardous fluids to the terminal supply line at the Corpus Christi Liquefaction Stage 3 Project under CP18-512.","class_type":"Order/Opinion::Delegated Order"},
+    {"filing_id":"20251209-3067","title":"Letter to Elba Liquefaction Company, L.L.C. et al. granting the 12/08/2025 request to introduce hazardous fluids to the Condensate Plant for the Liquefaction Optimization Project under CP23-375.","class_type":"Order/Opinion::Delegated Order"},
+    {"filing_id":"20260430-3025","title":"Letter to Elba Liquefaction Company, L.L.C. et al. granting the 04/29/2026 request to introduce hazardous fluids to Movable Modular Liquefaction System 10 for the Elba Liquefaction Optimization Projec","class_type":"Order/Opinion::Delegated Order"},
+    {"filing_id":"20260519-3054","title":"Letter to Elba Liquefaction Company, L.L.C. et al. granting the 05/19/2026 request to introduce hazardous fluids into Movable Modular Liquefaction System 9 for the Elba Liquefaction Optimization Proje","class_type":"Order/Opinion::Delegated Order"},
+    {"filing_id":"20260713-3021","title":"Letter to Elba Liquefaction Company, L.L.C. et al. granting the 07/13/2026 request to introduce hazardous fluids into Movable Modular Liquefaction System 6 for the Liquefaction Optimization Project un","class_type":"Order/Opinion::Delegated Order"},
+    {"filing_id":"20260729-3066","title":"Letter to Elba Liquefaction Company, L.L.C. et al. granting the 07/27/2026 request to introduce hazardous fluids into Movable Modular Liquefaction System under CP23-375.","class_type":"Order/Opinion::Delegated Order"}
+  ],
+  "historical_counts": {
+    "lng_status_operating_present_pass": 35,
+    "lng_inspection_present": 59,
+    "historical_current_investor_events": 263
+  },
+  "refund_observations": [
+    {"observation_id":"obs-7fc6e0a113809b84e14c9fde82a312b3","value_text":"2019-03-18 .. open","accession_number":"20180928-3036","filing_id":"20180928-3036","filed_date":"2018-09-28","validation":"pass","availability":"present"},
+    {"observation_id":"obs-919e3f10b5cf4d75793bc29e09390f99","value_text":"2025-11-26 .. open","accession_number":"20251126-3063","filing_id":"20251126-3063","filed_date":"2025-11-26","validation":"pass","availability":"present"},
+    {"observation_id":"obs-f44b3ce5e0772b29e89386e02b9481e2","value_text":"2025-03-20 .. 2026-04-28","accession_number":"20240930-3067","filing_id":"20240930-3067","filed_date":"2024-09-30","validation":"pass","availability":"present"}
+  ],
+  "refund_document_facts": [
+    {"document_fact_id":"dfact-2c8e2b5cc638deb7202342a75011","document_id":"eLibrary|20251126-3063|FD19D701-D10C-C5B3-9529-9AC135900000","filing_id":"20251126-3063","value_text":"2025-11-26 .. open","verbatim_span":"Order Accepting and Suspending Tariff Record, Subject to Refund, and Establishing Hearing and Settlement Judge Procedures re Targa Badlands LLC under IS26-24.","confidence":"sourced_order","extraction_method":"elibrary_description_span"},
+    {"document_fact_id":"dfact-59137d561dd9c981842855e4213c","document_id":"eLibrary|20180928-3036|listing","filing_id":"20180928-3036","value_text":"2019-03-18 .. open","verbatim_span":"Order Accepting Tariff Records, Accepting and Suspending Tariff Records, Subject to Refund, and Establishing Hearing and Settlement Judge Procedures re Transcontinental Gas Pipe Line Company, LLC under RP18-1126.","confidence":"sourced_order","extraction_method":"elibrary_description_span"},
+    {"document_fact_id":"dfact-61b5238350dc7a8b852650f9d2f2","document_id":"eLibrary|20240930-3067|listing","filing_id":"20240930-3067","value_text":"2025-03-20 .. 2026-04-28","verbatim_span":"Order Accepting and Suspending Tariff Records, Subject to Refund, and Establishing Hearing Procedures re Transcontinental Gas Pipe Line Company, LLC under RP24-1035.","confidence":"sourced_order","extraction_method":"elibrary_description_span"}
+  ],
+  "identical_submission_groups": [
+    {"content_hash":"7b805939f7417fe49c5b257dd2f1f2363ec304da69967d6be3d7ecc1d744c241","filing_ids":["74834","74835"]},
+    {"content_hash":"bf2918177c9d6d2d3194c228f2a116f780cc8928206ce4e783c8b3900060d5c8","filing_ids":["20241001-5128","20241001-5162"]},
+    {"content_hash":"fdc06f1c70edec67042da3d338e465d11e451d051b2b7bca55f187855bc92e0c","filing_ids":["20241001-5108","20241001-5171"]}
+  ],
+  "empty_elibrary_lineage_edges_by_metric": {
+    "cap_peak_day_ratio": 16,
+    "ioc_top5_shipper_concentration": 1854
+  }
+}

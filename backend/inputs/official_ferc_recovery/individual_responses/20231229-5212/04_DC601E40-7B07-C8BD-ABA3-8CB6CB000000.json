@@ -1,0 +1,36 @@
+{
+ "accession_number": "20231229-5212",
+ "attachment_id": "DC601E40-7B07-C8BD-ABA3-8CB6CB000000",
+ "attachment_order": 4,
+ "availability_mode": "P",
+ "evidence_lane": "new official-FERC evidence after the independent audit",
+ "file_name": "Appendix B-1 - Preferred Case Tariff Records Clean.pdf",
+ "listed_bytes": 2026213,
+ "listed_media_type": "application/pdf",
+ "request": {
+  "cache_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/DownloadP8File#body=02c3d237cb9a51f034396fd2093f92d0",
+  "credentials_or_cookies_sent": false,
+  "method": "POST",
+  "official_url": "https://elibrary.ferc.gov/eLibraryWebAPI/api/File/DownloadP8File",
+  "payload_bytes": 150,
+  "payload_sha256": "02c3d237cb9a51f034396fd2093f92d069d520ce9d455d52e1c797e57886f486",
+  "retry_count": 0
+ },
+ "response": {
+  "body_path": "/Users/nathanjones/Desktop/ferc/outputs/codex_integrated_repair_20260909_lokqmf/candidate/inputs/official_ferc_recovery/individual_responses/20231229-5212/04_DC601E40-7B07-C8BD-ABA3-8CB6CB000000.body",
+  "bytes": 7349,
+  "complete_body": true,
+  "ended_utc": "2026-09-09T17:23:00.142525+00:00",
+  "headers": {
+   "content-length": "7349",
+   "content-type": "text/html; charset=UTF-8",
+   "date": "Wed, 09 Sep 2026 17:23:00 GMT"
+  },
+  "http_reason": "<none>",
+  "http_status": 520,
+  "network_error": null,
+  "sha256": "e07a4c3a6b547c7e33665e8e4dc8cad1a53a464d90423f659e8d9d002aade5d4",
+  "started_utc": "2026-09-09T17:22:59.779444+00:00"
+ },
+ "schema": "official_ferc_individual_response_v1"
+}

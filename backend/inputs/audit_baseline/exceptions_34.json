@@ -1,0 +1,1100 @@
+[
+  {
+    "blocker_id": "blk-f8a4430ac37587d6",
+    "adapter": "form549d",
+    "scope": "C000826:2024",
+    "kind": "semantic",
+    "summary": "Order 735-A says annual customer revenue excludes storage services, but Form 549D Q4 rows report storage revenue anyway",
+    "attempts": "",
+    "exact_error": "C000826 2024-Q4 reports $10,812,326 of Total_Rev on Storage rows; table-wide 544 Q4 storage rows carry $237,017,275. Reported as filed and excluded from the transportation figure; a display decision is required.",
+    "human_decision_needed": 1,
+    "opened_at": "2026-09-07T12:18:21+00:00",
+    "resolved_at": null,
+    "audit_classification": "unresolved semantics",
+    "audit_subtype": "storage-labelled annual revenue filer-year",
+    "audit_evidence": [
+      "reports/independent_549d_bulk.json",
+      "FERC Order 735-A paragraph 22"
+    ],
+    "audit_required_action": "Preserve as filed outside transportation revenue; keep scope qualification; consolidate duplicate policy records, not source rows.",
+    "audit_confidence": "confirmed from bundled bytes/code",
+    "irreducible_established": false
+  },
+  {
+    "blocker_id": "blk-11652f800db8da1f",
+    "adapter": "form549d",
+    "scope": "C000826:2025",
+    "kind": "semantic",
+    "summary": "Order 735-A says annual customer revenue excludes storage services, but Form 549D Q4 rows report storage revenue anyway",
+    "attempts": "",
+    "exact_error": "C000826 2025-Q4 reports $13,346,064 of Total_Rev on Storage rows; table-wide 544 Q4 storage rows carry $237,017,275. Reported as filed and excluded from the transportation figure; a display decision is required.",
+    "human_decision_needed": 1,
+    "opened_at": "2026-09-07T12:18:21+00:00",
+    "resolved_at": null,
+    "audit_classification": "unresolved semantics",
+    "audit_subtype": "storage-labelled annual revenue filer-year",
+    "audit_evidence": [
+      "reports/independent_549d_bulk.json",
+      "FERC Order 735-A paragraph 22"
+    ],
+    "audit_required_action": "Preserve as filed outside transportation revenue; keep scope qualification; consolidate duplicate policy records, not source rows.",
+    "audit_confidence": "confirmed from bundled bytes/code",
+    "irreducible_established": false
+  },
+  {
+    "blocker_id": "blk-c29e1a69a09275d1",
+    "adapter": "form549d",
+    "scope": "549D annual revenue scope",
+    "kind": "semantic",
+    "summary": "Order 735-A says annual customer revenue excludes storage services, but Form 549D Q4 rows report storage revenue anyway; table-wide 544 Q4 storage rows carry $237,017,275",
+    "attempts": "",
+    "exact_error": "Reported as filed, excluded from the transportation figure, neither interpretation applied. Per-filer amounts are carried as order_735a_scope_divergence events.",
+    "human_decision_needed": 1,
+    "opened_at": "2026-09-07T11:53:30+00:00",
+    "resolved_at": null,
+    "audit_classification": "unresolved semantics",
+    "audit_subtype": "storage revenue scope; duplicate policy entry",
+    "audit_evidence": [
+      "reports/independent_549d_bulk.json",
+      "FERC Order 735-A paragraph 22"
+    ],
+    "audit_required_action": "Preserve as filed outside transportation revenue; keep scope qualification; consolidate duplicate policy records, not source rows.",
+    "audit_confidence": "confirmed from bundled bytes/code",
+    "irreducible_established": false
+  },
+  {
+    "blocker_id": "blk-df2155105afc957e",
+    "adapter": "form549d",
+    "scope": "549D annual revenue scope",
+    "kind": "semantic",
+    "summary": "Order 735-A says annual customer revenue excludes storage services, but Form 549D Q4 rows report storage revenue anyway",
+    "attempts": "",
+    "exact_error": "Table-wide, 544 Q4 storage rows carry $237,017,275. Reported as filed, excluded from the transportation figure, neither interpretation applied. Per-filer amounts are carried as order_735a_scope_divergence events.",
+    "human_decision_needed": 1,
+    "opened_at": "2026-09-07T12:18:21+00:00",
+    "resolved_at": null,
+    "audit_classification": "unresolved semantics",
+    "audit_subtype": "storage revenue scope; duplicate policy entry",
+    "audit_evidence": [
+      "reports/independent_549d_bulk.json",
+      "FERC Order 735-A paragraph 22"
+    ],
+    "audit_required_action": "Preserve as filed outside transportation revenue; keep scope qualification; consolidate duplicate policy records, not source rows.",
+    "audit_confidence": "confirmed from bundled bytes/code",
+    "irreducible_established": false
+  },
+  {
+    "blocker_id": "blk-fda56f7e4db97a5f",
+    "adapter": "ioc",
+    "scope": "C000654:20250701-5067",
+    "kind": "access",
+    "summary": "C000654 20250701-5067: availCode N -- attachment enumerated but not public (DownloadP8File returns HTTP 401); recorded as nonpublic, not retried",
+    "attempts": "",
+    "exact_error": "availCode=N; Index of Customers Report of Transcontinental Gas Pipe Line Company, LLC for Q3 of 2025. Erroneously filed. ",
+    "human_decision_needed": 0,
+    "opened_at": "2026-09-07T12:35:41+00:00",
+    "resolved_at": null,
+    "audit_classification": "malformed/unavailable source",
+    "audit_subtype": "erroneously filed occurrence; confidentiality/access restriction unconfirmed",
+    "audit_evidence": [
+      "reports/integration_semantics.json: restricted_ioc_alternatives",
+      "adapters/ioc.py code skips download before 401 wording"
+    ],
+    "audit_required_action": "Link the corrected public occurrence where found; do not infer an obligation-level gap or observed HTTP 401 from availability code N.",
+    "audit_confidence": "metadata status confirmed; actual access restriction NOT confirmed",
+    "irreducible_established": false,
+    "alternative_evidence": {
+      "blocker_id": "blk-fda56f7e4db97a5f",
+      "cid": "C000654",
+      "accession": "20250701-5067",
+      "cached_metadata": {
+        "reference": "{66D0A9BF-231C-CDC0-842F-97C608900000}-{602BF5DF-47D5-CD80-9721-97C608A00000}",
+        "documentId": "66D0A9BF-231C-CDC0-842F-97C608900000",
+        "description": "Index of Customers Report of Transcontinental Gas Pipe Line Company, LLC for Q3 of 2025. Erroneously filed. ",
+        "summary": null,
+        "category": "Submittal",
+        "acesssionNumber": "20250701-5067",
+        "issuedDate": "07/01/2025",
+        "filedDate": "07/01/2025",
+        "postedDate": "07/01/2025",
+        "classTypes": [
+          {
+            "documentClass": "Report/Form",
+            "documentType": "Index of Customer"
+          }
+        ],
+        "availCode": "N",
+        "familyValue": "None",
+        "libraries": [
+          "Gas"
+        ],
+        "score": 86.41,
+        "docketNumbers": [],
+        "transmittals": [
+          {
+            "fileId": "602BF5DF-47D5-CD80-9721-97C608A00000",
+            "fileType": "TXT",
+            "fileFormat": "Standard",
+            "fileName": "IC0006542507.txt",
+            "fileDesc": "Transcontinental Gas Pipe Line Company, LLC IOC 07 2025 ",
+            "fileSize": 42707,
+            "transmittalFk": null
+          },
+          {
+            "fileId": "E6BF97CA-17F0-CFE3-9E60-97C608A00000",
+            "fileType": "DOCX",
+            "fileFormat": "Standard",
+            "fileName": "Transco eLetter July 2025.docx",
+            "fileDesc": "Transcontinental Gas Pipe Line Company, LLC 07 2025 IOC Cover Letter ",
+            "fileSize": 27031,
+            "transmittalFk": null
+          }
+        ],
+        "affiliations": [
+          {
+            "afType": "RECIPIENT",
+            "affiliation": "Office of the Secretary, FERC",
+            "lastName": "Reese",
+            "firstInitial": "D",
+            "middleInitial": "A"
+          },
+          {
+            "afType": "AUTHOR",
+            "affiliation": "Transcontinental Gas Pipe Line Company, LLC",
+            "lastName": "Suchar",
+            "firstInitial": "J",
+            "middleInitial": "x"
+          },
+          {
+            "afType": "AGENT",
+            "affiliation": "Transcontinental Gas Pipeline Company LLC",
+            "lastName": "Suchar",
+            "firstInitial": "J",
+            "middleInitial": "x"
+          }
+        ]
+      },
+      "public_same_snapshot_filings": [
+        {
+          "filing_id": "20250709-5064",
+          "entity_key": "C000654",
+          "snapshot_date": "2025-07-01",
+          "acceptance_status": "availCode=P",
+          "is_canonical": 1,
+          "version_status": "original"
+        }
+      ],
+      "confirmed_restriction": false
+    }
+  },
+  {
+    "blocker_id": "blk-b93bb12170552fd3",
+    "adapter": "form549d",
+    "scope": "C001773:2024",
+    "kind": "semantic",
+    "summary": "Order 735-A says annual customer revenue excludes storage services, but Form 549D Q4 rows report storage revenue anyway",
+    "attempts": "",
+    "exact_error": "C001773 2024-Q4 reports $8,090,679 of Total_Rev on Storage rows; table-wide 544 Q4 storage rows carry $237,017,275. Reported as filed and excluded from the transportation figure; a display decision is required.",
+    "human_decision_needed": 1,
+    "opened_at": "2026-09-07T12:18:21+00:00",
+    "resolved_at": null,
+    "audit_classification": "unresolved semantics",
+    "audit_subtype": "storage-labelled annual revenue filer-year",
+    "audit_evidence": [
+      "reports/independent_549d_bulk.json",
+      "FERC Order 735-A paragraph 22"
+    ],
+    "audit_required_action": "Preserve as filed outside transportation revenue; keep scope qualification; consolidate duplicate policy records, not source rows.",
+    "audit_confidence": "confirmed from bundled bytes/code",
+    "irreducible_established": false
+  },
+  {
+    "blocker_id": "blk-86a5207f2d741448",
+    "adapter": "form549d",
+    "scope": "C001773:2025",
+    "kind": "semantic",
+    "summary": "Order 735-A says annual customer revenue excludes storage services, but Form 549D Q4 rows report storage revenue anyway",
+    "attempts": "",
+    "exact_error": "C001773 2025-Q4 reports $7,049,958 of Total_Rev on Storage rows; table-wide 544 Q4 storage rows carry $237,017,275. Reported as filed and excluded from the transportation figure; a display decision is required.",
+    "human_decision_needed": 1,
+    "opened_at": "2026-09-07T12:18:21+00:00",
+    "resolved_at": null,
+    "audit_classification": "unresolved semantics",
+    "audit_subtype": "storage-labelled annual revenue filer-year",
+    "audit_evidence": [
+      "reports/independent_549d_bulk.json",
+      "FERC Order 735-A paragraph 22"
+    ],
+    "audit_required_action": "Preserve as filed outside transportation revenue; keep scope qualification; consolidate duplicate policy records, not source rows.",
+    "audit_confidence": "confirmed from bundled bytes/code",
+    "irreducible_established": false
+  },
+  {
+    "blocker_id": "blk-f9fc2cc2c28a2f14",
+    "adapter": "form549d",
+    "scope": "C000435",
+    "kind": "source",
+    "summary": "C000435: FetchError",
+    "attempts": "",
+    "exact_error": "<FERC_API_KEY>: FERC_API_KEY is not set in the environment or .env",
+    "human_decision_needed": 0,
+    "opened_at": "2026-09-07T12:14:30+00:00",
+    "resolved_at": null,
+    "audit_classification": "implementation/parser defect",
+    "audit_subtype": "local credential/cache precondition, not FERC source failure",
+    "audit_evidence": [
+      "reports/clean_rebuild.json",
+      "original exact_error names missing FERC_API_KEY"
+    ],
+    "audit_required_action": "Use cache-only mode before requiring a real API key; if live fetching is requested report missing configuration separately.",
+    "audit_confidence": "confirmed from bundled bytes/code",
+    "irreducible_established": false
+  },
+  {
+    "blocker_id": "blk-6c1ae60577ce89ca",
+    "adapter": "form549d",
+    "scope": "C004698",
+    "kind": "source",
+    "summary": "C004698: FetchError",
+    "attempts": "",
+    "exact_error": "<FERC_API_KEY>: FERC_API_KEY is not set in the environment or .env",
+    "human_decision_needed": 0,
+    "opened_at": "2026-09-07T12:14:49+00:00",
+    "resolved_at": null,
+    "audit_classification": "implementation/parser defect",
+    "audit_subtype": "local credential/cache precondition, not FERC source failure",
+    "audit_evidence": [
+      "reports/clean_rebuild.json",
+      "original exact_error names missing FERC_API_KEY"
+    ],
+    "audit_required_action": "Use cache-only mode before requiring a real API key; if live fetching is requested report missing configuration separately.",
+    "audit_confidence": "confirmed from bundled bytes/code",
+    "irreducible_established": false
+  },
+  {
+    "blocker_id": "blk-be0da85a84688d1a",
+    "adapter": "ioc",
+    "scope": "C000236:20250401-5132",
+    "kind": "access",
+    "summary": "C000236 20250401-5132: availCode N -- attachment enumerated but not public (DownloadP8File returns HTTP 401); recorded as nonpublic, not retried",
+    "attempts": "",
+    "exact_error": "availCode=N; Index of Customers Report of Kinder Morgan Illinois Pipeline LLC for Q2 of 2025. Erroneously filed. ",
+    "human_decision_needed": 0,
+    "opened_at": "2026-09-07T13:12:58+00:00",
+    "resolved_at": null,
+    "audit_classification": "malformed/unavailable source",
+    "audit_subtype": "erroneously filed occurrence; confidentiality/access restriction unconfirmed",
+    "audit_evidence": [
+      "reports/integration_semantics.json: restricted_ioc_alternatives",
+      "adapters/ioc.py code skips download before 401 wording"
+    ],
+    "audit_required_action": "Link the corrected public occurrence where found; do not infer an obligation-level gap or observed HTTP 401 from availability code N.",
+    "audit_confidence": "metadata status confirmed; actual access restriction NOT confirmed",
+    "irreducible_established": false,
+    "alternative_evidence": {
+      "blocker_id": "blk-be0da85a84688d1a",
+      "cid": "C000236",
+      "accession": "20250401-5132",
+      "cached_metadata": {
+        "reference": "{567A71D2-3092-CF80-8686-95F1BDE00000}-{8665AC54-5DC4-CBB9-A91A-95F1BDE00000}",
+        "documentId": "567A71D2-3092-CF80-8686-95F1BDE00000",
+        "description": "Index of Customers Report of Kinder Morgan Illinois Pipeline LLC for Q2 of 2025. Erroneously filed. ",
+        "summary": null,
+        "category": "Submittal",
+        "acesssionNumber": "20250401-5132",
+        "issuedDate": "04/01/2025",
+        "filedDate": "04/01/2025",
+        "postedDate": "04/01/2025",
+        "classTypes": [
+          {
+            "documentClass": "Report/Form",
+            "documentType": "Index of Customer"
+          }
+        ],
+        "availCode": "N",
+        "familyValue": "None",
+        "libraries": [
+          "Gas"
+        ],
+        "score": 85.98,
+        "docketNumbers": [],
+        "transmittals": [
+          {
+            "fileId": "647E7F0D-7BB1-C761-A077-95F1BDE00000",
+            "fileType": "PDF",
+            "fileFormat": "Standard",
+            "fileName": "KMIP IOC April 2025 Transmittal letter.pdf",
+            "fileDesc": "No description given",
+            "fileSize": 125722,
+            "transmittalFk": null
+          },
+          {
+            "fileId": "8665AC54-5DC4-CBB9-A91A-95F1BDE00000",
+            "fileType": "TAB",
+            "fileFormat": "Standard",
+            "fileName": "IC0002362504.tab",
+            "fileDesc": "No description given",
+            "fileSize": 479,
+            "transmittalFk": null
+          }
+        ],
+        "affiliations": [
+          {
+            "afType": "AGENT",
+            "affiliation": "Kinder Morgan",
+            "lastName": "nguyen",
+            "firstInitial": "d",
+            "middleInitial": "v"
+          },
+          {
+            "afType": "AUTHOR",
+            "affiliation": "HORIZON PIPELINE COMPANY LLC",
+            "lastName": "Singh",
+            "firstInitial": "R",
+            "middleInitial": "x"
+          },
+          {
+            "afType": "AGENT",
+            "affiliation": "Tennesee Gas Pipeline Company",
+            "lastName": "Singh",
+            "firstInitial": "R",
+            "middleInitial": "x"
+          },
+          {
+            "afType": "AUTHOR",
+            "affiliation": "HORIZON PIPELINE COMPANY LLC",
+            "lastName": "nguyen",
+            "firstInitial": "d",
+            "middleInitial": "v"
+          },
+          {
+            "afType": "RECIPIENT",
+            "affiliation": "Office of the Secretary, FERC",
+            "lastName": "Reese",
+            "firstInitial": "D",
+            "middleInitial": "A"
+          }
+        ]
+      },
+      "public_same_snapshot_filings": [
+        {
+          "filing_id": "20250401-5144",
+          "entity_key": "C000236",
+          "snapshot_date": "2025-04-01",
+          "acceptance_status": "availCode=P",
+          "is_canonical": 1,
+          "version_status": "original"
+        }
+      ],
+      "confirmed_restriction": false
+    }
+  },
+  {
+    "blocker_id": "blk-14a56caaab90cb00",
+    "adapter": "ioc",
+    "scope": "ioc:20240102-5300",
+    "kind": "source",
+    "summary": "20240102-5300: IOC parse failed",
+    "attempts": "",
+    "exact_error": "first record is '\u00ef\u00bb\u00bfH' when an H header record is required",
+    "human_decision_needed": 0,
+    "opened_at": "2026-09-07T13:17:07+00:00",
+    "resolved_at": null,
+    "audit_classification": "implementation/parser defect",
+    "audit_subtype": "UTF-8 BOM decoded as Latin-1",
+    "audit_evidence": [
+      "reports/exception_byte_audit.json"
+    ],
+    "audit_required_action": "Detect encoding and decode UTF-8-sig before CSV parsing; revalidate header and all record fields.",
+    "audit_confidence": "confirmed from bundled bytes/code",
+    "irreducible_established": false
+  },
+  {
+    "blocker_id": "blk-1fdc86170bf76cff",
+    "adapter": "ioc",
+    "scope": "ioc:20240401-5299",
+    "kind": "source",
+    "summary": "20240401-5299: IOC parse failed",
+    "attempts": "",
+    "exact_error": "first record is '\u00ef\u00bb\u00bfH' when an H header record is required",
+    "human_decision_needed": 0,
+    "opened_at": "2026-09-07T13:17:09+00:00",
+    "resolved_at": null,
+    "audit_classification": "implementation/parser defect",
+    "audit_subtype": "UTF-8 BOM decoded as Latin-1",
+    "audit_evidence": [
+      "reports/exception_byte_audit.json"
+    ],
+    "audit_required_action": "Detect encoding and decode UTF-8-sig before CSV parsing; revalidate header and all record fields.",
+    "audit_confidence": "confirmed from bundled bytes/code",
+    "irreducible_established": false
+  },
+  {
+    "blocker_id": "blk-05a8dedba157934e",
+    "adapter": "ioc",
+    "scope": "ioc:20240701-5096",
+    "kind": "source",
+    "summary": "20240701-5096: IOC parse failed",
+    "attempts": "",
+    "exact_error": "first record is '\u00ef\u00bb\u00bfH' when an H header record is required",
+    "human_decision_needed": 0,
+    "opened_at": "2026-09-07T13:17:11+00:00",
+    "resolved_at": null,
+    "audit_classification": "implementation/parser defect",
+    "audit_subtype": "UTF-8 BOM decoded as Latin-1",
+    "audit_evidence": [
+      "reports/exception_byte_audit.json"
+    ],
+    "audit_required_action": "Detect encoding and decode UTF-8-sig before CSV parsing; revalidate header and all record fields.",
+    "audit_confidence": "confirmed from bundled bytes/code",
+    "irreducible_established": false
+  },
+  {
+    "blocker_id": "blk-65725cb603ec902d",
+    "adapter": "ioc",
+    "scope": "ioc:20241001-5148",
+    "kind": "source",
+    "summary": "20241001-5148: IOC parse failed",
+    "attempts": "",
+    "exact_error": "first record is '\u00ef\u00bb\u00bfH' when an H header record is required",
+    "human_decision_needed": 0,
+    "opened_at": "2026-09-07T13:17:13+00:00",
+    "resolved_at": null,
+    "audit_classification": "implementation/parser defect",
+    "audit_subtype": "UTF-8 BOM decoded as Latin-1",
+    "audit_evidence": [
+      "reports/exception_byte_audit.json"
+    ],
+    "audit_required_action": "Detect encoding and decode UTF-8-sig before CSV parsing; revalidate header and all record fields.",
+    "audit_confidence": "confirmed from bundled bytes/code",
+    "irreducible_established": false
+  },
+  {
+    "blocker_id": "blk-eb9f11f46f600233",
+    "adapter": "ioc",
+    "scope": "ioc:20250102-5086",
+    "kind": "source",
+    "summary": "20250102-5086: IOC parse failed",
+    "attempts": "",
+    "exact_error": "first record is '\u00ef\u00bb\u00bfH' when an H header record is required",
+    "human_decision_needed": 0,
+    "opened_at": "2026-09-07T13:17:15+00:00",
+    "resolved_at": null,
+    "audit_classification": "implementation/parser defect",
+    "audit_subtype": "UTF-8 BOM decoded as Latin-1",
+    "audit_evidence": [
+      "reports/exception_byte_audit.json"
+    ],
+    "audit_required_action": "Detect encoding and decode UTF-8-sig before CSV parsing; revalidate header and all record fields.",
+    "audit_confidence": "confirmed from bundled bytes/code",
+    "irreducible_established": false
+  },
+  {
+    "blocker_id": "blk-75cce911464fd9f7",
+    "adapter": "ioc",
+    "scope": "ioc:20250401-5141",
+    "kind": "source",
+    "summary": "20250401-5141: IOC parse failed",
+    "attempts": "",
+    "exact_error": "first record is '\u00ef\u00bb\u00bfH' when an H header record is required",
+    "human_decision_needed": 0,
+    "opened_at": "2026-09-07T13:17:17+00:00",
+    "resolved_at": null,
+    "audit_classification": "implementation/parser defect",
+    "audit_subtype": "UTF-8 BOM decoded as Latin-1",
+    "audit_evidence": [
+      "reports/exception_byte_audit.json"
+    ],
+    "audit_required_action": "Detect encoding and decode UTF-8-sig before CSV parsing; revalidate header and all record fields.",
+    "audit_confidence": "confirmed from bundled bytes/code",
+    "irreducible_established": false
+  },
+  {
+    "blocker_id": "blk-acacbee7fb646a01",
+    "adapter": "ioc",
+    "scope": "ioc:20250701-5124",
+    "kind": "source",
+    "summary": "20250701-5124: IOC parse failed",
+    "attempts": "",
+    "exact_error": "first record is '\u00ef\u00bb\u00bfH' when an H header record is required",
+    "human_decision_needed": 0,
+    "opened_at": "2026-09-07T13:17:19+00:00",
+    "resolved_at": null,
+    "audit_classification": "implementation/parser defect",
+    "audit_subtype": "UTF-8 BOM decoded as Latin-1",
+    "audit_evidence": [
+      "reports/exception_byte_audit.json"
+    ],
+    "audit_required_action": "Detect encoding and decode UTF-8-sig before CSV parsing; revalidate header and all record fields.",
+    "audit_confidence": "confirmed from bundled bytes/code",
+    "irreducible_established": false
+  },
+  {
+    "blocker_id": "blk-23902889f085cfa0",
+    "adapter": "ioc",
+    "scope": "ioc:20251001-5109",
+    "kind": "source",
+    "summary": "20251001-5109: IOC parse failed",
+    "attempts": "",
+    "exact_error": "first record is '\u00ef\u00bb\u00bfH' when an H header record is required",
+    "human_decision_needed": 0,
+    "opened_at": "2026-09-07T13:17:21+00:00",
+    "resolved_at": null,
+    "audit_classification": "implementation/parser defect",
+    "audit_subtype": "UTF-8 BOM decoded as Latin-1",
+    "audit_evidence": [
+      "reports/exception_byte_audit.json"
+    ],
+    "audit_required_action": "Detect encoding and decode UTF-8-sig before CSV parsing; revalidate header and all record fields.",
+    "audit_confidence": "confirmed from bundled bytes/code",
+    "irreducible_established": false
+  },
+  {
+    "blocker_id": "blk-ccd4f5d8651f2179",
+    "adapter": "ioc",
+    "scope": "ioc:20260102-5087",
+    "kind": "source",
+    "summary": "20260102-5087: IOC parse failed",
+    "attempts": "",
+    "exact_error": "first record is '\u00ef\u00bb\u00bfH' when an H header record is required",
+    "human_decision_needed": 0,
+    "opened_at": "2026-09-07T13:17:23+00:00",
+    "resolved_at": null,
+    "audit_classification": "implementation/parser defect",
+    "audit_subtype": "UTF-8 BOM decoded as Latin-1",
+    "audit_evidence": [
+      "reports/exception_byte_audit.json"
+    ],
+    "audit_required_action": "Detect encoding and decode UTF-8-sig before CSV parsing; revalidate header and all record fields.",
+    "audit_confidence": "confirmed from bundled bytes/code",
+    "irreducible_established": false
+  },
+  {
+    "blocker_id": "blk-c0c35027d5a35025",
+    "adapter": "ioc",
+    "scope": "ioc:20260401-5124",
+    "kind": "source",
+    "summary": "20260401-5124: IOC parse failed",
+    "attempts": "",
+    "exact_error": "first record is '\u00ef\u00bb\u00bfH' when an H header record is required",
+    "human_decision_needed": 0,
+    "opened_at": "2026-09-07T13:17:25+00:00",
+    "resolved_at": null,
+    "audit_classification": "implementation/parser defect",
+    "audit_subtype": "UTF-8 BOM decoded as Latin-1",
+    "audit_evidence": [
+      "reports/exception_byte_audit.json"
+    ],
+    "audit_required_action": "Detect encoding and decode UTF-8-sig before CSV parsing; revalidate header and all record fields.",
+    "audit_confidence": "confirmed from bundled bytes/code",
+    "irreducible_established": false
+  },
+  {
+    "blocker_id": "blk-010f11ba7ab3f034",
+    "adapter": "ioc",
+    "scope": "ioc:20260701-5124",
+    "kind": "source",
+    "summary": "20260701-5124: IOC parse failed",
+    "attempts": "",
+    "exact_error": "first record is '\u00ef\u00bb\u00bfH' when an H header record is required",
+    "human_decision_needed": 0,
+    "opened_at": "2026-09-07T13:17:27+00:00",
+    "resolved_at": null,
+    "audit_classification": "implementation/parser defect",
+    "audit_subtype": "UTF-8 BOM decoded as Latin-1",
+    "audit_evidence": [
+      "reports/exception_byte_audit.json"
+    ],
+    "audit_required_action": "Detect encoding and decode UTF-8-sig before CSV parsing; revalidate header and all record fields.",
+    "audit_confidence": "confirmed from bundled bytes/code",
+    "irreducible_established": false
+  },
+  {
+    "blocker_id": "blk-813db4fdd559d280",
+    "adapter": "ioc",
+    "scope": "ioc:20250331-5099",
+    "kind": "source",
+    "summary": "20250331-5099: IOC parse failed",
+    "attempts": "",
+    "exact_error": "first record is 'Index of Customers' when an H header record is required",
+    "human_decision_needed": 0,
+    "opened_at": "2026-09-07T13:17:59+00:00",
+    "resolved_at": null,
+    "audit_classification": "implementation/parser defect",
+    "audit_subtype": "text preamble before valid H header",
+    "audit_evidence": [
+      "reports/exception_byte_audit.json"
+    ],
+    "audit_required_action": "Apply bounded preamble handling and validate header CID/date before accepting 7 D, 14 P and 1 F records.",
+    "audit_confidence": "confirmed from bundled bytes/code",
+    "irreducible_established": false
+  },
+  {
+    "blocker_id": "blk-283ff9fe93424302",
+    "adapter": "ioc",
+    "scope": "ioc:20240102-5281",
+    "kind": "source",
+    "summary": "20240102-5281: IOC parse failed",
+    "attempts": "",
+    "exact_error": "header item e (first day of the calendar quarter) is blank or unparseable; without it the file has no as-of date",
+    "human_decision_needed": 0,
+    "opened_at": "2026-09-07T13:18:40+00:00",
+    "resolved_at": null,
+    "audit_classification": "malformed/unavailable source",
+    "audit_subtype": "recoverable Discovery H header with an extra empty field",
+    "audit_evidence": [
+      "reports/exception_byte_audit.json"
+    ],
+    "audit_required_action": "Retain original bytes, narrowly repair the shifted header under an audited rule, confirm CID/date/units; do not silently generalise the repair.",
+    "audit_confidence": "confirmed from bundled bytes/code",
+    "irreducible_established": false
+  },
+  {
+    "blocker_id": "blk-7a2d5583942ea884",
+    "adapter": "ioc",
+    "scope": "ioc:20240401-5372",
+    "kind": "source",
+    "summary": "20240401-5372: IOC parse failed",
+    "attempts": "",
+    "exact_error": "header item e (first day of the calendar quarter) is blank or unparseable; without it the file has no as-of date",
+    "human_decision_needed": 0,
+    "opened_at": "2026-09-07T13:18:42+00:00",
+    "resolved_at": null,
+    "audit_classification": "malformed/unavailable source",
+    "audit_subtype": "recoverable Discovery H header with an extra empty field",
+    "audit_evidence": [
+      "reports/exception_byte_audit.json"
+    ],
+    "audit_required_action": "Retain original bytes, narrowly repair the shifted header under an audited rule, confirm CID/date/units; do not silently generalise the repair.",
+    "audit_confidence": "confirmed from bundled bytes/code",
+    "irreducible_established": false
+  },
+  {
+    "blocker_id": "blk-bcf7aaefcfb67a22",
+    "adapter": "ioc",
+    "scope": "ioc:20240701-5084",
+    "kind": "source",
+    "summary": "20240701-5084: IOC parse failed",
+    "attempts": "",
+    "exact_error": "header item e (first day of the calendar quarter) is blank or unparseable; without it the file has no as-of date",
+    "human_decision_needed": 0,
+    "opened_at": "2026-09-07T13:18:44+00:00",
+    "resolved_at": null,
+    "audit_classification": "malformed/unavailable source",
+    "audit_subtype": "recoverable Discovery H header with an extra empty field",
+    "audit_evidence": [
+      "reports/exception_byte_audit.json"
+    ],
+    "audit_required_action": "Retain original bytes, narrowly repair the shifted header under an audited rule, confirm CID/date/units; do not silently generalise the repair.",
+    "audit_confidence": "confirmed from bundled bytes/code",
+    "irreducible_established": false
+  },
+  {
+    "blocker_id": "blk-951b30d9725b40b2",
+    "adapter": "ioc",
+    "scope": "ioc:20241001-5033",
+    "kind": "source",
+    "summary": "20241001-5033: IOC parse failed",
+    "attempts": "",
+    "exact_error": "header item e (first day of the calendar quarter) is blank or unparseable; without it the file has no as-of date",
+    "human_decision_needed": 0,
+    "opened_at": "2026-09-07T13:18:45+00:00",
+    "resolved_at": null,
+    "audit_classification": "malformed/unavailable source",
+    "audit_subtype": "recoverable Discovery H header with an extra empty field",
+    "audit_evidence": [
+      "reports/exception_byte_audit.json"
+    ],
+    "audit_required_action": "Retain original bytes, narrowly repair the shifted header under an audited rule, confirm CID/date/units; do not silently generalise the repair.",
+    "audit_confidence": "confirmed from bundled bytes/code",
+    "irreducible_established": false
+  },
+  {
+    "blocker_id": "blk-3baeb084500d53e2",
+    "adapter": "ioc",
+    "scope": "ioc:20250102-5120",
+    "kind": "source",
+    "summary": "20250102-5120: IOC parse failed",
+    "attempts": "",
+    "exact_error": "header item e (first day of the calendar quarter) is blank or unparseable; without it the file has no as-of date",
+    "human_decision_needed": 0,
+    "opened_at": "2026-09-07T13:18:47+00:00",
+    "resolved_at": null,
+    "audit_classification": "malformed/unavailable source",
+    "audit_subtype": "recoverable Discovery H header with an extra empty field",
+    "audit_evidence": [
+      "reports/exception_byte_audit.json"
+    ],
+    "audit_required_action": "Retain original bytes, narrowly repair the shifted header under an audited rule, confirm CID/date/units; do not silently generalise the repair.",
+    "audit_confidence": "confirmed from bundled bytes/code",
+    "irreducible_established": false
+  },
+  {
+    "blocker_id": "blk-4e70dc991829dbe4",
+    "adapter": "ioc",
+    "scope": "ioc:20250114-5047",
+    "kind": "source",
+    "summary": "20250114-5047: IOC parse failed",
+    "attempts": "",
+    "exact_error": "header item e (first day of the calendar quarter) is blank or unparseable; without it the file has no as-of date",
+    "human_decision_needed": 0,
+    "opened_at": "2026-09-07T13:18:49+00:00",
+    "resolved_at": null,
+    "audit_classification": "malformed/unavailable source",
+    "audit_subtype": "recoverable Discovery H header with an extra empty field",
+    "audit_evidence": [
+      "reports/exception_byte_audit.json"
+    ],
+    "audit_required_action": "Retain original bytes, narrowly repair the shifted header under an audited rule, confirm CID/date/units; do not silently generalise the repair.",
+    "audit_confidence": "confirmed from bundled bytes/code",
+    "irreducible_established": false
+  },
+  {
+    "blocker_id": "blk-61aa163f18d6bf88",
+    "adapter": "ioc",
+    "scope": "C000087:20250401-5093",
+    "kind": "access",
+    "summary": "C000087 20250401-5093: availCode N -- attachment enumerated but not public (DownloadP8File returns HTTP 401); recorded as nonpublic, not retried",
+    "attempts": "",
+    "exact_error": "availCode=N; Index of Customers Report of Gulfstream Natural Gas System, L.L.C. for Q2 of 2025. Erroneously filed. ",
+    "human_decision_needed": 0,
+    "opened_at": "2026-09-07T13:19:05+00:00",
+    "resolved_at": null,
+    "audit_classification": "malformed/unavailable source",
+    "audit_subtype": "erroneously filed occurrence; confidentiality/access restriction unconfirmed",
+    "audit_evidence": [
+      "reports/integration_semantics.json: restricted_ioc_alternatives",
+      "adapters/ioc.py code skips download before 401 wording"
+    ],
+    "audit_required_action": "Link the corrected public occurrence where found; do not infer an obligation-level gap or observed HTTP 401 from availability code N.",
+    "audit_confidence": "metadata status confirmed; actual access restriction NOT confirmed",
+    "irreducible_established": false,
+    "alternative_evidence": {
+      "blocker_id": "blk-61aa163f18d6bf88",
+      "cid": "C000087",
+      "accession": "20250401-5093",
+      "cached_metadata": {
+        "reference": "{491598AB-046C-CAA4-85F5-95F19F100000}-{70F72C2D-2093-C730-9A43-95F19F100000}",
+        "documentId": "491598AB-046C-CAA4-85F5-95F19F100000",
+        "description": "Index of Customers Report of Gulfstream Natural Gas System, L.L.C. for Q2 of 2025. Erroneously filed. ",
+        "summary": null,
+        "category": "Submittal",
+        "acesssionNumber": "20250401-5093",
+        "issuedDate": "04/01/2025",
+        "filedDate": "04/01/2025",
+        "postedDate": "04/01/2025",
+        "classTypes": [
+          {
+            "documentClass": "Report/Form",
+            "documentType": "Index of Customer"
+          }
+        ],
+        "availCode": "N",
+        "familyValue": "None",
+        "libraries": [
+          "Gas"
+        ],
+        "score": 86.75,
+        "docketNumbers": [],
+        "transmittals": [
+          {
+            "fileId": "70F72C2D-2093-C730-9A43-95F19F100000",
+            "fileType": "PDF",
+            "fileFormat": "Standard",
+            "fileName": "2025_0401_GSGC_IOC.pdf",
+            "fileDesc": "Gulfstream Natural Gas System, L.L.C. Index of Customers Cover Letter",
+            "fileSize": 110505,
+            "transmittalFk": null
+          }
+        ],
+        "affiliations": [
+          {
+            "afType": "AUTHOR",
+            "affiliation": "Gulfstream Natural Gas System, L.L.C.",
+            "lastName": "Lozano",
+            "firstInitial": "E",
+            "middleInitial": "D"
+          },
+          {
+            "afType": "AGENT",
+            "affiliation": "Enbridge (U.S.) Inc.",
+            "lastName": "Lozano",
+            "firstInitial": "E",
+            "middleInitial": "D"
+          },
+          {
+            "afType": "RECIPIENT",
+            "affiliation": "Office of the Secretary, FERC",
+            "lastName": "Reese",
+            "firstInitial": "D",
+            "middleInitial": "A"
+          }
+        ]
+      },
+      "public_same_snapshot_filings": [],
+      "confirmed_restriction": false
+    }
+  },
+  {
+    "blocker_id": "blk-d5a42d025ee876fa",
+    "adapter": "ioc",
+    "scope": "C000087:20250401-5205",
+    "kind": "access",
+    "summary": "C000087 20250401-5205: availCode N -- attachment enumerated but not public (DownloadP8File returns HTTP 401); recorded as nonpublic, not retried",
+    "attempts": "",
+    "exact_error": "availCode=N; Index of Customers Report of Gulfstream Natural Gas System, L.L.C. for Q2 of 2025. Erroneously filed. ",
+    "human_decision_needed": 0,
+    "opened_at": "2026-09-07T13:19:05+00:00",
+    "resolved_at": null,
+    "audit_classification": "malformed/unavailable source",
+    "audit_subtype": "erroneously filed occurrence; confidentiality/access restriction unconfirmed",
+    "audit_evidence": [
+      "reports/integration_semantics.json: restricted_ioc_alternatives",
+      "adapters/ioc.py code skips download before 401 wording"
+    ],
+    "audit_required_action": "Link the corrected public occurrence where found; do not infer an obligation-level gap or observed HTTP 401 from availability code N.",
+    "audit_confidence": "metadata status confirmed; actual access restriction NOT confirmed",
+    "irreducible_established": false,
+    "alternative_evidence": {
+      "blocker_id": "blk-d5a42d025ee876fa",
+      "cid": "C000087",
+      "accession": "20250401-5205",
+      "cached_metadata": {
+        "reference": "{C8DEA97C-4053-C17C-870B-95F215E00000}-{D2B74F6B-3BE0-C319-84F9-95F215F00000}",
+        "documentId": "C8DEA97C-4053-C17C-870B-95F215E00000",
+        "description": "Index of Customers Report of Gulfstream Natural Gas System, L.L.C. for Q2 of 2025. Erroneously filed. ",
+        "summary": null,
+        "category": "Submittal",
+        "acesssionNumber": "20250401-5205",
+        "issuedDate": "04/01/2025",
+        "filedDate": "04/01/2025",
+        "postedDate": "04/01/2025",
+        "classTypes": [
+          {
+            "documentClass": "Report/Form",
+            "documentType": "Index of Customer"
+          }
+        ],
+        "availCode": "N",
+        "familyValue": "None",
+        "libraries": [
+          "Gas"
+        ],
+        "score": 86.82,
+        "docketNumbers": [],
+        "transmittals": [
+          {
+            "fileId": "D2B74F6B-3BE0-C319-84F9-95F215F00000",
+            "fileType": "PDF",
+            "fileFormat": "Standard",
+            "fileName": "2025_0401_GSGC_IOC.pdf",
+            "fileDesc": "Gulfstream Natural Gas System, L.L.C. Index of Customers Cover Letter",
+            "fileSize": 110505,
+            "transmittalFk": null
+          },
+          {
+            "fileId": "ADC85F45-821D-CE04-8F43-95F215F00000",
+            "fileType": "TAB",
+            "fileFormat": "Standard",
+            "fileName": "IC0000882504.TAB",
+            "fileDesc": "No description given",
+            "fileSize": 11791,
+            "transmittalFk": null
+          }
+        ],
+        "affiliations": [
+          {
+            "afType": "AUTHOR",
+            "affiliation": "Gulfstream Natural Gas System, L.L.C.",
+            "lastName": "Lozano",
+            "firstInitial": "E",
+            "middleInitial": "D"
+          },
+          {
+            "afType": "AGENT",
+            "affiliation": "Enbridge (U.S.) Inc.",
+            "lastName": "Lozano",
+            "firstInitial": "E",
+            "middleInitial": "D"
+          },
+          {
+            "afType": "RECIPIENT",
+            "affiliation": "Office of the Secretary, FERC",
+            "lastName": "Reese",
+            "firstInitial": "D",
+            "middleInitial": "A"
+          }
+        ]
+      },
+      "public_same_snapshot_filings": [],
+      "confirmed_restriction": false
+    }
+  },
+  {
+    "blocker_id": "blk-0e1bef5b42c6c2c8",
+    "adapter": "ioc",
+    "scope": "C000087",
+    "kind": "source",
+    "summary": "C000087: Error",
+    "attempts": "",
+    "exact_error": "new-line character seen in unquoted field - do you need to open the file with newline=''?",
+    "human_decision_needed": 0,
+    "opened_at": "2026-09-07T13:19:13+00:00",
+    "resolved_at": null,
+    "audit_classification": "implementation/parser defect",
+    "audit_subtype": "Gulfstream UTF-16 IOC decoded incorrectly; CSV error halts entity task",
+    "audit_evidence": [
+      "reports/document_samples.json: 20241001-5327",
+      "reports/clean_rebuild.json"
+    ],
+    "audit_required_action": "Replay accession 20241001-5327 with UTF-16 and newline-safe CSV: H=1,D=18,P=176,F=4; then resume the remaining Gulfstream periods.",
+    "audit_confidence": "confirmed from bundled bytes/code",
+    "irreducible_established": false
+  },
+  {
+    "blocker_id": "blk-dd6dc6d6d74b49c4",
+    "adapter": "ioc",
+    "scope": "C001058:20260701-5096",
+    "kind": "access",
+    "summary": "C001058 20260701-5096: availCode N -- attachment enumerated but not public (DownloadP8File returns HTTP 401); recorded as nonpublic, not retried",
+    "attempts": "",
+    "exact_error": "availCode=N; Index of Customers Report of Pine Prairie Energy Center, LLC for Q3 of 2026. Erroneously Filed.",
+    "human_decision_needed": 0,
+    "opened_at": "2026-09-07T13:21:39+00:00",
+    "resolved_at": null,
+    "audit_classification": "malformed/unavailable source",
+    "audit_subtype": "erroneously filed occurrence; confidentiality/access restriction unconfirmed",
+    "audit_evidence": [
+      "reports/integration_semantics.json: restricted_ioc_alternatives",
+      "adapters/ioc.py code skips download before 401 wording"
+    ],
+    "audit_required_action": "Link the corrected public occurrence where found; do not infer an obligation-level gap or observed HTTP 401 from availability code N.",
+    "audit_confidence": "metadata status confirmed; actual access restriction NOT confirmed",
+    "irreducible_established": false,
+    "alternative_evidence": {
+      "blocker_id": "blk-dd6dc6d6d74b49c4",
+      "cid": "C001058",
+      "accession": "20260701-5096",
+      "cached_metadata": {
+        "reference": "{45DEF25C-14C4-CC57-8778-9F1E26400000}-{C3DB8D4B-6113-C7FE-93C4-9F1E26500000}",
+        "documentId": "45DEF25C-14C4-CC57-8778-9F1E26400000",
+        "description": "Index of Customers Report of Pine Prairie Energy Center, LLC for Q3 of 2026. Erroneously Filed.",
+        "summary": null,
+        "category": "Submittal",
+        "acesssionNumber": "20260701-5096",
+        "issuedDate": "07/01/2026",
+        "filedDate": "07/01/2026",
+        "postedDate": "07/01/2026",
+        "classTypes": [
+          {
+            "documentClass": "Report/Form",
+            "documentType": "Index of Customer"
+          }
+        ],
+        "availCode": "N",
+        "familyValue": "None",
+        "libraries": [
+          "Gas"
+        ],
+        "score": 86.04,
+        "docketNumbers": [],
+        "transmittals": [
+          {
+            "fileId": "C3DB8D4B-6113-C7FE-93C4-9F1E26500000",
+            "fileType": "PDF",
+            "fileFormat": "Standard",
+            "fileName": "2026-07-01 PPEC Index of Customers letter_signed.pdf",
+            "fileDesc": "Pine Prairie Energy Center, LLC \u2013 submission letter",
+            "fileSize": 216341,
+            "transmittalFk": null
+          },
+          {
+            "fileId": "B4449FF0-5071-CA3E-989D-9F1E26500000",
+            "fileType": "TXT",
+            "fileFormat": "Standard",
+            "fileName": "IC0010582607.TAB.txt",
+            "fileDesc": "Pine Prairie Energy Center, LLC \u2013 IOC data",
+            "fileSize": 10431,
+            "transmittalFk": null
+          }
+        ],
+        "affiliations": [
+          {
+            "afType": "RECIPIENT",
+            "affiliation": "Office of the Secretary, FERC",
+            "lastName": "Reese",
+            "firstInitial": "D",
+            "middleInitial": "A"
+          },
+          {
+            "afType": "AUTHOR",
+            "affiliation": "Pine Prairie Energy Center, LLC",
+            "lastName": "Wiener",
+            "firstInitial": "W",
+            "middleInitial": "x"
+          },
+          {
+            "afType": "AGENT",
+            "affiliation": "The Williams Companies, Inc.",
+            "lastName": "Wiener",
+            "firstInitial": "W",
+            "middleInitial": "x"
+          }
+        ]
+      },
+      "public_same_snapshot_filings": [
+        {
+          "filing_id": "20260701-5117",
+          "entity_key": "C001058",
+          "snapshot_date": "2026-07-01",
+          "acceptance_status": "availCode=P",
+          "is_canonical": 1,
+          "version_status": "original"
+        }
+      ],
+      "confirmed_restriction": false
+    }
+  },
+  {
+    "blocker_id": "blk-433ea58ae2a4a07c",
+    "adapter": "capacity",
+    "scope": "capacity:20240223-5073",
+    "kind": "source",
+    "summary": "20240223-5073: capacity PDF parse failed",
+    "attempts": "",
+    "exact_error": "the PDF carries no extractable text layer on any page; this adapter does not OCR and no figure is invented",
+    "human_decision_needed": 0,
+    "opened_at": "2026-09-07T13:26:14+00:00",
+    "resolved_at": null,
+    "audit_classification": "implementation/parser defect",
+    "audit_subtype": "image-only PDF requires reviewed extraction capability",
+    "audit_evidence": [
+      "reports/exception_byte_audit.json",
+      "auditor visual page inspection"
+    ],
+    "audit_required_action": "Read and review the valid PDF page; retain qualifiers and distinguish physical peak-day delivery from storage space.",
+    "audit_confidence": "confirmed from bundled bytes/code",
+    "irreducible_established": false
+  },
+  {
+    "blocker_id": "blk-187aa7808a87cf34",
+    "adapter": "capacity",
+    "scope": "capacity:20240223-5075",
+    "kind": "source",
+    "summary": "20240223-5075: capacity PDF parse failed",
+    "attempts": "",
+    "exact_error": "the PDF carries no extractable text layer on any page; this adapter does not OCR and no figure is invented",
+    "human_decision_needed": 0,
+    "opened_at": "2026-09-07T13:26:48+00:00",
+    "resolved_at": null,
+    "audit_classification": "implementation/parser defect",
+    "audit_subtype": "image-only PDF requires reviewed extraction capability",
+    "audit_evidence": [
+      "reports/exception_byte_audit.json",
+      "auditor visual page inspection"
+    ],
+    "audit_required_action": "Read and review the valid PDF page; retain qualifiers and distinguish physical peak-day delivery from storage space.",
+    "audit_confidence": "confirmed from bundled bytes/code",
+    "irreducible_established": false
+  }
+]

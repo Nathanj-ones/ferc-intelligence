@@ -21,7 +21,7 @@ const SNAPSHOT_SCHEMA = 'ferc_site_snapshot_v1';
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(scriptDirectory, '..');
 const defaultBackendRoot =
-  '/Users/nathanjones/Desktop/ferc_reaudit_handoff/operating_assets_backend_ready_20260910/operating_assets_all_regimes';
+  path.join(projectRoot, '.ferc-local', 'working', 'output');
 const backendRoot = path.resolve(
   process.env.FERC_BACKEND_ROOT || defaultBackendRoot,
 );
