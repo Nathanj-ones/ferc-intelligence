@@ -30,18 +30,20 @@ import type {
   SourceDetail,
 } from '@/lib/ferc/types';
 import { observationSource } from './backend-asset-detail';
+import { isSafeKeyMetricPoint } from '@/lib/ferc/key-metrics';
+import {
+  uniqueObservationPeriods,
+  observationPeriodKey,
+} from '@/lib/ferc/observations';
+import {
+  metricPresentation,
+  concentrationComparisonKey,
+} from '@/lib/ferc/metric-presentation';
 
 const colors = ['#176b61', '#4f70a3', '#885d83', '#73815b'];
 const dashes = [undefined, '8 4', '3 3', '10 3 2 3'];
 
-const periodKey = (point: BackendObservation) =>
-  [
-    point.period.basis,
-    point.period.start,
-    point.period.end,
-    point.period.instant,
-    point.period.label,
-  ].join('|');
+const periodKey = observationPeriodKey;
 
 const periodLabel = (point: BackendObservation) =>
   point.period.label ||
@@ -125,6 +127,7 @@ function buildGroups(details: OperatingAssetDetail[]): ComparableGroup[] {
                 point.quality.validation,
               ) &&
               point.comparison.eligible &&
+              isSafeKeyMetricPoint(metric, point) &&
               point.comparison.group_id === groupId &&
               typeof point.comparison.comparison_value_base === 'number',
           )
@@ -136,16 +139,24 @@ function buildGroups(details: OperatingAssetDetail[]): ComparableGroup[] {
       const metricIds = new Set(matches.map(({ metric }) => metric.id));
       if (!matches.length || seriesIds.size !== 1 || metricIds.size !== 1)
         return null;
+      const unique = uniqueObservationPeriods(
+        matches.map(({ point }) => point),
+      );
+      if (unique.conflictCount > 0) return null;
       return {
         detail,
         metric: matches[0].metric,
-        points: matches
-          .map(({ point }) => point)
-          .sort((left, right) => left.sortKey.localeCompare(right.sortKey)),
+        points: unique.points,
       };
     });
     if (series.some((entry) => entry === null)) return [];
     const complete = series as ComparableSeries[];
+    if (complete[0].metric.id === 'ioc_top5_shipper_concentration') {
+      if (
+        !concentrationComparisonKey(complete.flatMap((entry) => entry.points))
+      )
+        return [];
+    }
     const first = complete[0].points[0];
     const unitFamily = first.comparison.base_unit_family;
     const scopeContract = first.comparison.scope_contract;
@@ -171,8 +182,10 @@ function buildGroups(details: OperatingAssetDetail[]): ComparableGroup[] {
       {
         id: groupId,
         metricId: complete[0].metric.id,
-        label: complete[0].metric.label,
-        description: complete[0].metric.description,
+        ...metricPresentation(
+          complete[0].metric,
+          complete.flatMap((entry) => entry.points),
+        ),
         unitFamily,
         scopeContract,
         periodBasis: first.period.basis,

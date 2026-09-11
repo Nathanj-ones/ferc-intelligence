@@ -40,7 +40,13 @@ import {
   keyMetricScopeLabel,
   observationSeriesKey,
   selectAssetKeyMetrics,
+  isSafeKeyMetricPoint,
 } from '@/lib/ferc/key-metrics';
+import { uniqueObservationPeriods } from '@/lib/ferc/observations';
+import {
+  metricPresentation,
+  observationFiledValues,
+} from '@/lib/ferc/metric-presentation';
 import type {
   BackendMetricSeries,
   BackendObservation,
@@ -302,8 +308,8 @@ export function observationSource(
       `Showing a bounded population sample; the backend records ${point.lineage.populationCount} population descriptor(s).`,
     );
   }
-  const rawFiledValue =
-    point.value.as_filed || point.source.fact?.valueAsFiled || undefined;
+  const { storedValue, filedValue: rawFiledValue } =
+    observationFiledValues(point);
   const structuredFiledValue = isStructuredFercValue(rawFiledValue);
   const suppliedUnit = point.source.fact?.unitText || point.value.unit;
   const unitPresentationBlocked = isMetricPresentationBlocked(
@@ -323,7 +329,7 @@ export function observationSource(
   );
   return {
     id: point.id,
-    title: `${asset.name} · ${metric.label}`,
+    title: `${asset.name} · ${metricPresentation(metric, [point]).label}`,
     sourceSystem: point.source.system || point.sourceRegime || 'FERC',
     nativeIdentity: [
       point.source.filingRef,
@@ -347,7 +353,14 @@ export function observationSource(
     acceptanceStatus: point.source.acceptanceStatus || undefined,
     dataOrigin: point.source.dataOrigin || undefined,
     period: periodLabel(point),
-    scope: `${point.scope.actual} · Contract: ${point.scope.contract_rule}`,
+    scope: [
+      point.scope.actual,
+      point.scope.contract_rule
+        ? `Contract: ${point.scope.contract_rule}`
+        : null,
+    ]
+      .filter(Boolean)
+      .join(' · '),
     unit: unitPresentationBlocked
       ? 'Unit conflict — see warnings'
       : unitLabel(
@@ -385,6 +398,7 @@ export function observationSource(
       metric.configuredDisplayUnit,
     ),
     valueLabel: 'Displayed value',
+    storedValue: storedValue !== rawFiledValue ? storedValue : undefined,
     filedValue: rawFiledValue
       ? structuredFiledValue
         ? formatBackendValue(rawFiledValue, null, true)
@@ -413,7 +427,7 @@ export function observationSource(
     description:
       firstAssertion?.verbatimSpan ||
       firstAssertion?.scopeNote ||
-      metric.description ||
+      metricPresentation(metric, [point]).description ||
       undefined,
     formula: point.lineage?.derivation || undefined,
     inputs: edgeInputs.length ? edgeInputs : undefined,
@@ -497,20 +511,20 @@ export function BackendAssetDetail({
     groupedSeries.find(([key]) => key === effectiveSeriesKey)?.[1] ||
     groupedSeries[0]?.[1] ||
     [];
-  const chartPoints = selectedPoints
-    .filter(
+  const chartSeries = uniqueObservationPeriods(
+    selectedPoints.filter(
       (point) =>
-        point.quality.availability === 'present' &&
-        point.quality.validation === 'pass' &&
-        point.quality.version_status !== 'superseded' &&
+        selectedMetric &&
+        isSafeKeyMetricPoint(selectedMetric, point) &&
         typeof point.value.display_value === 'number',
-    )
-    .map((point) => ({
-      id: point.id,
-      period: periodLabel(point),
-      value: point.value.display_value as number,
-      point,
-    }));
+    ),
+  );
+  const chartPoints = chartSeries.points.map((point) => ({
+    id: point.id,
+    period: periodLabel(point),
+    value: point.value.display_value as number,
+    point,
+  }));
   const sortedEvents = [...detail.events].sort((left, right) =>
     right.date.localeCompare(left.date),
   );
@@ -837,7 +851,8 @@ export function BackendAssetDetail({
               >
                 {metrics.map((metric) => (
                   <option key={metric.id} value={metric.id}>
-                    {metric.label} ({metric.presentCount}/{metric.pointCount})
+                    {metricPresentation(metric).label} ({metric.presentCount}/
+                    {metric.pointCount})
                   </option>
                 ))}
               </select>
@@ -847,10 +862,12 @@ export function BackendAssetDetail({
             <>
               <div className="metric-definition">
                 <div>
-                  <strong>{selectedMetric.label}</strong>
+                  <strong>
+                    {metricPresentation(selectedMetric, selectedPoints).label}
+                  </strong>
                   <p>
-                    {selectedMetric.description ||
-                      'No registry definition supplied.'}
+                    {metricPresentation(selectedMetric, selectedPoints)
+                      .description || 'No registry definition supplied.'}
                   </p>
                 </div>
                 <span>
@@ -910,10 +927,24 @@ export function BackendAssetDetail({
                   </p>
                 </div>
               )}
-              {chartPoints.length > 1 ? (
+              {(chartSeries.duplicateCount > 0 ||
+                chartSeries.conflictCount > 0) && (
+                <p className="chart-record-note">
+                  {chartSeries.duplicateCount > 0 &&
+                    `${chartSeries.duplicateCount} duplicate source occurrence(s) shown once in the chart. `}
+                  {chartSeries.conflictCount > 0 &&
+                    `${chartSeries.conflictCount} ambiguous period(s) withheld from the trend. `}
+                  All source records remain in the table below.
+                </p>
+              )}
+              {chartPoints.length > 1 && chartSeries.conflictCount === 0 ? (
                 <ChartContainer
                   config={{
-                    value: { label: selectedMetric.label, color: '#176b61' },
+                    value: {
+                      label: metricPresentation(selectedMetric, selectedPoints)
+                        .label,
+                      color: '#176b61',
+                    },
                   }}
                   className="backend-metric-chart"
                 >
@@ -976,14 +1007,15 @@ export function BackendAssetDetail({
                 </ChartContainer>
               ) : (
                 <div className="chart-empty">
-                  This series has fewer than two usable numeric observations;
-                  warned, superseded, and nonnumeric records remain below with
-                  their quality and evidence.
+                  {chartSeries.conflictCount > 0
+                    ? 'This series has conflicting source records for the same period, so a trend is not asserted.'
+                    : 'This series has fewer than two usable numeric periods.'}{' '}
+                  All records remain below with their quality and evidence.
                 </div>
               )}
               <details
                 className="data-table backend-data-table"
-                open={chartPoints.length <= 1}
+                open={chartPoints.length <= 1 || chartSeries.conflictCount > 0}
               >
                 <summary>
                   View {selectedPoints.length} underlying records

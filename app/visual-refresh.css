@@ -951,9 +951,42 @@ summary {
   position: sticky;
   top: 0;
   z-index: 2;
-  padding: 26px 27px 18px;
+  padding: 26px 60px 18px 27px;
   background: rgb(255 255 255 / 96%);
   backdrop-filter: blur(12px);
+}
+
+.source-close-button {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--ink);
+  cursor: pointer;
+}
+.source-close-button svg {
+  width: 18px;
+  height: 18px;
+}
+.comparison-picker > [data-slot='sheet-close'] {
+  z-index: 5;
+}
+
+@media (max-width: 640px) {
+  .source-sheet[data-side='right'],
+  .comparison-picker[data-side='right'] {
+    width: 100vw;
+    max-width: 100vw;
+  }
+  .source-sheet .source-sheet-head {
+    padding-right: 62px;
+  }
 }
 
 .source-sheet-head [data-slot='sheet-title'] {
@@ -1640,7 +1673,22 @@ footer small {
 
 .backend-metric-browser {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 17px;
+}
+
+.backend-metric-browser > *,
+.metric-browser-title > *,
+.series-selector,
+.backend-comparison-basis label {
+  min-width: 0;
+}
+
+.backend-metric-browser > .chart-empty {
+  min-height: 0;
+  height: auto;
+  padding: 18px;
+  text-align: left;
 }
 
 .metric-browser-title {
@@ -1666,6 +1714,8 @@ footer small {
 .metric-browser-title select,
 .series-selector select,
 .backend-comparison-basis select {
+  min-width: 0;
+  width: 100%;
   min-height: 39px;
   max-width: min(100%, 520px);
   padding: 0 34px 0 11px;
@@ -2924,7 +2974,7 @@ body {
 
 .key-metrics-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   gap: 15px;
 }
 
@@ -2946,6 +2996,47 @@ body {
   box-shadow: var(--shadow-card);
   color: var(--ink);
   text-align: left;
+}
+
+.chart-record-note {
+  display: block;
+  margin: 12px 0;
+  padding: 12px 15px;
+  border-left: 3px solid var(--teal);
+  background: var(--surface-subtle);
+  color: var(--muted-ink);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.directory-status-guide {
+  margin: 0 0 16px;
+  color: var(--muted-ink);
+  font-size: 13px;
+  line-height: 1.6;
+}
+.directory-status-guide summary {
+  width: fit-content;
+  cursor: pointer;
+  color: var(--teal);
+  font-weight: 650;
+}
+.directory-status-guide dl {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 18px;
+  margin: 10px 0 0;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+}
+.directory-status-guide dt {
+  color: var(--ink);
+  font-weight: 650;
+}
+.directory-status-guide dd {
+  margin: 5px 0 0;
 }
 
 .key-metric-card:nth-child(2) {

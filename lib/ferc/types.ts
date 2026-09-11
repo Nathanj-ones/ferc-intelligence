@@ -37,6 +37,7 @@ export type SourceDetail = {
   valueLabel?: string;
   filedValue?: string;
   filedValueRaw?: string;
+  storedValue?: string;
   method: string;
   availability: string;
   origin: string;
@@ -240,6 +241,7 @@ export type BackendDataSummary = {
 };
 
 export type ComparisonGroupSummary = {
+  semanticKey?: string | null;
   groupId: string;
   metricCount: number;
   seriesCount: number;

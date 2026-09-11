@@ -165,14 +165,34 @@ async function decode(bytes: Uint8Array, encoding: GeneratedFile['encoding']) {
   return new Uint8Array(await new Response(stream).arrayBuffer());
 }
 
-async function fetchGenerated<T>(
+class SnapshotIntegrityError extends Error {}
+export class FercSnapshotUpdatedError extends Error {
+  constructor() {
+    super(
+      'The site data presentation has been updated. Reload to open the consistent new snapshot.',
+    );
+  }
+}
+
+export function reloadForFercSnapshotUpdate(error: unknown) {
+  if (
+    !(error instanceof FercSnapshotUpdatedError) ||
+    typeof window === 'undefined'
+  )
+    return false;
+  window.location.reload();
+  return true;
+}
+
+async function fetchVerified<T>(
   relativePath: string,
   metadata: GeneratedFile,
+  cache: RequestCache = 'force-cache',
 ): Promise<T> {
   const response = await fetch(
     `${SNAPSHOT_ROOT}/${relativePath}?sha256=${metadata.sha256}`,
     {
-      cache: 'force-cache',
+      cache,
     },
   );
   if (!response.ok) {
@@ -186,7 +206,7 @@ async function fetchGenerated<T>(
     (stored.length !== metadata.bytes ||
       (await digest(stored)) !== metadata.sha256)
   ) {
-    throw new Error(
+    throw new SnapshotIntegrityError(
       `FERC snapshot integrity check failed for ${relativePath}.`,
     );
   }
@@ -197,9 +217,39 @@ async function fetchGenerated<T>(
     content.length !== metadata.contentBytes ||
     (await digest(content)) !== metadata.contentSha256
   ) {
-    throw new Error(`FERC snapshot content check failed for ${relativePath}.`);
+    throw new SnapshotIntegrityError(
+      `FERC snapshot content check failed for ${relativePath}.`,
+    );
   }
   return JSON.parse(new TextDecoder().decode(content)) as T;
+}
+
+async function fetchGenerated<T>(
+  relativePath: string,
+  metadata: GeneratedFile,
+): Promise<T> {
+  try {
+    return await fetchVerified<T>(relativePath, metadata);
+  } catch (error) {
+    if (!(error instanceof SnapshotIntegrityError)) throw error;
+    // A publication can revise the frontend projection of the same frozen
+    // source generation. Refresh once; never bypass verification or loop.
+    const manifest = await loadManifest();
+    const current = manifest.files[relativePath];
+    if (!current) throw error;
+    const payload = await fetchVerified<T>(relativePath, current, 'no-cache');
+    if (current.sha256 !== metadata.sha256) {
+      catalogPromise = null;
+      changesPromise = null;
+      assetPromises.clear();
+      instrumentPromises.clear();
+      lineagePromises.clear();
+      // Do not return new details alongside a directory already in React state
+      // from the previous projection. The UI reloads the same URL coherently.
+      throw new FercSnapshotUpdatedError();
+    }
+    return payload;
+  }
 }
 
 async function loadManifest() {
@@ -230,14 +280,27 @@ export function resolveAssetId(assetId: string) {
 export function loadFercCatalog(): Promise<FercCatalog> {
   if (catalogPromise) return catalogPromise;
   const request = (async () => {
-    const manifest = await loadManifest();
-    const directoryFile = manifest.files['directory.json'];
+    let manifest = await loadManifest();
+    let directoryFile = manifest.files['directory.json'];
     if (!directoryFile)
       throw new Error('The FERC snapshot is missing its directory route.');
-    const directory = await fetchGenerated<FercDirectory>(
-      'directory.json',
-      directoryFile,
-    );
+    let directory: FercDirectory;
+    try {
+      directory = await fetchVerified<FercDirectory>(
+        'directory.json',
+        directoryFile,
+      );
+    } catch (error) {
+      if (!(error instanceof SnapshotIntegrityError)) throw error;
+      manifest = await loadManifest();
+      directoryFile = manifest.files['directory.json'];
+      if (!directoryFile) throw error;
+      directory = await fetchVerified<FercDirectory>(
+        'directory.json',
+        directoryFile,
+        'no-cache',
+      );
+    }
     if (
       directory.generationId !== FERC_GENERATION_ID ||
       !Array.isArray(directory.assets)

@@ -23,12 +23,17 @@ npm run build
 
 ## Data integration
 
-The operating-asset UI reads a compact, immutable browser snapshot from
+The operating-asset UI reads a compact, hash-verified browser projection from
 `public/data/ferc`. The snapshot is pinned to one backend publication receipt,
 and `lib/ferc/backend.ts` verifies both stored-file and decoded-content hashes
 before accepting it. Asset details, historical changes, and complete lineage
 shards load on demand. The contracted industry-wide oil-index instrument is
-published separately from carrier assets and also loads on demand.
+published separately from carrier assets and also loads on demand. The source
+generation is immutable; frontend presentation fixes can revise its projection.
+An open tab detecting revised hashes verifies the new payload then reloads the
+same URL, so it never combines old directory eligibility with new detail data.
+A bad cached response gets one revalidated retry; persistent corruption fails
+closed.
 
 Regenerate the snapshot from the authoritative backend export with:
 
@@ -43,7 +48,8 @@ The directory projection also carries compact, receipt-derived comparison
 metadata so the picker can reject ambiguous series and selections with no exact
 period in common before loading an asset comparison.
 
-Directory cards only promote a single-series, display-safe headline. Form 549D
+Directory cards use the same regime-specific safe selection as asset detail
+cards, including the exact point and reporting period. Form 549D
 assets with no scalar headline may use the exact filed reporting-state metric;
 structured records are never promoted. “Latest available period” is derived
 from the latest present, validated occurrence rather than the expected-slot
@@ -63,6 +69,25 @@ must-propagate quality flags, explicitly open review tasks, and resolved review
 tasks. Unit and scope qualifications stay visible without being mislabeled as
 records awaiting a reviewer; only an explicit `review_status=open` is described
 as needing review.
+
+Charts collapse duplicate occurrences only when the source fact, filing identity
+and every substantive field agree (the observation ID and source-regime label
+may differ). Raw records remain available. Conflicting same-period records
+prevent a trend or comparison. Shipper-concentration comparison also requires
+the same evidenced denominator concept and unit: storage inventory quantity
+cannot be compared with daily transport capacity. The directory contract carries
+this extra semantic discriminator, while original backend comparison IDs remain
+intact in observation evidence.
+
+Raw filed evidence is separate from the stored interpretation. For example,
+Form 549D reporting-state records retain both the categorical interpretation
+and the underlying structured filing header. Roadrunner's border-crossing
+pipeline is labeled by its physical asset type; its backend Section 3/LNG
+processing template is unchanged.
+
+To regenerate outside the working snapshot (for validation or to preserve
+untracked files), set `FERC_FRONTEND_DATA_ROOT` to a dedicated temporary output
+directory. No backend source files are edited by the sync.
 
 Presentation follows the backend's display value and scale without inferring a
 conversion. A small set of contract-1.1.0 metric-specific unit shims covers

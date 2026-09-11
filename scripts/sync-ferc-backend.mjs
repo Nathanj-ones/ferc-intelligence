@@ -4,6 +4,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { gzipSync } from 'node:zlib';
+import { selectAssetKeyMetrics } from '../lib/ferc/key-metrics.ts';
+import { concentrationComparisonKey } from '../lib/ferc/metric-presentation.ts';
 
 const EXPECTED_GENERATION =
   '0dccbd426f15372f1330737537f9aac58bc9547a2eaf81ef6f4b655f10cf2824';
@@ -18,7 +20,10 @@ const defaultBackendRoot =
 const backendRoot = path.resolve(
   process.env.FERC_BACKEND_ROOT || defaultBackendRoot,
 );
-const fercDataRoot = path.join(projectRoot, 'public', 'data', 'ferc');
+const fercDataRoot = path.resolve(
+  process.env.FERC_FRONTEND_DATA_ROOT ||
+    path.join(projectRoot, 'public', 'data', 'ferc'),
+);
 const outputParent = path.join(fercDataRoot, 'generations');
 const liveOutputRoot = path.join(outputParent, EXPECTED_GENERATION);
 fs.mkdirSync(outputParent, { recursive: true });
@@ -361,6 +366,7 @@ function comparisonGroupSummaries(metrics) {
             .toLowerCase() === 'utr:bbl' &&
           point.quality?.validation === 'unit_warning') ||
         comparison?.eligible !== true ||
+        point.quality?.review_status === 'open' ||
         !comparison.group_id ||
         typeof comparison.comparison_value_base !== 'number' ||
         !Number.isFinite(comparison.comparison_value_base)
@@ -371,8 +377,14 @@ function comparisonGroupSummaries(metrics) {
         metricIds: new Set(),
         seriesIds: new Set(),
         periodKeys: new Set(),
+        semanticKeys: new Set(),
       };
       group.metricIds.add(metric.id);
+      if (metric.id === 'ioc_top5_shipper_concentration') {
+        group.semanticKeys.add(
+          concentrationComparisonKey([point]) || 'ambiguous',
+        );
+      }
       if (comparison.series_id) group.seriesIds.add(comparison.series_id);
       const periodKey = comparisonPeriodKey(point);
       if (periodKey !== '||||') group.periodKeys.add(periodKey);
@@ -384,26 +396,17 @@ function comparisonGroupSummaries(metrics) {
       groupId,
       metricCount: group.metricIds.size,
       seriesCount: group.seriesIds.size,
+      semanticKey:
+        group.semanticKeys.size === 1
+          ? [...group.semanticKeys][0]
+          : group.semanticKeys.size > 1
+            ? 'ambiguous'
+            : null,
       periodFingerprints: [...group.periodKeys]
         .map((periodKey) => sha256(Buffer.from(periodKey)).slice(0, 16))
         .sort((left, right) => left.localeCompare(right)),
     }))
     .sort((left, right) => left.groupId.localeCompare(right.groupId));
-}
-
-function isDirectorySummaryValue(point) {
-  const value = directoryPresentationValue(point);
-  if (typeof value === 'number') return Number.isFinite(value);
-  if (typeof value !== 'string') return false;
-  const trimmed = value.trim();
-  if (!trimmed || trimmed.length > 160 || /[\r\n]/.test(trimmed)) return false;
-  if (!trimmed.startsWith('{') && !trimmed.startsWith('[')) return true;
-  try {
-    const parsed = JSON.parse(trimmed);
-    return parsed === null || typeof parsed !== 'object';
-  } catch {
-    return true;
-  }
 }
 
 function directoryPresentationValue(point) {
@@ -822,24 +825,6 @@ for (const rawAsset of directorySource.assets) {
     ),
   ].sort((left, right) => left.localeCompare(right));
   const comparisonGroups = comparisonGroupSummaries(projectedMetrics);
-  const latestMetricSeries =
-    projectedMetrics.find(
-      (series) =>
-        series.role === 'headline' &&
-        series.latest &&
-        isDirectorySummaryValue(series.latest),
-    ) ||
-    // Form 549D can legitimately have no publishable scalar headline because
-    // zero-filled numeric fields cannot be distinguished from omitted values.
-    // Its filed reporting state is a safe categorical directory fallback; an
-    // arbitrary detail record (especially structured JSON) is not.
-    projectedMetrics.find(
-      (series) =>
-        series.id === 'i311_reporting_state' &&
-        series.latest &&
-        isDirectorySummaryValue(series.latest),
-    );
-  const latestMetric = latestMetricSeries?.latest || null;
   const reviewTriage = reviewSummary(projectedMetrics);
   const latestUsablePeriod = latestAvailablePeriod(projectedMetrics);
   const frontendComparisonEligible = Boolean(
@@ -858,8 +843,19 @@ for (const rawAsset of directorySource.assets) {
     rawAsset.ticker ||
     'Company not mapped';
   const regime =
-    assetTypeLabels[rawAsset.assetType] ||
-    titleCaseIdentifier(rawAsset.assetType);
+    rawAsset.id === 'oke-roadrunner-export-pipeline'
+      ? 'Cross-border gas pipeline'
+      : assetTypeLabels[rawAsset.assetType] ||
+        titleCaseIdentifier(rawAsset.assetType);
+  // The directory and asset page must choose the same safe, regime-specific
+  // point, not whichever headline happens to sort first in the registry.
+  const selectedHeadline = selectAssetKeyMetrics(
+    { regime, scopeRelation: rawAsset.scopeRelation },
+    projectedMetrics,
+    1,
+  )[0];
+  const latestMetricSeries = selectedHeadline?.metric;
+  const latestMetric = selectedHeadline?.point;
   const summary = {
     id: rawAsset.id,
     name: rawAsset.displayName,
@@ -899,7 +895,7 @@ for (const rawAsset of directorySource.assets) {
     latestMetric: latestMetric
       ? {
           metricId: latestMetricSeries.id,
-          label: latestMetricSeries.label,
+          label: selectedHeadline.definition.label || latestMetricSeries.label,
           period: latestMetric.period?.label || latestMetric.sortKey,
           value: directoryPresentationValue(latestMetric),
           unit: latestMetric.value?.display_unit || latestMetric.value?.unit,

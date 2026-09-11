@@ -65,6 +65,7 @@ import {
   loadFercChanges,
   loadFercInstrument,
   loadFercLineage,
+  reloadForFercSnapshotUpdate,
   resolveAssetId,
   type FercCatalog,
   type FercLineageEntry,
@@ -289,6 +290,7 @@ function FullLineage({
       })
       .catch((reason: unknown) => {
         if (!cancelled) {
+          if (reloadForFercSnapshotUpdate(reason)) return;
           setError(
             reason instanceof Error
               ? reason.message
@@ -531,10 +533,21 @@ function SourceDrawer({
     : [];
   return (
     <Sheet open={Boolean(source)} onOpenChange={(open) => !open && onClose()}>
-      <SheetContent className="source-sheet sm:max-w-[500px]">
+      <SheetContent
+        className="source-sheet sm:max-w-[500px]"
+        showCloseButton={false}
+      >
         {source && (
           <>
             <SheetHeader className="source-sheet-head">
+              <button
+                type="button"
+                className="source-close-button"
+                aria-label="Close"
+                onClick={onClose}
+              >
+                <X aria-hidden="true" />
+              </button>
               <p className="eyebrow">Source & details</p>
               <SheetTitle>{source.title}</SheetTitle>
               <SheetDescription>{source.sourceSystem}</SheetDescription>
@@ -549,15 +562,21 @@ function SourceDrawer({
                   <strong>{source.value}</strong>
                 </div>
               )}
+              {source.storedValue && (
+                <div className="source-value source-filed-value">
+                  <span>Stored interpretation</span>
+                  <strong>{source.storedValue}</strong>
+                </div>
+              )}
               {source.filedValue && (
                 <div className="source-value source-filed-value">
-                  <span>Filed / stored value</span>
+                  <span>Filed source value</span>
                   <strong>{source.filedValue}</strong>
                 </div>
               )}
               {source.filedValueRaw && (
                 <details className="raw-filed-value">
-                  <summary>View raw structured filed value</summary>
+                  <summary>View filed source record</summary>
                   <pre>{source.filedValueRaw}</pre>
                 </details>
               )}
@@ -814,10 +833,11 @@ function AppHeader({
         </div>
       </header>
       <div className="snapshot-strip">
-        <span>Receipt-pinned</span>Operating data as of{' '}
-        {catalog ? formatDate(catalog.directory.asOf) : 'loading'} ·{' '}
-        {catalog?.directory.counts.in_scope_assets ?? '—'} in-scope assets · 0
-        current operating events · Candidate, not a live feed
+        <span>Data snapshot</span>
+        {catalog
+          ? `As of ${formatDate(catalog.directory.asOf)}`
+          : 'Loading verified data…'}
+        {' · '}Updates are not live
       </div>
     </>
   );
@@ -889,6 +909,7 @@ function ChangesView({
   const [more, setMore] = useState(false);
   const [visibleLimit, setVisibleLimit] = useState(50);
   const [reviewMarker, setReviewMarker] = useState<string | null>(null);
+  const [markerPersistence, setMarkerPersistence] = useState(true);
   const [filtersHydrated, setFiltersHydrated] = useState(false);
 
   useEffect(() => {
@@ -899,7 +920,13 @@ function ChangesView({
         feedParam === 'archive' || feedParam === 'review'
           ? feedParam
           : 'substantive';
-      const marker = localStorage.getItem('ferc-review-marker');
+      let marker: string | null = null;
+      try {
+        const stored = localStorage.getItem('ferc-review-marker');
+        marker = stored && Number.isFinite(Date.parse(stored)) ? stored : null;
+      } catch {
+        setMarkerPersistence(false);
+      }
       const domainParam = initial.get('changeDomain');
       const categoryParam = initial.get('changeCategory');
       const regimeParam = initial.get('changeRegime');
@@ -1027,7 +1054,11 @@ function ChangesView({
   };
   const markReview = () => {
     const value = new Date().toISOString();
-    localStorage.setItem('ferc-review-marker', value);
+    try {
+      localStorage.setItem('ferc-review-marker', value);
+    } catch {
+      setMarkerPersistence(false);
+    }
     setReviewMarker(value);
   };
   const categories = [
@@ -1058,6 +1089,12 @@ function ChangesView({
           )}
         </button>
       </div>
+      {!markerPersistence && (
+        <output className="chart-record-note">
+          Browser storage is unavailable. Your review marker lasts only while
+          this view is open; it does not resolve backend review records.
+        </output>
+      )}
       <nav className="feed-tabs" aria-label="Change feed type">
         {[
           ['substantive', 'Substantive changes'],
@@ -1353,11 +1390,46 @@ function AssetsDirectory({
         }}
       />
       <div className="results-meta">
-        <strong>{visible.length} assets</strong>
+        <strong>
+          {visible.length} {visible.length === 1 ? 'asset' : 'assets'}
+        </strong>
         <span>
           Reviewed directory · filing-entity scope · no parent-company totals
         </span>
       </div>
+      <details className="directory-status-guide">
+        <summary>What do the data statuses mean?</summary>
+        <dl>
+          <div>
+            <dt>Validated records</dt>
+            <dd>
+              Some records pass the backend checks. This does not mean every
+              metric or period is available.
+            </dd>
+          </div>
+          <div>
+            <dt>Quality flags</dt>
+            <dd>
+              Records carry a unit, scope, source or interpretation
+              qualification. A flag is not automatically an open review task.
+            </dd>
+          </div>
+          <div>
+            <dt>Need review</dt>
+            <dd>
+              Records are explicitly queued for human review. They are not
+              promoted into key metrics or comparisons.
+            </dd>
+          </div>
+          <div>
+            <dt>Identity only / no usable records</dt>
+            <dd>
+              The asset is listed, but no validated values are available in this
+              snapshot. This is not a reported zero.
+            </dd>
+          </div>
+        </dl>
+      </details>
       {visible.length ? (
         <div className="directory-list">
           {visible.map((asset) => {
@@ -1526,7 +1598,8 @@ function RegimeCoverage({ assets }: { assets: OperatingAssetSummary[] }) {
           <div key={item.regime}>
             <strong>{item.regime}</strong>
             <span>
-              {item.assets} assets · {item.mapped} with mapped histories
+              {item.assets} {item.assets === 1 ? 'asset' : 'assets'} ·{' '}
+              {item.mapped} with mapped histories
             </span>
             <p>
               {item.observations.toLocaleString()} source-backed observations in
@@ -1562,6 +1635,7 @@ function ReferenceInstruments({
       })
       .catch((reason: unknown) => {
         if (!cancelled) {
+          if (reloadForFercSnapshotUpdate(reason)) return;
           setLoad({
             key: selectedId,
             detail: null,
@@ -3790,6 +3864,7 @@ function Footer({ catalog }: { catalog: FercCatalog | null }) {
 }
 
 export default function Home() {
+  const [historyRevision, setHistoryRevision] = useState(0);
   const [route, setRoute] = useState<RouteState>({
     view: 'changes',
     company: 'All companies',
@@ -3829,6 +3904,7 @@ export default function Home() {
       })
       .catch((error: unknown) => {
         if (!cancelled) {
+          if (reloadForFercSnapshotUpdate(error)) return;
           setCatalogError(
             error instanceof Error
               ? error.message
@@ -3847,6 +3923,8 @@ export default function Home() {
       setSource(null);
       setGlossaryOpen(false);
       setPicker(null);
+      // Remount URL-backed filters only on history navigation, never typing.
+      setHistoryRevision((revision) => revision + 1);
       apply();
       setTimeout(() => window.scrollTo(0, event.state?.scrollY ?? 0), 0);
     };
@@ -3932,6 +4010,7 @@ export default function Home() {
       })
       .catch((error: unknown) => {
         if (!cancelled) {
+          if (reloadForFercSnapshotUpdate(error)) return;
           setChangeLoadError(
             error instanceof Error
               ? error.message
@@ -4094,6 +4173,7 @@ export default function Home() {
       })
       .catch((error: unknown) => {
         if (!cancelled) {
+          if (reloadForFercSnapshotUpdate(error)) return;
           setAssetLoad({
             key: assetRequestKey,
             details: null,
@@ -4145,6 +4225,7 @@ export default function Home() {
           />
         ) : catalog && operatingChanges ? (
           <ChangesView
+            key={historyRevision}
             openSource={setSource}
             companyContext={route.company}
             changes={changes}
@@ -4248,6 +4329,7 @@ export default function Home() {
           )
         ) : (
           <AssetsDirectory
+            key={historyRevision}
             openAsset={(id) => go('assets', id)}
             openSource={setSource}
             companyContext={route.company}
@@ -4274,6 +4356,7 @@ export default function Home() {
           )
         ) : (
           <ProjectsDirectory
+            key={historyRevision}
             openProject={(id) => go('projects', id)}
             companyContext={route.company}
           />

@@ -11,7 +11,7 @@
     "prebuild": "node scripts/check-backend-snapshot.mjs",
     "build": "vinext build",
     "start": "wrangler dev --config dist/server/wrangler.json",
-    "test": "node scripts/check-contracts.mjs && node scripts/check-backend-snapshot.mjs",
+    "test": "node scripts/check-contracts.mjs && node scripts/check-backend-snapshot.mjs && node scripts/check-audit-regressions.mjs",
     "lint": "oxlint app components/ferc lib scripts components/ui/chart.tsx components/ui/sheet.tsx",
     "lint:all": "oxlint",
     "format": "oxfmt"

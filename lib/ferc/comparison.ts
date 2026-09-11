@@ -54,6 +54,7 @@ const groupSummary = (asset: ComparableAsset, groupId: string) => {
 const isUnambiguousGroup = (group: ComparisonGroupSummary | undefined) =>
   Boolean(
     group &&
+    group.semanticKey !== 'ambiguous' &&
     group.metricCount === 1 &&
     group.seriesCount === 1 &&
     group.periodFingerprints.length > 0,
@@ -94,6 +95,8 @@ export function commonComparisonGroupIds(assets: ComparableAsset[]) {
     const summaries = assets.map((asset) => groupSummary(asset, groupId));
     if (summaries.some((group) => !isUnambiguousGroup(group))) return false;
     const complete = summaries as ComparisonGroupSummary[];
+    if (new Set(complete.map((group) => group.semanticKey ?? null)).size !== 1)
+      return false;
     const commonPeriods = complete.slice(1).reduce(
       (periods, group) => {
         const ownPeriods = new Set(group.periodFingerprints);

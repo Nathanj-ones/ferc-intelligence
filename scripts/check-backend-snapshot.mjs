@@ -203,23 +203,6 @@ const pointHasValue = (point) =>
   (point.value.display_value !== null &&
     point.value.display_value !== undefined) ||
   Boolean(point.value.as_filed || point.value.normalized_iso);
-const safeDirectoryValue = (point) => {
-  const value =
-    point.value.display_value ??
-    (['date', '(date)', '(date range)'].includes(
-      (point.value.display_unit || point.value.unit || '').trim().toLowerCase(),
-    )
-      ? point.value.normalized_iso || point.value.as_filed
-      : point.value.as_filed || point.value.normalized_iso);
-  return (
-    (typeof value === 'number' && Number.isFinite(value)) ||
-    (typeof value === 'string' &&
-      value.trim().length > 0 &&
-      value.length <= 160 &&
-      !/[\r\n]/.test(value) &&
-      !isStructuredFercValue(value))
-  );
-};
 for (const asset of directory.assets) {
   assert.match(asset.id, /^[a-z0-9][a-z0-9-]*$/);
   assert.equal(asset.detailPath, `${publicRoot}/assets/${asset.id}.json.gz`);
@@ -286,10 +269,7 @@ for (const asset of directory.assets) {
   if (selectedKeyMetrics.length > 0) assetsWithKeyMetrics += 1;
   for (const selection of selectedKeyMetrics) {
     assert.equal(selection.definition.metricId, selection.metric.id);
-    assert.equal(
-      isSafeKeyMetricPoint(selection.metric, selection.point),
-      true,
-    );
+    assert.equal(isSafeKeyMetricPoint(selection.metric, selection.point), true);
     assert.notEqual(
       typeof selection.point.value.as_filed === 'string' &&
         isStructuredFercValue(selection.point.value.as_filed),
@@ -306,9 +286,7 @@ for (const asset of directory.assets) {
       assert.equal(selection.point.period.basis, 'quarter');
       if (selection.priorYearPoint) {
         assert.equal(selection.priorYearPoint.period.basis, 'quarter');
-        const current = /^(\d{4})Q([1-4])$/.exec(
-          selection.point.period.label,
-        );
+        const current = /^(\d{4})Q([1-4])$/.exec(selection.point.period.label);
         const prior = /^(\d{4})Q([1-4])$/.exec(
           selection.priorYearPoint.period.label,
         );
@@ -357,20 +335,23 @@ for (const asset of directory.assets) {
       false,
     );
   }
-  const safeHeadlineExists = detail.metrics.some(
-    (series) =>
-      series.role === 'headline' &&
-      series.latest &&
-      safeDirectoryValue(series.latest),
+  const headline = selectedKeyMetrics[0];
+  assert.equal(
+    asset.latestMetric?.metricId,
+    headline?.metric.id,
+    `Directory/detail headline mismatch for ${asset.id}`,
   );
+  if (headline) {
+    assert.equal(
+      asset.latestMetric.period,
+      headline.point.period.label || headline.point.sortKey,
+    );
+    assert.equal(
+      asset.latestMetric.label,
+      headline.definition.label || headline.metric.label,
+    );
+  }
   for (const series of detail.metrics) {
-    if (asset.latestMetric?.metricId === series.id) {
-      assert.ok(
-        series.role === 'headline' ||
-          (series.id === 'i311_reporting_state' && !safeHeadlineExists),
-        `Unsafe directory fallback for ${asset.id}/${series.id}`,
-      );
-    }
     for (const point of series.points) {
       assert.ok(point.quality);
       assert.ok(point.scope);
@@ -506,10 +487,7 @@ assert.equal(
   false,
 );
 assert.deepEqual(selectedFor('wmb-altura-cogeneration-facility'), []);
-assert.deepEqual(
-  selectedFor('lng-corpus-christi-liquefaction-trains-1-3'),
-  [],
-);
+assert.deepEqual(selectedFor('lng-corpus-christi-liquefaction-trains-1-3'), []);
 const elbaAuthorisation = selectedFor('kmi-elba-liquefaction').find(
   ({ metric }) => metric.id === 'lng_status_authorised',
 );
@@ -553,7 +531,7 @@ for (const [left, right] of [
 assert.equal(
   directory.assets.find((asset) => asset.id === 'trgp-badlands-crude')
     ?.latestMetric?.value,
-  'IS26-24: accepted AND SUSPENDED, subject to refund -- refund clock started',
+  17_658_368,
 );
 for (const [assetId, usable] of [
   ['kmi-banquete-hub', 44],

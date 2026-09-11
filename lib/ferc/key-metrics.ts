@@ -6,6 +6,7 @@ import {
   unitLabel,
 } from './format.ts';
 import type { BackendMetricSeries, BackendObservation } from './types.ts';
+import { metricPresentation } from './metric-presentation.ts';
 
 export type KeyMetricCategory =
   | 'Performance'
@@ -245,6 +246,7 @@ export function isSafeKeyMetricPoint(
   if (
     point.quality.availability !== 'present' ||
     point.quality.validation !== 'pass' ||
+    point.quality.review_status === 'open' ||
     point.quality.version_status === 'superseded' ||
     !point.scope.resolved ||
     point.source.canonical === false ||
@@ -392,7 +394,11 @@ function selectPoint(metric: BackendMetricSeries, strategy: KeyMetricStrategy) {
 }
 
 export function keyMetricDefinitions(regime: string) {
-  return templates[regime] || [];
+  return (
+    templates[
+      regime === 'Cross-border gas pipeline' ? 'LNG facility' : regime
+    ] || []
+  );
 }
 
 export function selectAssetKeyMetrics(
@@ -418,16 +424,13 @@ export function selectAssetKeyMetrics(
     const { point, points } = selectPoint(metric, definition.strategy);
     if (!point) continue;
     selected.push({
-      definition:
-        metric.id === 'ioc_top5_shipper_concentration' &&
-        point.lineage?.edgeSample.some(
-          (edge) => edge.input_concept === 'ioc_contracted_storage_quantity',
-        )
-          ? {
-              ...definition,
-              label: 'Top-five shipper share of contracted storage quantity',
-            }
-          : definition,
+      definition: {
+        ...definition,
+        label:
+          metric.id === 'ioc_top5_shipper_concentration'
+            ? metricPresentation(metric, [point]).label
+            : definition.label,
+      },
       metric,
       point,
       priorYearPoint:
