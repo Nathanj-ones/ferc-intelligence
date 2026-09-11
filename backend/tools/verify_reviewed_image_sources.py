@@ -107,6 +107,22 @@ def _normalise_words(value: str) -> str:
     return " ".join(value.lower().replace("-", " ").split())
 
 
+def _ocr_diagnostic_excerpt(value: str) -> str:
+    """Return bounded nearby OCR text for a failed semantic gate.
+
+    Vision's raw rows can vary across macOS releases.  A short source-text
+    excerpt makes that variation diagnosable without retaining rendered pages
+    or flooding release logs with the full filing.
+    """
+    normalised = _normalise_words(value)
+    positions = [normalised.find(stem) for stem in
+                 ("reason", "represent", "operat", "assum")]
+    positions = [position for position in positions if position >= 0]
+    centre = min(positions) if positions else 0
+    start = max(0, centre - 120)
+    return normalised[start:start + 480]
+
+
 def _load_json_file(path: pathlib.Path, code: str) -> Tuple[bytes, Any]:
     _require(path.is_file(), code, "required file is absent: %s" % path)
     _require(not path.is_symlink(), code, "required file may not be a symlink: %s" % path)
@@ -344,7 +360,8 @@ def _validate_reviewed_transcription(capacity, contract: Mapping[str, Any],
     for caveat in contract["caveats"]:
         _require(_normalise_words(str(caveat)) in _normalise_words(ocr_text),
                  "automatic_ocr_caveat_missing",
-                 "automatic OCR lost source caveat %r" % caveat)
+                 "automatic OCR lost source caveat %r; nearby OCR: %r" %
+                 (caveat, _ocr_diagnostic_excerpt(ocr_text)))
 
     manual_figures = capacity.read_figures(manual_pages, 2023)
     figures = capacity.read_figures(ocr_pages, 2023)

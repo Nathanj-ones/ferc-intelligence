@@ -93,6 +93,10 @@ jobs:
             --archive "$PWD/.ferc-local/downloads/ferc-backend-data-2026-09-10-v1.zip"
           npm run backend:check
 
+      - name: Verify reviewed image OCR path
+        working-directory: backend
+        run: python3 -m unittest tests.test_reviewed_image_gate_codex -v
+
       - name: Verify backend-to-frontend integration
         run: npm run backend:verify
 
