@@ -609,7 +609,7 @@ function SourceDrawer({
                   <dl className="source-inputs">
                     {source.inputs.map((input, index) => (
                       <div
-                        key={`${input.label}-${input.period ?? ''}-${input.sourceId ?? index}`}
+                        key={`${input.label}-${input.period ?? ''}-${input.sourceId ?? ''}-${index}`}
                       >
                         <dt>{input.label}</dt>
                         <dd>
