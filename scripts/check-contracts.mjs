@@ -13,6 +13,7 @@ import {
   percentagePointChange,
   presentationUnit,
   selectBackendDisplayValue,
+  unitLabel,
 } from '../lib/ferc/format.ts';
 import {
   changes,
@@ -114,6 +115,11 @@ assert.equal(
 );
 assert.equal(presentationUnit('p700_wacc', 'xbrli:pure'), 'xbrli:pure');
 assert.equal(formatBackendValue(9.54, 'percent', true), '9.54%');
+assert.equal(unitLabel('MMBtu|Dth'), 'MMBtu or Dth (as reported)');
+assert.equal(
+  formatBackendValue(2_359_411, 'MMBtu|Dth'),
+  '2.36M MMBtu or Dth (as reported)',
+);
 assert.equal(
   selectBackendDisplayValue({
     as_filed: 'IS22-176: rate change filed with FERC',

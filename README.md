@@ -50,6 +50,13 @@ from the latest present, validated occurrence rather than the expected-slot
 calendar, so an unfilled future slot cannot make the visible history look newer
 than its data.
 
+Asset detail pages lead with up to six regime-specific key metrics before the
+complete metric explorer. Quarterly performance cards select only a present,
+validated quarter from one resolved scope-and-unit series and show the same
+quarter from the prior year when available; they never substitute an annual or
+YTD value. Annual, snapshot, and event metrics keep their own period labels, and
+ambiguous or structured values fail closed instead of being promoted.
+
 The backend's `summary.review` is retained for contract provenance but is not
 presented as a human-review queue. The browser projection separately counts
 must-propagate quality flags, explicitly open review tasks, and resolved review

@@ -10,6 +10,12 @@ import {
   isStructuredFercValue,
   supportedComparisonUnitFamilies,
 } from '../lib/ferc/format.ts';
+import {
+  isSafeKeyMetricPoint,
+  keyMetricScopeLabel,
+  observationSeriesKey,
+  selectAssetKeyMetrics,
+} from '../lib/ferc/key-metrics.ts';
 
 const EXPECTED_GENERATION =
   '0dccbd426f15372f1330737537f9aac58bc9547a2eaf81ef6f4b655f10cf2824';
@@ -160,7 +166,10 @@ let annotations = 0;
 let normalizedDates = 0;
 let fayettevilleWarnings = 0;
 let comparisonBlocked = 0;
+let keyMetricCards = 0;
+let assetsWithKeyMetrics = 0;
 const fullLineageExpected = new Map();
+const detailByAssetId = new Map();
 const rawComparisonFamilies = new Set([
   'currency',
   'currency_rate',
@@ -215,6 +224,7 @@ for (const asset of directory.assets) {
   assert.match(asset.id, /^[a-z0-9][a-z0-9-]*$/);
   assert.equal(asset.detailPath, `${publicRoot}/assets/${asset.id}.json.gz`);
   const detail = verifiedJson(`assets/${asset.id}.json.gz`);
+  detailByAssetId.set(asset.id, detail);
   assert.equal(detail.asset.id, asset.id);
   assert.equal(detail.generationId, EXPECTED_GENERATION);
   assert.ok(Array.isArray(detail.asset.interests));
@@ -263,6 +273,57 @@ for (const asset of directory.assets) {
     .sort()
     .at(-1);
   assert.equal(asset.latestPeriod, latestAvailablePeriod ?? null);
+  const selectedKeyMetrics = selectAssetKeyMetrics(
+    detail.asset,
+    detail.metrics,
+  );
+  assert.ok(selectedKeyMetrics.length <= 6);
+  assert.equal(
+    new Set(selectedKeyMetrics.map(({ metric }) => metric.id)).size,
+    selectedKeyMetrics.length,
+  );
+  keyMetricCards += selectedKeyMetrics.length;
+  if (selectedKeyMetrics.length > 0) assetsWithKeyMetrics += 1;
+  for (const selection of selectedKeyMetrics) {
+    assert.equal(selection.definition.metricId, selection.metric.id);
+    assert.equal(
+      isSafeKeyMetricPoint(selection.metric, selection.point),
+      true,
+    );
+    assert.notEqual(
+      typeof selection.point.value.as_filed === 'string' &&
+        isStructuredFercValue(selection.point.value.as_filed),
+      true,
+    );
+    for (const secondary of selection.secondary) {
+      assert.equal(
+        isSafeKeyMetricPoint(secondary.metric, secondary.point),
+        true,
+      );
+      assert.equal(secondary.point.period.label, selection.point.period.label);
+    }
+    if (selection.definition.strategy === 'quarter') {
+      assert.equal(selection.point.period.basis, 'quarter');
+      if (selection.priorYearPoint) {
+        assert.equal(selection.priorYearPoint.period.basis, 'quarter');
+        const current = /^(\d{4})Q([1-4])$/.exec(
+          selection.point.period.label,
+        );
+        const prior = /^(\d{4})Q([1-4])$/.exec(
+          selection.priorYearPoint.period.label,
+        );
+        assert.ok(current && prior);
+        assert.equal(Number(prior[1]), Number(current[1]) - 1);
+        assert.equal(prior[2], current[2]);
+      }
+    }
+    if (selection.definition.strategy === 'annual') {
+      assert.equal(selection.point.period.basis, 'annual');
+    }
+    if (selection.definition.strategy === 'snapshot') {
+      assert.equal(selection.point.period.basis, 'snapshot');
+    }
+  }
   assert.ok(Array.isArray(asset.comparisonGroups));
   for (const group of asset.comparisonGroups) {
     assert.match(group.groupId, /^comparison-group-v1-/);
@@ -380,6 +441,95 @@ for (const asset of directory.assets) {
     }
   }
 }
+
+const selectedFor = (assetId) => {
+  const detail = detailByAssetId.get(assetId);
+  assert.ok(detail, `Missing key-metric fixture: ${assetId}`);
+  return selectAssetKeyMetrics(detail.asset, detail.metrics);
+};
+const hilandKeyMetrics = selectedFor('kmi-hiland-express');
+assert.deepEqual(
+  hilandKeyMetrics.map(({ metric }) => metric.id),
+  [
+    'liq_operating_revenue',
+    'liq_net_carrier_operating_income',
+    'liq_barrels_delivered',
+    'p700_interstate_operating_revenue',
+  ],
+);
+assert.equal(hilandKeyMetrics[0].point.period.label, '2026Q2');
+assert.equal(hilandKeyMetrics[0].point.value.display_value, 34442116);
+assert.equal(hilandKeyMetrics[0].priorYearPoint?.period.label, '2025Q2');
+assert.equal(
+  hilandKeyMetrics[1].secondary[0]?.metric.id,
+  'liq_operating_margin_pct',
+);
+assert.deepEqual(
+  hilandKeyMetrics[3].secondary.map(({ metric }) => metric.id),
+  [
+    'p700_total_cost_of_service',
+    'p700_revenue_to_cost_ratio',
+    'p700_revenue_less_cost_of_service',
+  ],
+);
+assert.deepEqual(
+  selectedFor('wmb-transco')
+    .slice(0, 4)
+    .map(({ metric }) => metric.id),
+  [
+    'gas_operating_revenues',
+    'net_utility_operating_income',
+    'total_throughput',
+    'ioc_firm_transport_mdq',
+  ],
+);
+const storageConcentration = selectedFor('wmb-cadeville-storage').find(
+  ({ metric }) => metric.id === 'ioc_top5_shipper_concentration',
+);
+assert.equal(
+  storageConcentration?.definition.label,
+  'Top-five shipper share of contracted storage quantity',
+);
+for (const assetId of ['kmi-banquete-hub', 'kmi-copano-upper-gulf-coast']) {
+  const selected = selectedFor(assetId);
+  assert.deepEqual(
+    selected.map(({ metric }) => metric.id),
+    ['i311_reporting_state'],
+  );
+  assert.equal(selected[0].point.value.as_filed, 'activity_reported');
+  assert.equal(selected[0].priorYearPoint, null);
+}
+assert.equal(
+  selectedFor('kmi-net-mexico-pipeline').some(
+    ({ metric }) => metric.id === 'i311_billed_transport_usage',
+  ),
+  false,
+);
+assert.deepEqual(selectedFor('wmb-altura-cogeneration-facility'), []);
+assert.deepEqual(
+  selectedFor('lng-corpus-christi-liquefaction-trains-1-3'),
+  [],
+);
+const elbaAuthorisation = selectedFor('kmi-elba-liquefaction').find(
+  ({ metric }) => metric.id === 'lng_status_authorised',
+);
+assert.equal(
+  keyMetricScopeLabel(elbaAuthorisation.point),
+  'Elba Island LNG Terminal (Chatham County, GA) · Movable Modular Liquefaction System 2',
+);
+const arbuckleNorthKeyMetric = selectedFor('oke-arbuckle-north')[0];
+assert.equal(arbuckleNorthKeyMetric.point.value.display_value, 51013551);
+assert.ok(
+  arbuckleNorthKeyMetric.metric.points
+    .filter(
+      (point) =>
+        observationSeriesKey(point) ===
+        observationSeriesKey(arbuckleNorthKeyMetric.point),
+    )
+    .some((point) => point.id === arbuckleNorthKeyMetric.point.id),
+);
+assert.equal(assetsWithKeyMetrics, 102);
+assert.equal(keyMetricCards, 386);
 
 const assetById = new Map(directory.assets.map((asset) => [asset.id, asset]));
 const comparisonPair = (leftId, rightId) => {

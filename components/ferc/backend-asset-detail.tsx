@@ -36,6 +36,11 @@ import {
   sourceUnitLabel,
   unitLabel,
 } from '@/lib/ferc/format';
+import {
+  keyMetricScopeLabel,
+  observationSeriesKey,
+  selectAssetKeyMetrics,
+} from '@/lib/ferc/key-metrics';
 import type {
   BackendMetricSeries,
   BackendObservation,
@@ -81,20 +86,10 @@ const periodLabel = (point: BackendObservation) =>
   point.sortKey ||
   'Unlabelled period';
 
-const seriesKey = (point: BackendObservation) =>
-  point.comparison?.series_id ||
-  [
-    point.scope?.actual,
-    point.period?.basis,
-    point.value?.display_unit || point.value?.unit,
-  ]
-    .filter(Boolean)
-    .join('|');
-
 function metricSeriesGroups(metric: BackendMetricSeries | undefined) {
   const groups = new Map<string, BackendObservation[]>();
   for (const point of metric?.points || []) {
-    const key = seriesKey(point);
+    const key = observationSeriesKey(point);
     groups.set(key, [...(groups.get(key) || []), point]);
   }
   const usableCount = (points: BackendObservation[]) =>
@@ -477,8 +472,11 @@ export function BackendAssetDetail({
 }) {
   const { asset } = detail;
   const metrics = detail.metrics.filter((metric) => metric.pointCount > 0);
+  const keyMetrics = selectAssetKeyMetrics(asset, metrics);
   const initialMetric =
-    metrics.find((metric) => metric.presentCount > 0) || metrics[0];
+    keyMetrics[0]?.metric ||
+    metrics.find((metric) => metric.presentCount > 0) ||
+    metrics[0];
   const [selectedMetricId, setSelectedMetricId] = useState(
     initialMetric?.id || '',
   );
@@ -486,7 +484,9 @@ export function BackendAssetDetail({
     metrics.find((metric) => metric.id === selectedMetricId) || initialMetric;
   const groupedSeries = metricSeriesGroups(selectedMetric);
   const [selectedSeriesKey, setSelectedSeriesKey] = useState(
-    groupedSeries[0]?.[0] || '',
+    keyMetrics[0]?.point
+      ? observationSeriesKey(keyMetrics[0].point)
+      : groupedSeries[0]?.[0] || '',
   );
   const effectiveSeriesKey = groupedSeries.some(
     ([key]) => key === selectedSeriesKey,
@@ -511,20 +511,6 @@ export function BackendAssetDetail({
       value: point.value.display_value as number,
       point,
     }));
-  const headlineMetrics = metrics
-    .filter((metric) => {
-      if (metric.role !== 'headline' || !metric.latest) return false;
-      const value = selectBackendDisplayValue(metric.latest.value);
-      if (typeof value === 'number') return Number.isFinite(value);
-      return (
-        typeof value === 'string' &&
-        value.trim().length > 0 &&
-        value.length <= 160 &&
-        !/[\r\n]/.test(value) &&
-        !isStructuredFercValue(value)
-      );
-    })
-    .slice(0, 4);
   const sortedEvents = [...detail.events].sort((left, right) =>
     right.date.localeCompare(left.date),
   );
@@ -699,6 +685,147 @@ export function BackendAssetDetail({
         </div>
       </section>
 
+      {metrics.length > 0 && (
+        <section
+          className={`key-metrics-section${keyMetrics.length === 0 ? ' key-metrics-empty' : ''}`}
+          aria-labelledby="asset-key-metrics-title"
+        >
+          <div className="key-metrics-heading">
+            <div>
+              <p className="eyebrow">At a glance</p>
+              <h2 id="asset-key-metrics-title">Key metrics</h2>
+              <p>
+                {asset.scopeRelation === 'shared_filer_entity_context'
+                  ? 'Latest validated values for the mapped FERC filing entity; they are not allocated to this individual asset row. '
+                  : 'Latest validated, regime-specific values. '}
+                Each metric uses its latest validated observation, so periods
+                may differ. Quarterly metrics never fall back to annual or YTD
+                values.
+              </p>
+            </div>
+            <a href="#metric-explorer-title">
+              Browse all {metrics.length.toLocaleString()} metrics <ArrowRight />
+            </a>
+          </div>
+          {keyMetrics.length > 0 ? (
+            <div className="key-metrics-grid">
+              {keyMetrics.map(
+                ({
+                  definition,
+                  metric,
+                  point,
+                  priorYearPoint,
+                  secondary,
+                }) => {
+                  const displayValue = selectBackendDisplayValue(point.value);
+                  const isTextValue =
+                    typeof displayValue === 'string' &&
+                    !/^[+-]?(?:\d+(?:,\d{3})*|\d*\.\d+)(?:e[+-]?\d+)?$/i.test(
+                      displayValue.trim(),
+                    );
+                  return (
+                    <article
+                      className={`key-metric-card${isTextValue ? ' key-metric-text' : ''}`}
+                      key={metric.id}
+                    >
+                      <span className="key-metric-category">
+                        {definition.category}
+                      </span>
+                      <h3>{definition.label || metric.label}</h3>
+                      <strong>
+                        {formatObservationValue(
+                          point,
+                          false,
+                          metric.id,
+                          metric.configuredDisplayUnit,
+                        )}
+                      </strong>
+                      <small>
+                        {periodLabel(point)}
+                      </small>
+                      {definition.strategy === 'latest-event' && (
+                        <small className="key-metric-scope">
+                          Scope: {keyMetricScopeLabel(point)}
+                        </small>
+                      )}
+                      {secondary.map((item) => (
+                        <button
+                          type="button"
+                          className="key-metric-secondary"
+                          key={item.metric.id}
+                          onClick={() =>
+                            openSource(
+                              observationSource(asset, item.metric, item.point),
+                            )
+                          }
+                        >
+                          <span>
+                            <b>{item.metric.label}:</b>{' '}
+                            {formatObservationValue(
+                              item.point,
+                              false,
+                              item.metric.id,
+                              item.metric.configuredDisplayUnit,
+                            )}
+                          </span>
+                          <span className="key-metric-evidence-label">
+                            Evidence <ArrowUpRight />
+                          </span>
+                        </button>
+                      ))}
+                      {priorYearPoint && (
+                        <button
+                          type="button"
+                          className="key-metric-comparison"
+                          onClick={() =>
+                            openSource(
+                              observationSource(
+                                asset,
+                                metric,
+                                priorYearPoint,
+                              ),
+                            )
+                          }
+                        >
+                          <span>
+                            Prior year:{' '}
+                            {formatObservationValue(
+                              priorYearPoint,
+                              false,
+                              metric.id,
+                              metric.configuredDisplayUnit,
+                            )}{' '}
+                            in {periodLabel(priorYearPoint)}
+                          </span>
+                          <span className="key-metric-evidence-label">
+                            Evidence <ArrowUpRight />
+                          </span>
+                        </button>
+                      )}
+                      <button
+                        type="button"
+                        className="key-metric-action"
+                        onClick={() =>
+                          openSource(observationSource(asset, metric, point))
+                        }
+                      >
+                        Evidence for {metric.label} <ArrowUpRight />
+                      </button>
+                    </article>
+                  );
+                },
+              )}
+            </div>
+          ) : (
+            <p className="key-metrics-empty-copy">
+              No unambiguous headline value is publishable in this snapshot.
+              The source-backed records remain available in the metric explorer
+              below.
+            </p>
+          )}
+        </section>
+      )}
+
       <section className="what-changed backend-feed-state">
         <div>
           <p className="eyebrow">Current operating feed</p>
@@ -719,41 +846,17 @@ export function BackendAssetDetail({
         )}
       </section>
 
-      {headlineMetrics.length > 0 && (
-        <section className="headline-grid backend-headlines">
-          {headlineMetrics.map((metric) => {
-            const point = metric.latest!;
-            return (
-              <button
-                key={metric.id}
-                onClick={() =>
-                  openSource(observationSource(asset, metric, point))
-                }
-              >
-                <span>{metric.label}</span>
-                <strong>
-                  {formatObservationValue(
-                    point,
-                    false,
-                    metric.id,
-                    metric.configuredDisplayUnit,
-                  )}
-                </strong>
-                <small>
-                  {periodLabel(point)} · {statusLabel(point.quality.validation)}
-                </small>
-              </button>
-            );
-          })}
-        </section>
-      )}
-
       {metrics.length > 0 ? (
-        <section className="section-block backend-metric-browser">
+        <section
+          className="section-block backend-metric-browser"
+          aria-labelledby="metric-explorer-title"
+        >
           <div className="section-title metric-browser-title">
             <div>
               <p className="eyebrow">Source-backed history</p>
-              <h2>Metric explorer</h2>
+              <h2 id="metric-explorer-title" tabIndex={-1}>
+                Metric explorer
+              </h2>
               <p>
                 Values retain the backend’s period, unit, quality, scope and
                 source identity.

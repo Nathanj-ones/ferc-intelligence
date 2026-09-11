@@ -152,6 +152,8 @@ export const unitLabel = (unit: string | null | undefined) => {
   if (normalized === 'mmbtu/d' || normalized === 'mmbtu/day')
     return 'MMBtu/day';
   if (normalized === 'mmbtu') return 'MMBtu';
+  if (normalized === 'mmbtu|dth' || normalized === 'dth|mmbtu')
+    return 'MMBtu or Dth (as reported)';
   if (normalized === 'mmcf/d' || normalized === 'mmcf/day') return 'MMcf/day';
   if (normalized === 'mmscf/d' || normalized === 'mmscf/day')
     return 'MMscf/day';
