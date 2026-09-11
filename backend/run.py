@@ -79,7 +79,7 @@ from ferclib.registry import BY_ADAPTER, BY_ID, REGISTRY, REGISTRY_VERSION, to_r
 from ferclib.staging import Staging, StagedCommitRejected            # noqa: E402
 from ferclib.status import Availability                              # noqa: E402
 
-CODE_VERSION = "0.37.5"
+CODE_VERSION = "0.37.6"
 
 
 def _env_path(name: str, default: pathlib.Path) -> pathlib.Path:

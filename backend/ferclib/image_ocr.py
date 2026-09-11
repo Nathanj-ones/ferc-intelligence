@@ -6,11 +6,12 @@ shipped Swift source.  Both child processes receive a minimal environment with
 no FERC credential.  The returned rows retain coordinates, confidence, raw OCR
 text and every deterministic correction.
 
-Only a narrow OCR-confusion correction is applied: ``Bef`` is normalised to
-``Bcf`` when the same OCR row explicitly says ``storage capacity``.  This fixes
-the common lowercase-c/uppercase-e glyph confusion without guessing a value or
-unit from an expected answer.  Raw text remains recorded alongside the
-normalised row.
+Only two narrow OCR-confusion corrections are applied: ``Bef`` is normalised to
+``Bcf`` when the same OCR row explicitly says ``storage capacity``; and
+``assumptior`` is normalised to ``assumptions`` only inside the complete phrase
+``reasonably representative operating ...``.  These fix observed glyph
+confusions without guessing a value, unit, or missing source sentence from an
+expected answer.  Raw text remains recorded alongside the normalised row.
 """
 
 from __future__ import annotations
@@ -29,6 +30,10 @@ from typing import Any, Dict, List, Optional, Tuple
 OCR_SCHEMA = "ferc-macos-vision-ocr-v1"
 DEFAULT_DPI = 180
 _BCF_CONFUSION = re.compile(r"\bBef\b", re.IGNORECASE)
+_OPERATING_ASSUMPTIONS_CONFUSION = re.compile(
+    r"(?P<prefix>\breasonably\s+representative\s+operating\s+)assumptior\b",
+    re.IGNORECASE,
+)
 
 
 class ImageOCRFailure(RuntimeError):
@@ -83,6 +88,17 @@ def _run(argv: List[str], *, env: Dict[str, str], timeout: int,
 def _normalise_row(text: str) -> Tuple[str, List[dict]]:
     normalised = " ".join(text.split())
     corrections: List[dict] = []
+    corrected, count = _OPERATING_ASSUMPTIONS_CONFUSION.subn(
+        r"\g<prefix>assumptions", normalised)
+    if count:
+        corrections.append({
+            "kind": "bounded_ocr_caveat_glyph_correction",
+            "from": normalised,
+            "to": corrected,
+            "rule": ("assumptior -> assumptions only after "
+                     "reasonably representative operating"),
+        })
+        normalised = corrected
     if re.search(r"storage\s+capacity", normalised, re.IGNORECASE):
         corrected, count = _BCF_CONFUSION.subn("Bcf", normalised)
         if count:

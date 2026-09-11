@@ -521,16 +521,10 @@ def run_gate(root: pathlib.Path, cache_dir: pathlib.Path, fixture_path: pathlib.
                 _require(extracted_rows == 0, "pipeline_text_layer_detected",
                          "%s pipeline extractor no longer reports an image-only source" % contract["accession"])
 
-                try:
-                    ocr_pages, ocr_evidence = capacity.extract_image_pdf(
-                        raw, vision_script=capacity.VISION_OCR_SCRIPT,
-                        pdftoppm=str(executable), swift=swift,
-                        expected_pages=contract["pages"])
-                except capacity.ImageOCRFailure as exc:
-                    raise GateFailure("automatic_ocr_failed", str(exc)) from exc
-                reviewed = _validate_reviewed_transcription(
-                    capacity, contract, fixture_by_hash[str(contract["source_sha256"])],
-                    ocr_pages, ocr_evidence)
+                # Prove the pixels supplied to OCR are the independently pinned
+                # render before interpreting any OCR variation.  This check was
+                # formerly after semantic validation, which could misdiagnose a
+                # Poppler difference as a Vision recognition difference.
                 render = _render_page_one(executable, path)
                 _require(render["sha256"] == contract["render_sha256"],
                          "render_hash_mismatch", "%s page-1 render identity changed" % contract["accession"])
@@ -538,6 +532,23 @@ def run_gate(root: pathlib.Path, cache_dir: pathlib.Path, fixture_path: pathlib.
                          (contract["render_width"], contract["render_height"]),
                          "render_dimensions_mismatch",
                          "%s page-1 render dimensions changed" % contract["accession"])
+
+                try:
+                    ocr_pages, ocr_evidence = capacity.extract_image_pdf(
+                        raw, vision_script=capacity.VISION_OCR_SCRIPT,
+                        pdftoppm=str(executable), swift=swift,
+                        expected_pages=contract["pages"])
+                except capacity.ImageOCRFailure as exc:
+                    raise GateFailure("automatic_ocr_failed", str(exc)) from exc
+                _require(
+                    bool(ocr_evidence.get("pages"))
+                    and ocr_evidence["pages"][0].get("image_sha256") == render["sha256"],
+                    "automatic_ocr_render_identity_mismatch",
+                    "%s OCR did not receive the pinned page-1 pixels" % contract["accession"],
+                )
+                reviewed = _validate_reviewed_transcription(
+                    capacity, contract, fixture_by_hash[str(contract["source_sha256"])],
+                    ocr_pages, ocr_evidence)
                 result["sources"].append({
                     "status": "verified", "accession": contract["accession"],
                     "entity": contract["entity"], "source_object": {

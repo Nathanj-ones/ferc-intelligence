@@ -7,11 +7,14 @@ import json
 import pathlib
 import re
 import shutil
+import sys
 import tempfile
 import unittest
 
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 TOOL_PATH = ROOT / "tools" / "verify_reviewed_image_sources.py"
 SPEC = importlib.util.spec_from_file_location("verify_reviewed_image_sources", TOOL_PATH)
 if SPEC is None or SPEC.loader is None:
@@ -21,6 +24,28 @@ SPEC.loader.exec_module(gate)
 
 
 class ReviewedImageGateTests(unittest.TestCase):
+
+    def test_hosted_vision_caveat_glyph_correction_is_context_bound(self):
+        from ferclib.image_ocr import _normalise_row
+
+        raw = ("storage facilities under reasonably representative operating "
+               "assumptior nd the respective assignments")
+        normalised, corrections = _normalise_row(raw)
+        self.assertIn("reasonably representative operating assumptions", normalised)
+        self.assertEqual(["bounded_ocr_caveat_glyph_correction"],
+                         [item["kind"] for item in corrections])
+        self.assertEqual(raw, corrections[0]["from"],
+                         "the exact OCR text must remain in correction evidence")
+
+        for unrelated in (
+            "storage facilities under representative operating assumptior",
+            "reasonably representative financial assumptior",
+            "a generic operating assumptior",
+        ):
+            with self.subTest(unrelated=unrelated):
+                unchanged, rejected = _normalise_row(unrelated)
+                self.assertEqual(unrelated, unchanged)
+                self.assertEqual([], rejected)
 
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory(prefix="ferc-a17-gate-test-")
