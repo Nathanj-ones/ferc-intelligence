@@ -60,8 +60,9 @@ export const keyMetricScopeLabel = (point: BackendObservation) => {
       component,
     );
   return (
-    [facility, componentIsScope ? component : null].filter(Boolean).join(' · ') ||
-    'Filed entity scope'
+    [facility, componentIsScope ? component : null]
+      .filter(Boolean)
+      .join(' · ') || 'Filed entity scope'
   );
 };
 
@@ -199,21 +200,25 @@ const templates: Record<string, KeyMetricDefinition[]> = {
     },
     {
       metricId: 'lng_status_operating',
+      label: 'Latest operating status report',
       category: 'Status',
       strategy: 'latest-event',
     },
     {
       metricId: 'lng_status_authorised',
+      label: 'Latest service authorisation',
       category: 'Status',
       strategy: 'latest-event',
     },
     {
       metricId: 'lng_status_commissioning',
+      label: 'Latest commissioning authorisation',
       category: 'Status',
       strategy: 'latest-event',
     },
     {
       metricId: 'lng_status_requested',
+      label: 'Latest service request',
       category: 'Status',
       strategy: 'latest-event',
     },
@@ -267,16 +272,12 @@ const comparableUnit = (
   point: BackendObservation,
 ) =>
   unitLabel(
-    presentationUnit(
-      metric.id,
-      point.value.display_unit || point.value.unit,
-      {
-        configuredDisplayUnit: metric.configuredDisplayUnit,
-        displayScale: point.value.display_scale,
-        origin: point.quality.origin,
-        validation: point.quality.validation,
-      },
-    ),
+    presentationUnit(metric.id, point.value.display_unit || point.value.unit, {
+      configuredDisplayUnit: metric.configuredDisplayUnit,
+      displayScale: point.value.display_scale,
+      origin: point.quality.origin,
+      validation: point.quality.validation,
+    }),
   )
     .trim()
     .toLowerCase();
@@ -308,9 +309,14 @@ function pointAtLatestPeriod(
   metric: BackendMetricSeries,
   points: BackendObservation[],
 ) {
-  const latestSortKey = points.map((point) => point.sortKey).sort().at(-1);
+  const latestSortKey = points
+    .map((point) => point.sortKey)
+    .sort()
+    .at(-1);
   const latest = points.filter((point) => point.sortKey === latestSortKey);
-  if (new Set(latest.map((point) => equivalentValueKey(metric, point))).size > 1)
+  if (
+    new Set(latest.map((point) => equivalentValueKey(metric, point))).size > 1
+  )
     return null;
   return (
     latest.find((point) => point.source.canonical === true) ||
@@ -348,9 +354,7 @@ function latestEventPoint(metric: BackendMetricSeries) {
 
 const quarterIdentity = (point: BackendObservation) => {
   const match = /^(\d{4})Q([1-4])$/.exec(point.period.label || '');
-  return match
-    ? { year: Number(match[1]), quarter: Number(match[2]) }
-    : null;
+  return match ? { year: Number(match[1]), quarter: Number(match[2]) } : null;
 };
 
 function priorYearQuarter(
@@ -372,10 +376,7 @@ function priorYearQuarter(
   return pointAtLatestPeriod(metric, prior);
 }
 
-function selectPoint(
-  metric: BackendMetricSeries,
-  strategy: KeyMetricStrategy,
-) {
+function selectPoint(metric: BackendMetricSeries, strategy: KeyMetricStrategy) {
   if (strategy === 'latest-event') {
     return { point: latestEventPoint(metric), points: [] };
   }
@@ -417,7 +418,16 @@ export function selectAssetKeyMetrics(
     const { point, points } = selectPoint(metric, definition.strategy);
     if (!point) continue;
     selected.push({
-      definition,
+      definition:
+        metric.id === 'ioc_top5_shipper_concentration' &&
+        point.lineage?.edgeSample.some(
+          (edge) => edge.input_concept === 'ioc_contracted_storage_quantity',
+        )
+          ? {
+              ...definition,
+              label: 'Top-five shipper share of contracted storage quantity',
+            }
+          : definition,
       metric,
       point,
       priorYearPoint:

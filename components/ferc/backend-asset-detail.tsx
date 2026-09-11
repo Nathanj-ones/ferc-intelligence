@@ -590,21 +590,25 @@ export function BackendAssetDetail({
             {asset.company} ({asset.ticker}) · {asset.legalFiler} ·{' '}
             {asset.cid || 'No FERC CID'}
           </p>
-          {structuredInterest && (
-            <p className="asset-ownership">
-              Structured ownership record: {structuredInterest}
-            </p>
-          )}
-          {additionalInterest && (
-            <p className="asset-ownership asset-interest-disclosure">
-              Additional asset-interest disclosure: {additionalInterest}
-            </p>
-          )}
-          {asset.note && (
-            <p className="asset-directory-note">
-              <strong>Directory note:</strong> {asset.note}
-            </p>
-          )}
+          <details className="asset-context-details">
+            <summary>Ownership and reporting details</summary>
+            {structuredInterest && (
+              <p className="asset-ownership">
+                Structured ownership record: {structuredInterest}
+              </p>
+            )}
+            {additionalInterest && (
+              <p className="asset-ownership asset-interest-disclosure">
+                Additional asset-interest disclosure: {additionalInterest}
+              </p>
+            )}
+            {asset.note && (
+              <p className="asset-directory-note">
+                <strong>Directory note:</strong> {asset.note}
+              </p>
+            )}
+            <p>{asset.scopeNote}</p>
+          </details>
         </div>
         <div className="detail-header-actions">
           <button
@@ -619,71 +623,9 @@ export function BackendAssetDetail({
           >
             <GitCompareArrows /> Compare
           </button>
-          <div className="refresh-card">
-            <span>Pinned operating snapshot</span>
-            <strong>{formatDate(detail.asOf)}</strong>
-            <small>
-              Latest available period{' '}
-              {formatDate(asset.latestPeriod ?? undefined)}
-            </small>
-          </div>
+          <small>Data as of {formatDate(detail.asOf)}</small>
         </div>
       </header>
-      {routeWarnings.length > 0 && (
-        <output className="comparison-warning">
-          <CircleAlert />
-          <div>
-            <strong>Comparison could not be restored</strong>
-            {routeWarnings.map((warning) => (
-              <p key={warning}>{warning}</p>
-            ))}
-          </div>
-        </output>
-      )}
-      {!asset.comparisonEligible && asset.comparisonBlockedReason && (
-        <output className="comparison-warning compact-warning">
-          <CircleAlert />
-          <div>
-            <strong>Comparison unavailable</strong>
-            <p>{humanizeFercReason(asset.comparisonBlockedReason)}</p>
-          </div>
-        </output>
-      )}
-      <div className="scope-warning">
-        <Info />
-        <div>
-          <strong>Reporting scope</strong>
-          <p>{asset.scopeNote}</p>
-        </div>
-      </div>
-
-      <section
-        className="backend-summary-strip"
-        aria-label="Backend data summary"
-      >
-        <div>
-          <span>Observations</span>
-          <strong>
-            {asset.dataSummary?.observations.toLocaleString() || 0}
-          </strong>
-        </div>
-        <div>
-          <span>Usable</span>
-          <strong>{asset.dataSummary?.usable.toLocaleString() || 0}</strong>
-        </div>
-        <div>
-          <span>Metrics</span>
-          <strong>
-            {asset.dataSummary?.metrics.toLocaleString() || metrics.length}
-          </strong>
-        </div>
-        <div>
-          <span>Latest FERC filing</span>
-          <strong>
-            {asset.lastFiled ? formatDate(asset.lastFiled) : 'Not mapped'}
-          </strong>
-        </div>
-      </section>
 
       {metrics.length > 0 && (
         <section
@@ -696,27 +638,20 @@ export function BackendAssetDetail({
               <h2 id="asset-key-metrics-title">Key metrics</h2>
               <p>
                 {asset.scopeRelation === 'shared_filer_entity_context'
-                  ? 'Latest validated values for the mapped FERC filing entity; they are not allocated to this individual asset row. '
-                  : 'Latest validated, regime-specific values. '}
-                Each metric uses its latest validated observation, so periods
-                may differ. Quarterly metrics never fall back to annual or YTD
-                values.
+                  ? `${asset.legalFiler} figures; not allocated to this individual asset. `
+                  : `${asset.scopeNote} `}
+                Each value shows its own reporting period.
               </p>
             </div>
             <a href="#metric-explorer-title">
-              Browse all {metrics.length.toLocaleString()} metrics <ArrowRight />
+              Browse all {metrics.length.toLocaleString()} metrics{' '}
+              <ArrowRight />
             </a>
           </div>
           {keyMetrics.length > 0 ? (
             <div className="key-metrics-grid">
               {keyMetrics.map(
-                ({
-                  definition,
-                  metric,
-                  point,
-                  priorYearPoint,
-                  secondary,
-                }) => {
+                ({ definition, metric, point, priorYearPoint, secondary }) => {
                   const displayValue = selectBackendDisplayValue(point.value);
                   const isTextValue =
                     typeof displayValue === 'string' &&
@@ -740,9 +675,7 @@ export function BackendAssetDetail({
                           metric.configuredDisplayUnit,
                         )}
                       </strong>
-                      <small>
-                        {periodLabel(point)}
-                      </small>
+                      <small>{periodLabel(point)}</small>
                       {definition.strategy === 'latest-event' && (
                         <small className="key-metric-scope">
                           Scope: {keyMetricScopeLabel(point)}
@@ -779,11 +712,7 @@ export function BackendAssetDetail({
                           className="key-metric-comparison"
                           onClick={() =>
                             openSource(
-                              observationSource(
-                                asset,
-                                metric,
-                                priorYearPoint,
-                              ),
+                              observationSource(asset, metric, priorYearPoint),
                             )
                           }
                         >
@@ -818,13 +747,43 @@ export function BackendAssetDetail({
             </div>
           ) : (
             <p className="key-metrics-empty-copy">
-              No unambiguous headline value is publishable in this snapshot.
-              The source-backed records remain available in the metric explorer
-              below.
+              A reliable key-metric summary is not available for this asset. You
+              can still browse its source records below.
             </p>
           )}
         </section>
       )}
+
+      {routeWarnings.length > 0 && (
+        <output className="comparison-warning compact-warning">
+          <CircleAlert />
+          <div>
+            <strong>Comparison could not be restored</strong>
+            {routeWarnings.map((warning) => (
+              <p key={warning}>{warning}</p>
+            ))}
+          </div>
+        </output>
+      )}
+      {!asset.comparisonEligible &&
+        asset.comparisonBlockedReason &&
+        routeWarnings.length === 0 && (
+          <p className="asset-comparison-note">
+            Comparison unavailable:{' '}
+            {humanizeFercReason(asset.comparisonBlockedReason)}
+          </p>
+        )}
+      <details className="asset-coverage-details">
+        <summary>
+          Data coverage: {usableCount.toLocaleString()} usable records ·{' '}
+          {metrics.length} metrics
+        </summary>
+        <p>
+          {observationCount.toLocaleString()} observations · Latest available
+          period {formatDate(asset.latestPeriod ?? undefined)} · Latest FERC
+          filing {asset.lastFiled ? formatDate(asset.lastFiled) : 'Not mapped'}
+        </p>
+      </details>
 
       <section className="what-changed backend-feed-state">
         <div>

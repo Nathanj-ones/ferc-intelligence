@@ -2992,11 +2992,107 @@ body {
   color: #687648;
 }
 
-.key-metric-text > strong {
+.key-metric-card.key-metric-text > strong {
   overflow-wrap: anywhere;
   font-size: 18px;
   line-height: 1.28;
   letter-spacing: -0.015em;
+}
+
+/* Keep the first screen focused on the asset's actual performance. */
+.backend-detail-page.page-shell {
+  padding-top: 22px;
+}
+.backend-detail-page .back-button {
+  margin-bottom: 14px;
+}
+.detail-page.backend-detail-page .detail-header {
+  padding: 17px 20px;
+  margin-bottom: 16px;
+  gap: 16px;
+  align-items: flex-start;
+}
+.detail-page.backend-detail-page .detail-header h1 {
+  margin: 9px 0 6px;
+  font-size: 30px;
+}
+.backend-detail-page .detail-header-actions {
+  gap: 8px;
+  min-width: 140px;
+  align-items: flex-end;
+}
+.backend-detail-page .detail-header-actions small {
+  font-size: 12px;
+  color: var(--muted-ink);
+}
+.asset-context-details {
+  margin-top: 9px;
+  font-size: 13px;
+  color: var(--muted-ink);
+}
+.asset-context-details summary,
+.asset-coverage-details summary {
+  cursor: pointer;
+  color: var(--teal);
+}
+.asset-context-details p {
+  max-width: 720px;
+  margin: 7px 0 0;
+  line-height: 1.5;
+}
+.backend-detail-page .key-metrics-section {
+  margin-top: 12px;
+}
+.backend-detail-page .key-metrics-heading {
+  gap: 16px;
+  align-items: center;
+}
+.backend-detail-page .key-metrics-heading > div > p:last-child {
+  font-size: 13px;
+}
+.backend-detail-page .key-metric-card h3 {
+  font-size: 14px;
+}
+.backend-detail-page .key-metric-card > small,
+.backend-detail-page .key-metric-secondary,
+.backend-detail-page .key-metric-comparison,
+.backend-detail-page .key-metric-action,
+.backend-detail-page .key-metric-evidence-label {
+  font-size: 12px;
+}
+.backend-detail-page .key-metric-card > strong {
+  overflow-wrap: anywhere;
+}
+.asset-comparison-note {
+  margin: 10px 0;
+  color: var(--muted-ink);
+  font-size: 13px;
+}
+.asset-coverage-details {
+  padding: 12px 0;
+  border-block: 1px solid var(--line);
+  font-size: 13px;
+}
+.asset-coverage-details p {
+  color: var(--muted-ink);
+  line-height: 1.5;
+}
+.directory-metric-period {
+  display: block;
+  margin-top: 4px;
+  font-size: 12px;
+  font-weight: 450;
+  color: var(--muted-ink);
+}
+@media (max-width: 620px) {
+  .detail-page.backend-detail-page .detail-header {
+    flex-direction: column;
+  }
+  .backend-detail-page .detail-header-actions {
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+  }
 }
 
 .key-metric-card h3 {

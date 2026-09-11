@@ -1329,8 +1329,7 @@ function AssetsDirectory({
           <p className="eyebrow">Operating history</p>
           <h1>Operating Assets</h1>
           <p>
-            FERC filing-entity performance with explicit scope and period
-            labels.
+            Open an asset to see its key metrics, trends and filing evidence.
           </p>
         </div>
       </div>
@@ -1362,6 +1361,14 @@ function AssetsDirectory({
       {visible.length ? (
         <div className="directory-list">
           {visible.map((asset) => {
+            const latestMetric =
+              asset.regime === 'LNG facility' &&
+              (asset.scopeRelation === 'shared_filer_entity_context' ||
+                ['lng_regas_sendout_capacity', 'lng_storage_capacity'].includes(
+                  asset.latestMetric?.metricId || '',
+                ))
+                ? null
+                : asset.latestMetric;
             const qualityFlagCount =
               asset.qualityFlagCount ?? asset.reviewCount;
             const openReviewCount = asset.openReviewCount ?? 0;
@@ -1389,32 +1396,43 @@ function AssetsDirectory({
                     <dd>{formatDate(asset.latestPeriod ?? undefined)}</dd>
                   </div>
                   <div>
-                    <dt>{asset.latestMetric?.label || 'Usable records'}</dt>
+                    <dt>{latestMetric?.label || 'Usable records'}</dt>
                     <dd>
-                      {asset.latestMetric
+                      {latestMetric
                         ? isMetricPresentationBlocked(
-                            asset.latestMetric.metricId,
-                            asset.latestMetric.unit,
-                            asset.latestMetric.validation,
+                            latestMetric.metricId,
+                            latestMetric.unit,
+                            latestMetric.validation,
                           )
                           ? 'Unit conflict — see evidence'
                           : formatBackendValue(
-                              asset.latestMetric.value,
+                              latestMetric.value,
                               presentationUnit(
-                                asset.latestMetric.metricId,
-                                asset.latestMetric.unit,
+                                latestMetric.metricId,
+                                latestMetric.unit,
                                 {
                                   configuredDisplayUnit:
-                                    asset.latestMetric.configuredDisplayUnit,
-                                  displayScale: asset.latestMetric.displayScale,
-                                  origin: asset.latestMetric.origin,
-                                  validation: asset.latestMetric.validation,
+                                    latestMetric.configuredDisplayUnit,
+                                  displayScale: latestMetric.displayScale,
+                                  origin: latestMetric.origin,
+                                  validation: latestMetric.validation,
                                 },
                               ),
                             )
                         : asset.dataSummary?.usable
                           ? `${asset.dataSummary.usable.toLocaleString()} across ${asset.dataSummary.metrics.toLocaleString()} metrics`
                           : 'None available'}
+                      {latestMetric && (
+                        <small className="directory-metric-period">
+                          {latestMetric.period}
+                        </small>
+                      )}
+                      {asset.scopeRelation ===
+                        'shared_filer_entity_context' && (
+                        <small className="directory-metric-period">
+                          Shared filing-entity figures
+                        </small>
+                      )}
                     </dd>
                   </div>
                   <div>
@@ -4053,7 +4071,9 @@ export default function Home() {
     ? validateComparisonSelection(asset, route.compareIds, operatingAssets)
     : undefined;
   const comparisonWarnings =
-    comparison?.issues.map((issue) => issue.message) ?? [];
+    route.compareIds.length > 0
+      ? (comparison?.issues.map((issue) => issue.message) ?? [])
+      : [];
   const additionalAssets = comparison?.assets.slice(1) ?? [];
   const detailIds = comparison?.assets.map((item) => item.id) ?? [];
   const detailKey = detailIds.join('|');
