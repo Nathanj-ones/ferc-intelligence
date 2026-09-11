@@ -1759,6 +1759,8 @@ footer small {
 }
 
 .backend-metric-chart {
+  width: 100%;
+  aspect-ratio: auto;
   height: 330px;
 }
 
@@ -3180,9 +3182,12 @@ body {
     flex-direction: column;
   }
   .backend-detail-page .detail-header-actions {
+    display: flex;
     width: 100%;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
+    gap: 12px;
   }
 }
 

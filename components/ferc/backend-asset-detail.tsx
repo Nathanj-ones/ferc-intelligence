@@ -653,7 +653,7 @@ export function BackendAssetDetail({
               <p>
                 {asset.scopeRelation === 'shared_filer_entity_context'
                   ? `${asset.legalFiler} figures; not allocated to this individual asset. `
-                  : `${asset.scopeNote} `}
+                  : 'Filed-entity figures; see each value’s evidence for its exact scope. '}
                 Each value shows its own reporting period.
               </p>
             </div>
