@@ -333,7 +333,7 @@ class CachePreflightTests(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError, "size mismatch|hash mismatch"):
                     pipeline._verify_source_cache_index()
 
-    def test_taxonomy_pin_preflight_accepts_exact_freeze_and_rejects_stale_index(self):
+    def test_taxonomy_pin_preflight_is_strict_but_live_cache_may_append(self):
         with tempfile.TemporaryDirectory(prefix="ferc-taxonomy-pin-preflight-") as td:
             root = pathlib.Path(td)
             cache = root / "source_cache"
@@ -370,12 +370,25 @@ class CachePreflightTests(unittest.TestCase):
             with mock.patch.object(pipeline, "SOURCE_CACHE", cache), \
                     mock.patch.object(pipeline, "TAXONOMY_PINS", pins_path):
                 self.assertEqual(1, len(pipeline._verify_taxonomy_pin_inputs()))
-                pins["source_cache_index_sha256_at_freeze"] = "0" * 64
-                pins_path.write_text(json.dumps(pins), encoding="utf-8")
+                index["f" * 64] = {
+                    "source_url": "https://example.test/new-live-source",
+                    "content_hash": digest,
+                    "cache_path": f"objects/{digest[:2]}/{digest}",
+                    "byte_size": len(body),
+                }
+                index_path.write_text(json.dumps(index), encoding="utf-8")
                 with self.assertRaisesRegex(
                         pipeline.MissingRequiredInput,
                         "not frozen against this source-cache index"):
                     pipeline._verify_taxonomy_pin_inputs()
+                self.assertEqual(1, len(pipeline._validated_taxonomy_pins(
+                    index, require_frozen_index=False)))
+                index[cache_key]["content_hash"] = "0" * 64
+                with self.assertRaisesRegex(
+                        pipeline.MissingRequiredInput,
+                        "evidence does not resolve"):
+                    pipeline._validated_taxonomy_pins(
+                        index, require_frozen_index=False)
 
     def test_plan_preflight_reports_taxonomy_cache_mismatch_before_replay(self):
         plan = {

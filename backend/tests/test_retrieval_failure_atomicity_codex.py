@@ -286,11 +286,11 @@ class _RunContext:
 
 
 @contextlib.contextmanager
-def _production_adapter_path(adapter):
+def _production_adapter_path(adapter, identity=IDENTITY):
     metric = types.SimpleNamespace(id=METRIC, templates={"interstate_gas"})
     with mock.patch.object(pipeline, "load_adapter", return_value=adapter), \
             mock.patch.object(pipeline, "BY_ADAPTER", {ADAPTER: [metric]}), \
-            mock.patch.object(pipeline, "unit_identity", return_value=dict(IDENTITY)):
+            mock.patch.object(pipeline, "unit_identity", return_value=dict(identity)):
         yield
 
 
@@ -605,6 +605,23 @@ class RetrievalUnitAtomicityTests(unittest.TestCase):
             (failed_ctx.staging.run_id,)).fetchone()
         self.assertEqual("failed", child_status["state"])
         self.assertIn("injected required subitem failure", child_status["detail"])
+
+        # The runner owns one keyed entity-level failure.  Older releases used
+        # a classification-qualified key, while adapters can independently own
+        # a source blocker at the same entity scope.  A successful retry must
+        # retire both runner identities without touching the adapter sibling.
+        runner_id = Staging.blocker_id(ADAPTER, ENTITY, "unit-failure")
+        self.assertIsNone(failed_ctx.staging.con.execute(
+            "SELECT resolved_at FROM blockers WHERE blocker_id=?", (runner_id,)
+        ).fetchone()[0])
+        legacy_id = failed_ctx.staging.open_blocker(
+            ADAPTER, "execution", "legacy runner failure", scope=ENTITY,
+            key="unit-failure:unclassified_execution_failure",
+            exact_error="[unclassified_execution_failure] RuntimeError: legacy")
+        adapter_id = failed_ctx.staging.open_blocker(
+            ADAPTER, "source", "current adapter search failure", scope=ENTITY,
+            key="adapter-search",
+            exact_error="[unclassified_execution_failure] source-owned fixture")
         failed_ctx.close("failed")
 
         # Fresh process, same database and ledger: the failed unit reruns and
@@ -630,6 +647,24 @@ class RetrievalUnitAtomicityTests(unittest.TestCase):
         self.assertEqual(1, success_ctx.staging.con.execute(
             "SELECT COUNT(*) FROM run_input_inventory WHERE run_id=?",
             (success_ctx.staging.run_id,)).fetchone()[0])
+        resolutions = {row["blocker_id"]: row["resolved_at"] for row in
+                       success_ctx.staging.query(
+                           "SELECT blocker_id,resolved_at FROM blockers")}
+        self.assertIsNotNone(resolutions[runner_id])
+        self.assertIsNotNone(resolutions[legacy_id])
+        self.assertIsNone(resolutions[adapter_id])
+
+        # Recreate both runner identities while the ledger still records a
+        # successful unit.  The following run genuinely takes the unchanged
+        # branch and must perform the same lifecycle transition.
+        success_ctx.staging.open_blocker(
+            ADAPTER, "execution", "current runner failure", scope=ENTITY,
+            key="unit-failure",
+            exact_error="[unclassified_execution_failure] RuntimeError: current")
+        success_ctx.staging.open_blocker(
+            ADAPTER, "execution", "legacy runner failure", scope=ENTITY,
+            key="unit-failure:unclassified_execution_failure",
+            exact_error="[unclassified_execution_failure] RuntimeError: legacy")
         success_ctx.close("complete")
 
         # A no-change refresh still consults retrieve, commits its append-only
@@ -649,7 +684,61 @@ class RetrievalUnitAtomicityTests(unittest.TestCase):
         self.assertEqual(1, unchanged_ctx.staging.con.execute(
             "SELECT COUNT(*) FROM run_input_inventory WHERE run_id=?",
             (unchanged_ctx.staging.run_id,)).fetchone()[0])
+        resolutions = {row["blocker_id"]: row["resolved_at"] for row in
+                       unchanged_ctx.staging.query(
+                           "SELECT blocker_id,resolved_at FROM blockers")}
+        self.assertIsNotNone(resolutions[runner_id])
+        self.assertIsNotNone(resolutions[legacy_id])
+        self.assertIsNone(resolutions[adapter_id])
         unchanged_ctx.close("complete")
+
+    def test_same_source_recanonicalises_when_execution_identity_changes(self):
+        db_path, ledger_path = self._new_fixture()
+
+        first_ctx = _RunContext(db_path, ledger_path)
+        first_adapter = _FixtureAdapter()
+        with _production_adapter_path(first_adapter):
+            first = pipeline.run_adapter(first_ctx, ADAPTER, [_entity()])
+        self.assertEqual(1, first["succeeded"])
+        self.assertEqual(1, first_adapter.reached["canonicalise"])
+        first_input_digest = first_ctx.ledger.success_digest(TASK)
+        first_ctx.close("complete")
+
+        changed_identity = {
+            **IDENTITY,
+            "adapter_digest": "retrieval-atomicity-adapter-v2",
+        }
+        changed_ctx = _RunContext(db_path, ledger_path, force=False)
+        changed_adapter = _FixtureAdapter()
+        with _production_adapter_path(changed_adapter, changed_identity):
+            changed = pipeline.run_adapter(changed_ctx, ADAPTER, [_entity()])
+
+        self.assertEqual("ok", changed["status"])
+        self.assertEqual(0, changed["unchanged"],
+                         "matching source bytes must not hide changed parser code")
+        self.assertEqual(1, changed["succeeded"])
+        self.assertEqual(1, changed_adapter.reached["canonicalise"])
+        self.assertEqual(first_input_digest, changed_ctx.ledger.success_digest(TASK))
+        self.assertEqual(identity_digest(changed_identity),
+                         identity_digest(changed_ctx.ledger.stored_identity(TASK)))
+        changed_ctx.close("complete")
+
+    def test_later_unit_failure_rolls_back_provisional_blocker_resolution(self):
+        db_path, ledger_path = self._new_fixture()
+        ctx = _RunContext(db_path, ledger_path)
+        legacy_id = ctx.staging.open_blocker(
+            ADAPTER, "execution", "prior runner failure", scope=ENTITY,
+            key="unit-failure:prior_failure",
+            exact_error="[prior_failure] RuntimeError: prior")
+        adapter = _FixtureAdapter("canonical")
+        with _production_adapter_path(adapter), contextlib.redirect_stderr(io.StringIO()):
+            result = pipeline.run_adapter(ctx, ADAPTER, [_entity()])
+
+        self.assertEqual("failed", result["status"])
+        self.assertIsNone(ctx.staging.con.execute(
+            "SELECT resolved_at FROM blockers WHERE blocker_id=?", (legacy_id,)
+        ).fetchone()[0])
+        ctx.close("failed")
 
     def test_offline_cache_miss_rolls_back_retrieval_rows(self):
         _db, _ledger, ctx, adapter, _ = self._run_fault("cache")

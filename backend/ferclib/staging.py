@@ -705,7 +705,8 @@ class Staging:
                             documents: list[dict] | None = None,
                             filing_dockets: list[dict] | None = None,
                             filing_entities: list[dict] | None = None,
-                            allow_shared_entities: bool = False) -> None:
+                            allow_shared_entities: bool = False,
+                            replace_documents: bool = False) -> None:
         """One filing and everything parsed from it, committed atomically.
 
         ``filings.entity_key`` remains a compatibility anchor for existing
@@ -833,16 +834,96 @@ class Staging:
             self._upsert(con, "source_units", units or [],
                          ["source_system", "filing_id", "unit_id"])
             document_rows = [dict(row) for row in (documents or [])]
+            if replace_documents:
+                if len(document_rows) != 1:
+                    raise FilingEntityConflict(
+                        f"{source_system}/{filing_id}: document replacement requires "
+                        "exactly one canonical package row")
+                replacement = document_rows[0]
+                replacement_id = str(replacement.get("document_id") or "")
+                replacement_hash = str(replacement.get("content_hash") or "")
+                filing_hash = str(filing.get("content_hash") or "")
+                expected_id = f"{source_system}|{filing_id}|package"
+                if replacement_id != expected_id:
+                    raise FilingEntityConflict(
+                        f"{source_system}/{filing_id}: canonical package document_id "
+                        f"must be {expected_id!r}")
+                if str(replacement.get("source_system") or "") != source_system \
+                        or str(replacement.get("filing_id") or "") != filing_id:
+                    raise FilingEntityConflict(
+                        f"{source_system}/{filing_id}: canonical package document "
+                        "names a different filing occurrence")
+                if str(replacement.get("accession_number") or "") != filing_id:
+                    raise FilingEntityConflict(
+                        f"{source_system}/{filing_id}: canonical package document "
+                        "accession_number must match the filing ID")
+                if str(replacement.get("attachment_id") or "").strip():
+                    raise FilingEntityConflict(
+                        f"{source_system}/{filing_id}: canonical package document "
+                        "must not carry one attachment ID")
+                if not replacement_hash or not filing_hash:
+                    raise FilingEntityConflict(
+                        f"{source_system}/{filing_id}: canonical package replacement "
+                        "requires document and filing content hashes")
+                if replacement_hash != filing_hash:
+                    raise FilingEntityConflict(
+                        f"{source_system}/{filing_id}: canonical package hash "
+                        "differs from the filing content hash")
             for document in document_rows:
                 prior_document = con.execute(
-                    "SELECT retrieved_at FROM documents WHERE document_id=?",
+                    "SELECT retrieved_at,content_hash FROM documents WHERE document_id=?",
                     (document.get("document_id"),)).fetchone()
+                if (replace_documents and prior_document is not None
+                        and str(prior_document["content_hash"] or "")
+                        not in ("", str(document.get("content_hash") or ""))):
+                    raise FilingEntityConflict(
+                        f"{source_system}/{filing_id}: canonical package document "
+                        "already exists with a different content hash")
                 retrieved = sorted(value for value in (
                     prior_document["retrieved_at"] if prior_document else None,
                     document.get("retrieved_at")) if value)
                 if retrieved:
                     document["retrieved_at"] = retrieved[-1]
             self._upsert(con, "documents", document_rows, ["document_id"])
+            if replace_documents:
+                # The replacement row must exist before references move because
+                # document_facts enforces an immediate foreign key.
+                prior_rows = con.execute(
+                    "SELECT document_id,content_hash FROM documents "
+                    "WHERE source_system=? AND filing_id=? AND document_id<>? "
+                    "AND TRIM(COALESCE(content_hash,''))<>''",
+                    (source_system, filing_id, replacement_id),
+                ).fetchall()
+                for prior in prior_rows:
+                    prior_id = str(prior["document_id"])
+                    prior_hash = str(prior["content_hash"] or "")
+                    if prior_hash != replacement_hash:
+                        raise FilingEntityConflict(
+                            f"{source_system}/{filing_id}: refusing to replace document "
+                            f"{prior_id!r}; content hash {prior_hash!r} differs from "
+                            f"canonical package {replacement_hash!r}")
+                    fact_hashes = {
+                        str(row[0] or "") for row in con.execute(
+                            "SELECT DISTINCT content_hash FROM document_facts "
+                            "WHERE document_id=?", (prior_id,))
+                    }
+                    if any(value and value != replacement_hash
+                           for value in fact_hashes):
+                        raise FilingEntityConflict(
+                            f"{source_system}/{filing_id}: document facts for {prior_id!r} "
+                            "do not match the canonical package hash")
+                    con.execute(
+                        "UPDATE observations SET document_id=? WHERE document_id=?",
+                        (replacement_id, prior_id))
+                    con.execute(
+                        "UPDATE document_facts SET document_id=?,content_hash=? "
+                        "WHERE document_id=?",
+                        (replacement_id, replacement_hash, prior_id))
+                    con.execute(
+                        "UPDATE events SET document_id=? WHERE document_id=?",
+                        (replacement_id, prior_id))
+                    con.execute(
+                        "DELETE FROM documents WHERE document_id=?", (prior_id,))
 
             # A ``|listing`` row is the durable record that an occurrence was
             # located in the source listing; it is not an attachment byte
@@ -1400,8 +1481,7 @@ class Staging:
         a stable key should ask itself whether it knows what the blocker is
         about.
         """
-        identity = f"{adapter}|{scope}|{key or summary}"
-        bid = "blk-" + hashlib.sha256(identity.encode()).hexdigest()[:16]
+        bid = self.blocker_id(adapter, scope, key or summary)
         with self.transaction() as con:
             existing = con.execute(
                 "SELECT opened_at FROM blockers WHERE blocker_id=?", (bid,)).fetchone()
@@ -1413,6 +1493,39 @@ class Staging:
                 "human_decision_needed": int(human_decision), "opened_at": opened_at,
                 "resolved_at": None}], ["blocker_id"])
         return bid
+
+    @staticmethod
+    def blocker_id(adapter: str, scope: str, identity: str) -> str:
+        """Return the stable identifier used by :meth:`open_blocker`."""
+        material = f"{adapter}|{scope}|{identity}"
+        return "blk-" + hashlib.sha256(material.encode()).hexdigest()[:16]
+
+    def resolve_blocker(self, adapter: str, scope: str, *, key: str) -> int:
+        """Resolve one exact keyed blocker without touching siblings."""
+        blocker_id = self.blocker_id(adapter, scope, key)
+        with self.transaction() as con:
+            cursor = con.execute(
+                "UPDATE blockers SET resolved_at=? WHERE blocker_id=? "
+                "AND adapter=? AND scope=? AND resolved_at IS NULL",
+                (now(), blocker_id, adapter, scope),
+            )
+        return int(cursor.rowcount)
+
+    def resolve_blockers(self, adapter: str, scope: str) -> int:
+        """Resolve every open blocker owned by one exact operation scope.
+
+        Callers must use a scope that belongs wholly to the operation that has
+        just succeeded (for example one search or one accession download).  A
+        runner-level entity scope can contain unrelated adapter blockers and
+        must instead use :meth:`resolve_blocker` with a stable key.
+        """
+        with self.transaction() as con:
+            cursor = con.execute(
+                "UPDATE blockers SET resolved_at=? WHERE adapter=? AND scope=? "
+                "AND resolved_at IS NULL",
+                (now(), adapter, scope),
+            )
+        return int(cursor.rowcount)
 
     # ------------------------------------------------------------- checkpoints
 

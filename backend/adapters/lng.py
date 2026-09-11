@@ -558,6 +558,8 @@ def retrieve(ctx, entity, *, year_from: int, year_to: int) -> list[dict]:
                 scope=scope_key, attempts=str(exc.attempts), exact_error=exc.detail)
             ctx.log("error", f"{key} {docket}: {exc.detail}", adapter=ADAPTER, entity_cid=key)
             continue
+        ctx.staging.resolve_blocker(
+            ADAPTER, scope_key, key=f"{key}: docket sweep {docket} failed")
         if not hits:
             # An empty window is not an empty docket. Roadrunner's NGA s.3
             # border-crossing authorisation is from 2015-2016, so a 2024-2026
@@ -584,7 +586,9 @@ def retrieve(ctx, entity, *, year_from: int, year_to: int) -> list[dict]:
             adapter=ADAPTER, entity_cid=key)
 
     seeds = _seed_rows(key, entity["legal_name"])
-    filings = [dict(h, source="sweep") for h in canonical]
+    filings = _merge_reviewed_occurrence_metadata(
+        [dict(h, source="sweep") for h in canonical], seeds)
+    twins = _merge_reviewed_occurrence_metadata(twins, seeds)
     # a seed row must never re-enter as a canonical filing when the live sweep
     # already classified it as an availability twin
     have = {f["accession"] for f in filings} | {t["accession"] for t in twins}
@@ -696,6 +700,35 @@ def _seed_rows(entity_key: str, legal_name: str) -> list[dict]:
             "seed_text_layer": row.get("text_layer") or "unknown",
             "shared_filers": names,
         })
+    return out
+
+
+def _merge_reviewed_occurrence_metadata(filings: list[dict],
+                                        seeds: list[dict]) -> list[dict]:
+    """Restore reviewed shared-filer routing on matching live occurrences.
+
+    A live docket sweep supersedes the seed row as the occurrence source, but
+    it does not carry the reviewed source index's shared-filer declaration.
+    Merge that one occurrence-specific field by exact accession so replaying a
+    jointly filed Elba or Sabine record through either entity stays
+    deterministic.  No reviewed declaration is transferred to another filing.
+    """
+    reviewed: dict[str, set[str]] = {}
+    for seed in seeds:
+        accession = str(seed.get("accession") or "")
+        if accession:
+            reviewed.setdefault(accession, set()).update(
+                str(value) for value in seed.get("shared_filers") or [] if value)
+    out = []
+    for filing in filings:
+        row = dict(filing)
+        declared = {
+            str(value) for value in row.get("shared_filers") or [] if value
+        }
+        declared.update(reviewed.get(str(row.get("accession") or ""), set()))
+        if declared:
+            row["shared_filers"] = sorted(declared, key=str.casefold)
+        out.append(row)
     return out
 
 
@@ -826,6 +859,8 @@ def _fetch_document(ctx, elib, entity_key: str, filing: dict) -> None:
         filing["text"] = ""
         filing["text_layer"] = "no"
         ctx.staging.checkpoint(ADAPTER, entity_key, scope_key, "done")
+        ctx.staging.resolve_blockers(
+            ADAPTER, f"{entity_key}:{accession}")
         return
     try:
         blob, entry = elib.download(
@@ -843,17 +878,30 @@ def _fetch_document(ctx, elib, entity_key: str, filing: dict) -> None:
     filing["retrieval"] = "retrieved"
     filing["text"] = elibrary.flatten(best_text)
     filing["text_raw_len"] = len(best_text)
-    filing["text_layer"] = best_layer
+    filing["text_layer"] = (
+        "partial" if len(parts) > 1 and filing["text"] else best_layer)
     filing["extraction_method"] = best_method or "unsupported"
-    filing["attachment_name"] = best_name
-    filing["attachment_id"] = next((f["attachment_id"] for f in public), "")
-    filing["content_hash"] = entry["content_hash"]
+    filing["selected_member_name"] = best_name
+    filing["public_attachment_count"] = len(public)
+    filing["content_hash"], wrapper_equivalent, identity_size = \
+        elibrary.reconcile_filing_content_hash(
+            ctx.staging, ctx.cache, SOURCE_SYSTEM, accession, blob,
+            entry["content_hash"])
+    if wrapper_equivalent:
+        ctx.log(
+            "info",
+            f"{accession}: eLibrary rebuilt the download ZIP; exact member names and "
+            "bytes match the immutable filing already recorded",
+            adapter=ADAPTER,
+            entity_cid=entity_key,
+        )
     filing["media_type"] = entry["media_type"]
-    filing["byte_size"] = entry["byte_size"]
+    filing["byte_size"] = identity_size
     filing["document_first_seen_at"] = elibrary.cache_first_seen_at(entry)
     filing["document_retrieved_at"] = elibrary.cache_retrieved_at(entry)
     filing["members"] = [(n, len(d), k) for n, d, k in parts]
     ctx.staging.checkpoint(ADAPTER, entity_key, scope_key, "done")
+    ctx.staging.resolve_blockers(ADAPTER, f"{entity_key}:{accession}")
     ctx.log("info", f"{accession}: {len(parts)} member(s), best '{best_name}' "
                     f"({best_method}, text_layer={best_layer}, {len(best_text):,} chars)",
             adapter=ADAPTER, entity_cid=entity_key)
@@ -887,7 +935,9 @@ def _persist(ctx, entity, cfg, filing, *, is_twin: bool, baseline=None) -> None:
     filing["retrieved_at"] = capture.get("retrieved_at")
     year = int(filing["filed_date"][:4]) if filing.get("filed_date") else None
     twin_of = filing.get("twin_of")
-    doc_id = f"{SOURCE_SYSTEM}|{accession}|{filing.get('attachment_id') or 'listing'}"
+    retrieved_package = bool(filing.get("content_hash"))
+    document_kind = "package" if retrieved_package else "listing"
+    doc_id = f"{SOURCE_SYSTEM}|{accession}|{document_kind}"
     # A11: an identical resubmission is a real occurrence and a version record,
     # but never an economic change. Content identity is decided on the BYTES; the
     # occurrence identity (source system + filing + fact id) is never collapsed.
@@ -932,8 +982,10 @@ def _persist(ctx, entity, cfg, filing, *, is_twin: bool, baseline=None) -> None:
     }
     documents = [{
         "document_id": doc_id, "source_system": SOURCE_SYSTEM, "filing_id": accession,
-        "accession_number": accession, "attachment_id": filing.get("attachment_id") or "",
-        "title": filing.get("attachment_name") or filing.get("description", "")[:200],
+        "accession_number": accession, "attachment_id": "",
+        "title": (f"eLibrary accession {accession} package "
+                  f"({int(filing.get('public_attachment_count') or 0)} public files)"
+                  if retrieved_package else filing.get("description", "")[:200]),
         "class_type": "|".join(filing.get("class_types") or []),
         "media_type": filing.get("media_type") or "",
         "byte_size": filing.get("byte_size"),
@@ -950,7 +1002,8 @@ def _persist(ctx, entity, cfg, filing, *, is_twin: bool, baseline=None) -> None:
     ctx.staging.write_filing_bundle(
         row, documents=documents, filing_dockets=dockets,
         filing_entities=associations,
-        allow_shared_entities=len(associations) > 1)
+        allow_shared_entities=len(associations) > 1,
+        replace_documents=retrieved_package)
     filing["document_id"] = doc_id
 
 

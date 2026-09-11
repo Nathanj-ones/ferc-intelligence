@@ -264,12 +264,16 @@ class TestELibrarySearchStatusIsHonest(unittest.TestCase):
         def __init__(self):
             self.checkpoints = []
             self.blockers = []
+            self.resolutions = []
 
         def checkpoint(self, *args, **kwargs):
             self.checkpoints.append((args, kwargs))
 
         def open_blocker(self, *args, **kwargs):
             self.blockers.append((args, kwargs))
+
+        def resolve_blockers(self, *args, **kwargs):
+            self.resolutions.append((args, kwargs))
 
     class Context:
         def __init__(self):
@@ -301,6 +305,7 @@ class TestELibrarySearchStatusIsHonest(unittest.TestCase):
         self.assertNotIn("done", statuses,
                          "the finally block overwrote a real retrieval failure")
         self.assertEqual(len(ctx.staging.blockers), 1)
+        self.assertEqual(ctx.staging.resolutions, [])
         self.assertEqual(len(ctx.logs), 1)
 
     def test_success_is_marked_done_once(self):
@@ -312,6 +317,8 @@ class TestELibrarySearchStatusIsHonest(unittest.TestCase):
         statuses = [args[3] for args, _kwargs in ctx.staging.checkpoints]
         self.assertEqual(statuses, ["done"])
         self.assertEqual(ctx.staging.blockers, [])
+        self.assertEqual(ctx.staging.resolutions,
+                         [((docs.ADAPTER, "C000654:census"), {})])
         self.assertEqual(ctx.logs, [])
 
 

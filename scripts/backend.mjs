@@ -127,6 +127,20 @@ try {
     }
     await run(
       config.python,
+      [
+        path.join(
+          config.backend,
+          'migrations/005_elibrary_package_document_identity_2026_09_11.py',
+        ),
+        '--db',
+        db,
+        '--apply',
+      ],
+      config.backend,
+      env,
+    );
+    await run(
+      config.python,
       ['run.py', ...(args.length ? args : ['status'])],
       config.backend,
       {

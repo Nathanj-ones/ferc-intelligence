@@ -157,6 +157,28 @@ class SourceCache:
             return None
         return p.read_bytes(), entry
 
+    def get_content(self, content_hash: str) -> bytes | None:
+        """Return one verified content-addressed object by its SHA-256.
+
+        Filing replay occasionally needs to compare a newly fetched source
+        object with the immutable object already attached to that occurrence.
+        Do not trust the caller-supplied path component or the filesystem: an
+        invalid digest, missing object, or byte/hash mismatch is a cache miss.
+        """
+        digest = str(content_hash or "").lower()
+        if not re.fullmatch(r"[0-9a-f]{64}", digest):
+            return None
+        path = self._object_path(digest)
+        if not path.is_file():
+            return None
+        try:
+            body = path.read_bytes()
+        except OSError:
+            return None
+        if hashlib.sha256(body).hexdigest() != digest:
+            return None
+        return body
+
     def put(self, url: str, body: bytes, media_type: str, source_system: str) -> dict:
         digest = hashlib.sha256(body).hexdigest()
         p = self._object_path(digest)
@@ -172,6 +194,24 @@ class SourceCache:
         with self._lock:
             key = self.url_key(url)
             prev = self._index.get(key, {})
+            previous_hash = str(prev.get("content_hash") or "")
+            if previous_hash and previous_hash != digest:
+                # A source endpoint can legitimately regenerate a transport
+                # wrapper. Keep the superseded raw response indexed so an
+                # immutable filing that still cites it is reproducible in a
+                # release. The fragment is local provenance (never sent over
+                # HTTP), and keeps the invariant cache_key=sha256(source_url).
+                prior_url = str(prev.get("source_url") or redact(url))
+                separator = "&" if "#" in prior_url else "#"
+                history_url = (
+                    f"{prior_url}{separator}historical_sha256={previous_hash}")
+                history_key = self.url_key(history_url)
+                history = dict(prev)
+                history["source_url"] = history_url
+                history["note"] = (
+                    "historical raw response retained after the same request "
+                    "returned different bytes")
+                self._index.setdefault(history_key, history)
             entry = {
                 "content_hash": digest,
                 "source_url": redact(url),
@@ -209,7 +249,7 @@ class SourceCache:
                          "source_url": e["source_url"], "media_type": e["media_type"],
                          "byte_size": e["byte_size"], "first_seen_at": e["first_seen_at"],
                          "last_seen_at": e["last_seen_at"], "fetch_count": e["fetch_count"],
-                         "note": ""})
+                         "note": e.get("note", "")})
         return rows
 
 

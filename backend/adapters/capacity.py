@@ -9,7 +9,9 @@ Index of Customers only. The annual capacity report is a separate submittal:
   * authority cited on the filings themselves: **18 CFR 284.13(d)(2)**,
     Docket **RM85-1-000**
   * description pattern `Annual Peak Day Capacity Report of <NAME> for <YYYY>.`
-  * filed late February for the prior calendar year (Feb 25 - Mar 1 observed)
+  * the eLibrary description year is retained unless exact value-period wording
+    in the filing controls, or a reviewed correction is bound to both the
+    accession and the exact PDF hash
 
 The template document's attribution to Form 549B is wrong and is not reproduced
 here; the same correction is written up in
@@ -155,6 +157,13 @@ NUMBER_RE = re.compile(r"^\(?-?[\d,]+(?:\.\d+)?\)?$")
 PROSE_NUM_RE = re.compile(
     r"([\d,]+(?:\.\d+)?)\s*(MMscf|MMcf|MDth|MMBtu|Bcf|Tcf|Mcf|Dth)"
     r"(\s*/\s*d(?:ay)?|\s+per\s+day|\s*/\s*D\b)?", re.I)
+# Some born-digital reports emit a table value and its declared unit as one PDF
+# text cell (``1,388,000 Dth``).  It is still a table cell, but NUMBER_RE alone
+# cannot recognise it.  Keep this deliberately narrower than the prose matcher:
+# the complete cell must be exactly one number followed by one known unit.
+_INLINE_NUMBER_UNIT_RE = re.compile(
+    rf"^\s*(?P<value>{NUMBER_RE.pattern[1:-1]})\s*"
+    rf"(?P<unit>{UNIT_RE.pattern})\s*$", re.I)
 AS_OF_RE = re.compile(r"as of\s+([A-Z][a-z]+\.?\s+\d{1,2},?\s+\d{4})", re.I)
 STORAGE_WORDS = re.compile(r"storage|LNG|peaking|LSS|GSS|SS-\d|S-\d\b|\bFS\b", re.I)
 
@@ -852,6 +861,20 @@ def _unit_in(*texts: str) -> str:
     return ""
 
 
+def _numeric_cell(cell: dict) -> dict | None:
+    """Return a numeric view of one cell without altering its filed text row."""
+    text = str(cell.get("text") or "").strip()
+    if _is_number(text):
+        return cell
+    match = _INLINE_NUMBER_UNIT_RE.fullmatch(text)
+    if match is None:
+        return None
+    value = dict(cell)
+    value["text"] = match.group("value")
+    value["inline_unit"] = _unit_in(match.group("unit"))
+    return value
+
+
 #: A parenthesised token in a column or section header that is plainly meant as a
 #: unit: "(MMDth)", "(Dth/d)", "(MDth/d)". Used to detect that a column HAS
 #: declared its unit even when this reader's vocabulary does not contain it.
@@ -888,6 +911,195 @@ def _as_of(pages: list[dict], report_year: int | None) -> tuple[str, str]:
     return "", "no as-of date could be established from the document"
 
 
+_REPORT_YEAR_PATTERNS = tuple(re.compile(pattern, re.I) for pattern in (
+    r"\b(?:annual\s+)?(?:estimated\s+)?peak[\s-]*day\s+capacity\s+report\b"
+    r"[^0-9\r\n]{0,40}\b((?:19|20)\d{2})\b",
+    r"\breport\s+for\s+(?:the\s+)?(?:calendar\s+)?year\s+((?:19|20)\d{2})\b",
+    r"\b((?:19|20)\d{2})\s+(?:annual\s+)?(?:system\s+capacity\s+report|"
+    r"(?:report\s+of\s+)?(?:estimated\s+)?peak[\s-]*day\s+capacity(?:\s+report)?|"
+    r"annual\s+report\s+of\s+capacity)\b",
+    r"\bannual\s+(?:system\s+capacity\s+report|report\s+of\s+(?:estimated\s+)?"
+    r"peak[\s-]*day\s+capacity|report\s+of\s+capacity)\b[^0-9\r\n]{0,40}"
+    r"\b((?:19|20)\d{2})\b",
+))
+
+_FILENAME_REPORT_YEAR_PATTERNS = tuple(re.compile(pattern, re.I) for pattern in (
+    r"(?:^|[^A-Za-z0-9])Y(?:E)?[ _-]*((?:19|20)\d{2})(?:[^0-9]|$)",
+    r"\b(?:capacity|PDC)[^0-9]{0,24}((?:19|20)\d{2})\b",
+    r"\b((?:19|20)\d{2})\s+annual\b",
+    r"\breport\s*\(\s*((?:19|20)\d{2})\s*\)",
+))
+
+_CAPACITY_PERIOD_YEAR_PATTERNS = tuple(re.compile(pattern, re.I) for pattern in (
+    r"\b(?:capacity|capabilities|facility)\b.{0,180}\bfor\s+"
+    r"(?:the\s+)?(?:calendar\s+year\s+)?((?:19|20)\d{2})\s+"
+    r"(?:was|were|is|are)\b",
+))
+
+
+# A report heading and its attachment filename are commonly copied from the
+# same filer-authored label, so their agreement is not independent evidence.
+# Corrections for proven source anomalies are therefore deliberately byte-bound:
+# a replacement PDF cannot inherit a decision made about earlier bytes.
+_REVIEWED_REPORT_YEAR_CORRECTIONS = {
+    (
+        "20260113-5139",
+        "05bd59b0837447be42bba68b4f764e8192063c76c7539072d88c2ff90f1ad00a",
+    ): {
+        "report_year": 2026,
+        "basis": (
+            "reviewed correction bound to accession 20260113-5139 and exact "
+            "PDF SHA-256 05bd59b0837447be42bba68b4f764e8192063c76c7539072d88c2ff90f1ad00a"
+        ),
+    },
+    (
+        "20260226-5099",
+        "b24a4437cf4a94dcd9ffbeee05a6f54555bca0b60a9afe54b18e69fb9ccb31d2",
+    ): {
+        "report_year": 2026,
+        "basis": (
+            "reviewed correction bound to accession 20260226-5099 and exact "
+            "PDF SHA-256 b24a4437cf4a94dcd9ffbeee05a6f54555bca0b60a9afe54b18e69fb9ccb31d2"
+        ),
+    },
+}
+
+
+def _report_year_from_document(pages: list[dict], candidate: dict, *,
+                               content_hash: str = ""
+                               ) -> tuple[int, str, list[str]]:
+    """Resolve a cycle without treating duplicated labels as corroboration.
+
+    Exact prose tying a year to a reported capacity value controls generically.
+    Otherwise the eLibrary cycle remains authoritative unless an anomaly has a
+    reviewed accession-and-hash-bound correction.  Headings and filenames are
+    retained as QA signals, but never vote one another into a different cycle.
+    No year is inferred from the filing date or an as-of date.
+    """
+    rows = [str(row.get("text") or "")
+            for page in pages for row in page.get("rows") or []]
+    nearby = rows + [f"{rows[index]} {rows[index + 1]}"
+                     for index in range(len(rows) - 1)]
+    period_years = {
+        int(match.group(1))
+        for text in nearby
+        for pattern in _CAPACITY_PERIOD_YEAR_PATTERNS
+        for match in pattern.finditer(text)
+    }
+    if len(period_years) > 1:
+        raise ValueError(
+            "capacity report contains conflicting years tied to reported capacity "
+            f"values: {sorted(period_years)}")
+    heading_years = {
+        int(match.group(1))
+        for text in rows
+        for pattern in _REPORT_YEAR_PATTERNS
+        for match in pattern.finditer(text)
+    }
+    if len(heading_years) > 1:
+        raise ValueError(
+            "capacity report contains conflicting reporting years in its headings: "
+            f"{sorted(heading_years)}")
+
+    accession = str(candidate.get("accession") or "")
+    normalised_hash = str(content_hash or "").lower()
+    correction = _REVIEWED_REPORT_YEAR_CORRECTIONS.get(
+        (accession, normalised_hash))
+    reviewed_hashes = {
+        reviewed_hash
+        for reviewed_accession, reviewed_hash in _REVIEWED_REPORT_YEAR_CORRECTIONS
+        if reviewed_accession == accession
+    }
+    if reviewed_hashes and correction is None:
+        raise ValueError(
+            f"capacity report {accession} has a reviewed report-year correction, "
+            "but the PDF SHA-256 does not match the reviewed bytes")
+
+    description_year = candidate.get("report_year")
+    filename_years = {
+        int(match.group(1))
+        for item in candidate.get("pdfs") or []
+        for pattern in _FILENAME_REPORT_YEAR_PATTERNS
+        for match in pattern.finditer(str(item.get("fileName") or ""))
+    }
+    if len(filename_years) > 1:
+        raise ValueError(
+            "capacity filing attachment names identify conflicting report years: "
+            f"{sorted(filename_years)}")
+    filename_year = next(iter(filename_years), None)
+
+    signals = {}
+    if period_years:
+        # This is not a cover-sheet label: it is a year grammatically attached
+        # to the capacity being reported, so it controls conflicting metadata.
+        year = next(iter(period_years))
+        basis = "year tied to the reported capacity value in the filed document"
+        signals["filed document value period"] = year
+        if correction is not None and year != correction["report_year"]:
+            raise ValueError(
+                f"capacity report {accession} exact value-period year {year} "
+                "conflicts with its reviewed accession/hash-bound correction "
+                f"{correction['report_year']}")
+    elif correction is not None:
+        year = int(correction["report_year"])
+        basis = str(correction["basis"])
+        signals["reviewed accession/hash correction"] = year
+    elif description_year is not None:
+        year = int(description_year)
+        basis = "eLibrary description"
+        signals["eLibrary description"] = year
+    elif heading_years:
+        year = next(iter(heading_years))
+        if filename_year is not None and filename_year != year:
+            raise ValueError(
+                "capacity filing report-year evidence disagrees: "
+                f"filed report heading={year}, attachment filename={filename_year}")
+        basis = "unambiguous filed report heading"
+        signals["filed report heading"] = year
+    else:
+        if filename_year is not None:
+            raise ValueError(
+                "capacity filing has only an attachment-filename report year; "
+                "filename labels do not establish the reporting cycle")
+        raise ValueError(
+            "capacity filing has no report year in exact value-period language, "
+            "its description, or an unambiguous filed report heading")
+
+    if heading_years:
+        signals["filed report heading"] = next(iter(heading_years))
+    if description_year is not None:
+        signals["eLibrary description"] = int(description_year)
+    if filename_year is not None:
+        signals["report-specific attachment filename"] = filename_year
+    disagreements = [
+        f"{source} says {value}, but resolved report year is {year}"
+        for source, value in sorted(signals.items()) if value != year
+    ]
+    return year, basis, disagreements
+
+
+def _reviewed_image_report_year(ocr_pages: list[dict], reviewed_pages_: list[dict],
+                                candidate: dict, *, content_hash: str
+                                ) -> tuple[int, str, list[str]]:
+    """Require OCR and the independent hash-bound transcript to resolve alike."""
+    try:
+        ocr_resolution = _report_year_from_document(
+            ocr_pages, candidate, content_hash=content_hash)
+        reviewed_resolution = _report_year_from_document(
+            reviewed_pages_, candidate, content_hash=content_hash)
+    except ValueError as exc:
+        raise ImageOnlySource(
+            "image-only capacity report year could not be established by both OCR "
+            f"and the independent hash-bound review: {exc}. No value is published."
+        ) from exc
+    if ocr_resolution[0] != reviewed_resolution[0]:
+        raise ImageOnlySource(
+            "image-only capacity report year disagrees between OCR and the "
+            f"independent hash-bound review: OCR={ocr_resolution[0]}, "
+            f"review={reviewed_resolution[0]}. No value is published.")
+    return ocr_resolution
+
+
 def _parse_long_date(text: str) -> str:
     m = re.match(r"([A-Za-z]+)\.?\s+(\d{1,2}),?\s+(\d{4})", text.strip())
     if not m or m.group(1).lower() not in MONTHS:
@@ -916,6 +1128,56 @@ _LONE_FOOTNOTE = re.compile(r"^\d{1,2}(?:\s*,\s*\d{1,2})*$")
 #: A centred page title overlaps every value column on the page; a unit banner
 #: such as "(Dth/d)" spans about 35pt.
 _COLUMN_HEADER_MAX_WIDTH = 120.0
+
+
+def _is_unit_definition_footnote(row: dict) -> bool:
+    """True only for a numbered footnote that defines a reported unit.
+
+    A definition such as ``1) The term Dth ... is the quantity ...`` contains a
+    numeric marker, prose and a unit, which otherwise looks exactly like a
+    labelled capacity row.  Requiring both a marker-only first cell and explicit
+    definition language keeps numbered route/service rows in the table.
+    """
+    cells = row.get("cells") or []
+    if len(cells) < 2:
+        return False
+    marker = str(cells[0].get("text") or "").strip()
+    explanation = " ".join(
+        str(cell.get("text") or "") for cell in cells[1:])
+    return bool(
+        re.search(r"\d", marker)
+        and _FOOTNOTE_MARKER.fullmatch(marker)
+        and re.match(r"^\s*the\s+term\b", explanation, re.I)
+        and UNIT_RE.search(explanation)
+        and re.search(
+            r"\b(?:means?|refers\s+to|is\s+(?:the|a|an)\b)",
+            explanation,
+            re.I,
+        )
+    )
+
+
+_EXPLICIT_SYSTEM_CAPACITY_LABEL = re.compile(
+    r"^(?:system\s+)?peak[\s-]+day\s+capacity$", re.I)
+
+
+def _is_system_capacity_total(row_label: str) -> bool:
+    """Whether a table label itself identifies the system-capacity total.
+
+    Most filers use a row called ``Total`` or ``Total Estimated Peak Day
+    Capacity``.  Gulfstream instead puts ``PEAK DAY CAPACITY`` on a spanning
+    label line immediately above its value; its separate ``TOTAL ESTIMATED FIRM
+    PEAK DAY OBLIGATION`` is the assigned firm obligation, not capacity.  Keep
+    this distinction structural and label-bound rather than selecting by value
+    equality or page order.
+    """
+    label = " ".join(str(row_label or "").split())
+    if _EXPLICIT_SYSTEM_CAPACITY_LABEL.fullmatch(label):
+        return True
+    return bool(
+        re.search(r"\btotal\b", label, re.I)
+        and not re.search(r"\bobligation\b", label, re.I)
+    )
 
 
 def _section_candidate(row: dict, page_unit_note: str) -> str:
@@ -1036,12 +1298,22 @@ def read_figures(pages: list[dict], report_year: int | None) -> list[dict]:
             # the exclusion is stated here rather than left as a silent filter.
             if row["y"] > 0.92 * height or row["y"] < 0.06 * height:
                 continue
-            value_cells = [c for c in row["cells"] if _is_number(c["text"])]
-            label_cells = [c for c in row["cells"] if not _is_number(c["text"])]
+            if _is_unit_definition_footnote(row):
+                continue
+            classified = [(cell, _numeric_cell(cell)) for cell in row["cells"]]
+            value_cells = [numeric for _cell, numeric in classified
+                           if numeric is not None]
+            label_cells = [cell for cell, numeric in classified if numeric is None]
             # A data row must carry a label of its own, or at least two values
             # sitting under a header. A lone number on a line is a page number or
             # a footnote marker, not a capacity figure.
-            is_data = bool(value_cells) and (bool(label_cells) or len(value_cells) >= 2)
+            is_data = bool(value_cells) and (
+                bool(label_cells) or len(value_cells) >= 2
+                # A number with its own filed unit cannot be a bare page number
+                # or superscript marker.  This admits a value split onto the line
+                # immediately below its label while leaving lone numbers gated.
+                or any(cell.get("inline_unit") for cell in value_cells)
+            )
             if (not is_data and len(row["cells"]) == 1
                     and _LONE_FOOTNOTE.match(row["text"].strip())):
                 continue        # a footnote marker: not a header, not a table break
@@ -1124,7 +1396,7 @@ def read_figures(pages: list[dict], report_year: int | None) -> list[dict]:
                 # MountainWest states its storage capacity in "(MMDth)", a volume;
                 # borrowing the transport table's "(Dth/d)" banner would turn a
                 # storage volume into a daily rate.
-                unit = _unit_in(column, section)
+                unit = c.get("inline_unit") or _unit_in(column, section)
                 declared = _declared_unit_token(column, section)
                 problems = []
                 source_control_codes = set(row.get("binary_control_codes") or [])
@@ -1179,9 +1451,9 @@ def read_figures(pages: list[dict], report_year: int | None) -> list[dict]:
                     "char_end": row["text"].find(c["text"]) + len(c["text"]),
                     "qualifier": ("estimated" if re.search(r"estimat", row["text"] + section,
                                                            re.I) else ""),
-                    "is_total": bool(re.search(r"\btotal\b", row_label, re.I)),
+                    "is_total": _is_system_capacity_total(row_label),
                     "label_from_section": label_from_section,
-                    "unit_note": page_unit_note,
+                    "unit_note": "" if c.get("inline_unit") else page_unit_note,
                     "binary_control_codes": sorted(source_control_codes),
                     "discriminator": "",
                     "problems": problems})
@@ -1399,6 +1671,7 @@ def _prose_figures(page: dict, block: list[dict]) -> list[dict]:
 
 # ============================================================ retrieval
 
+
 def retrieve(ctx, entity, *, year_from: int, year_to: int) -> list[dict]:
     """The latest two annual capacity-report cycles for one entity."""
     _RETRIEVAL_STATE[entity["entity_key"]] = ("ok", "")
@@ -1422,6 +1695,7 @@ def retrieve(ctx, entity, *, year_from: int, year_to: int) -> list[dict]:
         _RETRIEVAL_STATE[entity["entity_key"]] = (
             "search_failed", f"the eLibrary search itself failed: {exc.detail}")
         return []
+    ioc_adapter.resolve_blockers(ctx, ADAPTER, entity["entity_key"])
     if not hits:
         ctx.log("info", f"{entity['entity_key']} {entity['legal_name'][:40]}: no "
                         f"'{CLASS_TYPE[1]}' filings in eLibrary {start}..{end}",
@@ -1440,7 +1714,7 @@ def retrieve(ctx, entity, *, year_from: int, year_to: int) -> list[dict]:
             continue
         m = re.search(r"\bfor\s+(\d{4})\b", desc)
         filed = ioc_adapter.iso_date(h.get("filedDate", ""))
-        report_year = int(m.group(1)) if m else (int(filed[:4]) - 1 if filed else None)
+        report_year = int(m.group(1)) if m else None
         pdfs = [t for t in (h.get("transmittals") or [])
                 if (t.get("fileType") or "").upper() == "PDF"
                 or (t.get("fileName") or "").lower().endswith(".pdf")]
@@ -1466,6 +1740,9 @@ def retrieve(ctx, entity, *, year_from: int, year_to: int) -> list[dict]:
                 scope=f"{entity['entity_key']}:{c['accession']}",
                 exact_error=f"availCode={c['avail_code']}; {c['description'][:160]}")
     public.sort(key=lambda c: (c["filed_date"], c["accession"]), reverse=True)
+    # Select occurrences by filed date here.  Their true cycles are resolved
+    # from the downloaded documents below; grouping on eLibrary's description
+    # year would recreate the exact Florida Gas defect this adapter guards.
     chosen = public[:CYCLES]
 
     filings = []
@@ -1523,8 +1800,6 @@ def retrieve(ctx, entity, *, year_from: int, year_to: int) -> list[dict]:
         ctx.staging.checkpoint(ADAPTER, entity["entity_key"], scope_key, "done")
         ioc_adapter.resolve_blockers(ctx, ADAPTER, scope_key)
 
-    if filings:
-        ioc_adapter.resolve_blockers(ctx, ADAPTER, entity["entity_key"])
     image_only = [a for a in _IMAGE_ONLY
                   if _IMAGE_ONLY[a]["entity_key"] == entity["entity_key"]]
     if chosen and not filings and image_only:
@@ -1566,6 +1841,7 @@ def _fetch_and_persist(ctx, entity, c: dict) -> dict:
     doc = extract_pdf(body)
     text_layer, extraction = "yes", "pdf_text_span_coordinate_aware"
     review = None
+    manual_pages_for_check = None
     ocr_evidence = None
     if not any(p["rows"] for p in doc):
         # A17: read the actual page pixels. A hash-bound manual review remains a
@@ -1588,14 +1864,7 @@ def _fetch_and_persist(ctx, entity, c: dict) -> dict:
                 f"{acc}: image-only PDF OCR failed locally ({exc}). FERC published the "
                 "document; this is an OCR runtime/capability failure of ours.") from exc
         ocr_pages = _normalise_capacity_doc_rows(ocr_pages)
-        manual_pages = _normalise_capacity_doc_rows(manual_pages)
-        ocr_figures = read_figures(ocr_pages, c["report_year"])
-        manual_figures = read_figures(manual_pages, c["report_year"])
-        if _review_signature(ocr_figures) != _review_signature(manual_figures):
-            raise ImageOnlySource(
-                f"{acc}: OCR output disagrees with the independent hash-bound review. "
-                f"ocr={_review_signature(ocr_figures)!r}; "
-                f"review={_review_signature(manual_figures)!r}. No value is published.")
+        manual_pages_for_check = _normalise_capacity_doc_rows(manual_pages)
         review = dict(manual_review)
         review.update({
             "automatic_ocr_used": True,
@@ -1613,16 +1882,38 @@ def _fetch_and_persist(ctx, entity, c: dict) -> dict:
     # A common final boundary protects any future capacity extraction route that
     # does not happen to use ``rows_of``.  It is idempotent for born-digital rows.
     doc = _normalise_capacity_doc_rows(doc)
-    as_of, as_of_basis = _as_of(doc, c["report_year"])
+    if manual_pages_for_check is not None:
+        report_year, report_year_basis, report_year_disagreements = \
+            _reviewed_image_report_year(
+                doc, manual_pages_for_check, c, content_hash=content_hash)
+    else:
+        report_year, report_year_basis, report_year_disagreements = \
+            _report_year_from_document(doc, c, content_hash=content_hash)
+    if report_year_disagreements:
+        ctx.log(
+            "warn",
+            f"{acc}: " + "; ".join(report_year_disagreements),
+            adapter=ADAPTER,
+            entity_cid=entity["entity_key"],
+        )
+    if manual_pages_for_check is not None:
+        ocr_figures = read_figures(doc, report_year)
+        manual_figures = read_figures(manual_pages_for_check, report_year)
+        if _review_signature(ocr_figures) != _review_signature(manual_figures):
+            raise ImageOnlySource(
+                f"{acc}: OCR output disagrees with the independent hash-bound review. "
+                f"ocr={_review_signature(ocr_figures)!r}; "
+                f"review={_review_signature(manual_figures)!r}. No value is published.")
+    as_of, as_of_basis = _as_of(doc, report_year)
     version_status, supersedes = ctx.staging.classify_version(
-        SOURCE_SYSTEM, entity["entity_key"], FORM, c["report_year"] or 0, "annual",
+        SOURCE_SYSTEM, entity["entity_key"], FORM, report_year, "annual",
         acc, content_hash)
 
     doc_id = f"{SOURCE_SYSTEM}|{acc}|{c['pdfs'][0].get('fileId') or name}"
     filing = {
         "source_system": SOURCE_SYSTEM, "filing_id": acc, "entity_key": entity["entity_key"],
         "form": FORM, "accession_number": acc,
-        "reporting_year": c["report_year"], "reporting_period": "annual",
+        "reporting_year": report_year, "reporting_period": "annual",
         "period_start": None, "period_end": None,
         "filed_date": c["filed_date"], "posted_date": c["posted_date"],
         "issued_date": c["issued_date"], "effective_date": as_of,
@@ -1677,7 +1968,9 @@ def _fetch_and_persist(ctx, entity, c: dict) -> dict:
     filing["_document_id"] = doc_id
     filing["_as_of"] = as_of
     filing["_as_of_basis"] = as_of_basis
-    filing["_figures"] = read_figures(doc, c["report_year"])
+    filing["_report_year_basis"] = report_year_basis
+    filing["_report_year_disagreements"] = report_year_disagreements
+    filing["_figures"] = read_figures(doc, report_year)
     filing["_pdf_name"] = name
     filing["_shifted"] = sorted({f for p in doc for f in p["shifted_fonts"]})
     filing["_text_layer"] = text_layer
@@ -1721,7 +2014,7 @@ def freeze_expected(ctx, entity, filings: list[dict], assets: list[dict]) -> lis
             elif m.id == "cap_reported_capacity":
                 requirement = coverage.REQUIRED
                 evidence = (f"{AUTHORITY}: an annual peak-day capacity report is filed by "
-                            f"1 March for the prior calendar year")
+                            f"1 March for the annual cycle identified in the filed report")
             else:
                 requirement = coverage.CONDITIONAL
                 evidence = m.gate_reason or m.quality_gate
@@ -1764,6 +2057,17 @@ def _obs(entity_key, m, *, instant, year, scope, unit, value_text, value_num,
         "missing_reason": missing_reason, "applicability_evidence": applicability_evidence,
         "notes": notes,
     }
+
+
+def _report_year_qa(filing: dict) -> list[str]:
+    rows = []
+    if filing.get("_report_year_basis"):
+        rows.append(
+            f"report year {filing.get('reporting_year')} resolved from "
+            f"{filing['_report_year_basis']}")
+    rows.extend(str(value) for value in
+                filing.get("_report_year_disagreements") or [])
+    return rows
 
 
 def canonicalise(ctx, entity, filings: list[dict], expected: list[dict]) -> tuple[list, list]:
@@ -1924,6 +2228,7 @@ def _capacity_observations(ctx, entity, f, metrics) -> list[dict]:
         missing_reason=head_missing_reason,
         qa_flags="; ".join([
             f"{AUTHORITY}; filed {f['filed_date']} for report year {year}",
+            *_report_year_qa(f),
             f"as-of date: {as_of} ({f['_as_of_basis']})",
             head_note,
             *(source_text_problems or []),
@@ -1941,6 +2246,7 @@ def _capacity_observations(ctx, entity, f, metrics) -> list[dict]:
         confidence, validation, problems = _confidence(fig)
         qa = [
             f"{AUTHORITY}; filed {f['filed_date']} for report year {year}",
+            *_report_year_qa(f),
             f"as-of date: {as_of} ({f['_as_of_basis']})",
             f"page {fig['page']}, text row at y={fig['y']}, cell x={fig['x']:.0f}"
             f"-{fig['x_end']:.0f}",
@@ -2286,8 +2592,10 @@ def _total_population(entity_key, f, observation_id_value) -> dict:
         "observation_id": observation_id_value,
         "source_system": SOURCE_SYSTEM, "source_table": "source_facts",
         "filing_ids": json.dumps([f["filing_id"]]),
-        "inclusion_rule": ("rows of this capacity report whose own row label matches "
-                           r"\btotal\b, read positionally from the page"),
+        "inclusion_rule": (
+            "rows of this capacity report whose own row label states a total "
+            "capacity (a 'total' row other than an obligation subtotal, or the "
+            "explicit label 'Peak Day Capacity'), read positionally from the page"),
         "exclusion_rule": ("narrative (prose) figures are excluded -- a sentence is a "
                            "different assertion from a table total; route, directional and "
                            "rate-schedule rows are excluded because summing them would "
@@ -2300,7 +2608,9 @@ def _total_population(entity_key, f, observation_id_value) -> dict:
         "empty_reason": (None if matched else
                          f"the report was retrieved and read ({len(members)} table rows "
                          f"extracted from {len(f.get('_doc') or [])} page(s)); NONE of them "
-                         "carries a 'total' row label. The filer states no system-wide "
+                         "carries a 'total' row label, or explicitly states 'Peak Day "
+                         "Capacity', that qualifies as a system-capacity total. The filer "
+                         "states no system-wide "
                          "figure, so no denominator exists and none is manufactured from a "
                          "route or a rate schedule. This is a property of the document, not "
                          "a retrieval or parsing failure."),

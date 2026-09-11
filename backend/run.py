@@ -79,7 +79,7 @@ from ferclib.registry import BY_ADAPTER, BY_ID, REGISTRY, REGISTRY_VERSION, to_r
 from ferclib.staging import Staging, StagedCommitRejected            # noqa: E402
 from ferclib.status import Availability                              # noqa: E402
 
-CODE_VERSION = "0.37.4"
+CODE_VERSION = "0.37.5"
 
 
 def _env_path(name: str, default: pathlib.Path) -> pathlib.Path:
@@ -525,6 +525,35 @@ def _persist_rejected_subunit_status(ctx, exc: Exception) -> list[str]:
     return errors
 
 
+def _resolve_runner_unit_blockers(ctx, adapter: str, entity_key: str) -> int:
+    """Close only runner-owned failures after this exact unit succeeds.
+
+    Adapter search/access blockers may legitimately share the entity scope, so
+    a broad scope update here would hide real source conditions.  New runner
+    failures use one stable lifecycle key.  The classification-bound identities
+    written by older versions are recognised only when both their recorded
+    ``[classification]`` marker and deterministic blocker ID agree.
+    """
+    rows = ctx.staging.query(
+        "SELECT blocker_id,summary,exact_error FROM blockers "
+        "WHERE adapter=? AND scope=? AND resolved_at IS NULL",
+        (adapter, entity_key),
+    )
+    keys = {"unit-failure", "unit-budget-exhausted",
+            f"{entity_key}: request budget exhausted"}
+    for row in rows:
+        match = re.match(r"^\[([a-z0-9_]+)\]", str(row["exact_error"] or ""))
+        if match:
+            keys.add(f"unit-failure:{match.group(1)}")
+    resolved = 0
+    for key in sorted(keys):
+        expected = ctx.staging.blocker_id(adapter, entity_key, key)
+        if any(row["blocker_id"] == expected for row in rows):
+            resolved += ctx.staging.resolve_blocker(
+                adapter, entity_key, key=key)
+    return resolved
+
+
 def _retrieve_and_commit_unit(ctx, mod, name: str, entity: dict, *,
                               identity: dict, scope_key: str, task: str,
                               metric_ids: list[str], foreign: set[str],
@@ -578,13 +607,19 @@ def _retrieve_and_commit_unit(ctx, mod, name: str, entity: dict, *,
                 + "; ".join(detail),
                 subfailures=subfailures, cache_misses=new_misses)
 
+        # A successful complete retrieval supersedes runner-level failures from
+        # earlier attempts. Keep this inside the outer unit transaction: if
+        # canonicalisation or the staged commit now fails, the resolution rolls
+        # back along with the provisional filing rows.
+        _resolve_runner_unit_blockers(ctx, name, entity["entity_key"])
+
         # Idempotence is decided only AFTER the source has been consulted. A
         # completed checkpoint never suppresses retrieval. The raw occurrence
         # upserts and append-only input inventory, if any, commit before the
         # caller records the durable `unchanged` status.
         if (not ctx.force and mode in ("refresh", "resume")
                 and ctx.ledger.unchanged_since_last_success(
-                    task, digest, was_done=was_done)):
+                    task, digest, identity=identity, was_done=was_done)):
             return {"unchanged": True, "filings": filings, "digest": digest}
 
         expected = mod.freeze_expected(ctx, entity, filings, entity["assets"])
@@ -781,7 +816,8 @@ def run_adapter(ctx, name: str, entities: list[dict]) -> dict:
                                            "failed", str(exc)[:1000])
             ctx.staging.open_blocker(name, "environment",
                                      f"{entity['entity_key']}: request budget exhausted",
-                                     scope=entity["entity_key"], exact_error=str(exc)[:500])
+                                     scope=entity["entity_key"], exact_error=str(exc)[:500],
+                                     key="unit-budget-exhausted")
             ctx.log("error", f"{entity['entity_key']} budget exhausted; stopping {name}")
             fatal = exc
             break
@@ -824,7 +860,7 @@ def run_adapter(ctx, name: str, entities: list[dict]) -> dict:
                 name, kind,
                 f"{entity['entity_key']}: {classification['summary']}",
                 scope=entity["entity_key"], exact_error=exact_error[:1000],
-                key=f"unit-failure:{class_id}")
+                key="unit-failure")
             ctx.log("error", f"{entity['entity_key']} FAILED [{class_id}]: "
                             f"{type(exc).__name__}: {exc}")
             traceback.print_exc(limit=3)
@@ -1138,12 +1174,17 @@ def _persist_reference_state(ctx) -> dict:
     return result
 
 
-def _validated_taxonomy_pins(cache_index: dict) -> list[dict]:
-    """Validate the pinned taxonomy routes against one exact cache index.
+def _validated_taxonomy_pins(
+        cache_index: dict, *, require_frozen_index: bool = True) -> list[dict]:
+    """Validate pinned taxonomy routes against a cache index.
 
     Coverage is too late to discover that a required configuration snapshot
     was frozen against a different cache.  This helper is deliberately usable
-    by the read-only plan preflight as well as the runtime coverage path.
+    by the read-only plan preflight as well as the runtime coverage path.  Plan
+    replay requires the byte-exact frozen index.  A live-refresh working cache
+    is append-only, so runtime coverage instead requires every pinned URL,
+    content hash and object to remain exact while permitting unrelated entries
+    added by the refresh.
     """
     if not TAXONOMY_PINS.is_file():
         raise MissingRequiredInput(f"required taxonomy pins are missing: {TAXONOMY_PINS}")
@@ -1152,7 +1193,7 @@ def _validated_taxonomy_pins(cache_index: dict) -> list[dict]:
         raise MissingRequiredInput("taxonomy pin file has an unsupported schema")
     declared_index = body.get("source_cache_index_sha256_at_freeze")
     actual_index = _sha256_file(SOURCE_CACHE / "index.json")
-    if declared_index != actual_index:
+    if require_frozen_index and declared_index != actual_index:
         raise MissingRequiredInput(
             "taxonomy pins were not frozen against this source-cache index: "
             f"declared {declared_index}, current {actual_index}")
@@ -1191,7 +1232,8 @@ def _verify_taxonomy_pin_inputs() -> list[dict]:
 
 
 def _load_taxonomy_pins(ctx) -> list[dict]:
-    return _validated_taxonomy_pins(ctx.cache._index)
+    return _validated_taxonomy_pins(
+        ctx.cache._index, require_frozen_index=False)
 
 
 def _coverage_occurrences(ctx) -> list[dict]:

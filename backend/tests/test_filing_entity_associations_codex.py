@@ -336,6 +336,46 @@ class ReviewedLNGInputs(unittest.TestCase):
                     and lng.SEED_SHA256 in row["evidence_ref"]
                     for row in relations))
 
+    def test_live_elba_hit_keeps_reviewed_shared_filers_for_exact_accession(self):
+        accession = "20241122-3097"
+        seeds = lng._seed_rows(ELBA_LIQUEFACTION,
+                               lng.FACILITY_ENTITY_NAMES[ELBA_LIQUEFACTION])
+        live = [{
+            "accession": accession,
+            "description": ("Commission issued errata regarding Elba Liquefaction "
+                            "Company, L.L.C. et al."),
+            "filed_date": "2024-11-22",
+            "dockets": ["CP23-375"],
+            "docket_bases": ["CP23-375"],
+            "shared_filers": ["Elba Liquefaction Company, L.L.C."],
+            "source": "sweep",
+        }]
+        forward = lng._merge_reviewed_occurrence_metadata(live, seeds)
+        reverse = lng._merge_reviewed_occurrence_metadata(live, list(reversed(seeds)))
+        self.assertEqual(forward, reverse)
+        self.assertEqual(forward[0]["description"], live[0]["description"])
+        self.assertEqual(forward[0]["source"], "sweep")
+        self.assertEqual(set(forward[0]["shared_filers"]), {
+            "Elba Liquefaction Company, L.L.C.",
+            "Southern LNG Company, L.L.C.",
+        })
+        relations = lng._filing_entity_associations(
+            {"entity_key": ELBA_LIQUEFACTION},
+            lng.FACILITIES[ELBA_LIQUEFACTION], forward[0])
+        self.assertEqual(
+            {row["entity_key"]: row["association_role"] for row in relations},
+            {ELBA_LIQUEFACTION: "named_filer", SOUTHERN_LNG: "named_filer"},
+        )
+
+    def test_reviewed_metadata_never_moves_to_another_accession(self):
+        seeds = lng._seed_rows(ELBA_LIQUEFACTION,
+                               lng.FACILITY_ENTITY_NAMES[ELBA_LIQUEFACTION])
+        live = [{"accession": "DIFFERENT", "description": "unrelated live hit"}]
+        self.assertNotIn(
+            "shared_filers",
+            lng._merge_reviewed_occurrence_metadata(live, seeds)[0],
+        )
+
 
 class _CoverageStaging:
     run_id = RUN_ID

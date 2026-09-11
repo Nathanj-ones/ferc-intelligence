@@ -54,6 +54,30 @@ class BlockerLifecycleDeterminismTests(unittest.TestCase):
             self.assertNotEqual(first, second)
             self.assertEqual(2, store.query("SELECT COUNT(*) AS n FROM blockers")[0]["n"])
 
+    def test_exact_key_resolution_does_not_close_a_same_scope_sibling(self):
+        with tempfile.TemporaryDirectory(prefix="ferc-blocker-resolve-") as td:
+            store = Staging(pathlib.Path(td) / "staging.sqlite")
+            self.addCleanup(store.close)
+            target = store.open_blocker(
+                "ioc", "execution", "runner unit failed", scope="C1",
+                key="unit-failure", exact_error="[fixture] runner failure")
+            sibling = store.open_blocker(
+                "ioc", "source", "adapter search failed", scope="C1",
+                key="adapter-search", exact_error="[fixture] source failure")
+
+            self.assertEqual(0, store.resolve_blocker(
+                "ioc", "C1", key="not-the-target"))
+            with mock.patch("ferclib.staging.now",
+                            return_value="2026-09-10T04:00:00+00:00"):
+                self.assertEqual(1, store.resolve_blocker(
+                    "ioc", "C1", key="unit-failure"))
+
+            rows = {row["blocker_id"]: row for row in store.query(
+                "SELECT blocker_id,resolved_at FROM blockers WHERE scope='C1'")}
+            self.assertEqual("2026-09-10T04:00:00+00:00",
+                             rows[target]["resolved_at"])
+            self.assertIsNone(rows[sibling]["resolved_at"])
+
 
 if __name__ == "__main__":
     unittest.main()

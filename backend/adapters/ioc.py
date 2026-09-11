@@ -890,6 +890,7 @@ def retrieve(ctx, entity, *, year_from: int, year_to: int) -> list[dict]:
         _RETRIEVAL_STATE[entity["entity_key"]] = (
             "search_failed", f"the eLibrary search itself failed: {exc.detail}")
         return []
+    resolve_blockers(ctx, ADAPTER, entity["entity_key"])
 
     if not hits:
         ctx.log("info", f"{entity['entity_key']} {entity['legal_name'][:40]}: no "
@@ -998,8 +999,6 @@ def retrieve(ctx, entity, *, year_from: int, year_to: int) -> list[dict]:
         ctx.staging.checkpoint(ADAPTER, entity["entity_key"], scope_key, "done")
         resolve_blockers(ctx, ADAPTER, scope_key)
 
-    if filings:
-        resolve_blockers(ctx, ADAPTER, entity["entity_key"])
     accepted_candidates = [c for c in usable
                            if any(f["filing_id"] == c["accession"] for f in filings)]
     if usable and not filings and len(rejected) < len(usable):

@@ -17,6 +17,8 @@ other tabs offer **Load refreshed snapshot**.
    private release attached to this same GitHub repository. On first refresh,
    create a coherent SQLite backup of that repository-local backend seed and
    copy its source cache into the ignored, private `.ferc-local/working` directory.
+   Apply the repository's idempotent data-only migrations to that working copy;
+   the reviewed seed itself remains byte-for-byte unchanged.
    Allow several GB of disk space. The frozen backend and published files are
    not updated.
 2. Run the backend's online `refresh` command for 2024 through the current year,

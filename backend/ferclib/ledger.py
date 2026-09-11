@@ -191,9 +191,11 @@ class Ledger:
         return (self.data["tasks"].get(task_id) or {}).get("input_digest") or ""
 
     def unchanged_since_last_success(self, task_id: str, digest: str,
-                                     *, was_done: bool | None = None) -> bool:
+                                     *, identity: dict,
+                                     was_done: bool | None = None) -> bool:
         """True when the source presented exactly the occurrences that the last
-        successful run of this task already committed.
+        successful run of this task already committed under the same execution
+        identity.
 
         Only meaningful AFTER retrieval, and never used to decide whether to
         retrieve. `was_done` must be sampled BEFORE the task is marked running,
@@ -204,11 +206,16 @@ class Ledger:
 
         A previously FAILED attempt is never 'unchanged': the last thing that
         happened to this unit was not a success, so the work must be redone even
-        if the source looks the same.
+        if the source looks the same. Likewise, matching source occurrences are
+        not enough after adapter code, configuration, registry, version, or
+        window changes: the same bytes must be canonicalised again under the new
+        execution identity.
         """
         t = self.data["tasks"].get(task_id) or {}
         done = t.get("state") == DONE if was_done is None else bool(was_done)
-        return bool(digest) and done and t.get("input_digest") == digest
+        return (bool(digest) and done
+                and t.get("input_digest") == digest
+                and t.get("identity_digest") == identity_digest(identity))
 
     def mark_stale(self, task_id: str, reason: str) -> None:
         """A refresh that failed leaves the stored rows as LAST GOOD, not fresh.

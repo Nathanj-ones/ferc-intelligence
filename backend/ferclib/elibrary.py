@@ -60,6 +60,7 @@ Two corrections made on 8 September 2026 while repairing audit issues A10/A19:
 from __future__ import annotations
 
 import io
+import hashlib
 import json
 import pathlib
 import re
@@ -348,6 +349,69 @@ def cache_retrieved_at(entry: dict) -> str | None:
     return None
 
 
+def _validate_accession_download(accession: str, blob: bytes,
+                                 attachment_ids: list[str],
+                                 expected_files: list[dict] | None = None) -> None:
+    """Prove a download represents the declared public attachment roster.
+
+    Multi-file requests must return a safe ZIP.  When the official file list
+    supplies every name and size, require exact equality; otherwise the member
+    count is the conservative boundary.  Reading each member performs the ZIP
+    CRC check.  Single raw files are size-checked when that metadata exists.
+    """
+    ids = {str(value) for value in attachment_ids if value}
+    declared = [row for row in (expected_files or [])
+                if str(row.get("attachment_id") or "") in ids]
+    kind = sniff(blob)
+    if kind != "zip":
+        if len(ids) > 1:
+            raise ValueError(
+                f"response was {kind}, not a {len(ids)}-attachment ZIP")
+        if (len(declared) == 1 and declared[0].get("listed_byte_size")
+                and len(blob) != int(declared[0]["listed_byte_size"])):
+            raise ValueError(
+                "raw response byte size disagrees with the official file list")
+        return
+    try:
+        with zipfile.ZipFile(io.BytesIO(blob)) as zf:
+            infos = [info for info in zf.infolist() if not info.is_dir()]
+            names = [info.filename for info in infos]
+            unsafe = [name for name in names
+                      if pathlib.PurePosixPath(name).is_absolute()
+                      or ".." in pathlib.PurePosixPath(name).parts
+                      or "\\" in name]
+            duplicate = (len(names) != len(set(names))
+                         or len(names) != len({name.casefold() for name in names}))
+            special = any(
+                stat.S_ISLNK((info.external_attr >> 16) & 0xFFFF)
+                or bool(info.flag_bits & 0x1)
+                for info in infos)
+            if unsafe or duplicate or special:
+                raise ValueError(
+                    "ZIP has unsafe, duplicate, or encrypted members")
+            if len(infos) < len(ids):
+                raise ValueError(
+                    f"ZIP has {len(infos)} members for {len(ids)} declared attachments")
+            if (declared and len(declared) == len(ids)
+                    and all(row.get("file_name") and row.get("listed_byte_size")
+                            for row in declared)):
+                expected = {str(row["file_name"]): int(row["listed_byte_size"])
+                            for row in declared}
+                prefix = f"{accession}_"
+                actual = {
+                    (info.filename[len(prefix):]
+                     if info.filename.startswith(prefix) else info.filename): info.file_size
+                    for info in infos
+                }
+                if len(expected) != len(declared) or actual != expected:
+                    raise ValueError(
+                        "ZIP member names/sizes disagree with the official file list")
+            for info in infos:
+                zf.read(info)
+    except (OSError, RuntimeError, zipfile.BadZipFile) as exc:
+        raise ValueError(f"invalid ZIP ({type(exc).__name__}: {exc})") from exc
+
+
 class Elibrary:
     """Accession-led. Every method takes or returns an accession number.
 
@@ -491,12 +555,20 @@ class Elibrary:
         miss_checkpoint = len(getattr(self.client, "cache_misses", []))
         try:
             blob, entry = request(ids)
+            _validate_accession_download(accession, blob, ids, expected_files)
             self.downloads += 1
             return blob, entry
         except FetchError as exc:
             if len(ids) == 1:
                 raise
             bulk_error = exc
+        except ValueError as exc:
+            validation_error = FetchError(
+                DOWNLOAD_URL,
+                f"{accession}: all-ID DownloadP8File response failed validation: {exc}")
+            if len(ids) == 1:
+                raise validation_error from None
+            bulk_error = validation_error
 
         # FERC's file-list UI sends one ID for an individual-file click.  The
         # P8 backend sometimes ignores that subset and returns the complete
@@ -646,6 +718,87 @@ def members(blob: bytes, hint: str = "") -> list[tuple[str, bytes, str]]:
     if kind == "zip":
         return [(name, data, sniff(data)) for name, data in zip_entries(blob)]
     return [(hint or "(single file)", blob, kind)]
+
+
+def stable_payload_fingerprint(blob: bytes) -> str | None:
+    """Hash a download's exact document payload, not volatile ZIP metadata.
+
+    eLibrary sometimes rebuilds a multi-attachment ZIP with new member
+    timestamps while returning the same member names and bytes.  The raw
+    response remains separately preserved in the content-addressed cache, but
+    that wrapper-only change is not a new version of the filing.  Equality here
+    is deliberately strict: only a readable, safe archive with the exact same
+    uniquely named members and uncompressed bytes can compare equal.  DOCX and
+    XLSX files are treated as ordinary raw documents, not as transport ZIPs.
+    """
+    raw_hash = hashlib.sha256(blob).hexdigest()
+    if sniff(blob) != "zip":
+        return raw_hash
+    try:
+        with zipfile.ZipFile(io.BytesIO(blob)) as zf:
+            infos = [info for info in zf.infolist() if not info.is_dir()]
+            names = [info.filename for info in infos]
+            unsafe = any(
+                pathlib.PurePosixPath(name).is_absolute()
+                or ".." in pathlib.PurePosixPath(name).parts
+                or "\\" in name
+                for name in names)
+            if (not infos or unsafe or len(names) != len(set(names))
+                    or len(names) != len({name.casefold() for name in names})
+                    or any(stat.S_ISLNK((info.external_attr >> 16) & 0xFFFF)
+                           or bool(info.flag_bits & 0x1) for info in infos)):
+                return None
+            payload = []
+            for info in sorted(infos, key=lambda value: value.filename):
+                data = zf.read(info)
+                if len(data) != info.file_size:
+                    return None
+                payload.append({
+                    "name": info.filename,
+                    "bytes": len(data),
+                    "sha256": hashlib.sha256(data).hexdigest(),
+                })
+    except (OSError, RuntimeError, zipfile.BadZipFile):
+        return None
+    encoded = json.dumps(
+        payload, ensure_ascii=False, sort_keys=True, separators=(",", ":")
+    ).encode("utf-8")
+    return hashlib.sha256(encoded).hexdigest()
+
+
+def reconcile_filing_content_hash(staging, cache, source_system: str,
+                                  filing_id: str, blob: bytes,
+                                  fresh_hash: str) -> tuple[str, bool, int]:
+    """Keep an occurrence's immutable hash across a wrapper-only ZIP rebuild.
+
+    Returns ``(hash, wrapper_equivalent, byte_size)``.  Hash and size always
+    describe the same raw object.  A missing/tampered prior cache object, an
+    unreadable archive, or any member-name/content change returns the fresh raw
+    identity and lets the existing immutable-filing guard fail closed.
+    """
+    actual = hashlib.sha256(blob).hexdigest()
+    if fresh_hash != actual:
+        raise ValueError(
+            f"{source_system}/{filing_id}: source-cache hash does not match bytes")
+    rows = staging.query(
+        "SELECT content_hash FROM filings WHERE source_system=? AND filing_id=?",
+        (source_system, filing_id),
+    )
+    if not rows:
+        return fresh_hash, False, len(blob)
+    prior_hash = str(rows[0]["content_hash"] or "")
+    if not prior_hash or prior_hash == fresh_hash:
+        return fresh_hash, False, len(blob)
+    prior_blob = cache.get_content(prior_hash)
+    if prior_blob is None:
+        return fresh_hash, False, len(blob)
+    prior_fingerprint = stable_payload_fingerprint(prior_blob)
+    fresh_fingerprint = stable_payload_fingerprint(blob)
+    if (sniff(prior_blob) == "zip" and sniff(blob) == "zip"
+            and prior_fingerprint is not None
+            and prior_fingerprint == fresh_fingerprint):
+        return prior_hash, True, len(prior_blob)
+    return fresh_hash, False, len(blob)
 
 
 # ---------------------------------------------------------------- text layer

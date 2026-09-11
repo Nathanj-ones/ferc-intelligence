@@ -455,6 +455,7 @@ def _search(ctx, elib, key, tag, **kw) -> list[dict]:
         ctx.log("error", f"{key} {tag}: {exc.detail}", adapter=ADAPTER, entity_cid=key)
         return []
     ctx.staging.checkpoint(ADAPTER, key, tag, "done")
+    ctx.staging.resolve_blockers(ADAPTER, f"{key}:{tag}")
     return hits
 
 
@@ -572,6 +573,7 @@ def _fetch_document(ctx, elib, key, filing) -> None:
         filing["text"] = ""
         filing["text_layer"] = "no"
         ctx.staging.checkpoint(ADAPTER, key, scope_key, "done")
+        ctx.staging.resolve_blockers(ADAPTER, f"{key}:{accession}")
         return
     try:
         blob, entry = elib.download(
@@ -603,17 +605,32 @@ def _fetch_document(ctx, elib, key, filing) -> None:
     filing["retrieval"] = "retrieved"
     filing["members"] = texts
     filing["text"] = (best or {}).get("text", "")
-    filing["text_layer"] = (best or {}).get("layer", "no")
+    selected_layer = (best or {}).get("layer", "no")
+    filing["text_layer"] = (
+        "partial" if len(parts) > 1 and filing["text"] else selected_layer)
     filing["extraction_method"] = (best or {}).get("method", "")
-    filing["attachment_name"] = (best or {}).get("name", "")
-    filing["attachment_id"] = public[0]["attachment_id"]
-    filing["content_hash"] = entry["content_hash"]
+    filing["selected_member_name"] = (best or {}).get("name", "")
+    filing["public_attachment_count"] = len(public)
+    filing["content_hash"], wrapper_equivalent, identity_size = \
+        elibrary.reconcile_filing_content_hash(
+            ctx.staging, ctx.cache, SOURCE_SYSTEM, accession, blob,
+            entry["content_hash"])
+    if wrapper_equivalent:
+        ctx.log(
+            "info",
+            f"{accession}: eLibrary rebuilt the download ZIP; exact member names and "
+            "bytes match the immutable filing already recorded",
+            adapter=ADAPTER,
+            entity_cid=key,
+        )
     filing["media_type"] = entry["media_type"]
-    filing["byte_size"] = entry["byte_size"]
+    filing["byte_size"] = identity_size
     filing["document_first_seen_at"] = elibrary.cache_first_seen_at(entry)
     filing["document_retrieved_at"] = elibrary.cache_retrieved_at(entry)
     ctx.staging.checkpoint(ADAPTER, key, scope_key, "done")
-    ctx.log("info", f"{accession}: {len(parts)} member(s); best '{filing['attachment_name']}' "
+    ctx.staging.resolve_blockers(ADAPTER, f"{key}:{accession}")
+    ctx.log("info", f"{accession}: {len(parts)} member(s); best "
+                    f"'{filing['selected_member_name']}' "
                     f"({filing['extraction_method']}, text_layer={filing['text_layer']}, "
                     f"{len(filing['text']):,} chars)", adapter=ADAPTER, entity_cid=key)
 
@@ -650,7 +667,9 @@ def _persist(ctx, entity, filing, *, baseline=None) -> None:
         if baseline else capture.get("first_seen_at"))
     filing["retrieved_at"] = capture.get("retrieved_at")
     year = int(filing["filed_date"][:4]) if filing.get("filed_date") else None
-    doc_id = f"{SOURCE_SYSTEM}|{accession}|{filing.get('attachment_id') or 'listing'}"
+    retrieved_package = bool(filing.get("content_hash"))
+    document_kind = "package" if retrieved_package else "listing"
+    doc_id = f"{SOURCE_SYSTEM}|{accession}|{document_kind}"
     # A11: byte-identical content under a DIFFERENT accession is an identical
     # resubmission -- a real occurrence and a version record, never an economic
     # change. Content identity deduplicates BYTES; it never merges occurrences.
@@ -689,8 +708,10 @@ def _persist(ctx, entity, filing, *, baseline=None) -> None:
     }
     documents = [{
         "document_id": doc_id, "source_system": SOURCE_SYSTEM, "filing_id": accession,
-        "accession_number": accession, "attachment_id": filing.get("attachment_id") or "",
-        "title": filing.get("attachment_name") or filing.get("description", "")[:200],
+        "accession_number": accession, "attachment_id": "",
+        "title": (f"eLibrary accession {accession} package "
+                  f"({int(filing.get('public_attachment_count') or 0)} public files)"
+                  if retrieved_package else filing.get("description", "")[:200]),
         "class_type": "|".join(filing.get("class_types") or []),
         "media_type": filing.get("media_type") or "",
         "byte_size": filing.get("byte_size"), "content_hash": filing.get("content_hash"),
@@ -715,7 +736,8 @@ def _persist(ctx, entity, filing, *, baseline=None) -> None:
     }
     ctx.staging.write_filing_bundle(
         row, documents=documents, filing_dockets=dockets,
-        filing_entities=[association], allow_shared_entities=is_issuance)
+        filing_entities=[association], allow_shared_entities=is_issuance,
+        replace_documents=retrieved_package)
     filing["document_id"] = doc_id
     # ``retrieve`` returns these dictionaries to the run-level, append-only
     # input inventory and input-digest boundary.  Preserve the raw API fields,

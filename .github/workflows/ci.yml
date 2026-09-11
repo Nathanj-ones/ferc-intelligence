@@ -1,0 +1,103 @@
+name: Repository CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened, ready_for_review]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: repository-ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  full-stack:
+    name: Frontend and backend
+    if: github.event_name != 'pull_request' || github.event.pull_request.draft == false
+    runs-on: macos-15
+    timeout-minutes: 60
+
+    env:
+      CI: "true"
+      FERC_API_KEY: ""
+      FERC_OFFLINE: "1"
+      FERC_LOCAL_PYTHON: python3
+      PYTHONDONTWRITEBYTECODE: "1"
+
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6.5.0
+        with:
+          node-version: 24.14.1
+          package-manager-cache: false
+
+      - name: Set up Python
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
+        with:
+          python-version: 3.14.7
+
+      - name: Install reviewed-image renderer
+        env:
+          HOMEBREW_NO_AUTO_UPDATE: "1"
+        run: brew install poppler
+
+      - name: Install frontend dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Check dependency advisories
+        run: npm audit --audit-level=low
+
+      - name: Test frontend contracts
+        run: npm test
+
+      - name: Lint frontend
+        run: npm run lint
+
+      - name: Type-check frontend
+        run: npm exec -- tsc --noEmit
+
+      - name: Build frontend
+        run: npm run build
+
+      # Keep the token scoped to this fixed, trusted download step. Repository
+      # scripts and tests receive neither GH_TOKEN nor a persisted credential.
+      - name: Download pinned private backend release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p .ferc-local/downloads
+          gh release download backend-data-2026-09-10-v1 \
+            --repo "$GITHUB_REPOSITORY" \
+            --pattern ferc-backend-data-2026-09-10-v1.zip \
+            --pattern ferc-backend-publication-2026-09-10-v1.zip \
+            --dir .ferc-local/downloads
+
+      - name: Install and validate backend seed
+        run: |
+          npm run setup:backend -- \
+            --archive "$PWD/.ferc-local/downloads/ferc-backend-data-2026-09-10-v1.zip"
+          npm run backend:check
+
+      - name: Verify backend-to-frontend integration
+        run: npm run backend:verify
+
+      - name: Run complete backend test suite
+        run: npm run backend:test
+
+      - name: Confirm checks did not alter tracked files
+        run: git diff --exit-code

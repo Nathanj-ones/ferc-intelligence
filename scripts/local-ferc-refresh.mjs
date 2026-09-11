@@ -230,6 +230,20 @@ export class LocalRefresh {
         backend: this.backend,
       });
     }
+    await this.run(
+      python,
+      [
+        path.join(
+          this.backend,
+          'migrations/005_elibrary_package_document_identity_2026_09_11.py',
+        ),
+        '--db',
+        db,
+        '--apply',
+      ],
+      env,
+      'Updating local document identities',
+    );
     const today = new Date().toISOString().slice(0, 10);
     const common = [
       '--as-of',

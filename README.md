@@ -64,6 +64,8 @@ The website's **Refresh live data** button orchestrates collection, coverage,
 field statuses, export, validation, and frontend activation. The raw backend CLI
 is for individual pipeline operations and does not update the website on its own.
 The seed is preserved; the button and CLI each use separate working databases.
+Before using those copies, the repository applies its idempotent data-only
+migrations, including the accession-package document identity correction.
 See [local refresh details](LOCAL-LIVE-DATA.md).
 
 The existing private hosted site is a separately published, pinned snapshot.

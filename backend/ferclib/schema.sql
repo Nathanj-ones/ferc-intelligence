@@ -281,16 +281,17 @@ CREATE TABLE IF NOT EXISTS filing_dockets (
 -- One filing may carry several attachments. Attachment ID and content hash are
 -- deliberately separate columns: the same bytes can appear under two IDs.
 CREATE TABLE IF NOT EXISTS documents (
-  document_id     TEXT PRIMARY KEY,           -- source_system|filing_id|attachment_id
+  document_id     TEXT PRIMARY KEY,           -- source_system|filing_id|attachment_id,
+                                              -- |package, or |listing
   source_system   TEXT NOT NULL,
   filing_id       TEXT NOT NULL,
   accession_number TEXT,
-  attachment_id   TEXT,
+  attachment_id   TEXT,                       -- blank for accession packages/listings
   title           TEXT,
   class_type      TEXT,
   media_type      TEXT,
   byte_size       INTEGER,
-  content_hash    TEXT,                       -- sha256 of the attachment bytes
+  content_hash    TEXT,                       -- sha256 of the modelled attachment or package
   cache_path      TEXT,                       -- content-addressed cache location
   text_layer      TEXT,                       -- yes | no | partial | unknown
   availability    TEXT,                       -- retrieved | nonpublic | not_retrieved | failed

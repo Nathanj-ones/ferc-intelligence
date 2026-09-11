@@ -35,6 +35,10 @@ test('a complete validated refresh activates only after frontend verification', 
   const manager = await fixture(t, async (_command, args, env, label) => {
     phases.push(label);
     assert.equal(manager.active, null, 'No partial activation');
+    if (label === 'Updating local document identities') {
+      assert.ok(args.some((value) => value.includes('005_elibrary_package')));
+      assert.ok(args.includes('--apply'));
+    }
     if (label === 'Pulling live source data') {
       assert.ok(args.includes('refresh'));
       assert.ok(!args.includes('--offline'));
@@ -52,7 +56,7 @@ test('a complete validated refresh activates only after frontend verification', 
   await manager.job;
   assert.equal(manager.state.status, 'succeeded');
   assert.equal(manager.active.generationId, generation);
-  assert.deepEqual(phases, ['Pulling live source data', 'Recomputing coverage', 'Recomputing field statuses', 'Building source snapshot', 'Validating source snapshot', 'Verifying frontend data and evidence']);
+  assert.deepEqual(phases, ['Updating local document identities', 'Pulling live source data', 'Recomputing coverage', 'Recomputing field statuses', 'Building source snapshot', 'Validating source snapshot', 'Verifying frontend data and evidence']);
   assert.equal((await new LocalRefresh(manager.project).init()).active.generationId, generation, 'Pointer survives restart');
 });
 
