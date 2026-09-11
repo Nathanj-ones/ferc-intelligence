@@ -38,6 +38,7 @@ import {
 import {
   metricPresentation,
   concentrationComparisonKey,
+  requiresQuantityDenominator,
 } from '@/lib/ferc/metric-presentation';
 
 const colors = ['#176b61', '#4f70a3', '#885d83', '#73815b'];
@@ -151,7 +152,7 @@ function buildGroups(details: OperatingAssetDetail[]): ComparableGroup[] {
     });
     if (series.some((entry) => entry === null)) return [];
     const complete = series as ComparableSeries[];
-    if (complete[0].metric.id === 'ioc_top5_shipper_concentration') {
+    if (requiresQuantityDenominator(complete[0].metric.id)) {
       if (
         !concentrationComparisonKey(complete.flatMap((entry) => entry.points))
       )

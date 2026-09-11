@@ -707,7 +707,13 @@ export function BackendAssetDetail({
                           }
                         >
                           <span>
-                            <b>{item.metric.label}:</b>{' '}
+                            <b>
+                              {
+                                metricPresentation(item.metric, [item.point])
+                                  .label
+                              }
+                              :
+                            </b>{' '}
                             {formatObservationValue(
                               item.point,
                               false,
@@ -752,7 +758,8 @@ export function BackendAssetDetail({
                           openSource(observationSource(asset, metric, point))
                         }
                       >
-                        Evidence for {metric.label} <ArrowUpRight />
+                        Evidence for {metricPresentation(metric, [point]).label}{' '}
+                        <ArrowUpRight />
                       </button>
                     </article>
                   );

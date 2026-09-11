@@ -1,6 +1,13 @@
 import type { BackendMetricSeries, BackendObservation } from './types.ts';
 import { unitLabel } from './format.ts';
 
+export const requiresQuantityDenominator = (metricId: string) =>
+  [
+    'ioc_top5_shipper_concentration',
+    'ioc_affiliate_share',
+    'ioc_identity_coverage',
+  ].includes(metricId);
+
 export function concentrationComparisonKey(points: BackendObservation[]) {
   const keys = points.map((point) => {
     const edges = (point.lineage?.edgeSample || []).filter(
@@ -49,8 +56,42 @@ export function metricPresentation(
   metric: BackendMetricSeries,
   points: BackendObservation[] = metric.points,
 ) {
-  if (metric.id === 'ioc_top5_shipper_concentration') {
+  if (requiresQuantityDenominator(metric.id)) {
     const denominator = concentrationDenominator(points);
+    if (
+      metric.id !== 'ioc_top5_shipper_concentration' &&
+      denominator === 'ioc_contracted_storage_quantity'
+    ) {
+      const unknownAffiliate =
+        metric.id === 'ioc_affiliate_share' &&
+        points.every((point) =>
+          /affiliate flag blank or unrecognised/i.test(point.scope.actual),
+        );
+      return {
+        label:
+          metric.id === 'ioc_identity_coverage'
+            ? 'Shipper identity coverage of contracted storage quantity'
+            : unknownAffiliate
+              ? 'Unclassified affiliate share of contracted storage quantity'
+              : 'Affiliate share of contracted storage quantity',
+        description:
+          metric.id === 'ioc_identity_coverage'
+            ? 'Share of matched contracted storage quantity with a resolved shipper identity; this is not weighted by daily transport capacity.'
+            : unknownAffiliate
+              ? 'Share of matched contracted storage quantity with a blank or unrecognised affiliate flag; this is not a confirmed affiliate holding.'
+              : 'Share of matched contracted storage quantity held by contracts flagged as affiliate; this is not weighted by daily transport capacity.',
+      };
+    }
+    if (
+      metric.id !== 'ioc_top5_shipper_concentration' &&
+      denominator === 'mixed'
+    ) {
+      return {
+        label: metric.label,
+        description:
+          'Coverage varies by filed scope and denominator. Select a scope to distinguish storage quantity from daily transport capacity; they are not comparable weights.',
+      };
+    }
     if (
       denominator === 'ioc_contracted_storage_quantity' ||
       denominator === 'mixed'

@@ -5,7 +5,10 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { gzipSync } from 'node:zlib';
 import { selectAssetKeyMetrics } from '../lib/ferc/key-metrics.ts';
-import { concentrationComparisonKey } from '../lib/ferc/metric-presentation.ts';
+import {
+  concentrationComparisonKey,
+  requiresQuantityDenominator,
+} from '../lib/ferc/metric-presentation.ts';
 
 const EXPECTED_GENERATION =
   '0dccbd426f15372f1330737537f9aac58bc9547a2eaf81ef6f4b655f10cf2824';
@@ -380,7 +383,7 @@ function comparisonGroupSummaries(metrics) {
         semanticKeys: new Set(),
       };
       group.metricIds.add(metric.id);
-      if (metric.id === 'ioc_top5_shipper_concentration') {
+      if (requiresQuantityDenominator(metric.id)) {
         group.semanticKeys.add(
           concentrationComparisonKey([point]) || 'ambiguous',
         );

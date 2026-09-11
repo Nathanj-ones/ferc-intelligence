@@ -6,6 +6,7 @@ import { uniqueObservationPeriods } from '../lib/ferc/observations.ts';
 import { observationSeriesKey } from '../lib/ferc/key-metrics.ts';
 import {
   metricPresentation,
+  requiresQuantityDenominator,
   observationFiledValues,
   concentrationComparisonKey,
 } from '../lib/ferc/metric-presentation.ts';
@@ -123,6 +124,25 @@ assert.equal(
   details.get('oke-roadrunner-export-pipeline').asset.regime,
   'Cross-border gas pipeline',
 );
+
+for (const metricId of ['ioc_affiliate_share', 'ioc_identity_coverage']) {
+  assert.ok(requiresQuantityDenominator(metricId));
+  const left = arlington.metrics.find((metric) => metric.id === metricId);
+  const right = cadeville.metrics.find((metric) => metric.id === metricId);
+  assert.match(metricPresentation(right).description, /storage quantity/);
+  const shared = commonComparisonGroupIds([arlington.asset, cadeville.asset]);
+  for (const groupId of shared) {
+    const points = [...left.points, ...right.points].filter(
+      (point) =>
+        point.comparison.eligible && point.comparison.group_id === groupId,
+    );
+    if (points.length)
+      assert.ok(
+        concentrationComparisonKey(points),
+        `Mixed denominator: ${metricId}/${groupId}`,
+      );
+  }
+}
 
 // Simulate a tab with the previous projection manifest navigating after an
 // update. Both stored bytes and decoded bytes must still pass verification.
