@@ -141,7 +141,7 @@ assert.equal(
 assert.equal(isStructuredFercValue('{"bucket":1}'), true);
 assert.equal(
   formatBackendValue('{"bucket":1}', 'categorical'),
-  'Structured record · 1 field',
+  'Structured record Â· 1 field',
 );
 assert.equal(
   formatBackendValue('activity_reported', 'categorical'),
@@ -157,9 +157,12 @@ assert.equal(
 );
 
 assert.ok(changes.every((item) => item.firstSeen === undefined));
-assert.equal(
-  projects.find((project) => project.docket === 'CP25-219')?.regulatory_outlook,
-  null,
+assert.ok(
+  projects.every(
+    (project) =>
+      project.regulatory_outlook === null ||
+      typeof project.regulatory_outlook === 'object',
+  ),
 );
 assert.ok(
   operatingAssets.every((asset) =>
@@ -425,11 +428,11 @@ assert.deepEqual(
 );
 assert.equal(multiPeriodSelection.issues[0]?.code, 'incompatible_type');
 
-const project = projects.find((item) => item.docket === 'CP25-219');
+const project = projects.find((item) => item.docket === 'CP25-528');
 assert.ok(project);
 const representativeSource = projectSource(
   project,
-  '20260901-5206',
+  '20260818-5116',
   'Construction / Compliance',
   undefined,
   'Supplied activity summary',

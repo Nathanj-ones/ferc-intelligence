@@ -5,7 +5,7 @@ import type {
   ProjectView,
   SourceDetail,
 } from './types';
-import liveProjectsJson from './projects-live.json';
+import liveProjectsJson from './projects-live.json' with { type: 'json' };
 
 const qH: Array<readonly [string, number, number]> = [
     [`2016`, 1632742233, 445789016],
@@ -156,7 +156,7 @@ const qH: Array<readonly [string, number, number]> = [
           id: `transco-annual`,
           title: `Transco annual key metrics`,
           sourceSystem: `FERC eCollection / eForms XBRL`,
-          period: `2016–2025`,
+          period: `2016â€“2025`,
           scope: `Filing entity, whole entity`,
           unit: `USD`,
           method: `Filed annual values`,
@@ -293,7 +293,7 @@ const qH: Array<readonly [string, number, number]> = [
           id: `tgp-annual`,
           title: `TGP annual key metrics`,
           sourceSystem: `FERC eCollection / eForms XBRL`,
-          period: `2016–2025`,
+          period: `2016â€“2025`,
           scope: `Filing entity, whole entity`,
           unit: `USD`,
           method: `Filed annual values`,
@@ -334,7 +334,7 @@ const qH: Array<readonly [string, number, number]> = [
           id: `elba-express-universe`,
           title: `Elba Express reviewed asset mapping`,
           sourceSystem: `Detached operating-asset universe`,
-          nativeIdentity: `kmi-elba-express · C000147`,
+          nativeIdentity: `kmi-elba-express Â· C000147`,
           period: `Snapshot copied 8 Sep 2026`,
           scope: `Whole filing entity`,
           method: `Reviewed identity and canonical type mapping`,
@@ -375,7 +375,7 @@ const qH: Array<readonly [string, number, number]> = [
           id: `transcolorado-universe`,
           title: `TransColorado reviewed asset mapping`,
           sourceSystem: `Detached operating-asset universe`,
-          nativeIdentity: `kmi-transcolorado · C000596`,
+          nativeIdentity: `kmi-transcolorado Â· C000596`,
           period: `Snapshot copied 8 Sep 2026`,
           scope: `Whole filing entity`,
           method: `Reviewed identity and canonical type mapping`,
@@ -747,7 +747,7 @@ const qH: Array<readonly [string, number, number]> = [
       category: `Grouped project activity`,
       date: `2026-09-08`,
       title: `CP25-10 construction/compliance filing group`,
-      entity: `Southeast Supply Enhancement · CP25-10`,
+      entity: `Southeast Supply Enhancement Â· CP25-10`,
       company: `Company not mapped`,
       regime: `Interstate gas project`,
       explanation: `The supplied snapshot grouped one filing as context-dependent construction/compliance activity. It is retained in the archive and is not promoted to a substantive or economic event.`,
@@ -765,10 +765,10 @@ const qH: Array<readonly [string, number, number]> = [
       category: `Construction / service authorisation`,
       date: `2026-07-22`,
       title: `Construction activities authorised at Hinds and Tallulah compressor stations`,
-      entity: `Southeast Compression Utility and Reliability · CP25-219`,
+      entity: `Southeast Compression Utility and Reliability Â· CP25-219`,
       company: `Company not mapped`,
       regime: `Interstate gas project`,
-      explanation: `The supplied milestone describes a letter granting the sponsor’s request to commence specified construction activities.`,
+      explanation: `The supplied milestone describes a letter granting the sponsorâ€™s request to commence specified construction activities.`,
       source: $H(
         QH[1],
         `20260722-3014`,
@@ -783,7 +783,7 @@ const qH: Array<readonly [string, number, number]> = [
       category: `Regulatory decision`,
       date: `2026-06-18`,
       title: `Certificate order recorded for Appalachian Reliability`,
-      entity: `Appalachian Reliability · CP25-528`,
+      entity: `Appalachian Reliability Â· CP25-528`,
       company: `Company not mapped`,
       regime: `Interstate gas project`,
       explanation: `The project snapshot classifies the filing as a regulatory decision and assesses the current stage as Certificate. The stage is filing-based, not a separate formal status field.`,
@@ -796,7 +796,7 @@ const qH: Array<readonly [string, number, number]> = [
       category: `Construction / service authorisation`,
       date: `2026-02-25`,
       title: `Southeast Supply Enhancement receives construction authorisation milestone`,
-      entity: `Southeast Supply Enhancement · CP25-10`,
+      entity: `Southeast Supply Enhancement Â· CP25-10`,
       company: `Company not mapped`,
       regime: `Interstate gas project`,
       explanation: `The supplied milestone records a letter granting the 18 February 2026 request to commence construction.`,
@@ -824,13 +824,13 @@ const qH: Array<readonly [string, number, number]> = [
       filingChildren: [
         {
           label: `Gas operating revenue`,
-          value: `$409.5m · 2017 Q4 derived period`,
+          value: `$409.5m Â· 2017 Q4 derived period`,
         },
         {
           label: `Net utility operating income`,
-          value: `$174.5m · 2017 Q4 derived period`,
+          value: `$174.5m Â· 2017 Q4 derived period`,
         },
-        { label: `Total throughput`, value: `872.4m Dth · 2017 Q4` },
+        { label: `Total throughput`, value: `872.4m Dth Â· 2017 Q4` },
       ],
     },
     {
@@ -848,10 +848,10 @@ const qH: Array<readonly [string, number, number]> = [
       explanation: `Historical filing archive item from the copied reference slice; it is not presented as current news.`,
       source: XH[0].sources.find((e) => e.id === `transco-annual`)!,
       filingChildren: [
-        { label: `Gas operating revenue`, value: `$1.789bn · 2017 annual` },
+        { label: `Gas operating revenue`, value: `$1.789bn Â· 2017 annual` },
         {
           label: `Net utility operating income`,
-          value: `$419.5m · 2017 annual`,
+          value: `$419.5m Â· 2017 annual`,
         },
         {
           label: `Quarterly detail`,
@@ -880,10 +880,10 @@ const qH: Array<readonly [string, number, number]> = [
       category: `Assessment unavailable`,
       date: `2026-09-09`,
       title: `Regulatory outlook unavailable for CP25-219`,
-      entity: `Southeast Compression Utility and Reliability · CP25-219`,
+      entity: `Southeast Compression Utility and Reliability Â· CP25-219`,
       company: `Company not mapped`,
       regime: `Interstate gas project`,
-      explanation: `The supplied regulatory_outlook field is null. It does not mean zero open requests or “all clear.”`,
+      explanation: `The supplied regulatory_outlook field is null. It does not mean zero open requests or â€œall clear.â€`,
       source: $H(QH[1], ``, `Project snapshot contract`, `2026-09-09`),
     },
   ],
@@ -893,8 +893,8 @@ const qH: Array<readonly [string, number, number]> = [
     Docket: `The FERC proceeding identifier used to group regulatory filings and decisions.`,
     Accession: `An eLibrary document identifier. It may be unavailable for sources outside eLibrary.`,
     MDQ: `Maximum daily quantity covered by the relevant firm transportation contracts; not physical pipeline capacity.`,
-    'Top-five shipper share': `The five largest shippers’ combined share on the stated quantity or usage basis; not automatically revenue concentration.`,
-    'Primary-term expiry': `The end of a contract’s initial term. Continuation rights and unknown terms remain separate.`,
+    'Top-five shipper share': `The five largest shippersâ€™ combined share on the stated quantity or usage basis; not automatically revenue concentration.`,
+    'Primary-term expiry': `The end of a contractâ€™s initial term. Continuation rights and unknown terms remain separate.`,
     'Year-on-year': `A comparison with the same period one year earlier.`,
     'Percentage points': `The arithmetic difference between two percentages, distinct from percent growth.`,
     'Cost of service': `A carrier-reported regulatory cost calculation. Revenue less cost of service is not automatically profit or unlawful over-earning.`,
@@ -907,7 +907,7 @@ const qH: Array<readonly [string, number, number]> = [
     operating: {
       label: `Operating release`,
       date: `2026-09-08`,
-      identity: `operating_assets_all_regimes_REPAIRED_FULL.zip · sha256 2567244938a7645…`,
+      identity: `operating_assets_all_regimes_REPAIRED_FULL.zip Â· sha256 2567244938a7645â€¦`,
       note: `This frontend copies a selected Transco/TGP metric slice plus reviewed Elba Express and TransColorado identity/type rows; it does not load the database or full raw cache.`,
     },
     projects: {
@@ -918,7 +918,7 @@ const qH: Array<readonly [string, number, number]> = [
     },
   };
 export const operatingAssets = XH;
-export const projects = liveProjectsJson as ProjectView[];
+export const projects = liveProjectsJson as unknown as ProjectView[];
 const projectSourceBase = $H;
 export const projectSource = (
   project: ProjectView,
@@ -949,6 +949,6 @@ export const sourceProvenance = {
   operating: {
     ...nU.operating,
     identity:
-      'operating_assets_all_regimes_REPAIRED_FULL.zip · sha256 2567244938a7645ba1fe09b81486cf3780cd1a769b61b59afee25a6309f382d5',
+      'operating_assets_all_regimes_REPAIRED_FULL.zip Â· sha256 2567244938a7645ba1fe09b81486cf3780cd1a769b61b59afee25a6309f382d5',
   },
 };
