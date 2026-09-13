@@ -141,7 +141,7 @@ assert.equal(
 assert.equal(isStructuredFercValue('{"bucket":1}'), true);
 assert.equal(
   formatBackendValue('{"bucket":1}', 'categorical'),
-  'Structured record Â· 1 field',
+  'Structured record · 1 field',
 );
 assert.equal(
   formatBackendValue('activity_reported', 'categorical'),
