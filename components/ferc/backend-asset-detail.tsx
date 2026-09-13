@@ -811,9 +811,9 @@ export function BackendAssetDetail({
           <p className="eyebrow">Current operating feed</p>
           <h2>No current investor events in this generation</h2>
           <p>
-            {detail.events.length > 0
-              ? `All ${detail.events.length.toLocaleString()} linked events are historical backfill or data-quality events. They remain in the archive and are not promoted as new developments.`
-              : 'No linked filing or data-quality events are present in this snapshot.'}
+            All {detail.events.length.toLocaleString()} linked events are
+            historical backfill or data-quality events. They remain in the
+            archive and are not promoted as new developments.
           </p>
         </div>
         {latestEvent && (

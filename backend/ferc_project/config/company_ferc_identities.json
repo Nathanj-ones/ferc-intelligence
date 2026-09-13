@@ -1,0 +1,54 @@
+{
+  "schema_version": "company_ferc_identities_v1",
+  "companies": {
+    "KMI": {
+      "ferc_entities": [
+        "Tennessee Gas Pipeline Company, L.L.C.",
+        "Kinder Morgan, Inc.",
+        "Kinder Morgan Louisiana Pipeline LLC",
+        "Southern Natural Gas Company, L.L.C.",
+        "Natural Gas Pipeline Company of America LLC",
+        "Kinder Morgan Illinois Pipeline LLC",
+        "Kinder Morgan Tejas Pipeline LLC",
+        "NET Mexico Pipeline Partners, LLC",
+        "Kinder Morgan Texas Pipeline LLC",
+        "Gulf LNG Energy, LLC"
+      ]
+    },
+    "TRGP": {
+      "ferc_entities": [
+        "Targa Gas Marketing LLC"
+      ]
+    },
+    "WMB": {
+      "ferc_entities": [
+        "The Williams Companies, Inc.",
+        "Transcontinental Gas Pipe Line Company, LLC",
+        "Northwest Pipeline LLC",
+        "Pine Needle LNG Company, LLC",
+        "Monroe Gas Storage Company, LLC",
+        "MountainWest Overthrust Pipeline, LLC",
+        "Perryville Gas Storage LLC"
+      ]
+    },
+    "OKE": {
+      "ferc_entities": [
+        "Sabine Pipe Line LLC"
+      ]
+    },
+    "LNG": {
+      "ferc_entities": [
+        "Corpus Christi Liquefaction, LLC",
+        "Cheniere Energy, Inc.",
+        "Cheniere Creole Trail Pipeline, L.P.",
+        "Sabine Pass Liquefaction, LLC"
+      ]
+    },
+    "NEXT": {
+      "ferc_entities": [
+        "Rio Grande LNG, LLC",
+        "NextDecade"
+      ]
+    }
+  }
+}

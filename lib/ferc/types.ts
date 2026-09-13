@@ -464,7 +464,7 @@ export type ProjectView = {
   docket: string;
   current_stage: string;
   generated_at: string;
-  company: 'Company not mapped';
+  company: string;
   counts: {
     raw: number;
     deduped: number;

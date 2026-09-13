@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ferc-project-filter"
+version = "0.1.0"
+description = "Research and prototype tools for FERC project filing retrieval and filtering"
+requires-python = ">=3.10"
+dependencies = [
+  "requests>=2.31",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]

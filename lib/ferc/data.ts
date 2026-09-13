@@ -5,6 +5,7 @@ import type {
   ProjectView,
   SourceDetail,
 } from './types';
+import liveProjectsJson from './projects-live.json';
 
 const qH: Array<readonly [string, number, number]> = [
     [`2016`, 1632742233, 445789016],
@@ -917,7 +918,7 @@ const qH: Array<readonly [string, number, number]> = [
     },
   };
 export const operatingAssets = XH;
-export const projects = QH;
+export const projects = liveProjectsJson as ProjectView[];
 const projectSourceBase = $H;
 export const projectSource = (
   project: ProjectView,

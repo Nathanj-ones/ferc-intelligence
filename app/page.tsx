@@ -110,6 +110,14 @@ type RouteState = {
 
 const sourceForPoint = (asset: OperatingAssetView, point: QuarterPoint) =>
   asset.sources.find((source) => source.id === point.sourceId);
+const monitoredWorkspaceCompanies = [
+  'Kinder Morgan',
+  'Targa Resources',
+  'Williams',
+  'ONEOK',
+  'Cheniere Energy',
+  'NextDecade',
+] as const;
 const projectCompanies: string[] = [
   ...new Set(projects.map((project) => project.company)),
 ].sort();
@@ -609,7 +617,7 @@ function SourceDrawer({
                   <dl className="source-inputs">
                     {source.inputs.map((input, index) => (
                       <div
-                        key={`${input.label}-${input.period ?? ''}-${input.sourceId ?? ''}-${index}`}
+                        key={`${input.label}-${input.period ?? ''}-${input.sourceId ?? index}`}
                       >
                         <dt>{input.label}</dt>
                         <dd>
@@ -3419,7 +3427,7 @@ function ProjectsDirectory({
                 </div>
                 <h2>{project.project}</h2>
                 <p className="company-unmapped">
-                  Company not mapped in supplied project export
+                  {project.company}
                 </p>
                 <div className="milestone-preview">
                   <span>
@@ -3459,12 +3467,12 @@ function ProjectsDirectory({
           title={
             companyContext === 'All companies'
               ? undefined
-              : `No projects mapped to ${companyContext}`
+              : `No tracked projects for ${companyContext}`
           }
           description={
             companyContext === 'All companies'
               ? undefined
-              : 'The supplied Tommy project snapshots do not include reviewed parent-company mappings. Choose Company not mapped or All companies to see them.'
+              : 'This company is monitored, but it has no TRACK projects in the current project snapshot.'
           }
         />
       )}
@@ -3501,7 +3509,7 @@ function ProjectDetail({
           </div>
           <h1>{project.project}</h1>
           <p>
-            Company not mapped ·{' '}
+            {project.company} ·{' '}
             <InfoTerm term="Docket">{project.docket}</InfoTerm>
           </p>
         </div>
@@ -3954,7 +3962,13 @@ export default function Home() {
   );
   const workspaceCompanies = useMemo(
     () =>
-      [...new Set([...operatingCompanies, ...projectCompanies])].sort(
+      [
+        ...new Set([
+          ...monitoredWorkspaceCompanies,
+          ...operatingCompanies,
+          ...projectCompanies,
+        ]),
+      ].sort(
         (left, right) => {
           if (left === 'Company not mapped') return 1;
           if (right === 'Company not mapped') return -1;

@@ -1,0 +1,9 @@
+.env
+.pytest_cache/
+__pycache__/
+*.pyc
+*.pyo
+data/
+*.db
+KMI.txt
+classifier_evaluation_*.txt

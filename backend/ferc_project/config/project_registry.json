@@ -1,0 +1,149 @@
+{
+  "schema_version": "project_registry_v1",
+  "monitor": {
+    "history_start_date": "01-01-2024",
+    "overlap_days": 14,
+    "output_root": "data/projects",
+    "app_output_root": "data/app"
+  },
+  "companies": [
+    {
+      "id": "KMI",
+      "name": "Kinder Morgan",
+      "enabled": true
+    },
+    {
+      "id": "TRGP",
+      "name": "Targa Resources",
+      "enabled": true
+    },
+    {
+      "id": "WMB",
+      "name": "Williams",
+      "enabled": true
+    },
+    {
+      "id": "OKE",
+      "name": "ONEOK",
+      "enabled": true
+    },
+    {
+      "id": "LNG",
+      "name": "Cheniere Energy",
+      "enabled": true
+    },
+    {
+      "id": "NEXT",
+      "name": "NextDecade",
+      "enabled": true
+    }
+  ],
+  "projects": [
+    {
+      "company_id": "WMB",
+      "project": "Southeast Supply Enhancement",
+      "docket": "CP25-10",
+      "enabled": true,
+      "context": {
+        "project_type": "Natural Gas Pipeline Expansion",
+        "capacity_value": 1.597,
+        "capacity_unit": "Bcf/d",
+        "capex_value": 1.5,
+        "capex_currency": "USD",
+        "capex_unit": "billion",
+        "target_in_service": "Q3 2027",
+        "capacity_source": "company_materials",
+        "capex_source": "company_materials",
+        "target_in_service_source": "company_materials"
+      }
+    },
+    {
+      "company_id": "WMB",
+      "project": "Driftwood Line 200",
+      "docket": "CP21-465",
+      "enabled": true,
+      "context": {
+        "project_type": "Natural Gas Pipeline Expansion",
+        "capacity_value": 3.1,
+        "capacity_unit": "Bcf/d",
+        "capex_value": 0.9,
+        "capex_currency": "USD",
+        "capex_unit": "billion",
+        "target_in_service": "Q2 2028",
+        "capacity_source": "company_materials",
+        "capex_source": "company_materials",
+        "target_in_service_source": "company_materials"
+      }
+    },
+    {
+      "company_id": "WMB",
+      "project": "Northeast Supply Enhancement",
+      "docket": "CP17-101",
+      "enabled": true,
+      "context": {
+        "project_type": "Natural Gas Pipeline Expansion",
+        "capacity_value": 0.4,
+        "capacity_unit": "Bcf/d",
+        "capex_value": 1.0,
+        "capex_currency": "USD",
+        "capex_unit": "billion",
+        "target_in_service": "Q4 2027",
+        "capacity_source": "company_materials",
+        "capex_source": "company_materials",
+        "target_in_service_source": "company_materials"
+      }
+    },
+    {
+      "company_id": "KMI",
+      "project": "Appalachian Reliability",
+      "docket": "CP25-528",
+      "enabled": true,
+      "context": {}
+    },
+    {
+      "company_id": "KMI",
+      "project": "Mississippi Crossing",
+      "docket": "CP25-514",
+      "enabled": true,
+      "context": {}
+    },
+    {
+      "company_id": "KMI",
+      "project": "South System Expansion 4",
+      "docket": "CP25-517",
+      "enabled": true,
+      "context": {}
+    },
+    {
+      "company_id": "NEXT",
+      "project": "Rio Grande LNG Terminal",
+      "docket": "CP16-454",
+      "enabled": true,
+      "context": {}
+    },
+    {
+      "company_id": "NEXT",
+      "project": "Rio Bravo Pipeline",
+      "docket": "CP16-455",
+      "enabled": true,
+      "context": {}
+    },
+    {
+      "company_id": "WMB",
+      "project": "Leidy Access Expansion Project",
+      "docket": "CP26-576",
+      "enabled": true,
+      "context": {},
+      "discovery": {
+        "auto_discovered": true,
+        "source": "ferc_elibrary",
+        "source_accessions": [
+          "20260904-5214",
+          "20260904-5213"
+        ],
+        "evidence_confidence": "medium",
+        "promoted_at": "2026-09-11T18:34:55.329125"
+      }
+    }
+  ]
+}

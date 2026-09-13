@@ -1,0 +1,27 @@
+{
+  "schema_version": "company_ownership_registry_v0.1",
+  "entities": [
+    {
+      "entity": "Northern Border Pipeline Company",
+      "company_id": "OKE",
+      "relationship": "joint_venture",
+      "ownership_percent": 50.0,
+      "confidence": "high",
+      "source_type": "company_official",
+      "source_url": "https://www.oneok.com/customers/ngp",
+      "source_note": "ONEOK lists Northern Border Pipeline Company among its interstate pipelines with a 50 percent interest.",
+      "enabled": true
+    },
+    {
+      "entity": "OkTex Pipeline Company, L.L.C.",
+      "company_id": "OKE",
+      "relationship": "subsidiary",
+      "ownership_percent": null,
+      "confidence": "high",
+      "source_type": "company_official",
+      "source_url": "https://www.oneok.com/okt/about",
+      "source_note": "ONEOK states that OkTex Pipeline Company is owned by ONEOK Partners, L.P.",
+      "enabled": true
+    }
+  ]
+}
